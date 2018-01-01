@@ -12,7 +12,7 @@ import com.sailmi.mall.core.domain.IdEntity;
 
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Entity
-@Table(name = "smmall_brandcategory")
+@Table(name = "sailmall_brandcategory")
 public class GoodsBrandCategory extends IdEntity {
 	/**
 	 * 

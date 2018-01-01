@@ -2,26 +2,18 @@
  
  import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.sailmi.mall.core.security.SecurityManager;
 import com.sailmi.mall.foundation.domain.Res;
 import com.sailmi.mall.foundation.domain.Role;
-import com.sailmi.mall.foundation.domain.User;
 import com.sailmi.mall.foundation.service.IResService;
-import com.sailmi.mall.foundation.service.IUserService;
  
  public class SecurityManagerSupport
    implements  SecurityManager
@@ -30,7 +22,6 @@ import com.sailmi.mall.foundation.service.IUserService;
  
    @Autowired
    private IResService resService;
- 
  
    public Map<String, String> loadUrlAuthorities()
    {
@@ -41,7 +32,13 @@ import com.sailmi.mall.foundation.service.IUserService;
        "select obj from Res obj where obj.type = :type", params, -1, 
        -1);
      for (Res res : urlResources) {
-       urlAuthorities.put(res.getValue(), res.getRoleAuthorities());
+    	 List roleAuthorities = new ArrayList();
+    	 List<Role> roleList=res.getRoles();
+         for (Role role : roleList) {
+           roleAuthorities.add(role.getRoleCode());
+         }
+         String roleStr = StringUtils.join(roleAuthorities.toArray(), ",");
+       urlAuthorities.put(res.getValue(),roleStr);
      }
      return urlAuthorities;
    }

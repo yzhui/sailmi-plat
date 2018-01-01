@@ -15,7 +15,7 @@ import com.sailmi.mall.core.domain.IdEntity;
 
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Entity
-@Table(name = "smmall_goods_return")
+@Table(name = "sailmall_goods_return")
 public class GoodsReturn extends IdEntity {
 	/**
 	 * 
@@ -25,13 +25,13 @@ public class GoodsReturn extends IdEntity {
 	//返回ID
 	private String return_id;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	private OrderForm of;
 	//货物返回项目
 	@OneToMany(mappedBy = "gr", cascade = { javax.persistence.CascadeType.REMOVE })
 	private List<GoodsReturnItem> items = new ArrayList<GoodsReturnItem>();
 	//使用者
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	private User user;
 	//返回信息
 	@Column(columnDefinition = "LongText")

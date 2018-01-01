@@ -18,7 +18,7 @@ import com.sailmi.mall.core.domain.IdEntity;
  */
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Entity
-@Table(name = "smmall_gold_log")
+@Table(name = "sailmall_gold_log")
 public class GoldLog extends IdEntity {
 	/**
 	 * UID
@@ -38,11 +38,11 @@ public class GoldLog extends IdEntity {
 	private String gl_content;
 	
 	//用户
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	private User gl_user;
 	
 	//管理
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	private User gl_admin;
 	//时间
 	private Date gl_admin_time;
@@ -52,7 +52,7 @@ public class GoldLog extends IdEntity {
 	private String gl_admin_content;
 	
 	//金币记录
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	private GoldRecord gr;
 
 	public int getGl_type() {

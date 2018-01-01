@@ -13,17 +13,17 @@ import com.sailmi.mall.core.domain.IdEntity;
  
  @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
  @Entity
- @Table(name="smmall_integral_goodscart")
+ @Table(name="sailmall_integral_goodscart")
  public class IntegralGoodsCart extends IdEntity
  {
    //商品
-   @ManyToOne(fetch=FetchType.LAZY)
+   @ManyToOne
    private IntegralGoods goods;
    //总数
    private int count;
    
    //订单
-   @ManyToOne(fetch=FetchType.LAZY, cascade={javax.persistence.CascadeType.REMOVE})
+   @ManyToOne( cascade={javax.persistence.CascadeType.REMOVE})
    private IntegralGoodsOrder order;
    
    @Column(precision=12, scale=2)

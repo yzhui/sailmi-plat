@@ -96,6 +96,7 @@ import com.sailmi.mall.uc.api.UCClient;
    public void login_success(HttpServletRequest request, HttpServletResponse response)
      throws IOException
    {
+	   System.out.println(this.getClass().getName()+":User IS Login Success "+SecurityUserHolder.getCurrentUser());
      User user = this.userService.getObjById(SecurityUserHolder.getCurrentUser().getId());
      if ((this.configService.getSysConfig().isIntegral()) && ((user.getLoginDate() == null) || 
        (user.getLoginDate().before(CommUtil.formatDate(CommUtil.formatShortDate(new Date())))))) {
@@ -125,9 +126,9 @@ import com.sailmi.mall.uc.api.UCClient;
      String login_role = (String)session.getAttribute("login_role");
  
      if (this.configService.getSysConfig().isSecond_domain_open()) {
-       Cookie smmall_user_session = new Cookie("smmall_user_session", user.getId().toString());
-       smmall_user_session.setDomain(CommUtil.generic_domain(request));
-       response.addCookie(smmall_user_session);
+       Cookie sailmall_user_session = new Cookie("sailmall_user_session", user.getId().toString());
+       sailmall_user_session.setDomain(CommUtil.generic_domain(request));
+       response.addCookie(sailmall_user_session);
      }
      boolean ajax_login = CommUtil.null2Boolean(session.getAttribute("ajax_login"));
      if (ajax_login) {
@@ -167,7 +168,7 @@ import com.sailmi.mall.uc.api.UCClient;
      if (this.configService.getSysConfig().isSecond_domain_open()) {
        Cookie[] cookies = request.getCookies();
        for (Cookie cookie : cookies) {
-         if (cookie.getName().equals("smmall_user_session")) {
+         if (cookie.getName().equals("sailmall_user_session")) {
            cookie.setMaxAge(0);
            cookie.setValue("");
            cookie.setDomain(CommUtil.generic_domain(request));
@@ -182,9 +183,9 @@ import com.sailmi.mall.uc.api.UCClient;
        request.getSession(false).setAttribute("uc_logout_js", uc_logout_js);
      }
      /*
-     String smmall_view_type = CommUtil.null2String(request.getSession(false).getAttribute("smmall_view_type"));
+     String sailmall_view_type = CommUtil.null2String(request.getSession(false).getAttribute("sailmall_view_type"));
      //跳转到微信端
-     if ((smmall_view_type != null) && (!smmall_view_type.equals("")) && (smmall_view_type.equals("mobile"))) {
+     if ((sailmall_view_type != null) && (!sailmall_view_type.equals("")) && (sailmall_view_type.equals("mobile"))) {
     	 targetUrl = CommUtil.getURL(request) + "/user/login.htm";
      }*/
      response.sendRedirect(targetUrl);
@@ -194,11 +195,11 @@ import com.sailmi.mall.uc.api.UCClient;
    public ModelAndView login_error(HttpServletRequest request, HttpServletResponse response) {
      String login_role = (String)request.getSession(false).getAttribute("login_role");
      ModelAndView mv = null;
-     String smmall_view_type = CommUtil.null2String(request.getSession(false).getAttribute("smmall_view_type"));
+     String sailmall_view_type = CommUtil.null2String(request.getSession(false).getAttribute("sailmall_view_type"));
      
      
-     if ((smmall_view_type != null) && (!smmall_view_type.equals(""))) {
-       if (smmall_view_type.equals("mobile")) {
+     if ((sailmall_view_type != null) && (!sailmall_view_type.equals(""))) {
+       if (sailmall_view_type.equals("mobile")) {
          //String store_id = CommUtil.null2String(request.getSession(false).getAttribute("store_id"));
          mv = new JModelAndView("mobile/error.html", this.configService.getSysConfig(), 
            this.userConfigService.getUserConfig(), 1, request, response);

@@ -14,12 +14,12 @@ import com.sailmi.mall.core.domain.IdEntity;
  
  @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
  @Entity
- @Table(name="smmall_store_point")
+ @Table(name="sailmall_store_point")
  public class StorePoint extends IdEntity
  {
  
    //店铺
-   @OneToOne(fetch=FetchType.LAZY)
+   @OneToOne
    private Store store;
    private Date statTime;
  

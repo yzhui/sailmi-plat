@@ -16,7 +16,7 @@ import com.sailmi.mall.core.domain.IdEntity;
  */
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Entity
-@Table(name = "smmall_delivery_log")
+@Table(name = "sailmall_delivery_log")
 public class DeliveryLog extends IdEntity {
 	/**
 	 * UID
@@ -30,7 +30,7 @@ public class DeliveryLog extends IdEntity {
 	private int gold;
 	
 	//店铺
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	private Store store;
 
 	public Store getStore() {

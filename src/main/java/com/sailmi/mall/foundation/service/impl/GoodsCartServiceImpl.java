@@ -27,6 +27,7 @@
    {
      try
      {
+       goodsCart.setId(null);
        this.goodsCartDao.save(goodsCart);
        return true;
      } catch (Exception e) {

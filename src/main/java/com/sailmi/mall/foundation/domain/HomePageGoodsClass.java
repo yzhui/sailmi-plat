@@ -11,14 +11,14 @@ import com.sailmi.mall.core.domain.IdEntity;
  
  @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
  @Entity
- @Table(name="smmall_homepage_goodsclass")
+ @Table(name="sailmall_homepage_goodsclass")
  public class HomePageGoodsClass extends IdEntity
  {
    //用户
-   @ManyToOne(fetch=FetchType.LAZY)
+   @ManyToOne
    private User user;
    //商品类型
-   @ManyToOne(fetch=FetchType.LAZY)
+   @ManyToOne
    private GoodsClass gc;
  
    public GoodsClass getGc()

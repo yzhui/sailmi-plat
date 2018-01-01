@@ -14,7 +14,7 @@ import com.sailmi.mall.core.domain.IdEntity;
  */
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Entity
-@Table(name = "smmall_complaint_subject")
+@Table(name = "sailmall_complaint_subject")
 public class ComplaintSubject extends IdEntity {
 	/**
 	 * UID

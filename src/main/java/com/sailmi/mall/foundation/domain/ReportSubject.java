@@ -11,14 +11,14 @@ import com.sailmi.mall.core.domain.IdEntity;
  
  @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
  @Entity
- @Table(name="smmall_report_subject")
+ @Table(name="sailmall_report_subject")
  public class ReportSubject extends IdEntity
  {
    //标题
    private String title;
  
    //报道类型
-   @ManyToOne(fetch=FetchType.LAZY)
+   @ManyToOne
    private ReportType type;
  
    public String getTitle()

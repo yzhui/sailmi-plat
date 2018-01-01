@@ -17,7 +17,7 @@ import com.sailmi.mall.core.domain.IdEntity;
  */
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Entity
-@Table(name = "smmall_consult")
+@Table(name = "sailmall_consult")
 public class Consult extends IdEntity {
 
 	/**
@@ -26,7 +26,7 @@ public class Consult extends IdEntity {
 	private static final long serialVersionUID = -9210332009604139327L;
 	
 	//商品
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	private Goods goods;
 	
 	//咨询内容
@@ -40,11 +40,11 @@ public class Consult extends IdEntity {
 	private String consult_reply;
 	
 	//咨询用户
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	private User consult_user;
 	
 	//回复用户
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	private User reply_user;
 	//回复时间
 	private Date reply_time;

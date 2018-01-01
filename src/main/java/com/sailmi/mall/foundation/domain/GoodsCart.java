@@ -3,6 +3,8 @@ package com.sailmi.mall.foundation.domain;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,14 +14,17 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import com.sailmi.mall.core.domain.IdEntity;
 
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Entity
-@Table(name = "smmall_goodscart")
+@Table(name = "sailmall_goodscart")
 public class GoodsCart extends IdEntity {
 
 	/**
@@ -37,10 +42,11 @@ public class GoodsCart extends IdEntity {
 	private BigDecimal price;
 	
 	//商品规格属性
-	@ManyToMany
-	@JoinTable(name = "smmall_cart_gsp", joinColumns = {
+	@ManyToMany(cascade=CascadeType.ALL)
+	@JoinTable(name = "sailmall_cart_gsp", joinColumns = {
 			@javax.persistence.JoinColumn(name = "cart_id") }, inverseJoinColumns = {
 					@javax.persistence.JoinColumn(name = "gsp_id") })
+	@Fetch(FetchMode.SUBSELECT)
 	private List<GoodsSpecProperty> gsps = new ArrayList<GoodsSpecProperty>();
 	
     //商品规格
@@ -48,12 +54,12 @@ public class GoodsCart extends IdEntity {
 	@Column(columnDefinition = "LongText")
 	private String spec_info;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	private OrderForm of;
 	private String cart_type;
 	
 	//商店运输
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	private StoreCart sc;
 
 	public StoreCart getSc() {

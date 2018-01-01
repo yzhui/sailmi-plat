@@ -52,11 +52,13 @@ public class NorLogoutFilter extends LogoutFilter
 
   public NorLogoutFilter(String logoutSuccessUrl, LogoutHandler[] handlers) {
     super(logoutSuccessUrl, handlers);
+	  System.out.println("11 now ...................  nor");
   }
 
   public void doFilterHttp(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
     throws IOException, ServletException
   {
+	  System.out.println("now ...................  nor");
     if (requiresLogout(request, response)) {
       HttpSession session = request.getSession(false);
       if (session != null) {
@@ -70,22 +72,16 @@ public class NorLogoutFilter extends LogoutFilter
   {
     return super.requiresLogout(request, response);
   }
-/*
-  protected String determineTargetUrl(HttpServletRequest request, HttpServletResponse response)
-  {
-	  request.de
-    return super..determineTargetUrl(request, response);
-  }
-  protected void sendRedirect(HttpServletRequest request, HttpServletResponse response, String url)
-    throws IOException
-  {
-    request.sendRedirect(request, response, url);
-  }
-
   public void setFilterProcessesUrl(String filterProcessesUrl)
   {
     super.setFilterProcessesUrl(filterProcessesUrl);
   }
+  /*
+  protected String determineTargetUrl(HttpServletRequest request, HttpServletResponse response)
+  {
+    return super.determineTargetUrl(request, response);
+  }
+
 
   protected String getLogoutSuccessUrl()
   {
@@ -106,5 +102,5 @@ public class NorLogoutFilter extends LogoutFilter
   {
     return super.getOrder();
   }
-*/
+  */
 }

@@ -11,11 +11,11 @@ import com.sailmi.mall.core.domain.IdEntity;
  
  @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
  @Entity
- @Table(name="smmall_storegrade_log")
+ @Table(name="sailmall_storegrade_log")
  public class StoreGradeLog extends IdEntity
  {
    //店铺
-   @ManyToOne(fetch=FetchType.LAZY)
+   @ManyToOne
    private Store store;
    //店铺等级状态
    private int store_grade_status;

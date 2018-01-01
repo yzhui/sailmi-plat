@@ -17,7 +17,7 @@ import com.sailmi.mall.core.domain.IdEntity;
  */
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Entity
-@Table(name = "smmall_express_company")
+@Table(name = "sailmall_express_company")
 public class ExpressCompany extends IdEntity {
 	/**
 	 * UID

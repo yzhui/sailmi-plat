@@ -16,11 +16,11 @@ import com.sailmi.mall.core.domain.IdEntity;
  
  @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
  @Entity
- @Table(name="smmall_homepage")
+ @Table(name="sailmall_homepage")
  public class HomePage extends IdEntity
  {
    //拥有者
-   @OneToOne(fetch=FetchType.LAZY,mappedBy="homePage")
+   @OneToOne(mappedBy="homePage")
    private User owner;
    //浏览顾客
    @OneToMany(mappedBy="homepage", cascade={javax.persistence.CascadeType.REMOVE})

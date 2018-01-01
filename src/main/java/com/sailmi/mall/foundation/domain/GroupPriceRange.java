@@ -9,7 +9,7 @@ import com.sailmi.mall.core.domain.IdEntity;
  
  @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
  @Entity
- @Table(name="smmall_group_price_range")
+ @Table(name="sailmall_group_price_range")
  public class GroupPriceRange extends IdEntity
  {
    //价格等级名称	 

@@ -20,7 +20,7 @@ import com.sailmi.mall.core.domain.IdEntity;
  */
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Entity
-@Table(name = "smmall_gold_record")
+@Table(name = "sailmall_gold_record")
 public class GoldRecord extends IdEntity {
 	/**
 	 * UID
@@ -31,7 +31,7 @@ public class GoldRecord extends IdEntity {
 	private String gold_sn;
 	
 	//金币用户
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	private User gold_user;
 	//金币支付
 	private String gold_payment;
@@ -43,7 +43,7 @@ public class GoldRecord extends IdEntity {
 	private String gold_exchange_info;
 
 	//金币管理者
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	private User gold_admin;
 
 	//金币管理信息
@@ -56,7 +56,7 @@ public class GoldRecord extends IdEntity {
 	//金币支付状态
 	private int gold_pay_status;
 
-	@OneToOne(fetch = FetchType.LAZY, mappedBy = "gr")
+	@OneToOne( mappedBy = "gr")
 	private GoldLog log;
 
 	public String getGold_sn() {

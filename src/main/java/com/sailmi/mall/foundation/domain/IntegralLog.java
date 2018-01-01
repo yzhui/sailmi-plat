@@ -13,15 +13,15 @@ import com.sailmi.mall.core.domain.IdEntity;
  
  @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
  @Entity
- @Table(name="smmall_integrallog")
+ @Table(name="sailmall_integrallog")
  public class IntegralLog extends IdEntity
  {
    //用户
-   @ManyToOne(fetch=FetchType.LAZY)
+   @ManyToOne
    private User integral_user;
    
    //操作者
-   @ManyToOne(fetch=FetchType.LAZY)
+   @ManyToOne
    private User operate_user;
    private int integral;
    //类型

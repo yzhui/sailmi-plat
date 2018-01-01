@@ -8,9 +8,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.sailmi.mall.core.tools.CommUtil;
 import com.sailmi.mall.foundation.domain.BargainGoods;
@@ -70,6 +71,7 @@ import com.sailmi.mall.lucene.LuceneVo;
    @Autowired
    private IGoodsCartService goodsCartService;
  
+   @Transactional
    public void execute()
    {
      Map params = new HashMap();

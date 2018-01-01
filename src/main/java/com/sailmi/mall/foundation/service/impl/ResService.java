@@ -60,6 +60,7 @@
      return (Res)this.resDAO.get(id);
    }
  
+   @Transactional
    public List<Res> query(String query, Map params, int begin, int max)
    {
      return this.resDAO.query(query, params, begin, max);

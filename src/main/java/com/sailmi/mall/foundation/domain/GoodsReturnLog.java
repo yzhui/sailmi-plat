@@ -11,18 +11,18 @@ import com.sailmi.mall.core.domain.IdEntity;
  
  @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
  @Entity
- @Table(name="smmall_goods_returnlog")
+ @Table(name="sailmall_goods_returnlog")
  public class GoodsReturnLog extends IdEntity
  {
  
-   @ManyToOne(fetch=FetchType.LAZY)
+   @ManyToOne
    private OrderForm of;
    
    //返回货物
-   @ManyToOne(fetch=FetchType.LAZY)
+   @ManyToOne
    private GoodsReturn gr;
    //返回人
-   @ManyToOne(fetch=FetchType.LAZY)
+   @ManyToOne
    private User return_user;
  
    public OrderForm getOf()

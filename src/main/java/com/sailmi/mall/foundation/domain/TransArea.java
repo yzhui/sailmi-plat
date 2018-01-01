@@ -14,18 +14,18 @@ import com.sailmi.mall.core.domain.IdEntity;
  
  @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
  @Entity
- @Table(name="smmall_trans_area")
+ @Table(name="sailmall_trans_area")
  public class TransArea extends IdEntity
  {
    //地区名称
    private String areaName;
  
    //运送子地区
-   @OneToMany(mappedBy="parent", cascade={javax.persistence.CascadeType.REMOVE})
+   @OneToMany(mappedBy="parent", cascade={javax.persistence.CascadeType.REMOVE},fetch=FetchType.EAGER)
    private List<TransArea> childs = new ArrayList();
  
    //运送父地区
-   @ManyToOne(fetch=FetchType.LAZY)
+   @ManyToOne
    private TransArea parent;
    //序列
    private int sequence;

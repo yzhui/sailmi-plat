@@ -15,7 +15,7 @@ import com.sailmi.mall.core.domain.IdEntity;
  
  @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
  @Entity
- @Table(name="smmall_res")
+ @Table(name="sailmall_res")
  public class Res extends IdEntity
  {
    //名称
@@ -25,23 +25,13 @@ import com.sailmi.mall.core.domain.IdEntity;
    //价格
    private String value;
  
-   //角色
-   @ManyToMany(mappedBy="reses", targetEntity=Role.class, fetch=FetchType.EAGER)
+   //角色，因为在context加载的时候运行
+   @ManyToMany(mappedBy="reses",fetch=FetchType.EAGER)
    private List<Role> roles = new ArrayList();
    //序列
    private int sequence;
    //信息
    private String info;
- 
-   @Transient
-   public String getRoleAuthorities()
-   {
-     List roleAuthorities = new ArrayList();
-     for (Role role : this.roles) {
-       roleAuthorities.add(role.getRoleCode());
-     }
-     return StringUtils.join(roleAuthorities.toArray(), ",");
-   }
  
    public String getResName() {
      return this.resName;

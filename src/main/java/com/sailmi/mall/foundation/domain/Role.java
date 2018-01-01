@@ -16,7 +16,7 @@ import com.sailmi.mall.core.domain.IdEntity;
  
  @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
  @Entity
- @Table(name="smmall_role")
+ @Table(name="sailmall_role")
  public class Role extends IdEntity
    implements Comparable
  {
@@ -36,11 +36,11 @@ import com.sailmi.mall.core.domain.IdEntity;
    private int sequence;
  
    //角色组
-   @ManyToOne(fetch=FetchType.LAZY)
+   @ManyToOne
    private RoleGroup rg;
  
-   @ManyToMany(targetEntity=Res.class, fetch=FetchType.LAZY)
-   @JoinTable(name="smmall_role_res", joinColumns={@javax.persistence.JoinColumn(name="role_id")}, inverseJoinColumns={@javax.persistence.JoinColumn(name="res_id")})
+   @ManyToMany(targetEntity=Res.class)
+   @JoinTable(name="sailmall_role_res", joinColumns={@javax.persistence.JoinColumn(name="role_id")}, inverseJoinColumns={@javax.persistence.JoinColumn(name="res_id")})
    private List<Res> reses = new ArrayList();
  
    public String getRoleName() {

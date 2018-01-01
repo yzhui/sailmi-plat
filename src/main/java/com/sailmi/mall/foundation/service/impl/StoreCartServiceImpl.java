@@ -27,11 +27,16 @@
    {
      try
      {
-       this.storeCartDao.save(storeCart);
-       return true;
+       if(storeCart!=null&&storeCart.getId()!=null&&storeCart.getId()==0)
+       {
+    	   storeCart.setId(null);
+	       this.storeCartDao.save(storeCart);
+	       return true;
+       }
      } catch (Exception e) {
        e.printStackTrace();
-     }return false;
+     }
+     return false;
    }
  
    public StoreCart getObjById(Long id)

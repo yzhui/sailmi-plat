@@ -12,17 +12,17 @@ import com.sailmi.mall.core.domain.IdEntity;
  
  @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
  @Entity
- @Table(name="smmall_store_slide")
+ @Table(name="sailmall_store_slide")
  public class StoreSlide extends IdEntity
  {
    private String url;
  
    //附件
-   @OneToOne(fetch=FetchType.LAZY)
+   @OneToOne
    private Accessory acc;
  
    //店铺
-   @ManyToOne(fetch=FetchType.LAZY)
+   @ManyToOne
    private Store store;
  
    public Store getStore()

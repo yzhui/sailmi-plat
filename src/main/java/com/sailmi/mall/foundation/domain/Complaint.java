@@ -21,7 +21,7 @@ import com.sailmi.mall.core.domain.IdEntity;
  */
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Entity
-@Table(name = "smmall_complaint")
+@Table(name = "sailmall_complaint")
 public class Complaint extends IdEntity {
 
 	/**
@@ -30,11 +30,11 @@ public class Complaint extends IdEntity {
 	private static final long serialVersionUID = 1022459514300854119L;
 	
 	//举报人
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	private User from_user;
 	
 	//被举报人
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	private User to_user;
 	//举报类型
 	private String type;
@@ -46,7 +46,7 @@ public class Complaint extends IdEntity {
 	private List<ComplaintGoods> cgs = new ArrayList<ComplaintGoods>();
 	
 	//举报主题
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	private ComplaintSubject cs;
 	
 	//举报内容
@@ -66,35 +66,35 @@ public class Complaint extends IdEntity {
 	private Date handle_time;
 	
 	//处理人
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	private User handle_user;
 	
 	//证据1
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	private Accessory from_acc1;
 	
 	//证据2
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	private Accessory from_acc2;
 	
 	//证据3
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	private Accessory from_acc3;
 	
 	//举证1
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	private Accessory to_acc1;
 
 	//举证2
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	private Accessory to_acc2;
 
 	//举证3
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	private Accessory to_acc3;
 	
 	//被举报订单
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	private OrderForm of;
 	
 	//聊天内容

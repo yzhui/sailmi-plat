@@ -17,22 +17,22 @@ import com.sailmi.mall.core.domain.IdEntity;
  
  @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
  @Entity
- @Table(name="smmall_group_goods")
+ @Table(name="sailmall_group_goods")
  public class GroupGoods extends IdEntity
  {
    //分组
-   @ManyToOne(fetch=FetchType.LAZY)
+   @ManyToOne
    private Group group;
    //分组类型
-   @ManyToOne(fetch=FetchType.LAZY)
+   @ManyToOne
    private GroupClass gg_gc;
    //分组地区
-   @ManyToOne(fetch=FetchType.LAZY)
+   @ManyToOne
    private GroupArea gg_ga;
    //分组商品名称
    private String gg_name;
    //分组商品
-   @ManyToOne(fetch=FetchType.LAZY)
+   @ManyToOne
    private Goods gg_goods;
    //分组商品价格
    @Column(precision=12, scale=2)
@@ -65,7 +65,7 @@ import com.sailmi.mall.core.domain.IdEntity;
    @Column(columnDefinition="LongText")
    private String gg_content;
    //分组商品图片
-   @OneToOne(fetch=FetchType.LAZY, cascade={javax.persistence.CascadeType.REMOVE})
+   @OneToOne( cascade={javax.persistence.CascadeType.REMOVE})
    private Accessory gg_img;
    //是否在微信店铺推荐
    @Column(columnDefinition="bit default false")

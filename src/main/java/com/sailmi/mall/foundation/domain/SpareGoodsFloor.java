@@ -15,7 +15,7 @@ import com.sailmi.mall.core.domain.IdEntity;
  
  @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
  @Entity
- @Table(name="smmall_spare_goodsfloor")
+ @Table(name="sailmall_spare_goodsfloor")
  public class SpareGoodsFloor extends IdEntity
  {
    //标题
@@ -26,7 +26,7 @@ import com.sailmi.mall.core.domain.IdEntity;
    private int sequence;
  
    //余下商品类型
-   @OneToOne(fetch=FetchType.LAZY)
+   @OneToOne
    private SpareGoodsClass sgc;
  
    //是否展示
@@ -42,11 +42,11 @@ import com.sailmi.mall.core.domain.IdEntity;
    private int adver_type;
  
    //位置
-   @OneToOne(fetch=FetchType.LAZY)
+   @OneToOne
    private AdvertPosition adp;
  
    //图片
-   @OneToOne(fetch=FetchType.LAZY)
+   @OneToOne
    private Accessory advert_img;
    private String advert_url;
  

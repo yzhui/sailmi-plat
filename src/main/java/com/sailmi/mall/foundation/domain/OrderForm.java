@@ -1,26 +1,30 @@
  package com.sailmi.mall.foundation.domain;
  
  import java.math.BigDecimal;
- import java.util.ArrayList;
- import java.util.Date;
- import java.util.List;
- import javax.persistence.Column;
- import javax.persistence.Entity;
- import javax.persistence.FetchType;
- import javax.persistence.Lob;
- import javax.persistence.ManyToOne;
- import javax.persistence.OneToMany;
- import javax.persistence.OneToOne;
- import javax.persistence.Table;
- import org.hibernate.annotations.Cache;
- import org.hibernate.annotations.CacheConcurrencyStrategy;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import com.sailmi.mall.core.annotation.Lock;
 import com.sailmi.mall.core.domain.IdEntity;
  
  @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
  @Entity
- @Table(name="smmall_orderform")
+ @Table(name="sailmall_orderform")
  public class OrderForm extends IdEntity
  {
    //订单id
@@ -31,6 +35,7 @@ import com.sailmi.mall.core.domain.IdEntity;
    
    //商品运送集合
    @OneToMany(mappedBy="of")
+   @Fetch(FetchMode.SUBSELECT)
    List<GoodsCart> gcs = new ArrayList();
    
    //总价
@@ -47,7 +52,7 @@ import com.sailmi.mall.core.domain.IdEntity;
    private String msg;
  
    //支付
-   @ManyToOne(fetch=FetchType.LAZY)
+   @ManyToOne
    private Payment payment;
    //运送
    private String transport;
@@ -59,10 +64,10 @@ import com.sailmi.mall.core.domain.IdEntity;
    @Column(columnDefinition="LongText")
    private String return_content;
  
-   @ManyToOne(fetch=FetchType.LAZY)
+   @ManyToOne
    private ExpressCompany ec;
  
-   @ManyToOne(fetch=FetchType.LAZY)
+   @ManyToOne
    private ExpressCompany return_ec;
  
    @Column(precision=12, scale=2)
@@ -71,16 +76,17 @@ import com.sailmi.mall.core.domain.IdEntity;
    @Lock
    private int order_status;
  
-   @ManyToOne(fetch=FetchType.LAZY)
+   @ManyToOne
    private User user;
  
-   @ManyToOne(fetch=FetchType.LAZY)
+   @ManyToOne
    private Store store;
+   
    private Date payTime;
    private Date shipTime;
    private Date finishTime;
  
-   @ManyToOne(fetch=FetchType.LAZY)
+   @ManyToOne
    private Address addr;
    private int invoiceType;
    private String invoice;
@@ -114,7 +120,7 @@ import com.sailmi.mall.core.domain.IdEntity;
    @OneToMany(mappedBy="of", cascade={javax.persistence.CascadeType.REMOVE})
    private List<Complaint> complaints = new ArrayList();
  
-   @OneToOne(fetch=FetchType.LAZY)
+   @OneToOne
    private CouponInfo ci;
  
    @Column(columnDefinition="LongText")

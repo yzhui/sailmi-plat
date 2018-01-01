@@ -265,7 +265,7 @@ import net.sf.ehcache.CacheManager;
      String op_title = "数据备份成功";
      String list_url = CommUtil.getURL(request) + "/admin/database_add.htm";
      if (mode.equals("store")) {
-       CacheManager manager = CacheManager.create();
+       CacheManager manager = CacheManager.getCacheManager("DatabaseManageCache");
        manager.clearAll();
        op_title = "数据恢复成功";
        list_url = CommUtil.getURL(request) + "/admin/database_list.htm";

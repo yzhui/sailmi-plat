@@ -17,11 +17,11 @@ import com.sailmi.mall.core.domain.IdEntity;
  
  @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
  @Entity
- @Table(name="smmall_predeposit")
+ @Table(name="sailmall_predeposit")
  public class Predeposit extends IdEntity
  {
    //用户
-   @ManyToOne(fetch=FetchType.LAZY)
+   @ManyToOne
    private User pd_user;
    
    //数量
@@ -44,7 +44,7 @@ import com.sailmi.mall.core.domain.IdEntity;
    private String pd_remittance_info;
  
    //管理员
-   @ManyToOne(fetch=FetchType.LAZY)
+   @ManyToOne
    private User pd_admin;
  
    //管理信息
@@ -56,7 +56,7 @@ import com.sailmi.mall.core.domain.IdEntity;
    private int pd_pay_status;
  
    //记录
-   @OneToOne(fetch=FetchType.LAZY, mappedBy="predeposit", cascade={javax.persistence.CascadeType.REMOVE})
+   @OneToOne( mappedBy="predeposit", cascade={javax.persistence.CascadeType.REMOVE})
    private PredepositLog log;
  
    public int getPd_status()

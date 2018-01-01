@@ -12,7 +12,7 @@ import com.sailmi.mall.core.domain.IdEntity;
  
  @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
  @Entity
- @Table(name="smmall_transport")
+ @Table(name="sailmall_transport")
  public class Transport extends IdEntity
  {
    //运送名称
@@ -27,7 +27,7 @@ import com.sailmi.mall.core.domain.IdEntity;
    private int trans_type;
  
    //店铺
-   @ManyToOne(fetch=FetchType.LAZY)
+   @ManyToOne
    private Store store;
    //是否支持运送邮件
    private boolean trans_mail;

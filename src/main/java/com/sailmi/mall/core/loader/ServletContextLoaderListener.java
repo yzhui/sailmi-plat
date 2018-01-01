@@ -1,17 +1,20 @@
 package com.sailmi.mall.core.loader;
 
 
-import com.sailmi.mall.core.security.SecurityManager;
 import java.util.Map;
+
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
-import org.springframework.web.context.WebApplicationContext;
+
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
-public class ServletContextLoaderListener
-  implements ServletContextListener
+import com.sailmi.mall.core.security.SecurityManager;
+
+public class ServletContextLoaderListener  implements ServletContextListener 
 {
+ 
+  @Override   
   public void contextInitialized(ServletContextEvent servletContextEvent)
   {
     ServletContext servletContext = servletContextEvent.getServletContext();
@@ -22,6 +25,7 @@ public class ServletContextLoaderListener
     servletContext.setAttribute("urlAuthorities", urlAuthorities);
   }
 
+  @Override   
   public void contextDestroyed(ServletContextEvent servletContextEvent) {
     servletContextEvent.getServletContext().removeAttribute(
       "urlAuthorities");

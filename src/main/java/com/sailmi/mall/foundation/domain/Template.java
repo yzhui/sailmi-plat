@@ -11,7 +11,7 @@ import com.sailmi.mall.core.domain.IdEntity;
  
  @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
  @Entity
- @Table(name="smmall_template")
+ @Table(name="sailmall_template")
  public class Template extends IdEntity
  {
    //信息

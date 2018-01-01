@@ -1,6 +1,6 @@
  package com.sailmi.mall.view.web.action;
  
- import java.io.IOException;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.nutz.json.Json;
 import org.nutz.json.JsonFormat;
+import org.springframework.aop.support.AopUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -64,7 +65,7 @@ import com.sailmi.mall.view.web.tools.AreaViewTools;
 import com.sailmi.mall.view.web.tools.GoodsViewTools;
 import com.sailmi.mall.view.web.tools.IpAddress;
 import com.sailmi.mall.view.web.tools.StoreViewTools;
- 
+
  @Controller
  public class GoodsViewAction
  {
@@ -128,7 +129,7 @@ import com.sailmi.mall.view.web.tools.StoreViewTools;
  
    @Autowired
    private TransportTools transportTools;
- 
+   
    @RequestMapping({"/goods_list.htm"})
    public ModelAndView goods_list(HttpServletRequest request, HttpServletResponse response, String gc_id, String store_id, String recommend, String currentPage, String orderBy, String orderType, String begin_price, String end_price)
    {
@@ -210,7 +211,7 @@ import com.sailmi.mall.view.web.tools.StoreViewTools;
      mv.addObject("url", CommUtil.getURL(request) + "/index.htm");
      return mv;
    }
- 
+
    private Set<Long> genericUserGcIds(UserGoodsClass ugc)
    {
      Set ids = new HashSet();
@@ -224,12 +225,12 @@ import com.sailmi.mall.view.web.tools.StoreViewTools;
      }
      return ids;
    }
- 
+
    @RequestMapping({"/goods.htm"})
    public ModelAndView goods(HttpServletRequest request, HttpServletResponse response, String id)
    {
      ModelAndView mv = null;
-     String smmall_view_type = CommUtil.null2String( request.getSession().getAttribute( "smmall_view_type" ) );
+     String sailmall_view_type = CommUtil.null2String( request.getSession().getAttribute( "sailmall_view_type" ) );
      Goods obj = this.goodsService.getObjById(Long.valueOf(Long.parseLong(id)));
      if (obj.getGoods_status() == 0) {
        String template = "default";
@@ -240,7 +241,7 @@ import com.sailmi.mall.view.web.tools.StoreViewTools;
        mv = new JModelAndView(template + "/store_goods.html", this.configService.getSysConfig(), 
          this.userConfigService.getUserConfig(), 1, request, response);
        
-	   if( (smmall_view_type != null) && (!smmall_view_type.equals( "" )) && (smmall_view_type.equals( "mobile" )) ) {
+	   if( (sailmall_view_type != null) && (!sailmall_view_type.equals( "" )) && (sailmall_view_type.equals( "mobile" )) ) {
 		   mv = new JModelAndView("mobile/store_goods.html", this.configService.getSysConfig(), 
 			         this.userConfigService.getUserConfig(), 1, request, response);
 	   }
@@ -326,7 +327,7 @@ import com.sailmi.mall.view.web.tools.StoreViewTools;
        } else {
     	   mv = new JModelAndView("error.html", this.configService.getSysConfig(), 
     			   this.userConfigService.getUserConfig(), 1, request, response);
-    	   if( (smmall_view_type != null) && (!smmall_view_type.equals( "" )) && (smmall_view_type.equals( "mobile" )) ) {
+    	   if( (sailmall_view_type != null) && (!sailmall_view_type.equals( "" )) && (sailmall_view_type.equals( "mobile" )) ) {
     		   mv = new JModelAndView("mobile/error.html", this.configService.getSysConfig(), 
     		           this.userConfigService.getUserConfig(), 1, request, response);
     	   }
@@ -335,7 +336,7 @@ import com.sailmi.mall.view.web.tools.StoreViewTools;
        }
      } else {
        mv = new JModelAndView("error.html", this.configService.getSysConfig(), this.userConfigService.getUserConfig(), 1, request, response);
-       if( (smmall_view_type != null) && (!smmall_view_type.equals( "" )) && (smmall_view_type.equals( "mobile" )) ) {
+       if( (sailmall_view_type != null) && (!sailmall_view_type.equals( "" )) && (sailmall_view_type.equals( "mobile" )) ) {
     	   mv = new JModelAndView("mobile/error.html", this.configService.getSysConfig(), this.userConfigService.getUserConfig(), 1, request, response);
        }
        mv.addObject("op_title", "该商品未上架，不允许查看");
@@ -349,8 +350,8 @@ import com.sailmi.mall.view.web.tools.StoreViewTools;
    {
      ModelAndView mv = new JModelAndView("store_goods_list.html", this.configService.getSysConfig(), 
        this.userConfigService.getUserConfig(), 1, request, response);
-     String smmall_view_type = CommUtil.null2String( request.getSession().getAttribute( "smmall_view_type" ) );
-	 if( (smmall_view_type != null) && (!smmall_view_type.equals( "" )) && (smmall_view_type.equals( "mobile" )) ) {
+     String sailmall_view_type = CommUtil.null2String( request.getSession().getAttribute( "sailmall_view_type" ) );
+	 if( (sailmall_view_type != null) && (!sailmall_view_type.equals( "" )) && (sailmall_view_type.equals( "mobile" )) ) {
 		 mv = new JModelAndView("mobile/store_goods_list.html", this.configService.getSysConfig(), 
 			       this.userConfigService.getUserConfig(), 1, request, response);
 	 }
@@ -813,7 +814,7 @@ import com.sailmi.mall.view.web.tools.StoreViewTools;
 	 * @param gsp 规格
 	 * @param id
 	 */
-	@RequestMapping({"/load_goods_gsp.htm"})
+   @RequestMapping({"/load_goods_gsp.htm"})
    public void load_goods_gsp(HttpServletRequest request, HttpServletResponse response, String gsp, String id) {
      Goods goods = this.goodsService.getObjById(CommUtil.null2Long(id));
      Map map = new HashMap();
@@ -927,10 +928,13 @@ import com.sailmi.mall.view.web.tools.StoreViewTools;
    }
  
    private void generic_evaluate(Store store, ModelAndView mv) {
+
      double description_result = 0.0D;
      double service_result = 0.0D;
      double ship_result = 0.0D;
      if (store.getSc() != null) {
+    	 System.out.println(".....................................................Get Store Classes"+store.getSc());
+    	 System.out.println("Store Classes ID is:"+store.getSc().getId());
        StoreClass sc = this.storeClassService.getObjById(store.getSc()
          .getId());
        float description_evaluate = CommUtil.null2Float(sc

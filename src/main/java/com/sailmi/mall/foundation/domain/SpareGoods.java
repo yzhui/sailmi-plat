@@ -13,43 +13,43 @@ import com.sailmi.mall.core.domain.IdEntity;
  
  @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
  @Entity
- @Table(name="smmall_spare_goods")
+ @Table(name="sailmall_spare_goods")
  public class SpareGoods extends IdEntity
  {
  
    //用户
-   @ManyToOne(fetch=FetchType.LAZY)
+   @ManyToOne
    private User user;
  
    //主图片附件
-   @OneToOne(fetch=FetchType.LAZY)
+   @OneToOne
    private Accessory main_img;
  
    //图片附件1
-   @OneToOne(fetch=FetchType.LAZY)
+   @OneToOne
    private Accessory img1;
  
    //图片附件2
-   @OneToOne(fetch=FetchType.LAZY)
+   @OneToOne
    private Accessory img2;
  
    //图片附件3
-   @OneToOne(fetch=FetchType.LAZY)
+   @OneToOne
    private Accessory img3;
  
    //图片附件4
-   @OneToOne(fetch=FetchType.LAZY)
+   @OneToOne
    private Accessory img4;
  
    //图片附件5
-   @OneToOne(fetch=FetchType.LAZY)
+   @OneToOne
    private Accessory img5;
 
    //是否推荐
    @Column(columnDefinition="bit default false")
    private boolean recommend;
  
-   @ManyToOne(fetch=FetchType.LAZY)
+   @ManyToOne
    private SpareGoodsFloor sgf;
  
    @Column(columnDefinition="bit default false")
@@ -77,7 +77,7 @@ import com.sailmi.mall.core.domain.IdEntity;
    private int goods_price;
  
    //余下商品类型
-   @OneToOne(fetch=FetchType.LAZY)
+   @OneToOne
    private SpareGoodsClass spareGoodsClass;
  
    
@@ -91,7 +91,7 @@ import com.sailmi.mall.core.domain.IdEntity;
    private String name;
  
    //地区
-   @OneToOne(fetch=FetchType.LAZY)
+   @OneToOne
    private Area area;
  
    //内容

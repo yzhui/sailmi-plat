@@ -21,7 +21,7 @@ import com.sailmi.mall.core.domain.IdEntity;
  */
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Entity
-@Table(name = "smmall_evaluate")
+@Table(name = "sailmall_evaluate")
 public class Evaluate extends IdEntity {
 
 	/**
@@ -30,7 +30,7 @@ public class Evaluate extends IdEntity {
 	private static final long serialVersionUID = 1519733188476053781L;
 	
 	//评价商品
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	private Goods evaluate_goods;
 	
 	//商品序列
@@ -39,7 +39,7 @@ public class Evaluate extends IdEntity {
 	private String goods_spec;
 	
 	//订单
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	private OrderForm of;
 	//评价类型
 	private String evaluate_type;
@@ -65,11 +65,11 @@ public class Evaluate extends IdEntity {
 	private String evaluate_info;
 	
 	//评价用户
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	private User evaluate_user;
 	
 	//卖家评价
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	private User evaluate_seller_user;
 	//评价时间
 	private Date evaluate_seller_time;

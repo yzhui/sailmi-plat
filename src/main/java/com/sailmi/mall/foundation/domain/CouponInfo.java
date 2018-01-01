@@ -16,7 +16,7 @@ import com.sailmi.mall.core.domain.IdEntity;
  */
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Entity
-@Table(name = "smmall_coupon_info")
+@Table(name = "sailmall_coupon_info")
 public class CouponInfo extends IdEntity {
 	/**
 	 * UID
@@ -27,11 +27,11 @@ public class CouponInfo extends IdEntity {
 	private String coupon_sn;
 	
 	//用户
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	private User user;
 	
 	//优惠券
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	private Coupon coupon;
 	
 	//优惠券状态

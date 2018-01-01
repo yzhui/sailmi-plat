@@ -12,12 +12,14 @@
  import javax.persistence.Table;
  import org.hibernate.annotations.Cache;
  import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import com.sailmi.mall.core.domain.IdEntity;
  
  @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
  @Entity
- @Table(name="smmall_spare_goodsclass")
+ @Table(name="sailmall_spare_goodsclass")
  public class SpareGoodsClass extends IdEntity
  {
    //类型名称
@@ -35,15 +37,16 @@ import com.sailmi.mall.core.domain.IdEntity;
    private boolean viewInFloor;
  
    //余下商品子类型
-   @OneToMany(mappedBy="parent")
+   @OneToMany(mappedBy="parent",fetch=FetchType.EAGER)
    @OrderBy("sequence asc")
+   @Fetch(FetchMode.SUBSELECT) 
    private List<SpareGoodsClass> childs = new ArrayList();
  
    //余下商品父类型
-   @ManyToOne(fetch=FetchType.LAZY)
+   @ManyToOne
    private SpareGoodsClass parent;
  
-   @OneToOne(mappedBy="sgc", fetch=FetchType.LAZY)
+   @OneToOne(mappedBy="sgc")
    private SpareGoodsFloor floor;
  
    //余下商品

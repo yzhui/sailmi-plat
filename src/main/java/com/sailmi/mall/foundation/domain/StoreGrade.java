@@ -11,7 +11,7 @@ import com.sailmi.mall.core.domain.IdEntity;
  
  @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
  @Entity
- @Table(name="smmall_storegrade")
+ @Table(name="sailmall_storegrade")
  public class StoreGrade extends IdEntity
  {
    //等级名称

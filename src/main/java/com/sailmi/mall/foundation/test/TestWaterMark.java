@@ -13,7 +13,7 @@
      int pos = 9;
      float alpha = 0.9F;
      try {
-       CommUtil.waterMarkWithText(targetImg, "D:\\2.jpg", "smmall", 
+       CommUtil.waterMarkWithText(targetImg, "D:\\2.jpg", "sailmall", 
          "#FF0000", new Font("宋体", 1, 30), pos, 100.0F);
        System.out.println("图片水印完成！");
      }

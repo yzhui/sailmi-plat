@@ -52,8 +52,8 @@ import com.sailmi.mall.foundation.service.IUserConfigService;
    {
      ModelAndView mv = new JModelAndView("user/default/usercenter/address.html", this.configService.getSysConfig(), 
        this.userConfigService.getUserConfig(), 0, request, response);
-     String smmall_view_type = CommUtil.null2String( request.getSession( false ).getAttribute( "smmall_view_type" ) );
-	 if( (smmall_view_type != null) && (!smmall_view_type.equals( "" )) && (smmall_view_type.equals( "mobile" )) ) {
+     String sailmall_view_type = CommUtil.null2String( request.getSession( false ).getAttribute( "sailmall_view_type" ) );
+	 if( (sailmall_view_type != null) && (!sailmall_view_type.equals( "" )) && (sailmall_view_type.equals( "mobile" )) ) {
 		 mv = new JModelAndView("mobile/address.html", this.configService.getSysConfig(), 
 			       this.userConfigService.getUserConfig(), 1, request, response);
 	 }
@@ -82,8 +82,8 @@ import com.sailmi.mall.foundation.service.IUserConfigService;
    public ModelAndView address_add(HttpServletRequest request, HttpServletResponse response, String currentPage) {
      ModelAndView mv = new JModelAndView("user/default/usercenter/address_add.html", this.configService.getSysConfig(), 
        this.userConfigService.getUserConfig(), 0, request, response);
-     String smmall_view_type = CommUtil.null2String( request.getSession().getAttribute( "smmall_view_type" ) );
-	 if( (smmall_view_type != null) && (!smmall_view_type.equals( "" )) && (smmall_view_type.equals( "mobile" )) ) {
+     String sailmall_view_type = CommUtil.null2String( request.getSession().getAttribute( "sailmall_view_type" ) );
+	 if( (sailmall_view_type != null) && (!sailmall_view_type.equals( "" )) && (sailmall_view_type.equals( "mobile" )) ) {
 		 mv = new JModelAndView("mobile/address_add.html", this.configService.getSysConfig(), 
 			       this.userConfigService.getUserConfig(), 1, request, response);
 	 }
@@ -97,8 +97,8 @@ import com.sailmi.mall.foundation.service.IUserConfigService;
    public ModelAndView address_edit(HttpServletRequest request, HttpServletResponse response, String id, String currentPage) {
      ModelAndView mv = new JModelAndView("user/default/usercenter/address_add.html", this.configService.getSysConfig(), 
        this.userConfigService.getUserConfig(), 0, request, response);
-     String smmall_view_type = CommUtil.null2String( request.getSession().getAttribute( "smmall_view_type" ) );
-	 if( (smmall_view_type != null) && (!smmall_view_type.equals( "" )) && (smmall_view_type.equals( "mobile" )) ) {
+     String sailmall_view_type = CommUtil.null2String( request.getSession().getAttribute( "sailmall_view_type" ) );
+	 if( (sailmall_view_type != null) && (!sailmall_view_type.equals( "" )) && (sailmall_view_type.equals( "mobile" )) ) {
 		 mv = new JModelAndView("mobile/address_add.html", this.configService.getSysConfig(), 
 			       this.userConfigService.getUserConfig(), 1, request, response);
 	 }

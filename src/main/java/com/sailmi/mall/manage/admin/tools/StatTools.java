@@ -1,22 +1,27 @@
  package com.sailmi.mall.manage.admin.tools;
  
- import com.sailmi.mall.core.tools.CommUtil;
- import com.sailmi.mall.foundation.domain.OrderForm;
- import com.sailmi.mall.foundation.service.IComplaintService;
- import com.sailmi.mall.foundation.service.IGoodsService;
- import com.sailmi.mall.foundation.service.IOrderFormService;
- import com.sailmi.mall.foundation.service.IReportService;
- import com.sailmi.mall.foundation.service.IStoreService;
- import com.sailmi.mall.foundation.service.IUserService;
  import java.util.ArrayList;
- import java.util.Calendar;
- import java.util.HashMap;
- import java.util.List;
- import java.util.Map;
- import org.springframework.beans.factory.annotation.Autowired;
- import org.springframework.stereotype.Component;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.sailmi.mall.core.tools.CommUtil;
+import com.sailmi.mall.foundation.domain.OrderForm;
+import com.sailmi.mall.foundation.service.IComplaintService;
+import com.sailmi.mall.foundation.service.IGoodsService;
+import com.sailmi.mall.foundation.service.IOrderFormService;
+import com.sailmi.mall.foundation.service.IReportService;
+import com.sailmi.mall.foundation.service.IStoreService;
+import com.sailmi.mall.foundation.service.IUserService;
  
  @Component
+ @Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW)
  public class StatTools
  {
  

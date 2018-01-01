@@ -111,10 +111,10 @@
 		<div class="logo_line">
 			<img src="$!webPath/resources/style/system/front/mobile/images/mobile_logo.png" > 
 				#if($!{user})
-					<span class="log"><a href="http://auth.yudorm.com:8082/cas/logout">退出</a> </span>
+					<span class="log"><a href="/logout.htm">退出</a> </span>
 					<span class="log"><a href="javascript:void(0);">$!CommUtil.substring("$!{user.userName}",5)您好</a></span>
 				#else 
-					<span class="log"><a href="http://service.yudorm.com/mall/buyer/index.htm">登录</a> </span>
+					<span class="log"><a href="$!webPath/mobile/login.htm">登录</a> </span>
 					<!-- 
 					<span class="log"><a href="$!webPath/register.htm">注册</a> </span>
 					 -->

@@ -28,6 +28,7 @@
  
    public void closeAll()
    {
+	 System.out.println(this.getClass().getName()+"close db connections.............");
      try
      {
        Connection conn = (Connection)thread.get();

@@ -13,23 +13,23 @@ import com.sailmi.mall.core.domain.IdEntity;
 
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Entity
-@Table(name = "smmall_activity_goods")
+@Table(name = "sailmall_activity_goods")
 public class ActivityGoods extends IdEntity {
 
 	/**
 	 * UID
 	 */
 	private static final long serialVersionUID = 2929806712926931433L;
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	private Goods ag_goods;
 	//活动状态
 	private int ag_status;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	private User ag_admin;
 	
 	//活动
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	private Activity act;
 	
 	//活动价格

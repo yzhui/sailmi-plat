@@ -17,7 +17,7 @@ import com.sailmi.mall.core.domain.IdEntity;
  
  @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
  @Entity
- @Table(name="smmall_integral_goods")
+ @Table(name="sailmall_integral_goods")
  public class IntegralGoods extends IdEntity
  {
    //商品名称
@@ -33,7 +33,7 @@ import com.sailmi.mall.core.domain.IdEntity;
    //商品标签
    private String ig_goods_tag;
    //商品图片附件
-   @OneToOne(fetch=FetchType.LAZY)
+   @OneToOne
    private Accessory ig_goods_img;
    //是否为限制类型
    private boolean ig_limit_type;

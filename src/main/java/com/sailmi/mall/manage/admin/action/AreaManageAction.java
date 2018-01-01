@@ -190,13 +190,13 @@ public class AreaManageAction {
 	@RequestMapping( { "/admin/area_import.htm" } )
 	public ModelAndView area_import( HttpServletRequest request, HttpServletResponse response, String list_url ) throws Exception {
 		ModelAndView mv = null;
-		this.databaseTools.execute( "update smmall_store set area_id=null" );
+		this.databaseTools.execute( "update sailmall_store set area_id=null" );
 
-		this.databaseTools.execute( "update smmall_address set area_id=null" );
+		this.databaseTools.execute( "update sailmall_address set area_id=null" );
 
-		this.databaseTools.execute( "update smmall_area set parent_id=null" );
+		this.databaseTools.execute( "update sailmall_area set parent_id=null" );
 
-		this.databaseTools.execute( "delete from smmall_area" );
+		this.databaseTools.execute( "delete from sailmall_area" );
 
 		String filePath = request.getSession().getServletContext().getRealPath( "/" ) + "resources/data/area.sql";
 		File file = new File( filePath );
@@ -208,7 +208,7 @@ public class AreaManageAction {
 		}
 		if( ret ) {
 			mv = new JModelAndView( "admin/blue/success.html", this.configService.getSysConfig(), this.userConfigService.getUserConfig(), 0, request, response );
-			CacheManager manager = CacheManager.create();
+			CacheManager manager = CacheManager.getCacheManager("AreaManageCache");
 			manager.clearAll();
 			mv.addObject( "op_title", "数据导入成功" );
 		}
@@ -224,11 +224,11 @@ public class AreaManageAction {
 	public ModelAndView area_export( HttpServletRequest request, HttpServletResponse response ) throws Exception {
 		ModelAndView mv = null;
 		String path = request.getSession().getServletContext().getRealPath( "/" ) + "resources" + File.separator + "data" + File.separator + "base.sql";
-		String tables = "smmall_accessory,smmall_adv_pos,smmall_advert,smmall_articleclass,smmall_article,smmall_document,smmall_navigation,smmall_template,smmall_sysconfig";
+		String tables = "sailmall_accessory,sailmall_adv_pos,sailmall_advert,sailmall_articleclass,sailmall_article,sailmall_document,sailmall_navigation,sailmall_template,sailmall_sysconfig";
 		boolean ret = this.databaseTools.export( tables, path );
 		if( ret ) {
 			mv = new JModelAndView( "admin/blue/success.html", this.configService.getSysConfig(), this.userConfigService.getUserConfig(), 0, request, response );
-			CacheManager manager = CacheManager.create();
+			CacheManager manager = CacheManager.getCacheManager("AreaManageCache");
 			manager.clearAll();
 		}
 		else {

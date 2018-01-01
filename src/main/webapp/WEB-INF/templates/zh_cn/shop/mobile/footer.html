@@ -6,9 +6,9 @@
 				#if($!user)
 				<span>
 					$!CommUtil.substring("$!{user.userName}",5)您好</span><b>|</b>
-					<span><a  href="$!webPath/smmall_logout.htm">退出</a> </span>
+					<span><a  href="$!webPath/logout.htm">退出</a> </span>
 				#else 
-					<span><a class="log" href="http://service.yudorm.com/mall/buyer/index.htm">登录</a></span> <b>|</b>
+					<span><a class="log" href="$!webPath/mobile/login.htm">登录</a></span> <b>|</b>
 					<span><a class="log"  href="$!webPath/register.htm">注册</a> </span>
 				#end
 				</span>

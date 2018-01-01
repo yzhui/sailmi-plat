@@ -14,7 +14,7 @@ import com.sailmi.mall.core.domain.IdEntity;
  
  @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
  @Entity
- @Table(name="smmall_group")
+ @Table(name="sailmall_group")
  public class Group extends IdEntity
  {
    //分组名称
@@ -33,7 +33,7 @@ import com.sailmi.mall.core.domain.IdEntity;
    private List<Goods> goods_list = new ArrayList();
  
    //分组货物集合
-   @OneToMany(mappedBy="group",fetch=FetchType.LAZY)
+   @OneToMany(mappedBy="group")
    private List<GroupGoods> gg_list = new ArrayList();
  
    public List<Goods> getGoods_list() {

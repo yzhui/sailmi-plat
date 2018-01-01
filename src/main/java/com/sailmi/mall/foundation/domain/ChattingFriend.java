@@ -15,7 +15,7 @@ import com.sailmi.mall.core.domain.IdEntity;
  */
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Entity
-@Table(name = "smmall_chattingfriend")
+@Table(name = "sailmall_chattingfriend")
 public class ChattingFriend extends IdEntity {
 
 	/**
@@ -24,11 +24,11 @@ public class ChattingFriend extends IdEntity {
 	private static final long serialVersionUID = -1686735184812269798L;
 	
 	//用户
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	private User user;
 	
 	//朋友
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	private User friendUser;
 
 	public User getUser() {

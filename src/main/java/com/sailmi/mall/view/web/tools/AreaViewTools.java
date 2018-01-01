@@ -1,18 +1,25 @@
  package com.sailmi.mall.view.web.tools;
  
- import com.sailmi.mall.core.tools.CommUtil;
- import com.sailmi.mall.foundation.domain.Area;
- import com.sailmi.mall.foundation.service.IAreaService;
  import org.springframework.beans.factory.annotation.Autowired;
- import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.sailmi.mall.core.tools.CommUtil;
+import com.sailmi.mall.foundation.domain.Area;
+import com.sailmi.mall.foundation.service.IAreaService;
  
+ 
+
  @Component
+ @Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW)
  public class AreaViewTools
  {
  
    @Autowired
    private IAreaService areaService;
- 
+
+   @Transactional
    public String generic_area_info(String area_id)
    {
      String area_info = "";

@@ -6,7 +6,7 @@
 import com.sailmi.mall.core.domain.IdEntity;
  
  @Entity
- @Table(name="smmall_mobileverifycode")
+ @Table(name="sailmall_mobileverifycode")
  public class MobileVerifyCode extends IdEntity
  {
    private String mobile;

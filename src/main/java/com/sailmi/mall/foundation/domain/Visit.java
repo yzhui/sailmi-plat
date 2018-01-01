@@ -13,16 +13,16 @@ import com.sailmi.mall.core.domain.IdEntity;
  
  @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
  @Entity
- @Table(name="smmall_Visit")
+ @Table(name="sailmall_Visit")
  public class Visit extends IdEntity
  {
  
    //主页
-   @ManyToOne(fetch=FetchType.LAZY)
+   @ManyToOne
    private HomePage homepage;
  
    //用户
-   @OneToOne(fetch=FetchType.LAZY)
+   @OneToOne
    private User user;
    //浏览时间
    private Date visitTime;

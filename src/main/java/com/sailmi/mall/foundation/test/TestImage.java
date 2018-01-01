@@ -7,7 +7,7 @@
  {
    public static void main(String[] args)
    {
-     File f = new File("F://JAVA_PRO//smmall//upload//store//163840");
+     File f = new File("F://JAVA_PRO//sailmall//upload//store//163840");
      File[] files = f.listFiles();
      for (int i = 0; i < files.length; i++) {
        File temp = files[i];

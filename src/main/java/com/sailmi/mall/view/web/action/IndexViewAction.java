@@ -14,15 +14,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.hibernate.Hibernate;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.context.ContextLoader;
+import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.sailmi.mall.core.mv.JModelAndView;
 import com.sailmi.mall.core.security.support.SecurityUserHolder;
 import com.sailmi.mall.core.tools.CommUtil;
 import com.sailmi.mall.core.tools.Md5Encrypt;
+import com.sailmi.mall.foundation.domain.Article;
+import com.sailmi.mall.foundation.domain.ArticleClass;
 import com.sailmi.mall.foundation.domain.Goods;
 import com.sailmi.mall.foundation.domain.GoodsBrand;
 import com.sailmi.mall.foundation.domain.GoodsCart;
@@ -288,8 +295,9 @@ public class IndexViewAction {
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put( "display", Boolean.valueOf( true ) );
 		List gcs = this.goodsClassService.query( "select obj from GoodsClass obj where obj.parent.id is null and obj.display=:display order by obj.sequence asc", params, 0, 14 );
-		List childs = ((GoodsClass)gcs.get(0)).getChilds();
+	    //List childs = ((GoodsClass)gcs.get(0)).getChilds();
 		mv.addObject( "gcs", gcs );
+	    //mv.addObject("gcs_childs",childs);
 		return mv;
 	}
 
@@ -349,12 +357,36 @@ public class IndexViewAction {
 			e.printStackTrace();
         }
     }
+	
+	
+	@RequestMapping( { "/test.htm" } )
+	public ModelAndView test( HttpServletRequest request, HttpServletResponse response ) {
+		ModelAndView mv = new JModelAndView( "test.html", this.configService.getSysConfig(), this.userConfigService.getUserConfig(), 1, request, response );
+		String sailmall_view_type = CommUtil.null2String( request.getSession().getAttribute( "sailmall_view_type" ) );
+		Map params = new HashMap();
+		params.put( "mark", "news" );
+		List acs = this.articleClassService.query( "select obj from ArticleClass obj where obj.parent.id is null and obj.mark!=:mark order by obj.sequence asc", params, 0, 9 );
+		mv.addObject( "acs", acs );
+		for(int i=0;i<acs.size();i++){
+			ArticleClass acl=(ArticleClass)acs.get(i);
+			try{
+				System.out.println(i+"1........................................................................");
+				List atemList=acl.getArticles();
+				System.out.println(i+"2........................................................................");
+				int tsize=atemList.size();
+				System.out.println(i+"3........................................................................"+tsize);
+			}catch(Exception ec){
+				ec.printStackTrace();
+			}
+		}
+		return mv;
+	}
 
 	@RequestMapping( { "/footer.htm" } )
 	public ModelAndView footer( HttpServletRequest request, HttpServletResponse response ) {
 		ModelAndView mv = new JModelAndView( "footer.html", this.configService.getSysConfig(), this.userConfigService.getUserConfig(), 1, request, response );
-		String smmall_view_type = CommUtil.null2String( request.getSession().getAttribute( "smmall_view_type" ) );
-		if( (smmall_view_type != null) && (!smmall_view_type.equals( "" )) && (smmall_view_type.equals( "mobile" )) ) {
+		String sailmall_view_type = CommUtil.null2String( request.getSession().getAttribute( "sailmall_view_type" ) );
+		if( (sailmall_view_type != null) && (!sailmall_view_type.equals( "" )) && (sailmall_view_type.equals( "mobile" )) ) {
 			mv = new JModelAndView( "mobile/footer.html", this.configService.getSysConfig(), this.userConfigService.getUserConfig(), 1, request, response );
 		}
 		mv.addObject( "navTools", this.navTools );
@@ -365,8 +397,7 @@ public class IndexViewAction {
 	public ModelAndView index( HttpServletRequest request, HttpServletResponse response ) {
 		ModelAndView mv = new JModelAndView( "index.html", this.configService.getSysConfig(), this.userConfigService.getUserConfig(), 1, request, response );
 		//设置为PC访问
-		request.getSession().setAttribute("smmall_view_type", "pc");
-		
+		request.getSession().setAttribute("sailmall_view_type", "pc");
 		Map params = new HashMap();
 		/*params.put( "display", Boolean.valueOf( true ) );
 		List gcs = this.goodsClassService.query( "select obj from GoodsClass obj where obj.parent.id is null and obj.display=:display order by obj.sequence asc", params, 0, 15 );
@@ -388,6 +419,17 @@ public class IndexViewAction {
 		params.put( "mark", "news" );
 		List acs = this.articleClassService.query( "select obj from ArticleClass obj where obj.parent.id is null and obj.mark!=:mark order by obj.sequence asc", params, 0, 9 );
 		mv.addObject( "acs", acs );
+		for(int i=0;i<acs.size();i++){
+			ArticleClass acl=(ArticleClass)acs.get(i);
+			try{
+				System.out.println("........................................................................");
+				List atemList=acl.getArticles();
+				int tsize=atemList.size();
+				System.out.println("........................................................................"+tsize);
+			}catch(Exception ec){
+				ec.printStackTrace();
+			}
+		}
 		// 商城新闻
 		params.clear();
 		params.put( "class_mark", "news" );
@@ -484,8 +526,8 @@ public class IndexViewAction {
 	@RequestMapping( { "/close.htm" } )
 	public ModelAndView mobileclose( HttpServletRequest request, HttpServletResponse response ) {
 		ModelAndView mv = new JModelAndView( "close.html", this.configService.getSysConfig(), this.userConfigService.getUserConfig(), 1, request, response );
-		String smmall_view_type = CommUtil.null2String( request.getSession().getAttribute( "smmall_view_type" ) );
-		if( (smmall_view_type != null) && (!smmall_view_type.equals( "" )) && (smmall_view_type.equals( "mobile" )) ) {
+		String sailmall_view_type = CommUtil.null2String( request.getSession().getAttribute( "sailmall_view_type" ) );
+		if( (sailmall_view_type != null) && (!sailmall_view_type.equals( "" )) && (sailmall_view_type.equals( "mobile" )) ) {
 			mv = new JModelAndView( "mobile/close.html", this.configService.getSysConfig(), this.userConfigService.getUserConfig(), 1, request, response );
 		}
 		return mv;
@@ -494,8 +536,8 @@ public class IndexViewAction {
 	@RequestMapping( { "/404.htm" } )
 	public ModelAndView error404( HttpServletRequest request, HttpServletResponse response ) {
 		ModelAndView mv = new JModelAndView( "404.html", this.configService.getSysConfig(), this.userConfigService.getUserConfig(), 1, request, response );
-		String smmall_view_type = CommUtil.null2String( request.getSession().getAttribute( "smmall_view_type" ) );
-		if( (smmall_view_type != null) && (!smmall_view_type.equals( "" )) && (smmall_view_type.equals( "mobile" )) ) {
+		String sailmall_view_type = CommUtil.null2String( request.getSession().getAttribute( "sailmall_view_type" ) );
+		if( (sailmall_view_type != null) && (!sailmall_view_type.equals( "" )) && (sailmall_view_type.equals( "mobile" )) ) {
 			//String store_id = CommUtil.null2String( request.getSession( false ).getAttribute( "store_id" ) );
 			mv = new JModelAndView( "mobile/404.html", this.configService.getSysConfig(), this.userConfigService.getUserConfig(), 1, request, response );
 			mv.addObject( "url", CommUtil.getURL( request ) + "/mobile/index.htm");
@@ -507,8 +549,9 @@ public class IndexViewAction {
 	@RequestMapping( { "/500.htm" } )
 	public ModelAndView error500( HttpServletRequest request, HttpServletResponse response ) {
 		ModelAndView mv = new JModelAndView( "500.html", this.configService.getSysConfig(), this.userConfigService.getUserConfig(), 1, request, response );
-		String smmall_view_type = CommUtil.null2String( request.getSession( false ).getAttribute( "smmall_view_type" ) );
-		if( (smmall_view_type != null) && (!smmall_view_type.equals( "" )) && (smmall_view_type.equals( "mobile" )) ) {
+		System.out.println("500 Session IS:"+ request.getSession( false ));
+		String sailmall_view_type = CommUtil.null2String( request.getSession( false ).getAttribute( "sailmall_view_type" ) );
+		if( (sailmall_view_type != null) && (!sailmall_view_type.equals( "" )) && (sailmall_view_type.equals( "mobile" )) ) {
 			String store_id = CommUtil.null2String( request.getSession( false ).getAttribute( "store_id" ) );
 			mv = new JModelAndView( "mobile/500.html", this.configService.getSysConfig(), this.userConfigService.getUserConfig(), 1, request, response );
 			mv.addObject( "url", CommUtil.getURL( request ) + "/mobile/index.htm?store_id=" + store_id );
@@ -520,8 +563,8 @@ public class IndexViewAction {
 	@RequestMapping( { "/goods_class.htm" } )
 	public ModelAndView goods_class( HttpServletRequest request, HttpServletResponse response ) {
 		ModelAndView mv = new JModelAndView( "goods_class.html", this.configService.getSysConfig(), this.userConfigService.getUserConfig(), 1, request, response );
-		String smmall_view_type = CommUtil.null2String( request.getSession( false ).getAttribute( "smmall_view_type" ) );
-		if( (smmall_view_type != null) && (!smmall_view_type.equals( "" )) && (smmall_view_type.equals( "mobile" )) ) {
+		String sailmall_view_type = CommUtil.null2String( request.getSession( false ).getAttribute( "sailmall_view_type" ) );
+		if( (sailmall_view_type != null) && (!sailmall_view_type.equals( "" )) && (sailmall_view_type.equals( "mobile" )) ) {
 			mv = new JModelAndView( "mobile/goods_class.html", this.configService.getSysConfig(), this.userConfigService.getUserConfig(), 1, request, response );
 		}
 		Map params = new HashMap();
@@ -535,8 +578,8 @@ public class IndexViewAction {
 	public ModelAndView goodsclass( HttpServletRequest request, HttpServletResponse response ) {
 		
 		ModelAndView mv = new JModelAndView( "goodsclass.html", this.configService.getSysConfig(), this.userConfigService.getUserConfig(), 1, request, response );
-		String smmall_view_type = CommUtil.null2String( request.getSession( false ).getAttribute( "smmall_view_type" ) );
-		if( (smmall_view_type != null) && (!smmall_view_type.equals( "" )) && (smmall_view_type.equals( "mobile" )) ) {
+		String sailmall_view_type = CommUtil.null2String( request.getSession( false ).getAttribute( "sailmall_view_type" ) );
+		if( (sailmall_view_type != null) && (!sailmall_view_type.equals( "" )) && (sailmall_view_type.equals( "mobile" )) ) {
 			mv = new JModelAndView( "mobile/goodsclass.html", this.configService.getSysConfig(), this.userConfigService.getUserConfig(), 1, request, response );
 		}
 		Map params = new HashMap();
@@ -644,7 +687,7 @@ public class IndexViewAction {
 	public ModelAndView mobileindex( HttpServletRequest request, HttpServletResponse response ) {
 		ModelAndView mv = new JModelAndView( "mobile/index.html", this.configService.getSysConfig(), this.userConfigService.getUserConfig(), 1, request, response );
 		//设置为mobile访问
-		request.getSession().setAttribute("smmall_view_type", "mobile");
+		request.getSession().setAttribute("sailmall_view_type", "mobile");
 		Map params = new HashMap();
 		params.put( "display", Boolean.valueOf( true ) );
 		List gcs = this.goodsClassService.query( "select obj from GoodsClass obj where obj.parent.id is null and obj.display=:display order by obj.sequence asc", params, 0, 15 );
@@ -1004,7 +1047,16 @@ public class IndexViewAction {
 	     return sb.toString();
 	   }
 	   
-	
-	
-	
+		private Session checkSession(String pos) {
+			System.out.println("Check "+pos+" Session...................................................................");
+			WebApplicationContext wac = ContextLoader.getCurrentWebApplicationContext();
+			SessionFactory sf = (SessionFactory) wac.getBean("sessionFactory");
+			if (sf.getCurrentSession()==null) {
+				System.out.println("Check Session,Session  is NULL,NEW Session Created!");
+			}
+			return sf.getCurrentSession();
+		}
+		public void initializeObject(Object proxy) {  
+            Hibernate.initialize(proxy);  //To solve the lazy-load problem  
+    }  
 }

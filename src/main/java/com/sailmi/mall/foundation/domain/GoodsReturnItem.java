@@ -18,19 +18,19 @@ import com.sailmi.mall.core.domain.IdEntity;
  
  @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
  @Entity
- @Table(name="smmall_goods_returnitem")
+ @Table(name="sailmall_goods_returnitem")
  public class GoodsReturnItem extends IdEntity {
    
 	private static final long serialVersionUID = 3006242082958970206L;
 	//货物
-   @OneToOne(fetch=FetchType.LAZY)
+   @OneToOne
    private Goods goods;
    //返回货物
-   @ManyToOne(fetch=FetchType.LAZY)
+   @ManyToOne
    private GoodsReturn gr;
    
    @ManyToMany(cascade={javax.persistence.CascadeType.ALL})
-   @JoinTable(name="smmall_return_gsp", joinColumns={@javax.persistence.JoinColumn(name="item_id")}, inverseJoinColumns={@javax.persistence.JoinColumn(name="gsp_id")})
+   @JoinTable(name="sailmall_return_gsp", joinColumns={@javax.persistence.JoinColumn(name="item_id")}, inverseJoinColumns={@javax.persistence.JoinColumn(name="gsp_id")})
    private List<GoodsSpecProperty> gsps = new ArrayList<GoodsSpecProperty>();
  
    //spec信息

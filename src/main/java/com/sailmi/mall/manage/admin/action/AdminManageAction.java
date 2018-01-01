@@ -223,8 +223,8 @@ public class AdminManageAction implements ServletContextAware {
 			if (!id.equals("")) {
 				User user = this.userService.getObjById(Long.valueOf(Long.parseLong(id)));
 				if (!user.getUsername().equals("admin")) {
-					this.databaseTools.execute("delete from smmall_syslog where user_id=" + id);
-					this.databaseTools.execute("delete from smmall_user_role where user_id=" + id);
+					this.databaseTools.execute("delete from sailmall_syslog where user_id=" + id);
+					this.databaseTools.execute("delete from sailmall_user_role where user_id=" + id);
 					this.userService.delete(user.getId());
 				}
 			}
@@ -262,11 +262,11 @@ public class AdminManageAction implements ServletContextAware {
 	public String init_role() {
 		User current_user = SecurityUserHolder.getCurrentUser();
 		if ((current_user != null)  && (current_user.getUserRole().equals("admin"))) {
-			this.databaseTools.execute("delete from smmall_role_res");
-			this.databaseTools.execute("delete from smmall_res");
-			this.databaseTools.execute("delete from smmall_user_role");
-			this.databaseTools.execute("delete from smmall_role");
-			this.databaseTools.execute("delete from smmall_rolegroup");
+			this.databaseTools.execute("delete from sailmall_role_res");
+			this.databaseTools.execute("delete from sailmall_res");
+			this.databaseTools.execute("delete from sailmall_user_role");
+			this.databaseTools.execute("delete from sailmall_role");
+			this.databaseTools.execute("delete from sailmall_rolegroup");
 			List<Class> clzs = new ArrayList<Class>();
 
 			clzs.add(BaseManageAction.class);

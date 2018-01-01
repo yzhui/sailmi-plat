@@ -11,7 +11,7 @@ import com.sailmi.mall.core.domain.IdEntity;
  
  @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
  @Entity
- @Table(name="smmall_partner")
+ @Table(name="sailmall_partner")
  public class Partner extends IdEntity
  {
    //序列
@@ -21,7 +21,7 @@ import com.sailmi.mall.core.domain.IdEntity;
    private String title;
  
    //图片附件
-   @OneToOne(fetch=FetchType.LAZY)
+   @OneToOne
    private Accessory image;
  
    public int getSequence()

@@ -18,12 +18,12 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import com.sailmi.mall.core.domain.IdEntity;
 /**
  * 活动
- * @author smmall
+ * @author sailmall
  *
  */
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Entity
-@Table(name = "smmall_activity")
+@Table(name = "sailmall_activity")
 public class Activity extends IdEntity {
 	/**
 	 * UID
@@ -42,7 +42,7 @@ public class Activity extends IdEntity {
 	private Date ac_end_time;
 	
 	//活动附件
-	@OneToOne(cascade = { javax.persistence.CascadeType.REMOVE }, fetch = FetchType.LAZY)
+	@OneToOne(cascade = { javax.persistence.CascadeType.REMOVE })
 	private Accessory ac_acc;
 	//活动序列号
 	private int ac_sequence;

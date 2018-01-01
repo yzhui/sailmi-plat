@@ -23,7 +23,7 @@ import com.sailmi.mall.core.domain.IdEntity;
  */
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Entity
-@Table(name = "smmall_coupon")
+@Table(name = "sailmall_coupon")
 public class Coupon extends IdEntity {
 	/**
 	 * UID
@@ -52,7 +52,7 @@ public class Coupon extends IdEntity {
 	private BigDecimal coupon_order_amount;
 	
 	//附件
-	@OneToOne(fetch = FetchType.LAZY, cascade = { javax.persistence.CascadeType.REMOVE })
+	@OneToOne( cascade = { javax.persistence.CascadeType.REMOVE })
 	private Accessory coupon_acc;
 	
 	//优惠信息

@@ -2,7 +2,8 @@
  
  import javax.persistence.Entity;
  import javax.persistence.FetchType;
- import javax.persistence.ManyToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
  import javax.persistence.Table;
  import org.hibernate.annotations.Cache;
  import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -11,7 +12,7 @@ import com.sailmi.mall.core.domain.IdEntity;
  
  @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
  @Entity
- @Table(name="smmall_goodstypeproperty")
+ @Table(name="sailmall_goodstypeproperty")
  public class GoodsTypeProperty extends IdEntity
  {
    //序列
@@ -24,7 +25,8 @@ import com.sailmi.mall.core.domain.IdEntity;
    private boolean display;
    
    //商品类型
-   @ManyToOne(fetch=FetchType.LAZY)
+   @ManyToOne
+   @JoinColumn(name = "goodsType_id")
    private GoodsType goodsType;
  
    public int getSequence()

@@ -11,17 +11,17 @@ import com.sailmi.mall.core.domain.IdEntity;
  
  @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
  @Entity
- @Table(name="smmall_watermark")
+ @Table(name="sailmall_watermark")
  public class WaterMark extends IdEntity
  {
  
    //店铺
-   @OneToOne(fetch=FetchType.LAZY)
+   @OneToOne
    private Store store;
    private boolean wm_image_open;
 
    //图片附件
-   @OneToOne(fetch=FetchType.LAZY)
+   @OneToOne
    private Accessory wm_image;
    private float wm_image_alpha;
    private int wm_image_pos;

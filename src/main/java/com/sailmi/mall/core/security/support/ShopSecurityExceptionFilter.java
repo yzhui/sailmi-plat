@@ -27,20 +27,11 @@ import org.springframework.util.Assert;
  public class ShopSecurityExceptionFilter extends ExceptionTranslationFilter 
    implements InitializingBean
  {
-   private String AuthenFailUrl_403=null;
-	 
-   public String getAuthenFailUrl_403() {
-	return AuthenFailUrl_403;
-}
-
-public void setAuthenFailUrl_403(String authenFailUrl_403) {
-	AuthenFailUrl_403 = authenFailUrl_403;
-}
 
 public ShopSecurityExceptionFilter(AuthenticationEntryPoint authenticationEntryPoint) {
 		 super(authenticationEntryPoint);
 		 this.authenticationEntryPoint = authenticationEntryPoint;
-	     this.accessDeniedHandler = new ShopAccessDeniedHandler(this.AuthenFailUrl_403);
+	     this.accessDeniedHandler = new ShopAccessDeniedHandler();
 	     this.authenticationTrustResolver = new AuthenticationTrustResolverImpl();
 	     this.portResolver = new PortResolverImpl();
 	     this.throwableAnalyzer = new ThrowableAnalyzer();
@@ -69,14 +60,17 @@ public ShopSecurityExceptionFilter(AuthenticationEntryPoint authenticationEntryP
  
    public void doFilterHttp(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException
    {
+	   
+	   
+	   System.out.println("........................................................................................");
      try
      {
        chain.doFilter(request, response);
- 
+       
        if (this.logger.isDebugEnabled())
          this.logger.debug("Chain processed normally");
      } catch (IOException ex) {
-       throw ex;
+    	 throw ex;
      } catch (Exception ex) {
        Throwable[] causeChain = this.throwableAnalyzer
          .determineCauseChain(ex);
@@ -114,6 +108,7 @@ public ShopSecurityExceptionFilter(AuthenticationEntryPoint authenticationEntryP
    private void handleException(HttpServletRequest request, HttpServletResponse response, FilterChain chain, RuntimeException exception)
      throws IOException, ServletException
    {
+	   System.out.println("Exception......................................................................");
      if ((exception instanceof AuthenticationException)) {
        if (this.logger.isDebugEnabled()) {
          this.logger

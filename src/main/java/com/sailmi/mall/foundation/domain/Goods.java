@@ -9,6 +9,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
@@ -22,12 +23,14 @@ import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import com.sailmi.mall.core.domain.IdEntity;
 
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Entity
-@Table(name = "smmall_goods")
+@Table(name = "sailmall_goods")
 public class Goods extends IdEntity {
 	/**
 	 * UID
@@ -35,92 +38,98 @@ public class Goods extends IdEntity {
 	private static final long serialVersionUID = -4611982955098188929L;
 
 	private String seo_keywords;
-	
-	//seo描述
+
+	// seo描述
 	@Lob
 	@Column(columnDefinition = "LongText")
 	private String seo_description;
-	//货物名称
+	// 货物名称
 	private String goods_name;
 
-	//货物价格
+	// 货物价格
 	@Column(precision = 12, scale = 2)
 	private BigDecimal goods_price;
 
-	//商店价格
+	// 商店价格
 	@Column(precision = 12, scale = 2)
 	private BigDecimal store_price;
-	//存货清单
+	// 存货清单
 	private int goods_inventory;
-	//存货类型
+	// 存货类型
 	private String inventory_type;
 	private int goods_salenum;
 	private String goods_serial;
-	
-	//货物重量
+
+	// 货物重量
 	@Column(precision = 12, scale = 2)
 	private BigDecimal goods_weight;
-	
-	//货物量
+
+	// 货物量
 	@Column(precision = 12, scale = 2)
 	private BigDecimal goods_volume;
-	//货物小费
+	// 货物小费
 	private String goods_fee;
 
-	//货物细节
+	// 货物细节
 	@Lob
 	@Column(columnDefinition = "LongText")
 	private String goods_details;
-	//是否为推荐店铺
+	// 是否为推荐店铺
 	private boolean store_recommend;
-	//推荐店铺时间
+	// 推荐店铺时间
 	private Date store_recommend_time;
-	//是否为推荐货物
+	// 是否为推荐货物
 	private boolean goods_recommend;
-	//货物点击量
+	// 货物点击量
 	private int goods_click;
-	
-	//货物收藏量
+
+	// 货物收藏量
 	@Column(columnDefinition = "int default 0")
 	private int goods_collect;
-	
-	//货物商店
-	@ManyToOne(fetch = FetchType.EAGER)
+
+	// 货物商店
+	@ManyToOne
+	@JoinColumn(name = "goods_store_id")
 	private Store goods_store;
-	//货物状态
+	// 货物状态
 	private int goods_status;
 	private Date goods_seller_time;
 	private int goods_transfee;
-	
-	//货物类型
-	@ManyToOne(fetch = FetchType.LAZY)
+
+	// 货物类型
+	@ManyToOne(cascade = { CascadeType.REMOVE })
+	@JoinColumn(name = "gc_id")
 	private GoodsClass gc;
 
-	//货物主照片
-	@ManyToOne(fetch = FetchType.EAGER,cascade={CascadeType.REMOVE}) 
+	// 货物主照片
+	@ManyToOne(cascade = { CascadeType.REMOVE })
+	@JoinColumn(name = "goods_main_photo_id")
 	private Accessory goods_main_photo;
-	
-	//货物照片
-	@ManyToMany(cascade={CascadeType.REMOVE})
-	@JoinTable(name = "smmall_goods_photo", joinColumns = {
+
+	// 货物照片
+	@ManyToMany(cascade = { CascadeType.REMOVE })
+	@JoinTable(name = "sailmall_goods_photo", joinColumns = {
 			@javax.persistence.JoinColumn(name = "goods_id") }, inverseJoinColumns = {
 					@javax.persistence.JoinColumn(name = "photo_id") })
+	@Fetch(FetchMode.SUBSELECT)
 	private List<Accessory> goods_photos = new ArrayList<Accessory>();
 
-	@ManyToMany(cascade={CascadeType.REMOVE})
-	@JoinTable(name = "smmall_goods_ugc", joinColumns = {
+	@ManyToMany(cascade = { CascadeType.REMOVE })
+	@JoinTable(name = "sailmall_goods_ugc", joinColumns = {
 			@javax.persistence.JoinColumn(name = "goods_id") }, inverseJoinColumns = {
 					@javax.persistence.JoinColumn(name = "class_id") })
 	private List<UserGoodsClass> goods_ugcs = new ArrayList<UserGoodsClass>();
 
-	@ManyToMany(cascade={CascadeType.REMOVE}, fetch = FetchType.LAZY)
-	@JoinTable(name = "smmall_goods_spec", joinColumns = {
+	@ManyToMany(cascade = { CascadeType.REMOVE })
+	@JoinTable(name = "sailmall_goods_spec", joinColumns = {
 			@javax.persistence.JoinColumn(name = "goods_id") }, inverseJoinColumns = {
 					@javax.persistence.JoinColumn(name = "spec_id") })
 	@OrderBy("sequence asc")
+	@Fetch(FetchMode.SUBSELECT)
 	private List<GoodsSpecProperty> goods_specs = new ArrayList<GoodsSpecProperty>();
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
+	@JoinColumn(name = "goods_brand_id")
 	private GoodsBrand goods_brand;
 
 	@Lob
@@ -141,28 +150,34 @@ public class Goods extends IdEntity {
 	private int ztc_gold;
 	private int ztc_click_num;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
+	@JoinColumn(name = "ztc_admin_id")
 	private User ztc_admin;
 
 	@Column(columnDefinition = "LongText")
 	private String ztc_admin_content;
 
-	@OneToMany(mappedBy = "gg_goods", fetch = FetchType.LAZY, cascade = { javax.persistence.CascadeType.REMOVE })
+	@OneToMany(mappedBy = "gg_goods", cascade = { javax.persistence.CascadeType.REMOVE })
+	@Fetch(FetchMode.SUBSELECT)
 	private List<GroupGoods> group_goods_list = new ArrayList<GroupGoods>();
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
+	@JoinColumn(name = "group_id")
 	private Group group;
 
 	@Column(columnDefinition = "int default 0")
 	private int group_buy;
 
 	@OneToMany(mappedBy = "goods", cascade = { javax.persistence.CascadeType.REMOVE })
+	@Fetch(FetchMode.SUBSELECT)
 	private List<Consult> consults = new ArrayList<Consult>();
 
 	@OneToMany(mappedBy = "evaluate_goods", cascade = { javax.persistence.CascadeType.REMOVE })
+	@Fetch(FetchMode.SUBSELECT)
 	private List<Evaluate> evaluates = new ArrayList<Evaluate>();
 
 	@OneToMany(mappedBy = "goods", cascade = { javax.persistence.CascadeType.REMOVE })
+	@Fetch(FetchMode.SUBSELECT)
 	private List<Favorite> favs = new ArrayList<Favorite>();
 
 	@Column(columnDefinition = "int default 0")
@@ -177,7 +192,8 @@ public class Goods extends IdEntity {
 	@Column(columnDefinition = "int default 0")
 	private int bargain_status;
 
-	@OneToMany(mappedBy = "bg_goods", fetch = FetchType.LAZY,cascade = {CascadeType.REMOVE})
+	@OneToMany(mappedBy = "bg_goods", cascade = { CascadeType.REMOVE })
+	@Fetch(FetchMode.SUBSELECT)
 	private List<BargainGoods> bgs = new ArrayList<BargainGoods>();
 
 	@Column(columnDefinition = "int default 0")
@@ -195,11 +211,11 @@ public class Goods extends IdEntity {
 	@Column(precision = 12, scale = 2)
 	private BigDecimal combin_price;
 
-	@ManyToMany(cascade={CascadeType.REMOVE},fetch=FetchType.LAZY)
-	@JoinTable(name = "smmall_goods_combin")
+	@ManyToMany(cascade = { CascadeType.REMOVE })
+	@JoinTable(name = "sailmall_goods_combin")
 	private List<Goods> combin_goods = new ArrayList<Goods>();
 
-	@OneToOne(mappedBy = "d_goods", cascade = { javax.persistence.CascadeType.REMOVE }, fetch = FetchType.LAZY)
+	@OneToOne(mappedBy = "d_goods", cascade = { javax.persistence.CascadeType.REMOVE })
 	private DeliveryGoods dg;
 
 	@Column(precision = 12, scale = 2)
@@ -211,32 +227,37 @@ public class Goods extends IdEntity {
 	@Column(precision = 12, scale = 2)
 	private BigDecimal ems_trans_fee;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	private Transport transport;
 
 	@Column(precision = 4, scale = 1, columnDefinition = "Decimal default 5.0")
 	private BigDecimal description_evaluate;
 
 	@OneToMany(mappedBy = "goods", cascade = { javax.persistence.CascadeType.REMOVE })
+	@Fetch(FetchMode.SUBSELECT)
 	private List<Dynamic> dynamics = new ArrayList<Dynamic>();
 
 	@OneToMany(mappedBy = "bg_goods", cascade = { javax.persistence.CascadeType.REMOVE })
+	@Fetch(FetchMode.SUBSELECT)
 	private List<BargainGoods> bargainGoods_list = new ArrayList<BargainGoods>();
 
-	@OneToOne(mappedBy = "d_goods", cascade = { javax.persistence.CascadeType.REMOVE }, fetch = FetchType.LAZY)
+	@OneToOne(mappedBy = "d_goods", cascade = { javax.persistence.CascadeType.REMOVE })
 	private DeliveryGoods d_main_goods;
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "d_delivery_goods", cascade = {
+	@OneToMany(mappedBy = "d_delivery_goods", cascade = {
 			javax.persistence.CascadeType.REMOVE })
+	@Fetch(FetchMode.SUBSELECT)
 	private List<DeliveryGoods> d_goods_list = new ArrayList<DeliveryGoods>();
 
 	@OneToMany(mappedBy = "ag_goods", cascade = { javax.persistence.CascadeType.REMOVE })
+	@Fetch(FetchMode.SUBSELECT)
 	private List<ActivityGoods> ag_goods_list = new ArrayList<ActivityGoods>();
 
-	@OneToOne(mappedBy = "goods", cascade = { javax.persistence.CascadeType.REMOVE }, fetch = FetchType.LAZY)
+	@OneToOne(mappedBy = "goods", cascade = {javax.persistence.CascadeType.REMOVE })
 	private GoodsReturnItem gri;
 
-	@OneToMany(mappedBy = "evaluate_goods",cascade = {CascadeType.REMOVE})
+	@OneToMany(mappedBy = "evaluate_goods", cascade = { CascadeType.REMOVE })
+	@Fetch(FetchMode.SUBSELECT)
 	private List<Evaluate> evas = new ArrayList<Evaluate>();
 
 	@Column(columnDefinition = "bit default false")

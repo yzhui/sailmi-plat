@@ -46,7 +46,7 @@ public class SecondDomainFilter
       String id = "";
       if (cookies != null) {
         for (Cookie cookie : cookies) {
-          if (cookie.getName().equals("smmall_user_session")) {
+          if (cookie.getName().equals("sailmall_user_session")) {
             id = CommUtil.null2String(cookie.getValue());
           }
         }

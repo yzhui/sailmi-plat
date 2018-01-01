@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -21,7 +22,7 @@ import com.sailmi.mall.core.domain.IdEntity;
  */
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Entity
-@Table(name = "smmall_album")
+@Table(name = "sailmall_album")
 public class Album extends IdEntity {
 	/**
 	 * UID
@@ -35,7 +36,8 @@ public class Album extends IdEntity {
 	@OneToMany(mappedBy = "album", cascade = { javax.persistence.CascadeType.REMOVE })
 	private List<Accessory> photos = new ArrayList<Accessory>();
 	//相册
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
+	@JoinColumn(name="album_cover_id")
 	private Accessory album_cover;
 	//默认相册
 	private boolean album_default;
@@ -46,7 +48,7 @@ public class Album extends IdEntity {
 	private String alblum_info;
 	
 	//相册所属人
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	private User user;
 
 	public String getAlbum_name() {

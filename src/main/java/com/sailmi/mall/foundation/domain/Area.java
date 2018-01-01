@@ -10,6 +10,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import com.sailmi.mall.core.domain.IdEntity;
 /**
@@ -19,7 +21,7 @@ import com.sailmi.mall.core.domain.IdEntity;
  */
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Entity
-@Table(name = "smmall_area")
+@Table(name = "sailmall_area")
 public class Area extends IdEntity {
 	/**
 	 * UID
@@ -29,10 +31,11 @@ public class Area extends IdEntity {
 	private String areaName;
 	
 	//地区子类
-	@OneToMany(mappedBy = "parent", cascade = { javax.persistence.CascadeType.REMOVE })
+	@OneToMany(mappedBy = "parent",fetch=FetchType.EAGER)
+    @Fetch(FetchMode.SUBSELECT) 
 	private List<Area> childs = new ArrayList<Area>();
 	//地区父类
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne( cascade = { javax.persistence.CascadeType.ALL })
 	private Area parent;
 	//地区序列
 	private int sequence;

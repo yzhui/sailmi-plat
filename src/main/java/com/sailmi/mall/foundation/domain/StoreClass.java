@@ -16,7 +16,7 @@ import com.sailmi.mall.core.domain.IdEntity;
  
  @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
  @Entity
- @Table(name="smmall_storeclass")
+ @Table(name="sailmall_storeclass")
  public class StoreClass extends IdEntity
  {
    //类型名称
@@ -25,7 +25,7 @@ import com.sailmi.mall.core.domain.IdEntity;
    private int sequence;
  
    //商店父类型
-   @ManyToOne(fetch=FetchType.LAZY)
+   @ManyToOne
    private StoreClass parent;
  
    //商店子类型

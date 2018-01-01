@@ -14,14 +14,14 @@ import com.sailmi.mall.core.domain.IdEntity;
  
  @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
  @Entity
- @Table(name="smmall_refund_log")
+ @Table(name="sailmall_refund_log")
  public class RefundLog extends IdEntity
  {
    //退换ID
    private String refund_id;
  
    //订单表单
-   @ManyToOne(fetch=FetchType.LAZY)
+   @ManyToOne
    private OrderForm of;
    //退还记录
    private String refund_log;
@@ -33,7 +33,7 @@ import com.sailmi.mall.core.domain.IdEntity;
    private BigDecimal refund;
 
    //退还人
-   @ManyToOne(fetch=FetchType.LAZY)
+   @ManyToOne
    private User refund_user;
  
    @Lob

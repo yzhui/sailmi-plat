@@ -44,14 +44,16 @@ jQuery(document).ready(function(){
 <body scroll="yes">
 <div class="main">
   <div class="top">
-    <div class="login">您登录的身份是：$!{user.userName} &nbsp;&nbsp;| <a href="$!webPath/j_spring_cas_security_logout" target="_self">安全退出</a>|<a href="$!webPath/admin/admin_pws.htm" target="main_workspace">修改密码</a>| <a href="$!webPath/index.htm" target="_blank">商城首页</a></div>
+    <div class="login">您登录的身份是：$!{user.userName} &nbsp;&nbsp;| <a href="$!webPath/logout.htm" target="_self">安全退出</a>|<a href="$!webPath/admin/admin_pws.htm" target="main_workspace">修改密码</a>| <a href="$!webPath/index.htm" target="_blank">商城首页</a></div>
     <div class="logo"></div>
     <div class="nav">
       <ul>
         <li><a href="javascript:void(0);" class="home" id="common_operation_menu" onclick="openURL('show','common_operation')">首页</a></li>
         <li><a href="javascript:void(0);" class="active" id="base_set_menu" onclick="openURL('show','base_set')" >设置</a></li>
         <li><a href="javascript:void(0);" class="active" id="about_goods_menu" onclick="openURL('show','about_goods')">商品</a></li>
+        <!-- 
         <li><a href="javascript:void(0);" class="active" id="about_sparegoods_menu" onclick="openURL('show','about_sparegoods')">闲置</a></li>
+         -->
         <li><a href="javascript:void(0);" class="active" id="about_store_menu" onclick="openURL('show','about_store')">店铺</a></li>
         <li><a href="javascript:void(0);" class="active" id="about_member_menu" onclick="openURL('show','about_member')">会员</a></li>
         <li><a href="javascript:void(0);" class="active" id="about_trade_menu" onclick="openURL('show','about_trade')">交易</a></li>
@@ -190,7 +192,7 @@ jQuery(document).ready(function(){
           <li><a href="javascript:void(0);" id="database_add_op" onclick="openURL('url','$!webPath/admin/database_add.htm','main_workspace','database_add_op')">数据库管理</a></li>
           <li><a href="javascript:void(0);" id="lucene_op" onclick="openURL('url','$!webPath/admin/lucene.htm','main_workspace','lucene_op')">全文检索</a></li>          
         </ul>
-        <!-- <div class="statement" style="font-size:12px; font-family:Arial, Helvetica, sans-serif;">Powered By<a href="#" target="_blank"> <strong><span style="color:#FD7C20;">SailMall</span></strong></a> <sup>V2.0</sup>©2015 smmall Inc.</div> -->
+        <!-- <div class="statement" style="font-size:12px; font-family:Arial, Helvetica, sans-serif;">Powered By<a href="#" target="_blank"> <strong><span style="color:#FD7C20;">SailMall</span></strong></a> <sup>V2.0</sup>©2015 sailmall Inc.</div> -->
       </div>
     </div>
     <div class="content">

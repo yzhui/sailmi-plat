@@ -11,12 +11,12 @@ import com.sailmi.mall.core.domain.IdEntity;
  
  @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
  @Entity
- @Table(name="smmall_ztc_gold_log")
+ @Table(name="sailmall_ztc_gold_log")
  public class ZTCGoldLog extends IdEntity
  {
  
    //zgl商品
-   @ManyToOne(fetch=FetchType.LAZY)
+   @ManyToOne
    private Goods zgl_goods;
    //zgl金币
    private int zgl_gold;

@@ -13,7 +13,7 @@ import com.sailmi.mall.core.domain.IdEntity;
  
  @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
  @Entity
- @Table(name="smmall_predeposit_cash")
+ @Table(name="sailmall_predeposit_cash")
  public class PredepositCash extends IdEntity
  {
    private String cash_sn;
@@ -25,7 +25,7 @@ import com.sailmi.mall.core.domain.IdEntity;
    private BigDecimal cash_amount;
  
    //现金支付用户
-   @ManyToOne(fetch=FetchType.LAZY)
+   @ManyToOne
    private User cash_user;
    //用户名
    private String cash_userName;
@@ -43,7 +43,7 @@ import com.sailmi.mall.core.domain.IdEntity;
    private String cash_info;
  
    //现金管理者
-   @ManyToOne(fetch=FetchType.LAZY)
+   @ManyToOne
    private User cash_admin;
  
    //管理信息

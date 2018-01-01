@@ -16,7 +16,7 @@ import com.sailmi.mall.core.domain.IdEntity;
  */
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Entity
-@Table(name = "smmall_combin_log")
+@Table(name = "sailmall_combin_log")
 public class CombinLog extends IdEntity {
 	/**
 	 * UID
@@ -29,7 +29,7 @@ public class CombinLog extends IdEntity {
 	//金币
 	private int gold;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	private Store store;
 
 	public Date getBegin_time() {

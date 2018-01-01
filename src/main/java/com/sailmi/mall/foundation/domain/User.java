@@ -14,6 +14,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -34,7 +35,7 @@ import com.sailmi.mall.core.domain.IdEntity;
  
  @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
  @Entity
- @Table(name="smmall_user")
+ @Table(name="sailmall_user")
  public class User extends IdEntity
    implements UserDetails
  {
@@ -80,8 +81,8 @@ import com.sailmi.mall.core.domain.IdEntity;
    private int status;
  
    //角色
-   @ManyToMany(cascade=CascadeType.REMOVE,targetEntity=Role.class, fetch=FetchType.LAZY)
-   @JoinTable(name="smmall_user_role", joinColumns={@javax.persistence.JoinColumn(name="user_id")}, inverseJoinColumns={@javax.persistence.JoinColumn(name="role_id")})
+   @ManyToMany(cascade=CascadeType.REMOVE,targetEntity=Role.class)
+   @JoinTable(name="sailmall_user_role", joinColumns={@javax.persistence.JoinColumn(name="user_id")}, inverseJoinColumns={@javax.persistence.JoinColumn(name="role_id")})
    private Set<Role> roles = new TreeSet();
  
    //角色资源
@@ -124,7 +125,8 @@ import com.sailmi.mall.core.domain.IdEntity;
    private List<Accessory> files = new ArrayList();
  
    //商店
-   @OneToOne(cascade={javax.persistence.CascadeType.REMOVE})
+   @OneToOne(cascade={javax.persistence.CascadeType.ALL})
+   @JoinColumn(name = "store_id")
    private Store store;
    
    //HomePage

@@ -19,7 +19,7 @@ import com.sailmi.mall.core.domain.IdEntity;
  */
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Entity
-@Table(name = "smmall_delivery_goods")
+@Table(name = "sailmall_delivery_goods")
 public class DeliveryGoods extends IdEntity {
 
 	/**
@@ -28,17 +28,17 @@ public class DeliveryGoods extends IdEntity {
 	private static final long serialVersionUID = -6716674058148213758L;
 	
 	//商品
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	private Goods d_goods;
 	
 	//商品
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	private Goods d_delivery_goods;
 	//状态
 	private int d_status;
 	
 	//用户
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	private User d_admin_user;
 	//接受时间
 	private Date d_audit_time;

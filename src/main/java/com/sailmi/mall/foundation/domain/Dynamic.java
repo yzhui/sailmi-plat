@@ -20,7 +20,7 @@ import com.sailmi.mall.core.domain.IdEntity;
  */
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Entity
-@Table(name = "smmall_dynamic")
+@Table(name = "sailmall_dynamic")
 public class Dynamic extends IdEntity {
 
 	/**
@@ -29,15 +29,15 @@ public class Dynamic extends IdEntity {
 	private static final long serialVersionUID = 6799666483543200124L;
 	
 	//商品
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	private Goods goods;
 	
 	//店铺
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	private Store store;
 	
 	//用户
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	private User user;
 	
 	//被锁住
@@ -45,7 +45,7 @@ public class Dynamic extends IdEntity {
 	private boolean locked;
 	
 	//图片
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	private Accessory img;
 	
 	//内容
@@ -65,15 +65,15 @@ public class Dynamic extends IdEntity {
 	private int praiseNum;
 	
 	//讨论父类
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	private Dynamic dissParent;
 	
 	//返回父类
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	private Dynamic turnParent;
 	
 	//动态子类
-	@OneToMany(mappedBy = "dissParent", cascade = { javax.persistence.CascadeType.REMOVE })
+	@OneToMany(mappedBy = "dissParent", cascade = { javax.persistence.CascadeType.REMOVE },fetch = FetchType.EAGER)
 	List<Dynamic> childs = new ArrayList<Dynamic>();
 	
 	//是否显示

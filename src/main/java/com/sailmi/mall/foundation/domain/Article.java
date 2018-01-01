@@ -1,19 +1,23 @@
 package com.sailmi.mall.foundation.domain;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import com.sailmi.mall.core.domain.IdEntity;
 
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Entity
-@Table(name = "smmall_article")
+@Table(name = "sailmall_article")
 public class Article extends IdEntity {
 	/**
 	 * UID
@@ -23,7 +27,8 @@ public class Article extends IdEntity {
 	//文章标题
 	private String title;
 	//文章类
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+	@JoinColumn(name="articleClass_id", referencedColumnName="id")
 	private ArticleClass articleClass;
 	//文章地址
 	private String url;

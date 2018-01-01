@@ -11,7 +11,7 @@ import com.sailmi.mall.core.domain.IdEntity;
  
  @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
  @Entity
- @Table(name="smmall_report_type")
+ @Table(name="sailmall_report_type")
  public class ReportType extends IdEntity
  {
    //名称

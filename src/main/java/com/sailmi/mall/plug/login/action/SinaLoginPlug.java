@@ -169,7 +169,7 @@
        return "redirect:" + CommUtil.getURL(request) + 
          "/login.htm?username=" + 
          CommUtil.encode(user.getUsername()) + "&password=" + 
-         "smmall_thid_login_" + user.getPassword();
+         "sailmall_thid_login_" + user.getPassword();
      }
  
      User user = this.userService.getObjById(
@@ -246,7 +246,7 @@
      config.setSina_login_id("3863193702");
      config.setSina_login_key("16b62bbfc99c0d9028c199566429c798");
      String redirect_uri = 
-       CommUtil.encode("http://smmall.eicp.net/sina_login_bind.htm");
+       CommUtil.encode("http://sailmall.eicp.net/sina_login_bind.htm");
      String auth_url = "https://api.weibo.com/oauth2/authorize?client_id=" + 
        config.getSina_login_id() + 
        "&response_type=code&redirect_uri=" + redirect_uri;

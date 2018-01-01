@@ -11,16 +11,16 @@ import com.sailmi.mall.core.domain.IdEntity;
  
  @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
  @Entity
- @Table(name="smmall_user_attention")
+ @Table(name="sailmall_user_attention")
  public class SnsAttention extends IdEntity
  {
  
    //来源用户
-   @ManyToOne(fetch=FetchType.LAZY)
+   @ManyToOne
    private User fromUser;
  
    //目标用户
-   @ManyToOne(fetch=FetchType.LAZY)
+   @ManyToOne
    private User toUser;
  
    public User getFromUser()

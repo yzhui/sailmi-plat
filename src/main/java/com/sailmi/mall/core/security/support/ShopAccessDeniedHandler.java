@@ -27,10 +27,8 @@ import com.sailmi.mall.foundation.domain.User;
    protected static final Log logger = LogFactory.getLog(AccessDeniedHandlerImpl.class);
    private String errorPage;
    
-   public ShopAccessDeniedHandler(String errorPage) {
-	super();
-	this.errorPage = errorPage;
-}
+   public ShopAccessDeniedHandler() {
+   }
 
 
 
@@ -38,6 +36,7 @@ import com.sailmi.mall.foundation.domain.User;
 public void handle(HttpServletRequest request, HttpServletResponse response,
 		AccessDeniedException accessDeniedException) throws IOException, ServletException {
 	// TODO Auto-generated method stub
+	System.out.println("Access Deny ......................................");
     if(this.errorPage==null) this.errorPage = "/authority.htm";
     User user = SecurityUserHolder.getCurrentUser();
     GrantedAuthority[] all_authorities = user.get_all_Authorities();

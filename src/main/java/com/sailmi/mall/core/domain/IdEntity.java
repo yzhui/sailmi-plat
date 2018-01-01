@@ -17,7 +17,7 @@ public class IdEntity implements Serializable
 
   @Id
   @GeneratedValue(strategy=GenerationType.AUTO)
-  @Column(unique=true, nullable=false)
+  @Column(name="id",unique=true, nullable=false)
   private Long id;
   private Date addTime;
 
@@ -47,5 +47,9 @@ public class IdEntity implements Serializable
 
   public void setDeleteStatus(boolean deleteStatus) {
     this.deleteStatus = deleteStatus;
+  }
+  
+  public void checkSession(){
+	  
   }
 }

@@ -68,7 +68,7 @@
        this.configService.getSysConfig().getQq_login_id() + 
        "&redirect_uri=" + 
        redirect_uri + 
-       "&state=smmall&scope=get_user_info";
+       "&state=sailmall&scope=get_user_info";
      response.sendRedirect(auth_url);
    }
  
@@ -156,7 +156,7 @@
        return "redirect:" + CommUtil.getURL(request) + 
          "/login.htm?username=" + 
          CommUtil.encode(user.getUsername()) + "&password=" + 
-         "smmall_thid_login_" + user.getPassword();
+         "sailmall_thid_login_" + user.getPassword();
      }
  
      User user = this.userService.getObjById(
@@ -187,7 +187,7 @@
          this.userService.delete(SecurityUserHolder.getCurrentUser()
            .getId());
          url = "redirect:" + CommUtil.getURL(request) + 
-           "/smmall_login.htm?username=" + 
+           "/sailmall_login.htm?username=" + 
            CommUtil.encode(user.getUsername()) + 
            "&password=" + password;
        } else {
@@ -271,12 +271,12 @@
      config.setQq_login_id("100359491");
      config.setQq_login_key("a34bcaef0487e650238983abc0fbae7c");
      String redirect_uri = 
-       CommUtil.encode("http://smmall.eicp.net/qq_login_bind.htm");
+       CommUtil.encode("http://sailmall.eicp.net/qq_login_bind.htm");
      String auth_url = "https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=" + 
        config.getQq_login_id() + 
        "&redirect_uri=" + 
        redirect_uri + 
-       "&state=smmall&scope=get_user_info";
+       "&state=sailmall&scope=get_user_info";
      System.out.println(auth_url);
  
      String token_url = "https://graph.qq.com/oauth2.0/token?grant_type=authorization_code&client_id=" + 

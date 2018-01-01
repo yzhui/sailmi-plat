@@ -17,7 +17,7 @@ import com.sailmi.mall.core.domain.IdEntity;
  
  @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
  @Entity
- @Table(name="smmall_payment")
+ @Table(name="sailmall_payment")
  public class Payment extends IdEntity
  {
    private boolean install;
@@ -72,7 +72,7 @@ import com.sailmi.mall.core.domain.IdEntity;
    private String type;
  
    //商店
-   @ManyToOne(fetch=FetchType.LAZY)
+   @ManyToOne
    private Store store;
    
    @OneToMany(mappedBy="payment")

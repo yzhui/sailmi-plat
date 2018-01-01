@@ -49,27 +49,27 @@ public class GenericDAO<T>
 
   public int batchUpdate(String jpql, Object[] params)
   {
-    return this.geDao.batchUpdate(jpql, params);
+    return getGeDao().batchUpdate(jpql, params);
   }
 
   public List executeNamedQuery(String queryName, Object[] params, int begin, int max)
   {
-    return this.geDao.executeNamedQuery(queryName, params, begin, max);
+    return getGeDao().executeNamedQuery(queryName, params, begin, max);
   }
 
   public List executeNativeNamedQuery(String nnq)
   {
-    return this.geDao.executeNativeNamedQuery(nnq);
+    return getGeDao().executeNativeNamedQuery(nnq);
   }
 
   public List executeNativeQuery(String nnq, Object[] params, int begin, int max)
   {
-    return this.geDao.executeNativeQuery(nnq, params, begin, max);
+    return getGeDao().executeNativeQuery(nnq, params, begin, max);
   }
 
   public int executeNativeSQL(String nnq)
   {
-    return this.geDao.executeNativeSQL(nnq);
+    return getGeDao().executeNativeSQL(nnq);
   }
 
   public List find(String query, Map params, int begin, int max)
@@ -80,7 +80,7 @@ public class GenericDAO<T>
 
   public void flush()
   {
-    this.geDao.flush();
+	  getGeDao().flush();
   }
 
   public T get(Serializable id)

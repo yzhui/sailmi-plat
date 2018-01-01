@@ -14,11 +14,11 @@ import com.sailmi.mall.core.domain.IdEntity;
  
  @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
  @Entity
- @Table(name="smmall_predeposit_Log")
+ @Table(name="sailmall_predeposit_Log")
  public class PredepositLog extends IdEntity
  {
  
-   @ManyToOne(fetch=FetchType.LAZY)
+   @ManyToOne
    private User pd_log_user;
  
    //数量
@@ -29,14 +29,14 @@ import com.sailmi.mall.core.domain.IdEntity;
    private String pd_op_type;
  
    //管理者记录
-   @ManyToOne(fetch=FetchType.LAZY)
+   @ManyToOne
    private User pd_log_admin;
  
    //信息记录
    @Column(columnDefinition="LongText")
    private String pd_log_info;
  
-   @OneToOne(fetch=FetchType.LAZY)
+   @OneToOne
    private Predeposit predeposit;
  
    public Predeposit getPredeposit()

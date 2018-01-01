@@ -3,9 +3,11 @@ package com.sailmi.mall.foundation.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -19,7 +21,7 @@ import com.sailmi.mall.core.domain.IdEntity;
 
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Entity
-@Table(name = "smmall_goodsclass")
+@Table(name = "sailmall_goodsclass")
 public class GoodsClass extends IdEntity {
 	/**
 	 * 
@@ -30,12 +32,14 @@ public class GoodsClass extends IdEntity {
 
 	//商品子分类
 	@OrderBy("sequence asc")
-	@OneToMany(fetch = FetchType.LAZY,mappedBy = "parent")
+	@OneToMany(fetch = FetchType.EAGER,mappedBy = "parent",cascade = { CascadeType.REMOVE })
 	private List<GoodsClass> childs = new ArrayList<GoodsClass>();
 	
 	//商品父类
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
+	@JoinColumn(name="parent_id")
 	private GoodsClass parent;
+	
 	private int sequence;
 	//水平等级
 	private int level;
@@ -45,7 +49,8 @@ public class GoodsClass extends IdEntity {
 	private boolean recommend;
 	
 	//货物类型
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
+	@JoinColumn(name="goodsType_id")
 	private GoodsType goodsType;
 
 	//seo关键字
@@ -70,6 +75,7 @@ public class GoodsClass extends IdEntity {
 	private String icon_sys;
 
 	@OneToOne
+	@JoinColumn(name="icon_acc_id")
 	private Accessory icon_acc;
 
 	public int getIcon_type() {
@@ -161,6 +167,7 @@ public class GoodsClass extends IdEntity {
 	}
 
 	public List<GoodsClass> getChilds() {
+		
 		return this.childs;
 	}
 

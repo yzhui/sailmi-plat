@@ -13,13 +13,15 @@
  import javax.persistence.Table;
  import org.hibernate.annotations.Cache;
  import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import com.sailmi.mall.core.annotation.Lock;
 import com.sailmi.mall.core.domain.IdEntity;
  
  @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
  @Entity
- @Table(name="smmall_sysconfig")
+ @Table(name="sailmall_sysconfig")
  public class SysConfig extends IdEntity
  {
    //标题
@@ -68,7 +70,7 @@ import com.sailmi.mall.core.domain.IdEntity;
    private String websiteCss;
  
    //网站logo
-   @OneToOne(fetch=FetchType.EAGER)
+   @OneToOne
    private Accessory websiteLogo;
  
    @Lob
@@ -90,6 +92,8 @@ import com.sailmi.mall.core.domain.IdEntity;
    //是否可以使用安全码登录
    private boolean securityCodeLogin;
    private boolean securityCodeConsult;
+   //登录UrL
+   private String loginUrl;
    //图片后缀名
    private String imageSuffix;
    //图片web服务
@@ -134,16 +138,17 @@ import com.sailmi.mall.core.domain.IdEntity;
    private int complaint_time;
  
    //店铺图片
-   @OneToOne(cascade={javax.persistence.CascadeType.ALL}, fetch=FetchType.LAZY)
+   @OneToOne(cascade={javax.persistence.CascadeType.ALL})
    private Accessory storeImage;
  
    //商品图片
-   @OneToOne(cascade={javax.persistence.CascadeType.ALL}, fetch=FetchType.LAZY)
+   @OneToOne(cascade={javax.persistence.CascadeType.ALL})
    private Accessory goodsImage;
  
    //成员图标
-   @OneToOne(cascade={javax.persistence.CascadeType.ALL}, fetch=FetchType.LAZY)
+   @OneToOne(cascade={javax.persistence.CascadeType.ALL})
    private Accessory memberIcon;
+   
    private boolean store_allow;
  
    //信用规则
@@ -262,6 +267,7 @@ import com.sailmi.mall.core.domain.IdEntity;
  
    //登录图片
    @OneToMany(mappedBy="config")
+   @Fetch(FetchMode.SUBSELECT)
    private List<Accessory> login_imgs = new ArrayList();
  
    //服务电话列表
@@ -360,7 +366,7 @@ import com.sailmi.mall.core.domain.IdEntity;
  
    //微信店铺logo
    @Lock
-   @OneToOne(fetch=FetchType.LAZY)
+   @OneToOne
    private Accessory store_weixin_logo;
    
    private String site_url;
@@ -1346,6 +1352,15 @@ import com.sailmi.mall.core.domain.IdEntity;
 	public void setSite_url(String site_url) {
 		this.site_url = site_url;
 	}
+
+	public String getLoginUrl() {
+		return loginUrl;
+	}
+
+	public void setLoginUrl(String loginUrl) {
+		this.loginUrl = loginUrl;
+	}
+	
  }
 
 

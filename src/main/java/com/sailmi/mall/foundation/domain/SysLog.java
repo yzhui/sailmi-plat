@@ -13,7 +13,7 @@ import com.sailmi.mall.core.domain.IdEntity;
  
  @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
  @Entity
- @Table(name="smmall_syslog")
+ @Table(name="sailmall_syslog")
  public class SysLog extends IdEntity
  {
 	 
@@ -24,7 +24,7 @@ import com.sailmi.mall.core.domain.IdEntity;
    @Column(columnDefinition="LongText")
    private String content;
  
-   @ManyToOne(fetch=FetchType.LAZY)
+   @ManyToOne
    private User user;
    private String ip;
  

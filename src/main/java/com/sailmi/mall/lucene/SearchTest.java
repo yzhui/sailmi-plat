@@ -7,7 +7,7 @@
    public static void main(String[] args)
    {
      LuceneUtil lucence = LuceneUtil.instance();
-     LuceneUtil.setIndex_path("F:\\JAVA_PRO\\smmall\\luence\\goods");
+     LuceneUtil.setIndex_path("F:\\JAVA_PRO\\sailmall\\luence\\goods");
      Date d1 = new Date();
      LuceneResult list = lucence.search("手提包", 0, 0.0D, 500.0D, null, null);
      Date d2 = new Date();

@@ -725,8 +725,8 @@ public class CartViewAction {
 	public ModelAndView goods_cart1(HttpServletRequest request, HttpServletResponse response) {
 		ModelAndView mv = new JModelAndView("goods_cart1.html", this.configService.getSysConfig(),
 				this.userConfigService.getUserConfig(), 1, request, response);
-		String smmall_view_type = CommUtil.null2String( request.getSession().getAttribute( "smmall_view_type" ) );
-		if( (smmall_view_type != null) && (!smmall_view_type.equals( "" )) && (smmall_view_type.equals( "mobile" )) ) {
+		String sailmall_view_type = CommUtil.null2String( request.getSession().getAttribute( "sailmall_view_type" ) );
+		if( (sailmall_view_type != null) && (!sailmall_view_type.equals( "" )) && (sailmall_view_type.equals( "mobile" )) ) {
 			mv = new JModelAndView("mobile/goods_cart1.html", this.configService.getSysConfig(),
 					this.userConfigService.getUserConfig(), 1, request, response);
 		}
@@ -752,7 +752,7 @@ public class CartViewAction {
 		} else {
 			mv = new JModelAndView("error.html", this.configService.getSysConfig(),
 					this.userConfigService.getUserConfig(), 1, request, response);
-			if( (smmall_view_type != null) && (!smmall_view_type.equals( "" )) && (smmall_view_type.equals( "mobile" )) ) {
+			if( (sailmall_view_type != null) && (!sailmall_view_type.equals( "" )) && (sailmall_view_type.equals( "mobile" )) ) {
 				mv = new JModelAndView("mobile/error.html", this.configService.getSysConfig(),
 						this.userConfigService.getUserConfig(), 1, request, response);
 			}
@@ -799,8 +799,8 @@ public class CartViewAction {
 	public ModelAndView goods_cart2(HttpServletRequest request, HttpServletResponse response, String store_id) {
 		ModelAndView mv = new JModelAndView("goods_cart2.html", this.configService.getSysConfig(),
 				this.userConfigService.getUserConfig(), 1, request, response);
-		String smmall_view_type = CommUtil.null2String( request.getSession().getAttribute( "smmall_view_type" ) );
-		if( (smmall_view_type != null) && (!smmall_view_type.equals( "" )) && (smmall_view_type.equals( "mobile" )) ) {
+		String sailmall_view_type = CommUtil.null2String( request.getSession().getAttribute( "sailmall_view_type" ) );
+		if( (sailmall_view_type != null) && (!sailmall_view_type.equals( "" )) && (sailmall_view_type.equals( "mobile" )) ) {
 			mv = new JModelAndView("mobile/goods_cart2.html", this.configService.getSysConfig(),
 					this.userConfigService.getUserConfig(), 1, request, response);
 		}
@@ -853,7 +853,7 @@ public class CartViewAction {
 		} else {
 			mv = new JModelAndView("error.html", this.configService.getSysConfig(),
 					this.userConfigService.getUserConfig(), 1, request, response);
-			if( (smmall_view_type != null) && (!smmall_view_type.equals( "" )) && (smmall_view_type.equals( "mobile" )) ) {
+			if( (sailmall_view_type != null) && (!sailmall_view_type.equals( "" )) && (sailmall_view_type.equals( "mobile" )) ) {
 				mv = new JModelAndView("mobile/error.html", this.configService.getSysConfig(),
 						this.userConfigService.getUserConfig(), 1, request, response);
 			}
@@ -869,8 +869,8 @@ public class CartViewAction {
 			String store_id, String addr_id, String coupon_id) throws Exception {
 		ModelAndView mv = new JModelAndView("goods_cart3.html", this.configService.getSysConfig(),
 				this.userConfigService.getUserConfig(), 1, request, response);
-		String smmall_view_type = CommUtil.null2String( request.getSession().getAttribute( "smmall_view_type" ) );
-		if( (smmall_view_type != null) && (!smmall_view_type.equals( "" )) && (smmall_view_type.equals( "mobile" )) ) {
+		String sailmall_view_type = CommUtil.null2String( request.getSession().getAttribute( "sailmall_view_type" ) );
+		if( (sailmall_view_type != null) && (!sailmall_view_type.equals( "" )) && (sailmall_view_type.equals( "mobile" )) ) {
 			mv = new JModelAndView("mobile/goods_cart3.html", this.configService.getSysConfig(),
 					this.userConfigService.getUserConfig(), 1, request, response);
 		}
@@ -943,7 +943,7 @@ public class CartViewAction {
 			} else {
 				mv = new JModelAndView("error.html", this.configService.getSysConfig(),
 						this.userConfigService.getUserConfig(), 1, request, response);
-				if( (smmall_view_type != null) && (!smmall_view_type.equals( "" )) && (smmall_view_type.equals( "mobile" )) ) {
+				if( (sailmall_view_type != null) && (!sailmall_view_type.equals( "" )) && (sailmall_view_type.equals( "mobile" )) ) {
 					mv = new JModelAndView("mobile/error.html", this.configService.getSysConfig(),
 							this.userConfigService.getUserConfig(), 1, request, response);
 				}
@@ -953,7 +953,7 @@ public class CartViewAction {
 		} else {
 			mv = new JModelAndView("error.html", this.configService.getSysConfig(),
 					this.userConfigService.getUserConfig(), 1, request, response);
-			if( (smmall_view_type != null) && (!smmall_view_type.equals( "" )) && (smmall_view_type.equals( "mobile" )) ) {
+			if( (sailmall_view_type != null) && (!sailmall_view_type.equals( "" )) && (sailmall_view_type.equals( "mobile" )) ) {
 				mv = new JModelAndView("mobile/error.html", this.configService.getSysConfig(),
 						this.userConfigService.getUserConfig(), 1, request, response);
 			}
@@ -970,8 +970,8 @@ public class CartViewAction {
 		ModelAndView mv = new JModelAndView("order_pay.html", this.configService.getSysConfig(),
 				this.userConfigService.getUserConfig(), 1, request, response);
 		
-		String smmall_view_type = CommUtil.null2String( request.getSession().getAttribute( "smmall_view_type" ) );
-		if( (smmall_view_type != null) && (!smmall_view_type.equals( "" )) && (smmall_view_type.equals( "mobile" )) ) {
+		String sailmall_view_type = CommUtil.null2String( request.getSession().getAttribute( "sailmall_view_type" ) );
+		if( (sailmall_view_type != null) && (!sailmall_view_type.equals( "" )) && (sailmall_view_type.equals( "mobile" )) ) {
 			mv = new JModelAndView("mobile/order_pay.html", this.configService.getSysConfig(),
 					this.userConfigService.getUserConfig(), 1, request, response);
 		}
@@ -988,7 +988,7 @@ public class CartViewAction {
 		} else {
 			mv = new JModelAndView("error.html", this.configService.getSysConfig(),
 					this.userConfigService.getUserConfig(), 1, request, response);
-			if( (smmall_view_type != null) && (!smmall_view_type.equals( "" )) && (smmall_view_type.equals( "mobile" )) ) {
+			if( (sailmall_view_type != null) && (!sailmall_view_type.equals( "" )) && (sailmall_view_type.equals( "mobile" )) ) {
 				mv = new JModelAndView("mobile/error.html", this.configService.getSysConfig(),
 						this.userConfigService.getUserConfig(), 1, request, response);
 			}
@@ -1003,12 +1003,12 @@ public class CartViewAction {
 	public ModelAndView order_pay(HttpServletRequest request, HttpServletResponse response, String payType, String order_id) {
 		ModelAndView mv = null;
 		OrderForm of = this.orderFormService.getObjById(CommUtil.null2Long(order_id));
-		String smmall_view_type = CommUtil.null2String( request.getSession().getAttribute( "smmall_view_type" ) );
+		String sailmall_view_type = CommUtil.null2String( request.getSession().getAttribute( "sailmall_view_type" ) );
 		if (of.getOrder_status() == 10) {
 			if (CommUtil.null2String(payType).equals("")) {
 				mv = new JModelAndView("error.html", this.configService.getSysConfig(),
 						this.userConfigService.getUserConfig(), 1, request, response);
-				if( (smmall_view_type != null) && (!smmall_view_type.equals( "" )) && (smmall_view_type.equals( "mobile" )) ) {
+				if( (sailmall_view_type != null) && (!sailmall_view_type.equals( "" )) && (sailmall_view_type.equals( "mobile" )) ) {
 					mv = new JModelAndView("mobile/error.html", this.configService.getSysConfig(),
 							this.userConfigService.getUserConfig(), 1, request, response);
 				}
@@ -1066,7 +1066,7 @@ public class CartViewAction {
 		} else {
 			mv = new JModelAndView("error.html", this.configService.getSysConfig(),
 					this.userConfigService.getUserConfig(), 1, request, response);
-			if( (smmall_view_type != null) && (!smmall_view_type.equals( "" )) && (smmall_view_type.equals( "mobile" )) ) {
+			if( (sailmall_view_type != null) && (!sailmall_view_type.equals( "" )) && (sailmall_view_type.equals( "mobile" )) ) {
 				mv = new JModelAndView("mobile/error.html", this.configService.getSysConfig(),
 						this.userConfigService.getUserConfig(), 1, request, response);
 			}
@@ -1736,8 +1736,8 @@ public class CartViewAction {
 	public ModelAndView order_finish(HttpServletRequest request, HttpServletResponse response, String order_id) {
 		ModelAndView mv = new JModelAndView("order_finish.html", this.configService.getSysConfig(),
 				this.userConfigService.getUserConfig(), 1, request, response);
-		String smmall_view_type = CommUtil.null2String( request.getSession().getAttribute( "smmall_view_type" ) );
-		if( (smmall_view_type != null) && (!smmall_view_type.equals( "" )) && (smmall_view_type.equals( "mobile" )) ) {
+		String sailmall_view_type = CommUtil.null2String( request.getSession().getAttribute( "sailmall_view_type" ) );
+		if( (sailmall_view_type != null) && (!sailmall_view_type.equals( "" )) && (sailmall_view_type.equals( "mobile" )) ) {
 			mv = new JModelAndView("mobile/order_finish.html", this.configService.getSysConfig(),
 					this.userConfigService.getUserConfig(), 1, request, response);
 		}
@@ -1752,8 +1752,8 @@ public class CartViewAction {
 		
 		ModelAndView mv = new JModelAndView("cart_address.html", this.configService.getSysConfig(),
 				this.userConfigService.getUserConfig(), 1, request, response);
-		String smmall_view_type = CommUtil.null2String( request.getSession().getAttribute( "smmall_view_type" ) );
-		if( (smmall_view_type != null) && (!smmall_view_type.equals( "" )) && (smmall_view_type.equals( "mobile" )) ) {
+		String sailmall_view_type = CommUtil.null2String( request.getSession().getAttribute( "sailmall_view_type" ) );
+		if( (sailmall_view_type != null) && (!sailmall_view_type.equals( "" )) && (sailmall_view_type.equals( "mobile" )) ) {
 			mv = new JModelAndView("mobile/cart_address.html", this.configService.getSysConfig(),
 					this.userConfigService.getUserConfig(), 1, request, response);
 		}
@@ -1820,8 +1820,8 @@ public class CartViewAction {
 	   public ModelAndView address(HttpServletRequest request, HttpServletResponse response, String currentPage, String orderBy, String orderType, String store_id)
 	   {
 	     ModelAndView mv = new JModelAndView("address.html", this.configService.getSysConfig(), this.userConfigService.getUserConfig(), 1, request, response);
-	     String smmall_view_type = CommUtil.null2String( request.getSession().getAttribute( "smmall_view_type" ) );
-		 if( (smmall_view_type != null) && (!smmall_view_type.equals( "" )) && (smmall_view_type.equals( "mobile" )) ) {
+	     String sailmall_view_type = CommUtil.null2String( request.getSession().getAttribute( "sailmall_view_type" ) );
+		 if( (sailmall_view_type != null) && (!sailmall_view_type.equals( "" )) && (sailmall_view_type.equals( "mobile" )) ) {
 			 mv = new JModelAndView("mobile/address.html", this.configService.getSysConfig(), this.userConfigService.getUserConfig(), 1, request, response);
 		 }
 	     String url = this.configService.getSysConfig().getAddress();
@@ -1845,8 +1845,8 @@ public class CartViewAction {
 	     
 		 ModelAndView mv = new JModelAndView("cart_address.html", this.configService.getSysConfig(),
 					this.userConfigService.getUserConfig(), 1, request, response);
-		 String smmall_view_type = CommUtil.null2String( request.getSession().getAttribute( "smmall_view_type" ) );
-		 if( (smmall_view_type != null) && (!smmall_view_type.equals( "" )) && (smmall_view_type.equals( "mobile" )) ) {
+		 String sailmall_view_type = CommUtil.null2String( request.getSession().getAttribute( "sailmall_view_type" ) );
+		 if( (sailmall_view_type != null) && (!sailmall_view_type.equals( "" )) && (sailmall_view_type.equals( "mobile" )) ) {
 			 mv = new JModelAndView("mobile/cart_address.html", this.configService.getSysConfig(),
 						this.userConfigService.getUserConfig(), 1, request, response);
 		 }

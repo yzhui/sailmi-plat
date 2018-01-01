@@ -41,14 +41,9 @@ public class SecureResourceFilterInvocationDefinitionSource
 	        if(url!=null){
 	        	RequestMatcher requestMatcher = new AntPathRequestMatcher(url);
 		        if(requestMatcher.matches(filterInvocation.getHttpRequest())){
-			        System.out.println("3333333333333333333333333333333333333333333333333333333333333:"+url);
-			        System.out.println("3333333333333333333333333333333333333333333333333333333333333:"+filterInvocation.getRequestUrl());
-			        System.out.println("3333333333333333333333333333333333333333333333333333333333333:"+entry.getValue().getClass().getName());
-			        
                     //以权限名封装为Spring的security Object
 					ConfigAttribute configAttribute = new SecurityConfig((String)entry.getValue());
 					attrList.add(configAttribute);
-		        	System.out.println("attrList:"+attrList);
 		        }
 	        }
 	      }

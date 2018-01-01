@@ -11,11 +11,11 @@ import com.sailmi.mall.core.domain.IdEntity;
  
  @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
  @Entity
- @Table(name="smmall_userconfig")
+ @Table(name="sailmall_userconfig")
  public class UserConfig extends IdEntity
  {
  
-   @OneToOne(fetch=FetchType.LAZY)
+   @OneToOne
    private User user;
  
    public User getUser()

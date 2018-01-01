@@ -36,7 +36,7 @@
      params.setParameter("grant_type", "authorization_code");
      params.setParameter("code", "9cc3989375e8205df543dfebf17268b9");
      params.setParameter("redirect_uri", 
-       "http://smmall.eicp.net/sina_login_bind.htm");
+       "http://sailmall.eicp.net/sina_login_bind.htm");
      method.setParams(params);
      int status = client.executeMethod(method);
      System.out.println("状态值：" + status);

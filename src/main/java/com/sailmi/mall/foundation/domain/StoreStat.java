@@ -12,7 +12,7 @@ import com.sailmi.mall.core.domain.IdEntity;
  
  @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
  @Entity
- @Table(name="smmall_store_stat")
+ @Table(name="sailmall_store_stat")
  public class StoreStat extends IdEntity
  {
    //一周用户

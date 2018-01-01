@@ -12,7 +12,7 @@ import com.sailmi.mall.core.domain.IdEntity;
  
  @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
  @Entity
- @Table(name="smmall_rolegroup")
+ @Table(name="sailmall_rolegroup")
  public class RoleGroup extends IdEntity
  {
    //名称

@@ -111,11 +111,11 @@
      }if (action.equals("synlogin")) {
        if (!API_SYNLOGIN)
          return API_RETURN_FORBIDDEN;
-       smmall_login(request, response, get);
+       sailmall_login(request, response, get);
      } else if (action.equals("synlogout")) {
        if (!API_SYNLOGOUT)
          return API_RETURN_FORBIDDEN;
-       smmall_logout(request, response, get); } else {
+       sailmall_logout(request, response, get); } else {
        if (action.equals("updateclient")) {
          if (!API_UPDATECLIENT) {
            return API_RETURN_FORBIDDEN;
@@ -124,7 +124,7 @@
        }if (action.equals("updatepw")) {
          if (!API_UPDATEPW)
            return API_RETURN_FORBIDDEN;
-         smmall_update_pws(request, response, get);
+         sailmall_update_pws(request, response, get);
          return API_RETURN_SUCCEED;
        }if (action.equals("updatebadwords")) {
          if (!API_UPDATEBADWORDS) {
@@ -187,7 +187,7 @@
      return 0L;
    }
  
-   protected void smmall_login(HttpServletRequest request, HttpServletResponse response, Map<String, String> args)
+   protected void sailmall_login(HttpServletRequest request, HttpServletResponse response, Map<String, String> args)
    {
      boolean admin_login = CommUtil.null2Boolean(request.getSession(false)
        .getAttribute("admin_login"));
@@ -239,7 +239,7 @@
        String url = CommUtil.getURL(request) + 
          "/login.htm?username=" + 
          CommUtil.encode(userName) + "&password=" + 
-         "smmall_thid_login_" + password + "&encode=true";
+         "sailmall_thid_login_" + password + "&encode=true";
        try {
          response.sendRedirect(url);
        }
@@ -249,9 +249,9 @@
      }
    }
  
-   protected void smmall_logout(HttpServletRequest request, HttpServletResponse response, Map<String, String> args)
+   protected void sailmall_logout(HttpServletRequest request, HttpServletResponse response, Map<String, String> args)
    {
-     String url = CommUtil.getURL(request) + "/smmall_logout.htm";
+     String url = CommUtil.getURL(request) + "/sailmall_logout.htm";
      try {
        response.sendRedirect(url);
      }
@@ -260,7 +260,7 @@
      }
    }
  
-   protected void smmall_update_pws(HttpServletRequest request, HttpServletResponse response, Map<String, String> args)
+   protected void sailmall_update_pws(HttpServletRequest request, HttpServletResponse response, Map<String, String> args)
    {
      User user = SecurityUserHolder.getCurrentUser();
    }

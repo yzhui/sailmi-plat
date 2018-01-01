@@ -33,7 +33,7 @@
      ModelAndView mv = new JModelAndView("admin/blue/cache_list.html", 
        this.configService.getSysConfig(), this.userConfigService
        .getUserConfig(), 0, request, response);
-     CacheManager manager = CacheManager.create();
+		CacheManager manager = CacheManager.getCacheManager("CacheManageCache");
      BlockingCache cache = new BlockingCache(manager
        .getEhcache("SimplePageFragmentCachingFilter"));
      int data_cache_size = 0;
@@ -59,7 +59,7 @@
      ModelAndView mv = new JModelAndView("admin/blue/success.html", 
        this.configService.getSysConfig(), this.userConfigService
        .getUserConfig(), 0, request, response);
-     CacheManager manager = CacheManager.create();
+     CacheManager manager = CacheManager.getCacheManager("CacheManageCache");
      String[] names = manager.getCacheNames();
      if (CommUtil.null2Boolean(data_cache)) {
        for (String name : names)

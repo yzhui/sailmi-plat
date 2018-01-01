@@ -14,11 +14,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
+import javax.transaction.Transactional;
+
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.Velocity;
+import org.springframework.aop.support.AopUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.sailmi.mall.core.security.support.SecurityUserHolder;
 import com.sailmi.mall.core.tools.CommUtil;
@@ -61,8 +63,8 @@ import com.sailmi.mall.foundation.service.IUserService;
 import com.sailmi.mall.manage.admin.tools.MsgTools;
 import com.sailmi.mall.manage.admin.tools.StatTools;
 
-@Component("shop_stat")
 @Transactional
+@Component("shop_stat")
 public class StatManageAction {
 
 	@Autowired
@@ -127,8 +129,13 @@ public class StatManageAction {
 
 	@Autowired
 	private MsgTools msgTools;
-
+	
+	@Transactional
 	public void execute() throws Exception {
+		System.out.println("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz:"+AopUtils.isAopProxy(this));
+		System.out.println("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz:"+AopUtils.isCglibProxy(this));
+		System.out.println("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz:"+AopUtils.isJdkDynamicProxy(this));
+
 		List stats = this.storeStatService.query("select obj from StoreStat obj", null, -1, -1);
 		StoreStat stat = null;
 		if (stats.size() > 0)
@@ -384,8 +391,9 @@ public class StatManageAction {
 			if (group.getEndTime().before(new Date())) {
 				group.setStatus(-2);
 				this.groupService.update(group);
-
-				for (GroupGoods gg1 : group.getGg_list()) {
+				
+                List<GroupGoods> ggList=this.groupGoodsService.query("select obj from GroupGoods obj where obj.group.id="+group.getId(), null, -1,-1);
+				for (GroupGoods gg1 : ggList) {
 					// gg = (GroupGoods)service_evaluate.next();
 					gg1.setGg_status(-2);
 					this.groupGoodsService.update(gg1);

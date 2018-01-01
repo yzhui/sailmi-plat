@@ -3,8 +3,10 @@ package com.sailmi.mall.foundation.domain;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -20,7 +22,7 @@ import com.sailmi.mall.core.domain.IdEntity;
  */
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Entity
-@Table(name = "smmall_advert")
+@Table(name = "sailmall_advert")
 public class Advert extends IdEntity {
 	/**
 	 * UID
@@ -41,14 +43,15 @@ public class Advert extends IdEntity {
 	private Date ad_end_time;
 	
 	//广告位置
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
+	@JoinColumn(name="ad_ap_id")
 	private AdvertPosition ad_ap;
 	
 	//广告状态
 	@Lock
 	private int ad_status;
 	//广告附件
-	@OneToOne(cascade = { javax.persistence.CascadeType.REMOVE }, fetch = FetchType.LAZY)
+	@OneToOne(cascade = { javax.persistence.CascadeType.REMOVE })
 	private Accessory ad_acc;
 	//广告内容
 	private String ad_text;
@@ -56,7 +59,7 @@ public class Advert extends IdEntity {
 	private int ad_slide_sequence;
 	
 	//广告所属人
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	private User ad_user;
 	//广告链接
 	private String ad_url;

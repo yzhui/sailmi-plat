@@ -13,7 +13,7 @@ import com.sailmi.mall.core.domain.IdEntity;
  
  @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
  @Entity
- @Table(name="smmall_store_nav")
+ @Table(name="sailmall_store_nav")
  public class StoreNavigation extends IdEntity
  {
    //标题
@@ -26,7 +26,7 @@ import com.sailmi.mall.core.domain.IdEntity;
    private boolean display;
  
    //店铺
-   @ManyToOne(fetch=FetchType.LAZY)
+   @ManyToOne
    private Store store;
  
    //内容

@@ -73,30 +73,38 @@ import org.springframework.web.servlet.ModelAndView;
 	 */
    @RequestMapping({"/user/login.htm"})
    public ModelAndView login(HttpServletRequest request, HttpServletResponse response, String url) {
-	   
+	  System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
      ModelAndView mv = new JModelAndView("login.html", this.configService.getSysConfig(), this.userConfigService.getUserConfig(), 1, request, response);
 
-     String smmall_view_type = CommUtil.null2String(request.getSession(false).getAttribute("smmall_view_type"));
+     String sailmall_view_type = CommUtil.null2String(request.getSession(false).getAttribute("sailmall_view_type"));
+	  System.out.println("BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
      
-     if ((smmall_view_type != null) && (!smmall_view_type.equals("")) && (smmall_view_type.equals("mobile"))) {
-    	 mv = new JModelAndView("/mobile/login.html", this.configService.getSysConfig(),
+     if ((sailmall_view_type != null) && (!sailmall_view_type.equals("")) && (sailmall_view_type.equals("mobile"))) {
+    	 mv = new JModelAndView("mobile/login.html", this.configService.getSysConfig(),
 					this.userConfigService.getUserConfig(), 1, request, response);
      }
- 
+	  System.out.println("CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"+sailmall_view_type);
+
      request.getSession(false).removeAttribute("verify_code");
      boolean domain_error = CommUtil.null2Boolean(request.getSession(false).getAttribute("domain_error"));
      if ((url != null) && (!url.equals(""))) {
        request.getSession(false).setAttribute("refererUrl", url);
      }
+	  System.out.println("DAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"+domain_error);
+     
      if (domain_error) {
        mv = new JModelAndView("error.html", this.configService.getSysConfig(), this.userConfigService.getUserConfig(), 1, request, response);
-       if ((smmall_view_type != null) && (!smmall_view_type.equals("")) && (smmall_view_type.equals("mobile"))) {
+       if ((sailmall_view_type != null) && (!sailmall_view_type.equals("")) && (sailmall_view_type.equals("mobile"))) {
     	   mv = new JModelAndView("mobile/error.html", this.configService.getSysConfig(), this.userConfigService.getUserConfig(), 1, request, response);
        }
      }
      else {
        mv.addObject("imageViewTools", this.imageViewTools);
      }
+     System.out.println("33333333333333333333333333333333");
+     //处理登录url
+     mv.addObject("authenLoginUrl",this.configService.getSecurityAuthType().getLoginUrl());
+     System.out.println("44444444444444444444444444444444");
      mv.addObject("uc_logout_js", request.getSession(false).getAttribute("uc_logout_js"));
      
      return mv;
@@ -114,9 +122,9 @@ import org.springframework.web.servlet.ModelAndView;
      ModelAndView mv = new JModelAndView("register.html", this.configService.getSysConfig(), 
        this.userConfigService.getUserConfig(), 1, request, response);
      
-     String smmall_view_type = CommUtil.null2String(request.getSession(false).getAttribute("smmall_view_type"));
+     String sailmall_view_type = CommUtil.null2String(request.getSession(false).getAttribute("sailmall_view_type"));
 		
-	 if ((smmall_view_type != null) && (!smmall_view_type.equals("")) && (smmall_view_type.equals("mobile"))) {
+	 if ((sailmall_view_type != null) && (!sailmall_view_type.equals("")) && (sailmall_view_type.equals("mobile"))) {
 		 mv = new JModelAndView("mobile/register.html", this.configService.getSysConfig(), 
 			       this.userConfigService.getUserConfig(), 1, request, response);
 	 }
@@ -231,9 +239,9 @@ import org.springframework.web.servlet.ModelAndView;
    {
      ModelAndView mv = new JModelAndView("success.html", this.configService.getSysConfig(), this.userConfigService.getUserConfig(), 1, request, response);
      String url = CommUtil.getURL(request) + "/index.htm";
-     String smmall_view_type = CommUtil.null2String(request.getSession(false).getAttribute("smmall_view_type"));
+     String sailmall_view_type = CommUtil.null2String(request.getSession(false).getAttribute("sailmall_view_type"));
      //跳转到微信端
-     if ((smmall_view_type != null) && (!smmall_view_type.equals("")) && (smmall_view_type.equals("mobile"))) {
+     if ((sailmall_view_type != null) && (!sailmall_view_type.equals("")) && (sailmall_view_type.equals("mobile"))) {
        String store_id = CommUtil.null2String(request.getSession(false).getAttribute("store_id"));
        mv = new JModelAndView("mobile/success.html", 
          this.configService.getSysConfig(), 
@@ -299,9 +307,9 @@ import org.springframework.web.servlet.ModelAndView;
 		}
 		mv.addObject("uc_logout_js", request.getSession(false).getAttribute("uc_logout_js"));
 		
-		/*String smmall_view_type = CommUtil.null2String(request.getSession(false).getAttribute("smmall_view_type"));
+		/*String sailmall_view_type = CommUtil.null2String(request.getSession(false).getAttribute("sailmall_view_type"));
 		
-		if ((smmall_view_type != null) && (!smmall_view_type.equals("")) && (smmall_view_type.equals("mobile"))) {
+		if ((sailmall_view_type != null) && (!sailmall_view_type.equals("")) && (sailmall_view_type.equals("mobile"))) {
 			//String store_id = CommUtil.null2String(request.getSession(false).getAttribute("store_id"));
 			mv = new JModelAndView("mobile/success.html", this.configService.getSysConfig(),
 					this.userConfigService.getUserConfig(), 1, request, response);

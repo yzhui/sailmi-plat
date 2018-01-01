@@ -9,6 +9,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -16,15 +17,18 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import com.sailmi.mall.core.annotation.Lock;
 import com.sailmi.mall.core.domain.IdEntity;
 
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Entity
-@Table(name = "smmall_store")
+@Table(name = "sailmall_store")
 public class Store extends IdEntity {
 	//商店名称
 	private String store_name;
@@ -47,19 +51,19 @@ public class Store extends IdEntity {
 	private int store_status;
 
 	//用户
-	@OneToOne(mappedBy = "store", fetch = FetchType.LAZY)
+	@OneToOne(mappedBy="store")
 	private User user;
 
 	//商店级别
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	private StoreGrade grade;
 
 	//商店类型
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	private StoreClass sc;
 
 	//商店地址
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	private Area area;
 	//是否推荐商店
 	private boolean store_recommend;
@@ -70,24 +74,25 @@ public class Store extends IdEntity {
 	private boolean card_approve;
 	
 	//商店logo
-	@OneToOne(fetch = FetchType.LAZY,cascade={CascadeType.REMOVE})
+	@OneToOne(cascade={CascadeType.REMOVE})
 	private Accessory store_logo;
 
 	//商店标语
-	@OneToOne(fetch = FetchType.LAZY,cascade={CascadeType.REMOVE})
+	@OneToOne(cascade={CascadeType.REMOVE})
 	private Accessory store_banner;
 
 	//卡片附件
-	@OneToOne(fetch = FetchType.LAZY,cascade={CascadeType.REMOVE})
+	@OneToOne(cascade={CascadeType.REMOVE})
 	private Accessory card;
 	private boolean realstore_approve;
 
 	//执照附件
-	@OneToOne(fetch = FetchType.LAZY,cascade={CascadeType.REMOVE})
+	@OneToOne(cascade={CascadeType.REMOVE})
 	private Accessory store_license;
 
 	//商品集合
 	@OneToMany(mappedBy = "goods_store",cascade={CascadeType.REMOVE})
+	@Fetch(FetchMode.SUBSELECT)
 	private List<Goods> goods_list = new ArrayList();
 	//商店信用
 	private int store_credit;

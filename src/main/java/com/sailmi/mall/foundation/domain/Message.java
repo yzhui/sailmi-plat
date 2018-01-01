@@ -16,15 +16,15 @@ import com.sailmi.mall.core.domain.IdEntity;
  
  @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
  @Entity
- @Table(name="smmall_message")
+ @Table(name="sailmall_message")
  public class Message extends IdEntity
  {
    //来自哪个用户
-   @ManyToOne(fetch=FetchType.LAZY)
+   @ManyToOne
    private User fromUser;
    
    //抵达哪个用户
-   @ManyToOne(fetch=FetchType.LAZY)
+   @ManyToOne
    private User toUser;
    //状态
    private int status;
@@ -41,7 +41,7 @@ import com.sailmi.mall.core.domain.IdEntity;
    private String content;
    
    //父信息
-   @ManyToOne(fetch=FetchType.LAZY)
+   @ManyToOne
    private Message parent;
    //回复信息
    @OneToMany(mappedBy="parent", cascade={javax.persistence.CascadeType.REMOVE})

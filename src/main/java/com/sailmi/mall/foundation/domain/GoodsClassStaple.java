@@ -11,7 +11,7 @@ import com.sailmi.mall.core.domain.IdEntity;
 
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Entity
-@Table(name = "smmall_goodsclassstaple")
+@Table(name = "sailmall_goodsclassstaple")
 public class GoodsClassStaple extends IdEntity {
 	/**
 	 * 主要产品
@@ -22,11 +22,11 @@ public class GoodsClassStaple extends IdEntity {
 	private String name;
 	
 	//货物类型
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	private GoodsClass gc;
 
 	//商店
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	private Store store;
 
 	public String getName() {

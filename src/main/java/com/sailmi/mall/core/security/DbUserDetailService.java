@@ -80,17 +80,11 @@ public class DbUserDetailService extends JdbcDaoImpl {
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		
+    	//获取此用户在报表系统中的信息，如果没有信息，则新建用户
+		System.out.println("Get User Info From DB:"+username);
+		if(username==null) return null;
 		User tempUser =  userService.getObjByProperty("userName",username);
-		if(tempUser==null){//如果用户不存在
-			User user = new User();
-        	//获取此用户在报表系统中的信息，如果没有信息，则新建用户
-            user.setUserName(username);
-        	if(addUser(user)){
-            	tempUser=(User)loadUserByUsername(username);
-        	}else{
-        		throw new UsernameNotFoundException("Create Temp User Error!");
-        	}
-		}
 		tempUser.setAuthorities(this.loadUserAuthorities(username));
 		return tempUser;
 	}
@@ -141,6 +135,8 @@ public class DbUserDetailService extends JdbcDaoImpl {
 		this.userInfoUrl = userInfoUrl;
 	}
 
+	
+	
 	//获取服务器json字符串
     public static String getJsonContent(String urlStr)
     {

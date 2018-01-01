@@ -16,7 +16,7 @@ import com.sailmi.mall.core.domain.IdEntity;
 
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Entity
-@Table(name = "smmall_goods_floor")
+@Table(name = "sailmall_goods_floor")
 public class GoodsFloor extends IdEntity {
 	/**
 	 * 
@@ -30,11 +30,11 @@ public class GoodsFloor extends IdEntity {
 	//货物数量
 	private int gf_goods_count;
 
-	@OneToMany(mappedBy = "parent", cascade = { javax.persistence.CascadeType.REMOVE })
+	@OneToMany(fetch=FetchType.EAGER,mappedBy = "parent", cascade = { javax.persistence.CascadeType.REMOVE })
 	@OrderBy("gf_sequence asc")
 	private List<GoodsFloor> childs = new ArrayList<GoodsFloor>();
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	private GoodsFloor parent;
 	//水平
 	private int gf_level;

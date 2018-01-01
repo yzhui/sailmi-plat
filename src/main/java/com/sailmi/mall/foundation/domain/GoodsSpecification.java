@@ -14,7 +14,7 @@ import com.sailmi.mall.core.domain.IdEntity;
  
  @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
  @Entity
- @Table(name="smmall_goodsspecification")
+ @Table(name="sailmall_goodsspecification")
  public class GoodsSpecification extends IdEntity
  {
    //名称

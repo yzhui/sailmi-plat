@@ -1,5 +1,6 @@
 package com.sailmi.mall.foundation.service;
 
+import com.sailmi.mall.core.security.SecurityAuthType;
 import com.sailmi.mall.foundation.domain.SysConfig;
 
 public abstract interface ISysConfigService
@@ -11,6 +12,8 @@ public abstract interface ISysConfigService
   public abstract boolean update(SysConfig paramSysConfig);
 
   public abstract SysConfig getSysConfig();
+  
+  public abstract SecurityAuthType getSecurityAuthType();
 }
 
 

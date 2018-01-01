@@ -15,7 +15,7 @@ import com.sailmi.mall.core.domain.IdEntity;
  
  @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
  @Entity
- @Table(name="smmall_group_area")
+ @Table(name="sailmall_group_area")
  public class GroupArea extends IdEntity
  {
    //分组地区名称
@@ -24,11 +24,11 @@ import com.sailmi.mall.core.domain.IdEntity;
    private int ga_sequence;
    
    //分组父地区
-   @ManyToOne(fetch=FetchType.LAZY)
+   @ManyToOne
    private GroupArea parent;
    
    //分组子地区
-   @OneToMany(mappedBy="parent", cascade={javax.persistence.CascadeType.REMOVE})
+   @OneToMany(mappedBy="parent", cascade={javax.persistence.CascadeType.REMOVE},fetch=FetchType.EAGER)
    @OrderBy("ga_sequence asc")
    private List<GroupArea> childs = new ArrayList();
    //分组地区水平

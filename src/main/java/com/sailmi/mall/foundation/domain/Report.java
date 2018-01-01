@@ -15,33 +15,33 @@ import com.sailmi.mall.core.domain.IdEntity;
  
  @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
  @Entity
- @Table(name="smmall_report")
+ @Table(name="sailmall_report")
  public class Report extends IdEntity
  {
  
    //用户
-   @ManyToOne(fetch=FetchType.LAZY)
+   @ManyToOne
    private User user;
  
    //商品
-   @ManyToOne(fetch=FetchType.LAZY)
+   @ManyToOne
    private Goods goods;
    //状态
    private int status;
  
-   @ManyToOne(fetch=FetchType.LAZY)
+   @ManyToOne
    private ReportSubject subject;
  
    //附件1
-   @OneToOne(fetch=FetchType.LAZY)
+   @OneToOne
    private Accessory acc1;
  
    //附件2
-   @OneToOne(fetch=FetchType.LAZY)
+   @OneToOne
    private Accessory acc2;
  
    //附件3
-   @OneToOne(fetch=FetchType.LAZY)
+   @OneToOne
    private Accessory acc3;
 
    //内容

@@ -161,8 +161,8 @@ import com.sailmi.mall.uc.api.UCClient;
    public ModelAndView account_password(HttpServletRequest request, HttpServletResponse response) {
      ModelAndView mv = new JModelAndView("user/default/usercenter/account_password.html", this.configService.getSysConfig(), 
        this.userConfigService.getUserConfig(), 0, request, response);
-     String smmall_view_type = CommUtil.null2String( request.getSession().getAttribute( "smmall_view_type" ) );
-	 if( (smmall_view_type != null) && (!smmall_view_type.equals( "" )) && (smmall_view_type.equals( "mobile" )) ) {
+     String sailmall_view_type = CommUtil.null2String( request.getSession().getAttribute( "sailmall_view_type" ) );
+	 if( (sailmall_view_type != null) && (!sailmall_view_type.equals( "" )) && (sailmall_view_type.equals( "mobile" )) ) {
 		 mv = new JModelAndView("mobile/account_password.html", this.configService.getSysConfig(), this.userConfigService.getUserConfig(), 1, request, response);
 	 }
      return mv;
@@ -172,8 +172,8 @@ import com.sailmi.mall.uc.api.UCClient;
    @RequestMapping({"/buyer/account_password_save.htm"})
    public ModelAndView account_password_save(HttpServletRequest request, HttpServletResponse response, String old_password, String new_password) throws Exception {
      ModelAndView mv = new JModelAndView("success.html", this.configService.getSysConfig(), this.userConfigService.getUserConfig(), 1, request, response);
-     String smmall_view_type = CommUtil.null2String( request.getSession().getAttribute( "smmall_view_type" ) );
-	 if( (smmall_view_type != null) && (!smmall_view_type.equals( "" )) && (smmall_view_type.equals( "mobile" )) ) {
+     String sailmall_view_type = CommUtil.null2String( request.getSession().getAttribute( "sailmall_view_type" ) );
+	 if( (sailmall_view_type != null) && (!sailmall_view_type.equals( "" )) && (sailmall_view_type.equals( "mobile" )) ) {
 		 mv = new JModelAndView("mobile/success.html", this.configService.getSysConfig(), this.userConfigService.getUserConfig(), 1, request, response);
 	 }
      User user = this.userService.getObjById(
@@ -195,7 +195,7 @@ import com.sailmi.mall.uc.api.UCClient;
        send_sms(request, "sms_tobuyer_pws_modify_notify");
      } else {
        mv = new JModelAndView("error.html", this.configService.getSysConfig(), this.userConfigService.getUserConfig(), 1, request, response);
-       if( (smmall_view_type != null) && (!smmall_view_type.equals( "" )) && (smmall_view_type.equals( "mobile" )) ) {
+       if( (sailmall_view_type != null) && (!sailmall_view_type.equals( "" )) && (sailmall_view_type.equals( "mobile" )) ) {
   		 mv = new JModelAndView("mobile/error.html", this.configService.getSysConfig(), this.userConfigService.getUserConfig(), 1, request, response);
   	   }
        mv.addObject("op_title", "原始密码输入错误，修改失败");

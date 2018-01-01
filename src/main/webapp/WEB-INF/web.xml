@@ -12,52 +12,77 @@
   </welcome-file-list>
   <context-param>
     <param-name>contextConfigLocation</param-name>
-    <param-value>classpath:applicationContext.xml</param-value>
+    <param-value>classpath:applicationContext*.xml</param-value>
   </context-param>
-  	 <listener>  
-	     <listener-class>org.jasig.cas.client.session.SingleSignOutHttpSessionListener</listener-class>  
-	 </listener>  
- <!--
-    防止发生java.beans.Introspector内存泄露,应将它配置在ContextLoaderListener的前面
-    详细描述见http://blog.csdn.net/jadyer/article/details/11991457  -->
+  <context-param>
+    <param-name>webAppRootKey</param-name>
+    <param-value>sailmall.root</param-value>
+  </context-param>
   <listener>
-    <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+    <listener-class>
+    org.springframework.web.util.IntrospectorCleanupListener
+    </listener-class>
+  </listener>
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+  
+  <listener>
+    <listener-class>
+			com.sailmi.mall.core.loader.ServletContextLoaderListener
+		</listener-class>
+  </listener>
+  <listener>
+    <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
   </listener>
   <listener>
     <listener-class>
-			org.springframework.web.context.ContextLoaderListener
+			org.springframework.web.util.WebAppRootListener
 		</listener-class>
   </listener>
-  <filter>
-    <filter-name>jpaFilter</filter-name>
-    <filter-class>
-			org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter
-		</filter-class>
-    <init-param>
-      <param-name>singleSession</param-name>
-      <param-value>false</param-value>
-    </init-param>
-    <init-param>
-      <param-name>entityManagerFactory</param-name>
-      <param-value>entityManagerFactory</param-value>
-    </init-param>
-  </filter>
-  <filter-mapping>
-    <filter-name>jpaFilter</filter-name>
-    <url-pattern>*.htm</url-pattern>
-  </filter-mapping>
-   
-   <filter>
+    <filter>
         <filter-name>OpenSessionInViewFilter</filter-name>
         <filter-class>org.springframework.orm.hibernate5.support.OpenSessionInViewFilter</filter-class>
+		<init-param>   
+		    <param-name>sessionFactoryBeanName</param-name>  
+		    <param-value>sessionFactory</param-value>  
+		</init-param>  
+        <init-param>  
+            <param-name>singleSession</param-name>  
+            <param-value>true</param-value>  
+        </init-param>   
     </filter>
 
-    <filter-mapping>
+   <filter-mapping>
         <filter-name>OpenSessionInViewFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
-  
+
+
+   
   <filter>
+    <filter-name>springSecurityFilterChain</filter-name>
+    <filter-class>
+			org.springframework.web.filter.DelegatingFilterProxy
+	</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>springSecurityFilterChain</filter-name>
+    <url-pattern>*.htm</url-pattern>
+  </filter-mapping>
+  <!-- 
+ <filter>
+		<filter-name>deviceAccessFilter</filter-name>
+		<filter-class>
+			org.springframework.web.filter.DelegatingFilterProxy
+		</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>deviceAccessFilter</filter-name>
+		<url-pattern>*.htm</url-pattern>
+	</filter-mapping>
+	-->
+   <filter>
     <filter-name>encoding-filter</filter-name>
     <filter-class>
 			org.springframework.web.filter.CharacterEncodingFilter
@@ -75,16 +100,7 @@
     <filter-name>encoding-filter</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
-  <filter>
-    <filter-name>springSecurityFilterChain</filter-name>
-    <filter-class>
-			org.springframework.web.filter.DelegatingFilterProxy
-	</filter-class>
-  </filter>
-  <filter-mapping>
-    <filter-name>springSecurityFilterChain</filter-name>
-    <url-pattern>/*</url-pattern>
-  </filter-mapping>
+  
   <filter>
     <filter-name>UrlRewriteFilter</filter-name>
     <filter-class>
@@ -95,6 +111,8 @@
     <filter-name>UrlRewriteFilter</filter-name>
     <url-pattern>*.htm</url-pattern>
   </filter-mapping>
+  
+  
   <filter>
     <filter-name>GZIPEncoder</filter-name>
     <filter-class>
@@ -103,23 +121,27 @@
   </filter>
   <filter-mapping>
     <filter-name>GZIPEncoder</filter-name>
-    <servlet-name>/sailmall</servlet-name>
+    <servlet-name>/mall</servlet-name>
   </filter-mapping>
-  
-  <filter>
-    <filter-name>shopFilter</filter-name>
-    <filter-class>
-			org.springframework.web.filter.DelegatingFilterProxy
+ <!--
+    防止发生java.beans.Introspector内存泄露,应将它配置在ContextLoaderListener的前面
+    详细描述见http://blog.csdn.net/jadyer/article/details/11991457  -->
+	<filter>
+		<filter-name>secondDomainFilter</filter-name>
+		<filter-class>
+			org.springframework.web.filter.DelegatingFilterProxy<!-- DelegatingFilterProxy就是一个对于servlet 
+				filter的代理 -->
 		</filter-class>
-    <init-param>
-      <param-name>targetFilterLifecycle</param-name>
-      <param-value>true</param-value>
-    </init-param>
-  </filter>
-  <filter-mapping>
-    <filter-name>shopFilter</filter-name>
-    <url-pattern>*.htm</url-pattern>
-  </filter-mapping>
+		<init-param>
+			<param-name>targetFilterLifecycle</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>secondDomainFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
   <servlet>
     <servlet-name>sailmall</servlet-name>
     <servlet-class>
@@ -144,24 +166,8 @@
   <servlet-mapping>
     <servlet-name>UploadServlet</servlet-name>
     <url-pattern>/image/upload</url-pattern>
-  </servlet-mapping>
-  <listener>
-    <listener-class>
-			com.sailmi.mall.core.loader.ServletContextLoaderListener
-		</listener-class>
-  </listener>
-  <context-param>
-    <param-name>webAppRootKey</param-name>
-    <param-value>sailmall.root</param-value>
-  </context-param>
-  <listener>
-    <listener-class>
-			org.springframework.web.util.WebAppRootListener
-		</listener-class>
-  </listener>
-  <listener>
-    <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
-  </listener>
+  </servlet-mapping>  
+
   <error-page>
     <error-code>500</error-code>
     <location>/500.htm</location>

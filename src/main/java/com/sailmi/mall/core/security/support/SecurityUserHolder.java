@@ -16,35 +16,24 @@ import com.sailmi.mall.foundation.domain.User;
  {
    public static User getCurrentUser()
    {
+     User user = null;
      if (SecurityContextHolder.getContext().getAuthentication() != null)
      {
        if ((SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof UserDetails))
        {
-         return (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    	 user=(User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    	 System.out.println("SecurityUserHolder1:"+user);
        }
-     }
-     User user = null;
-     if (RequestContextHolder.getRequestAttributes() != null) {
-       HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
-       HttpSession  session = request.getSession(false);
-       if(session!=null)
-    	   user = session.getAttribute("user") != null ?(User)session.getAttribute("user") : null;
- 
-       Cookie[] cookies = request.getCookies();
-       String id = "";
-       if (cookies != null) {
-         for (Cookie cookie : cookies)
-         {
-           if (cookie.getName().equals("smmall_user_session")) {
-             id = CommUtil.null2String(cookie.getValue());
-           }
+     }else{
+         if (RequestContextHolder.getRequestAttributes() != null) {
+           HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
+           HttpSession  session = request.getSession(false);
+           if(session!=null)
+        	   user = session.getAttribute("user") != null ?(User)session.getAttribute("user") : null;
          }
-       }
-       if (id.equals("")) {
-         user = null;
-       }
+         System.out.println("SecurityUserHolder2:"+user);
      }
- 
+     System.out.println("SecurityUserHolder3:"+user);
      return user;
    }
  }

@@ -32,8 +32,8 @@ public class Globals
   public static final int DEFAULT_IMAGE_BIG_WIDTH = 1024;
   public static final int DEFAULT_IMAGE_BIG_HEIGH = 1024;
   public static final int DEFAULT_COMPLAINT_TIME = 30;
-  public static final String DEFAULT_TABLE_SUFFIX = "smmall_";
-  public static final String THIRD_ACCOUNT_LOGIN = "smmall_thid_login_";
+  public static final String DEFAULT_TABLE_SUFFIX = "sailmall_";
+  public static final String THIRD_ACCOUNT_LOGIN = "sailmall_thid_login_";
   public static final String DEFAULT_SMS_URL = "http://service.winic.org/sys_port/gateway/";
   public static final String DEFAULT_BIND_DOMAIN_CODE = "126A11D4BB76663E85078487393AB64897B9DCE99C5934CD589CFE4E769668CB";
 }

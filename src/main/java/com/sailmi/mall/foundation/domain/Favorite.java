@@ -15,7 +15,7 @@ import com.sailmi.mall.core.domain.IdEntity;
  */
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Entity
-@Table(name = "smmall_favorite")
+@Table(name = "sailmall_favorite")
 public class Favorite extends IdEntity {
 	/**
 	 * UID
@@ -25,15 +25,15 @@ public class Favorite extends IdEntity {
 	private int type;
 	
 	//商品
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	private Goods goods;
 	
 	//店铺
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	private Store store;
 	
 	//用户
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	private User user;
 
 	public int getType() {

@@ -164,7 +164,7 @@
          for (Accessory acc : accs) {
            CommUtil.del_acc(request, acc);
            this.databaseTools
-             .execute("update smmall_album set album_cover_id=null where album_cover_id=" + 
+             .execute("update sailmall_album set album_cover_id=null where album_cover_id=" + 
              acc.getId());
          }
          this.albumService.delete(Long.valueOf(Long.parseLong(id)));

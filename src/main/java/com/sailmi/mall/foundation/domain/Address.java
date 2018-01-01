@@ -10,12 +10,12 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import com.sailmi.mall.core.domain.IdEntity;
 /**
  * 地址
- * @author smmall
+ * @author sailmall
  *
  */
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Entity
-@Table(name = "smmall_address")
+@Table(name = "sailmall_address")
 public class Address extends IdEntity {
 	/**
 	 * UID
@@ -25,7 +25,7 @@ public class Address extends IdEntity {
 	private String trueName;
 	
 	//地区
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	private Area area;
 	//地址信息
 	private String area_info;
@@ -36,7 +36,7 @@ public class Address extends IdEntity {
 	//手机
 	private String mobile;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	private User user;
 
 	public User getUser() {

@@ -57,7 +57,7 @@
 		function cart_remove(id,store_id){
            jQuery.post('$!webPath/remove_goods_cart.htm',{"id":id,"store_id":store_id},function(data){
            jQuery("div[class=table] tr[id="+id+"]").remove();
-		   jQuery(".smmall[id="+id+"]").remove();
+		   jQuery(".sailmall[id="+id+"]").remove();
 		   jQuery(".shopp_ingtop[id="+id+"]").remove();
            jQuery("#cart_goods_count_top").html(data.count);
            jQuery("#cart_goods_price_top").html(data.total_price);
@@ -152,8 +152,8 @@
 		</div>
 		<div class="pageleft">
 			#if($!user)<span>$!CommUtil.substring("$!{user.userName}",12)您好,欢迎来到$!CommUtil.substring("$!{config.websiteName}",30)！</span><a
-				href="$!webPath/j_spring_cas_security_logout" class="lightblue">[退出]</a> #else<span>亲，欢迎来到$!{config.websiteName}！</span><span
-				class="pxlr"><a href="http://service.yudorm.com/mall/buyer/index.htm"
+				href="$!webPath/logout.htm" class="lightblue">[退出]</a> #else<span>亲，欢迎来到$!{config.websiteName}！</span><span
+				class="pxlr"><a href="$!webPath/user/login.htm"
 				class="lightblue">登录</a></span><span class="pxlr">或</span><span
 				class="pxlr">
 				<!-- 

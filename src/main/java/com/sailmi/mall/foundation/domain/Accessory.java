@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -21,7 +22,7 @@ import com.sailmi.mall.core.domain.IdEntity;
  */
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Entity
-@Table(name = "smmall_accessory")
+@Table(name = "sailmall_accessory")
 public class Accessory extends IdEntity {
 	/**
 	 * UID
@@ -43,18 +44,21 @@ public class Accessory extends IdEntity {
 	private String info;
 	
 	//所属人
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
+	@JoinColumn(name="user_id")
 	private User user;
 	
 	//相册
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
+	@JoinColumn(name="album_id")
 	private Album album;
 	
-	@OneToOne(mappedBy = "album_cover", fetch = FetchType.LAZY)
+	@OneToOne(mappedBy = "album_cover")
 	private Album cover_album;
 	
 	//系统配置
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
+	@JoinColumn(name="config_id")
 	private SysConfig config;
 
 	//goods主列表

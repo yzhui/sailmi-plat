@@ -7,17 +7,20 @@
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
  import javax.persistence.Entity;
- import javax.persistence.ManyToOne;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
  import javax.persistence.OneToMany;
  import javax.persistence.Table;
  import org.hibernate.annotations.Cache;
  import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import com.sailmi.mall.core.domain.IdEntity;
  
  @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
  @Entity
- @Table(name="smmall_storecart")
+ @Table(name="sailmall_storecart")
  public class StoreCart extends IdEntity
  {
  
@@ -27,6 +30,7 @@ import com.sailmi.mall.core.domain.IdEntity;
  
    //商品运送
    @OneToMany(cascade=CascadeType.ALL,mappedBy="sc")
+   @Fetch(FetchMode.SUBSELECT)
    private List<GoodsCart> gcs = new ArrayList();
    //总价
    private BigDecimal total_price;

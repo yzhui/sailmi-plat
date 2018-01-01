@@ -1,30 +1,36 @@
  package com.sailmi.mall.view.web.tools;
  
- import com.sailmi.mall.core.tools.CommUtil;
- import com.sailmi.mall.foundation.domain.Accessory;
- import com.sailmi.mall.foundation.domain.Advert;
- import com.sailmi.mall.foundation.domain.AdvertPosition;
- import com.sailmi.mall.foundation.domain.Goods;
- import com.sailmi.mall.foundation.domain.GoodsBrand;
- import com.sailmi.mall.foundation.domain.GoodsClass;
- import com.sailmi.mall.foundation.service.IAccessoryService;
- import com.sailmi.mall.foundation.service.IAdvertPositionService;
- import com.sailmi.mall.foundation.service.IAdvertService;
- import com.sailmi.mall.foundation.service.IGoodsBrandService;
- import com.sailmi.mall.foundation.service.IGoodsClassService;
- import com.sailmi.mall.foundation.service.IGoodsFloorService;
- import com.sailmi.mall.foundation.service.IGoodsService;
  import java.util.ArrayList;
- import java.util.Date;
- import java.util.HashMap;
- import java.util.List;
- import java.util.Map;
- import java.util.Random;
- import org.nutz.json.Json;
- import org.springframework.beans.factory.annotation.Autowired;
- import org.springframework.stereotype.Component;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+
+import org.nutz.json.Json;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.sailmi.mall.core.tools.CommUtil;
+import com.sailmi.mall.foundation.domain.Accessory;
+import com.sailmi.mall.foundation.domain.Advert;
+import com.sailmi.mall.foundation.domain.AdvertPosition;
+import com.sailmi.mall.foundation.domain.Goods;
+import com.sailmi.mall.foundation.domain.GoodsBrand;
+import com.sailmi.mall.foundation.domain.GoodsClass;
+import com.sailmi.mall.foundation.service.IAccessoryService;
+import com.sailmi.mall.foundation.service.IAdvertPositionService;
+import com.sailmi.mall.foundation.service.IAdvertService;
+import com.sailmi.mall.foundation.service.IGoodsBrandService;
+import com.sailmi.mall.foundation.service.IGoodsClassService;
+import com.sailmi.mall.foundation.service.IGoodsFloorService;
+import com.sailmi.mall.foundation.service.IGoodsService;
  
+
  @Component
+ @Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW)
  public class GoodsFloorViewTools
  {
  
@@ -92,7 +98,7 @@
      return goods_list;
    }
  
-   public Map generic_goods_list(String json) {
+  public Map generic_goods_list(String json) {
      Map map = new HashMap();
      map.put("list_title", "商品排行");
      if ((json != null) && (!json.equals(""))) {
@@ -114,6 +120,8 @@
      return map;
    }
  
+  
+  @Transactional
    public String generic_adv(String web_url, String json) {
      String template = "<div style='float:left;overflow:hidden;'>";
      if ((json != null) && (!json.equals(""))) {
@@ -137,7 +145,8 @@
          obj.setAp_width(ap.getAp_width());
          obj.setAp_height(ap.getAp_height());
          List advs = new ArrayList();
-         for (Advert temp_adv : ap.getAdvs()) {
+         List<Advert> testAdList = this.advertService.query("select obj from Advert obj where obj.ad_ap.id="+obj.getId(),null, -1, -1);
+         for (Advert temp_adv : testAdList) {
            if ((temp_adv.getAd_status() != 1) || 
              (!temp_adv.getAd_begin_time().before(new Date())) || 
              (!temp_adv.getAd_end_time().after(new Date()))) continue;
@@ -180,7 +189,7 @@
      template = template + "</div>";
      return template;
    }
- 
+
    public List<GoodsBrand> generic_brand(String json) {
      List brands = new ArrayList();
      if ((json != null) && (!json.equals(""))) {

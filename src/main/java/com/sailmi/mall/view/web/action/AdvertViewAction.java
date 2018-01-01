@@ -47,9 +47,9 @@ import org.springframework.web.servlet.ModelAndView;
      ModelAndView mv = new JModelAndView("advert_invoke.html", this.configService.getSysConfig(), 
        this.userConfigService.getUserConfig(), 1, request, response);
      
-     String smmall_view_type = CommUtil.null2String( request.getSession().getAttribute( "smmall_view_type" ) );
+     String sailmall_view_type = CommUtil.null2String( request.getSession().getAttribute( "sailmall_view_type" ) );
      
-	 if( (smmall_view_type != null) && (!smmall_view_type.equals( "" )) && (smmall_view_type.equals( "mobile" )) ) {
+	 if( (sailmall_view_type != null) && (!sailmall_view_type.equals( "" )) && (sailmall_view_type.equals( "mobile" )) ) {
 		 mv = new JModelAndView("mobile/advert_invoke.html", this.configService.getSysConfig(), 
 			       this.userConfigService.getUserConfig(), 1, request, response);
 	 }
@@ -64,7 +64,8 @@ import org.springframework.web.servlet.ModelAndView;
          obj.setAp_width(ap.getAp_width());
          obj.setAp_height(ap.getAp_height());
          List advs = new ArrayList();
-         for (Advert temp_adv : ap.getAdvs()) {
+         List<Advert> adv_list=this.advertService.query("select obj from Advert obj where obj.ad_ap.id="+ap.getId(),null, -1, -1);
+         for (Advert temp_adv : adv_list) {
            if ((temp_adv.getAd_status() != 1) || 
              (!temp_adv.getAd_begin_time().before(new Date())) || 
              (!temp_adv.getAd_end_time().after(new Date()))) continue;

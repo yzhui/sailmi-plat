@@ -2,12 +2,16 @@ package com.sailmi.mall.foundation.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
+
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -19,7 +23,7 @@ import com.sailmi.mall.core.domain.IdEntity;
  */
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Entity
-@Table(name = "smmall_articleclass")
+@Table(name = "sailmall_articleclass")
 public class ArticleClass extends IdEntity {
 	/**
 	 * UID
@@ -37,16 +41,17 @@ public class ArticleClass extends IdEntity {
 	private boolean sysClass;
 	
 	//父类
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	private ArticleClass parent;
 	
 	//子类
-	@OneToMany(mappedBy = "parent", cascade = { javax.persistence.CascadeType.REMOVE })
+	@OneToMany(fetch = FetchType.EAGER,mappedBy = "parent",cascade = { javax.persistence.CascadeType.REMOVE })
 	private List<ArticleClass> childs = new ArrayList<ArticleClass>();
 	
-	//文章
-	@OneToMany(mappedBy = "articleClass", cascade = { javax.persistence.CascadeType.REMOVE })
+	//文章   YZH    此处有性能问题，FetchType为true的时候不会报错，但改为Lasy，会报sesion close 错误
+	//@JoinColumn(name="articleClass_id")
 	@OrderBy("addTime desc")
+	@OneToMany(mappedBy = "articleClass",cascade = CascadeType.ALL,fetch = FetchType.LAZY,targetEntity = Article.class,orphanRemoval = true)
 	private List<Article> articles = new ArrayList<Article>();
 
 	public int getSequence() {
@@ -106,6 +111,9 @@ public class ArticleClass extends IdEntity {
 	}
 
 	public List<Article> getArticles() {
+		System.out.println("Get Articles..................................................................................................");
+		//重设一下session
+		
 		return this.articles;
 	}
 

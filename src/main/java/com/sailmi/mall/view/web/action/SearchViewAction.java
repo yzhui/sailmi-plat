@@ -81,9 +81,9 @@ import com.sailmi.mall.view.web.tools.StoreViewTools;
        type = "goods";
      keyword = CommUtil.decode(keyword);
      
-     String smmall_view_type = CommUtil.null2String(request.getSession(false).getAttribute("smmall_view_type"));
+     String sailmall_view_type = CommUtil.null2String(request.getSession(false).getAttribute("sailmall_view_type"));
 		
-	 if ((smmall_view_type != null) && (!smmall_view_type.equals("")) && (smmall_view_type.equals("mobile"))) {
+	 if ((sailmall_view_type != null) && (!sailmall_view_type.equals("")) && (sailmall_view_type.equals("mobile"))) {
 		 mv = new JModelAndView("mobile/search.html", 
 			       this.configService.getSysConfig(), this.userConfigService.getUserConfig(), 1, request, response);
 	 }
@@ -92,7 +92,7 @@ import com.sailmi.mall.view.web.tools.StoreViewTools;
        mv = new JModelAndView("store_list.html", this.configService.getSysConfig(), 
          this.userConfigService.getUserConfig(), 1, request, response);
        
-       if ((smmall_view_type != null) && (!smmall_view_type.equals("")) && (smmall_view_type.equals("mobile"))) {
+       if ((sailmall_view_type != null) && (!sailmall_view_type.equals("")) && (sailmall_view_type.equals("mobile"))) {
   		 mv = new JModelAndView("mobile/store_list.html", 
   			       this.configService.getSysConfig(), this.userConfigService.getUserConfig(), 1, request, response);
   	   }

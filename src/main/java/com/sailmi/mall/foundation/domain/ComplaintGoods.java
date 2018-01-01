@@ -16,7 +16,7 @@ import com.sailmi.mall.core.domain.IdEntity;
  */
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Entity
-@Table(name = "smmall_complaint_goods")
+@Table(name = "sailmall_complaint_goods")
 public class ComplaintGoods extends IdEntity {
 
 	/**
@@ -25,7 +25,7 @@ public class ComplaintGoods extends IdEntity {
 	private static final long serialVersionUID = 688451202252628683L;
 	
 	//商品
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	private Goods goods;
 	
 	//内容
@@ -33,7 +33,7 @@ public class ComplaintGoods extends IdEntity {
 	private String content;
 	
 	//举报
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	private Complaint complaint;
 
 	public Goods getGoods() {

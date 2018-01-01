@@ -20,7 +20,7 @@ import com.sailmi.mall.core.domain.IdEntity;
  */
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Entity
-@Table(name = "smmall_bargain_goods")
+@Table(name = "sailmall_bargain_goods")
 public class BargainGoods extends IdEntity {
 
 	/**
@@ -28,7 +28,7 @@ public class BargainGoods extends IdEntity {
 	 */
 	private static final long serialVersionUID = 7152250727882399474L;
 	//商品
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	private Goods bg_goods;
 	//状态
 	private int bg_status;
@@ -41,7 +41,7 @@ public class BargainGoods extends IdEntity {
 	@Column(columnDefinition = "int default 1")
 	private int bg_count;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	private User bg_admin_user;
 	
 	//特价价格

@@ -45,7 +45,12 @@ import org.slf4j.LoggerFactory;
  
    public String include(String includePath) {
      StringWriter sw = new StringWriter(8192);
-     include(includePath, sw);
+     try{
+         include(includePath, sw);
+     }catch(Exception ec){
+    	 ec.printStackTrace();
+    	 return "";
+     }
      return sw.toString();
    }
  

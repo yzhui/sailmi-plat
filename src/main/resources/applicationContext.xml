@@ -1,135 +1,122 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:aop="http://www.springframework.org/schema/aop"
-       xmlns:tx="http://www.springframework.org/schema/tx"
-       xmlns:util="http://www.springframework.org/schema/util"
-       xmlns:mvc="http://www.springframework.org/schema/mvc"
-       xsi:schemaLocation="http://www.springframework.org/schema/context
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/tx
         http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
         http://www.springframework.org/schema/jdbc
         http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
         http://www.springframework.org/schema/cache
         http://www.springframework.org/schema/cache/spring-cache.xsd
-        http://www.springframework.org/schema/aop
-        http://www.springframework.org/schema/aop/spring-aop.xsd
         http://www.springframework.org/schema/util
         http://www.springframework.org/schema/util/spring-util.xsd
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc.xsd">
-        
-    <!-- 属性文件位置 -->
-    <bean id="annotationPropertyConfigurer"
-        class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="locations">
-            <list>
-                <value>classpath:jdbc.properties</value>
-            </list>
-        </property>
-    </bean>
-    
-    <context:component-scan base-package="com.sailmi.mall" />
-    <tx:annotation-driven transaction-manager="transactionManager"/>
-    <!-- 配置数据源 c3p0 -->
-    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
-        destroy-method="close">
-        <property name="driverClass" value="${jdbc.driver}" />
-        <property name="jdbcUrl" value="${jdbc.url}" />
-        <property name="user" value="${jdbc.username}" />
-        <property name="password" value="${jdbc.password}" />
-        <!-- 请求超时时间 -->
-        <property name="checkoutTimeout" value="30000" />
-        <!-- 每60秒检查所有连接池中的空闲连接。默认值: 0，不检查 -->
-        <property name="idleConnectionTestPeriod" value="30" />
-        <!-- 连接数据库连接池最大空闲时间 -->
-        <property name="maxIdleTime" value="30" />
-        <!-- 连接池初始化连接数 -->
-        <property name="initialPoolSize" value="5" />
-        <property name="minPoolSize" value="5" />
-        <property name="maxPoolSize" value="20" />
-        <!--当连接池中的连接耗尽的时候c3p0一次同时获取的连接数。默认值: 3 -->
-        <property name="acquireIncrement" value="5" />
-    </bean>
-    <!-- 配置hibernate的SessionFactory -->
-    <bean id="sessionFactory"
-        class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
-        <!-- 注入数据源 相关信息看源码 -->
-        <property name="dataSource" ref="dataSource" />
-        <!-- hibernate配置信息 -->
-        <property name="hibernateProperties">
-            <props>
-                <prop key="hibernate.dialect">${hibernate.dialect}</prop>
-                <prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
-                <prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
-                <prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
-                <!-- 开启二级缓存 ehcache -->
-                <prop key="hibernate.cache.use_second_level_cache">${hibernate.cache.use_second_level_cache}</prop>
-                <prop key="hibernate.cache.use_query_cache">${hibernate.cache.use_query_cache}</prop>
-                <prop key="hibernate.cache.region.factory_class">${hibernate.cache.region.factory_class}</prop>
-                <prop key="hibernate.cache.provider_configuration_file_resource_path">${hibernate.cache.provider_configuration_file_resource_path}
-                </prop>
-            </props>
-        </property>
-        <!-- 扫描hibernate注解配置的entity -->
-        <property name="packagesToScan" value="com.sailmi.mall" />
-    </bean>
-    
-	<bean id="hibernateDaoSupport" class="org.springframework.orm.hibernate5.support.HibernateDaoSupport" abstract="true">
-        <property name="sessionFactory" ref="sessionFactory"></property>
-    </bean>
-    <!-- 配置事务管理器 -->
-    <bean id="transactionManager"
-        class="org.springframework.orm.hibernate5.HibernateTransactionManager">
-        <property name="sessionFactory" ref="sessionFactory" />
-    </bean>
-	<bean name="entityManagerFactory"
-		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-		<property name="persistenceXmlLocation" value="classpath:persistence.xml" />
-		<property name="dataSource" ref="dataSource" />
-		<property name="jpaVendorAdapter">
-			<bean
-				class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-				<property name="database" value="MYSQL" />
-				<property name="showSql" value="false" />
-				<property name="generateDdl" value="false" />
-			</bean>
+	<!-- 属性文件位置 -->
+	<bean id="annotationPropertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:jdbc.properties</value>
+			</list>
 		</property>
-		<property name="jpaProperties">
+	</bean>
+
+	<!-- 扫描注解 -->
+	<context:component-scan base-package="com.sailmi.mall"/>
+
+	<!-- 配置事务增强处理Bean，指定事务管理器 -->
+	<tx:annotation-driven proxy-target-class="true"
+		transaction-manager="transactionManager" />
+	<!--开启AOP自动代理-->
+	<aop:aspectj-autoproxy proxy-target-class="true" />
+	
+<!-- 配置文件上传，如果没有使用文件上传可以不用配置，当然如果不配，那么配置文件中也不必引入上传组件包 -->
+	<bean name="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- 默认编码 -->
+		<property name="defaultEncoding" value="utf-8" />
+		<!-- 文件大小最大值 -->
+		<property name="maxUploadSize" value="10485760000" />
+		<!-- 内存中的最大值 -->
+		<property name="maxInMemorySize" value="40960" />
+	</bean>
+	<!-- 配置数据源  -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driver}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+		<property name="initialSize" value="${jdbc.initialSize}" />
+		<property name="maxActive" value="${jdbc.maxActive}" />
+		<property name="maxIdle" value="${jdbc.maxIdle}" />
+		<property name="minIdle" value="${jdbc.minIdle}" />
+		<!--removeAbandoned: 是否自动回收超时连接 -->
+		<property name="removeAbandoned" value="true" />
+		<!--removeAbandonedTimeout: 超时时间(以秒数为单位) -->
+		<property name="removeAbandonedTimeout" value="180" />
+		<!--maxWait: 超时等待时间以毫秒为单位 6000毫秒/1000等于60秒 -->
+		<property name="maxWait" value="6000" />
+		<property name="validationQuery">
+			<value>SELECT 1</value>
+		</property>
+		<property name="testOnBorrow">
+			<value>true</value>
+		</property>
+	</bean>
+	<!-- 配置hibernate的SessionFactory -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean"
+		lazy-init="true">
+		<!-- 注入数据源 相关信息看源码 -->
+		<property name="dataSource" ref="dataSource" />
+		<!-- hibernate配置信息 -->
+		<property name="hibernateProperties">
 			<props>
-				<!-- 自定义方言 -->
-				<prop key="hibernate.dialect">
-					com.sailmi.mall.core.dialect.SystemMySQL5Dialect
+				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
+				<prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+				<prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
+				<prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
+				<prop key="hibernate.current_session_context_class">org.springframework.orm.hibernate5.SpringSessionContext
 				</prop>
-				<!-- 二级缓存配置 -->
-				<prop key="hibernate.cache.provider_class">
-					net.sf.ehcache.hibernate.SingletonEhCacheProvider
-				</prop>
-				<prop key="hibernate.cache.use_query_cache">true</prop>
-				<prop key="hibernate.cache.use_second_level_cache">
-					false
-				</prop>
-				<prop key="hibernate.cache.region.factory_class">
-					org.hibernate.cache.ehcache.EhCacheRegionFactory
-				</prop>
-				<prop key="hibernate.use_sql_comments">false</prop>
-				<prop key="hibernate.format_sql">false</prop>
-				<prop key="hibernate.generate_statistics">true</prop>
+				<prop key="hibernate.transaction.coordinator_class">jdbc</prop>
+				<prop key="hibernate.temp.use_jdbc_metadata_defaults">false</prop>
+				<!-- 开启二级缓存 ehcache -->
+				<prop key="hibernate.cache.use_second_level_cache">${hibernate.cache.use_second_level_cache}</prop>
+				<prop key="hibernate.cache.use_query_cache">${hibernate.cache.use_query_cache}</prop>
+				<prop key="hibernate.cache.region.factory_class">${hibernate.cache.region.factory_class}</prop>
 			</props>
 		</property>
+		<!-- 扫描hibernate注解配置的entity -->
+		<property name="packagesToScan" value="com.sailmi.mall" />
 	</bean>
-    <bean id="hibernateTemplate" class="org.springframework.orm.hibernate5.HibernateTemplate">  
-    	<property name="sessionFactory" ref="sessionFactory"></property>  
-    </bean>
+	
+
+	<bean
+		class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+		
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate5.HibernateTemplate">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+		<!-- <property name="cacheQueries" value="true"/> -->
+	</bean>
+
+
 	<!-- 定义了与实体相关的dao -->
 	<bean id="genericEntityDao" class="com.sailmi.mall.core.base.GenericEntityDao"
-		scope="prototype" lazy-init="true">
+		scope="singleton" lazy-init="true">
 		<property name="hibernateTemplate" ref="hibernateTemplate" />
 	</bean>
+	
+	
 	<!--使用泛型DAO作为抽象基类 abstract="true" -->
 	<bean id="genericDAO" class="com.sailmi.mall.core.base.GenericDAO"
 		abstract="true" depends-on="genericEntityDao">
@@ -137,33 +124,18 @@
 			<ref bean="genericEntityDao" />
 		</property>
 	</bean>
-    <!-- 配置事务增强处理Bean，指定事务管理器 -->
-    <!-- 配置详细事务处理语义 -->
-    <!-- 
-    <tx:advice id="transactionAdvice" transaction-manager="transactionManager">
-        <tx:attributes>
-            <tx:method name="insert*" propagation="REQUIRED" />
-            <tx:method name="update*" propagation="REQUIRED" />
-            <tx:method name="delete*" propagation="REQUIRED" />
-            <tx:method name="get*" propagation="SUPPORTS" read-only="true" />
-            <tx:method name="find*" propagation="SUPPORTS" read-only="true" />
-            <tx:method name="select*" propagation="SUPPORTS" read-only="true" />
-            <tx:method name="load*" propagation="SUPPORTS" read-only="true" />
-            <tx:method name="*" />
-        </tx:attributes>
-    </tx:advice>
-    -->
-    <!-- Spring aop事务管理 -->
-    <!-- 配置切入点 -->
-    <!-- 指定在txAdvice切入点应用txAdvice事务增强处理 -->
-	<!-- 
-    <aop:config>
-        <aop:pointcut id="transactionPointcut"
-            expression="execution(* com.sailmi.mall.manage.timer.*.*(..))"  />
-        <aop:advisor pointcut-ref="transactionPointcut"    advice-ref="transactionAdvice" />
-    </aop:config>
-	-->
-	<!--配置velocity engine默认路径-->
+
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!-- 配置事务异常封装 -->
+	<bean id="persistenceExceptionTranslationPostProcessor"
+		class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+
+	<!--配置velocity engine默认路径 -->
 	<bean id="velocityEngine"
 		class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
 		<property name="resourceLoaderPath" value="/WEB-INF/templates"></property>
@@ -188,8 +160,28 @@
 		<property name="contentType">
 			<value>text/html;charset=UTF-8</value>
 		</property>
-	</bean>	
-    
+	</bean>
+
+	<!-- 配置详细事务处理语义 -->
+	<tx:advice id="transactionAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="execute*" propagation="REQUIRED"
+				read-only="false" />
+			<tx:method name="get*" propagation="REQUIRED"
+				read-only="true" />
+		</tx:attributes>
+	</tx:advice>
+
+	<!-- Spring aop事务管理 -->
+	<!-- 配置切入点 -->
+	<!-- 指定在txAdvice切入点应用txAdvice事务增强处理 -->
+	<aop:config proxy-target-class="true">
+		<aop:pointcut id="transactionPointcut"
+			expression="execution(public * com.sailmi.mall..*.*(..))" />
+		<aop:advisor pointcut-ref="transactionPointcut"
+			advice-ref="transactionAdvice" />
+	</aop:config>
+		
 	<!-- 系统调度控制器 -->
 	<bean id="statTask"
 		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
@@ -222,7 +214,7 @@
 			</list>
 		</property>
 	</bean>
-	<import resource="applicationContext-security-cas.xml"/>
+	
 	
 </beans>
 

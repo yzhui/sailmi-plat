@@ -63,9 +63,9 @@ import com.sailmi.mall.view.web.tools.StoreViewTools;
      ModelAndView mv = new JModelAndView("brand.html", this.configService.getSysConfig(), 
        this.userConfigService.getUserConfig(), 1, request, response);
      
-     String smmall_view_type = CommUtil.null2String( request.getSession( false ).getAttribute( "smmall_view_type" ) );
+     String sailmall_view_type = CommUtil.null2String( request.getSession( false ).getAttribute( "sailmall_view_type" ) );
      
-	 if( (smmall_view_type != null) && (!smmall_view_type.equals( "" )) && (smmall_view_type.equals( "mobile" )) ) {
+	 if( (sailmall_view_type != null) && (!sailmall_view_type.equals( "" )) && (sailmall_view_type.equals( "mobile" )) ) {
 		 mv = new JModelAndView("mobile/brand.html", this.configService.getSysConfig(), 
 			       this.userConfigService.getUserConfig(), 1, request, response);
 	 }
@@ -114,9 +114,9 @@ import com.sailmi.mall.view.web.tools.StoreViewTools;
      ModelAndView mv = new JModelAndView("brand_goods.html", this.configService.getSysConfig(), 
        this.userConfigService.getUserConfig(), 1, request, response);
      
-     String smmall_view_type = CommUtil.null2String( request.getSession( false ).getAttribute( "smmall_view_type" ) );
+     String sailmall_view_type = CommUtil.null2String( request.getSession( false ).getAttribute( "sailmall_view_type" ) );
      
-	 if( (smmall_view_type != null) && (!smmall_view_type.equals( "" )) && (smmall_view_type.equals( "mobile" )) ) {
+	 if( (sailmall_view_type != null) && (!sailmall_view_type.equals( "" )) && (sailmall_view_type.equals( "mobile" )) ) {
 		 mv = new JModelAndView("mobile/brand_goods.html", this.configService.getSysConfig(), 
 			       this.userConfigService.getUserConfig(), 1, request, response);
 	 }

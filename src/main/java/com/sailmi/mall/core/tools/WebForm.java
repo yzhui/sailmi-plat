@@ -69,6 +69,10 @@ import com.sailmi.mall.core.query.QueryObject;
                  .equals("int")) {
                  propertyValue = null;
                }
+               if (propertys[i].getPropertyType().toString()
+                       .equals("Long")) {
+                       propertyValue = null;
+               }
  
                if (propertys[i].getPropertyType().toString()
                  .toLowerCase().indexOf("boolean") >= 0) {

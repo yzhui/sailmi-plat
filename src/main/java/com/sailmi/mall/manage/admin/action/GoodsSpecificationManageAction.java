@@ -250,9 +250,9 @@ import com.sailmi.mall.manage.admin.tools.StoreTools;
    public void goods_property_delete(HttpServletRequest request, HttpServletResponse response, String id) {
      boolean ret = true;
      if (!id.equals("")) {
-       this.databaseTools.execute("delete from smmall_goods_spec where spec_id=" + 
+       this.databaseTools.execute("delete from sailmall_goods_spec where spec_id=" + 
          id);
-       this.databaseTools.execute("delete from smmall_cart_gsp where gsp_id=" + 
+       this.databaseTools.execute("delete from sailmall_cart_gsp where gsp_id=" + 
          id);
        GoodsSpecProperty property = this.goodsSpecPropertyService
          .getObjById(Long.valueOf(Long.parseLong(id)));

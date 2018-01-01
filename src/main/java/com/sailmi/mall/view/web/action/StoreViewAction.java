@@ -1,40 +1,42 @@
  package com.sailmi.mall.view.web.action;
  
- import com.sailmi.mall.core.domain.virtual.SysMap;
- import com.sailmi.mall.core.mv.JModelAndView;
- import com.sailmi.mall.core.query.support.IPageList;
- import com.sailmi.mall.core.tools.CommUtil;
- import com.sailmi.mall.foundation.domain.Store;
- import com.sailmi.mall.foundation.domain.StoreClass;
- import com.sailmi.mall.foundation.domain.StoreNavigation;
- import com.sailmi.mall.foundation.domain.StorePoint;
- import com.sailmi.mall.foundation.domain.SysConfig;
- import com.sailmi.mall.foundation.domain.User;
- import com.sailmi.mall.foundation.domain.query.EvaluateQueryObject;
- import com.sailmi.mall.foundation.domain.query.GoodsQueryObject;
- import com.sailmi.mall.foundation.domain.query.StoreQueryObject;
- import com.sailmi.mall.foundation.service.IEvaluateService;
- import com.sailmi.mall.foundation.service.IGoodsService;
- import com.sailmi.mall.foundation.service.IStoreClassService;
- import com.sailmi.mall.foundation.service.IStoreNavigationService;
- import com.sailmi.mall.foundation.service.IStorePartnerService;
- import com.sailmi.mall.foundation.service.IStoreService;
- import com.sailmi.mall.foundation.service.ISysConfigService;
- import com.sailmi.mall.foundation.service.IUserConfigService;
- import com.sailmi.mall.foundation.service.IUserGoodsClassService;
- import com.sailmi.mall.view.web.tools.AreaViewTools;
- import com.sailmi.mall.view.web.tools.GoodsViewTools;
- import com.sailmi.mall.view.web.tools.StoreViewTools;
- import java.util.HashMap;
- import java.util.List;
- import java.util.Map;
- import javax.servlet.http.HttpServletRequest;
- import javax.servlet.http.HttpServletResponse;
- import org.springframework.beans.factory.annotation.Autowired;
- import org.springframework.stereotype.Controller;
- import org.springframework.web.bind.annotation.RequestMapping;
- import org.springframework.web.servlet.ModelAndView;
- 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.transaction.Transactional;
+
+import org.springframework.aop.support.AopUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.sailmi.mall.core.domain.virtual.SysMap;
+import com.sailmi.mall.core.mv.JModelAndView;
+import com.sailmi.mall.core.query.support.IPageList;
+import com.sailmi.mall.core.tools.CommUtil;
+import com.sailmi.mall.foundation.domain.Store;
+import com.sailmi.mall.foundation.domain.StoreClass;
+import com.sailmi.mall.foundation.domain.StoreNavigation;
+import com.sailmi.mall.foundation.domain.query.EvaluateQueryObject;
+import com.sailmi.mall.foundation.domain.query.GoodsQueryObject;
+import com.sailmi.mall.foundation.domain.query.StoreQueryObject;
+import com.sailmi.mall.foundation.service.IEvaluateService;
+import com.sailmi.mall.foundation.service.IGoodsService;
+import com.sailmi.mall.foundation.service.IStoreClassService;
+import com.sailmi.mall.foundation.service.IStoreNavigationService;
+import com.sailmi.mall.foundation.service.IStorePartnerService;
+import com.sailmi.mall.foundation.service.IStoreService;
+import com.sailmi.mall.foundation.service.ISysConfigService;
+import com.sailmi.mall.foundation.service.IUserConfigService;
+import com.sailmi.mall.foundation.service.IUserGoodsClassService;
+import com.sailmi.mall.view.web.tools.AreaViewTools;
+import com.sailmi.mall.view.web.tools.GoodsViewTools;
+import com.sailmi.mall.view.web.tools.StoreViewTools;
+
  @Controller
  public class StoreViewAction
  {
@@ -426,21 +428,24 @@
      mv.addObject("store", store);
      return mv;
    }
- 
+   
    @RequestMapping({"/store_head.htm"})
    public ModelAndView store_head(HttpServletRequest request, HttpServletResponse response)
    {
      ModelAndView mv = new JModelAndView("store_head.html", 
        this.configService.getSysConfig(), 
        this.userConfigService.getUserConfig(), 1, request, response);
-     Store store = this.storeService.getObjById(CommUtil.null2Long(request
-       .getAttribute("store_id")));
+     String storeId=request.getParameter("store_id");
+     System.out.println("store id in parameter is:"+storeId);
+     System.out.println("store id in attributes is:"+request.getAttribute("store_id"));
+     
+     Store store = this.storeService.getObjById(CommUtil.null2Long(storeId));
      generic_evaluate(store, mv);
      mv.addObject("store", store);
      mv.addObject("storeViewTools", this.storeViewTools);
      return mv;
    }
- 
+
    private void generic_evaluate(Store store, ModelAndView mv) {
      double description_result = 0.0D;
      double service_result = 0.0D;

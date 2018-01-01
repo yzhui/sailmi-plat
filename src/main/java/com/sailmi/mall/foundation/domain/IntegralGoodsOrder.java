@@ -19,15 +19,15 @@ import com.sailmi.mall.core.domain.IdEntity;
  
  @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
  @Entity
- @Table(name="smmall_integral_goodsorder")
+ @Table(name="sailmall_integral_goodsorder")
  public class IntegralGoodsOrder extends IdEntity
  {
    private String igo_order_sn;
    //地址
-   @ManyToOne(fetch=FetchType.LAZY)
+   @ManyToOne
    private Address igo_addr;
    //用户 
-   @ManyToOne(fetch=FetchType.LAZY)
+   @ManyToOne
    private User igo_user;
    //商品运输集合
    @OneToMany(mappedBy="order", cascade={javax.persistence.CascadeType.REMOVE, javax.persistence.CascadeType.PERSIST})

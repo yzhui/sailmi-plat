@@ -2,14 +2,16 @@ package com.sailmi.mall.foundation.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -21,7 +23,7 @@ import com.sailmi.mall.core.domain.IdEntity;
  */
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Entity
-@Table(name = "smmall_adv_pos")
+@Table(name = "sailmall_adv_pos")
 public class AdvertPosition extends IdEntity {
 	/**
 	 * UID
@@ -51,9 +53,9 @@ public class AdvertPosition extends IdEntity {
 	private int ap_sys_type;
 	//显示类型
 	private int ap_show_type;
-	
+
 	//附件
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	private Accessory ap_acc;
 	//广告内容
 	private String ap_text;
@@ -65,8 +67,8 @@ public class AdvertPosition extends IdEntity {
 	private String ap_code;
 	
 	//广告
-	@OneToMany(mappedBy = "ad_ap", cascade = { javax.persistence.CascadeType.REMOVE })
-	@OrderBy("ad_slide_sequence asc")
+	//@OrderBy("ad_slide_sequence asc")
+	@OneToMany(mappedBy = "ad_ap")
 	private List<Advert> advs = new ArrayList<Advert>();
 
 	@Transient

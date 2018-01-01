@@ -13,18 +13,18 @@ import com.sailmi.mall.core.domain.IdEntity;
  
  @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
  @Entity
- @Table(name="smmall_order_log")
+ @Table(name="sailmall_order_log")
  public class OrderFormLog extends IdEntity
  {
  
    //订单表格
-   @ManyToOne(fetch=FetchType.LAZY)
+   @ManyToOne
    private OrderForm of;
    //消息记录
    private String log_info;
  
    //用户记录
-   @ManyToOne(fetch=FetchType.LAZY)
+   @ManyToOne
    private User log_user;
  
    //状态信息

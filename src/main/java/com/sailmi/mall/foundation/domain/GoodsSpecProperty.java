@@ -13,7 +13,7 @@ import com.sailmi.mall.core.domain.IdEntity;
  
  @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
  @Entity
- @Table(name="smmall_goodsspecproperty")
+ @Table(name="sailmall_goodsspecproperty")
  public class GoodsSpecProperty extends IdEntity
  {
    //序列
@@ -22,10 +22,10 @@ import com.sailmi.mall.core.domain.IdEntity;
    @Column(columnDefinition="LongText")
    private String value;
    //规格图
-   @OneToOne(fetch=FetchType.LAZY, cascade={javax.persistence.CascadeType.REMOVE})
+   @OneToOne( cascade={javax.persistence.CascadeType.REMOVE})
    private Accessory specImage;
    //货物规格
-   @ManyToOne(fetch=FetchType.LAZY)
+   @ManyToOne
    private GoodsSpecification spec;
  
    public int getSequence()

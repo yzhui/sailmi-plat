@@ -15,7 +15,7 @@ import com.sailmi.mall.core.domain.IdEntity;
  
  @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
  @Entity
- @Table(name="smmall_usergoodsclass")
+ @Table(name="sailmall_usergoodsclass")
  public class UserGoodsClass extends IdEntity
  {
    //类型名称
@@ -28,11 +28,11 @@ import com.sailmi.mall.core.domain.IdEntity;
    private int level;
  
    //用户父类型
-   @ManyToOne(fetch=FetchType.LAZY)
+   @ManyToOne
    private UserGoodsClass parent;
  
    //用户自类型
-   @OneToMany(mappedBy="parent", cascade={javax.persistence.CascadeType.REMOVE})
+   @OneToMany(mappedBy="parent", cascade={javax.persistence.CascadeType.REMOVE},fetch=FetchType.EAGER)
    private List<UserGoodsClass> childs = new ArrayList();
  
    //商品列表
@@ -40,7 +40,7 @@ import com.sailmi.mall.core.domain.IdEntity;
    private List<Goods> goods_list = new ArrayList();
  
    //用户
-   @ManyToOne(fetch=FetchType.LAZY)
+   @ManyToOne
    private User user;
  
    public List<Goods> getGoods_list() { return this.goods_list; }

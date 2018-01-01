@@ -106,7 +106,7 @@ public class InstallViewAction implements ServletContextAware {
 			if( sql_file.exists() ) {
 				this.databaseTools.executSqlScript( filePath );
 			}
-			CacheManager manager = CacheManager.create();
+			CacheManager manager = CacheManager.getCacheManager("InstallViewCache");
 			manager.clearAll();
 			SysConfig config = this.configService.getSysConfig();
 			config.setAddTime( new Date() );
@@ -116,7 +116,6 @@ public class InstallViewAction implements ServletContextAware {
 			User admin = this.userService.getObjByProperty( "userName", "admin" );
 			admin.setPassword( Md5Encrypt.md5( pws ).toLowerCase() );
 			this.userService.update( admin );
-			manager = CacheManager.create();
 			manager.clearAll();
 
 			Map urlAuthorities = this.securityManager.loadUrlAuthorities();
@@ -157,7 +156,7 @@ public class InstallViewAction implements ServletContextAware {
 			if( sql_file.exists() ) {
 				this.databaseTools.executSqlScript( filePath );
 			}
-			CacheManager manager = CacheManager.create();
+			CacheManager manager = CacheManager.getCacheManager("InstallViewCache");
 			manager.clearAll();
 			SysConfig config = this.configService.getSysConfig();
 			config.setAddTime( new Date() );
@@ -167,7 +166,6 @@ public class InstallViewAction implements ServletContextAware {
 			User admin = this.userService.getObjByProperty( "userName", "admin" );
 			admin.setPassword( Md5Encrypt.md5( pws ).toLowerCase() );
 			this.userService.update( admin );
-			manager = CacheManager.create();
 			manager.clearAll();
 
 			Map urlAuthorities = this.securityManager.loadUrlAuthorities();
