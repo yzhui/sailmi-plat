@@ -94,6 +94,7 @@
 				<prop key="hibernate.cache.use_second_level_cache">${hibernate.cache.use_second_level_cache}</prop>
 				<prop key="hibernate.cache.use_query_cache">${hibernate.cache.use_query_cache}</prop>
 				<prop key="hibernate.cache.region.factory_class">${hibernate.cache.region.factory_class}</prop>
+				<prop key="hibernate.cache.provider_configuration_file_resource_path">${hibernate.cache.provider_configuration_file_resource_path}</prop>
 			</props>
 		</property>
 		<!-- 扫描hibernate注解配置的entity -->
@@ -165,10 +166,8 @@
 	<!-- 配置详细事务处理语义 -->
 	<tx:advice id="transactionAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
-			<tx:method name="execute*" propagation="REQUIRED"
+			<tx:method name="exec*" propagation="REQUIRED"
 				read-only="false" />
-			<tx:method name="get*" propagation="REQUIRED"
-				read-only="true" />
 		</tx:attributes>
 	</tx:advice>
 

@@ -41,8 +41,9 @@ public class NorLogoutFilter extends LogoutFilter
       SysLog log = new SysLog();
       log.setAddTime(new Date());
       log.setContent(user.getTrueName() + "于" + 
-        CommUtil.formatTime("yyyy-MM-dd HH:mm:ss", new Date()) + "退出系统");
-      log.setTitle("用户退出");
+        CommUtil.formatTime("yyyy-MM-dd HH:mm:ss", new Date()) + 
+        "登录");
+      log.setTitle("用户登录");
       log.setType(0);
       log.setUser(user);
       log.setIp(CommUtil.getIpAddr(request));
@@ -52,13 +53,11 @@ public class NorLogoutFilter extends LogoutFilter
 
   public NorLogoutFilter(String logoutSuccessUrl, LogoutHandler[] handlers) {
     super(logoutSuccessUrl, handlers);
-	  System.out.println("11 now ...................  nor");
   }
 
   public void doFilterHttp(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
     throws IOException, ServletException
   {
-	  System.out.println("now ...................  nor");
     if (requiresLogout(request, response)) {
       HttpSession session = request.getSession(false);
       if (session != null) {
@@ -72,35 +71,10 @@ public class NorLogoutFilter extends LogoutFilter
   {
     return super.requiresLogout(request, response);
   }
+
+
   public void setFilterProcessesUrl(String filterProcessesUrl)
   {
     super.setFilterProcessesUrl(filterProcessesUrl);
   }
-  /*
-  protected String determineTargetUrl(HttpServletRequest request, HttpServletResponse response)
-  {
-    return super.determineTargetUrl(request, response);
-  }
-
-
-  protected String getLogoutSuccessUrl()
-  {
-    return super.getLogoutSuccessUrl();
-  }
-
-  protected String getFilterProcessesUrl()
-  {
-    return super.getFilterProcessesUrl();
-  }
-
-  public void setUseRelativeContext(boolean useRelativeContext)
-  {
-    super.setUseRelativeContext(useRelativeContext);
-  }
-
-  public int getOrder()
-  {
-    return super.getOrder();
-  }
-  */
 }

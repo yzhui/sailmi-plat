@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="off">
+    <Properties>
+        <Property name="CATALINA_BASE_LOGPATH">../logs</Property>
+        <Property name="logLocalIP">127.0.0.1</Property>            
+    </Properties>
+    <appenders>
+    <console name="CONSOLE" target="SYSTEM_OUT">
+            <patternLayout charset="UTF-8"
+                pattern="%date{yyyy-MM-dd HH:mm:ss}[%-5level]%logger[%L]-%message%n" />
+        </console>
+
+        <rollingFile name="CATALINA"
+            fileName="${CATALINA_BASE_LOGPATH}/catalina.log"
+            filePattern="${CATALINA_BASE_LOGPATH}/catalina.%date{yyyyMMdd}">              
+            <patternLayout charset="UTF-8"
+                pattern="%date{yyyy-MM-dd HH:mm:ss}[%-5level]%logger[%L]-%message%n" />
+            <policies>
+                <timeBasedTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="100 MB"/>
+            </policies>
+        </rollingFile>
+
+        <rollingFile name="LOCALHOST"
+            fileName="${CATALINA_BASE_LOGPATH}/localhost.log"
+            filePattern="${CATALINA_BASE_LOGPATH}/localhost.%date{yyyyMMdd}">              
+            <patternLayout charset="UTF-8"
+                pattern="%date{yyyy-MM-dd HH:mm:ss}[%-5level]%logger[%L]-%message%n" />
+            <policies>
+                <timeBasedTriggeringPolicy />
+            </policies>
+        </rollingFile>
+
+        <rollingFile name="MANAGER"
+            fileName="${CATALINA_BASE_LOGPATH}/manager.log"
+            filePattern="${CATALINA_BASE_LOGPATH}/manager.%date{yyyyMMdd}">              
+            <patternLayout charset="UTF-8"
+                pattern="%date{yyyy-MM-dd HH:mm:ss}[%-5level]%logger[%L]-%message%n" />
+            <policies>
+                <timeBasedTriggeringPolicy />
+            </policies>
+        </rollingFile>
+
+        <rollingFile name="HOST-MANAGER"
+            fileName="${CATALINA_BASE_LOGPATH}/host-manager.log"
+            filePattern="${CATALINA_BASE_LOGPATH}/host-manager.%date{yyyyMMdd}">              
+            <patternLayout charset="UTF-8"
+                pattern="%date{yyyy-MM-dd HH:mm:ss}[%-5level]%logger[%L]-%message%n" />
+            <policies>
+                <timeBasedTriggeringPolicy />
+            </policies>
+        </rollingFile>             
+
+    </appenders>
+
+    <loggers>
+        <root level="INFO">                
+            <appender-ref ref="CATALINA" />
+            <appender-ref ref="CONSOLE" />
+        </root>
+        <logger name="org.apache.catalina.core.ContainerBase.[Catalina].[localhost]" level="INFO">
+            <appender-ref ref="LOCALHOST" />    
+        </logger>
+
+        <logger name="org.apache.catalina.core.ContainerBase.[Catalina].[localhost].[/manager]" level="INFO"  additivity="false">
+            <appender-ref ref="MANAGER" />    
+        </logger>
+
+        <logger name="org.apache.catalina.core.ContainerBase.[Catalina].[localhost].[/host-manager]" level="INFO"  additivity="false">
+            <appender-ref ref="HOST-MANAGER" />    
+        </logger>
+        
+         <logger name="org.springframework.orm.hibernate5.support.OpenSessionInViewFilter" level="INFO" additivity="false">
+            <appender-ref ref="CATALINA" />
+            <appender-ref ref="CONSOLE" />
+         </logger>
+         <logger name="org.springframework.orm.hibernate5.support.OpenSessionInViewInterceptor" level="INFO" additivity="false">
+            <appender-ref ref="CATALINA" />
+            <appender-ref ref="CONSOLE" />
+         </logger>
+         <logger name="org.springframework" level="INFO" additivity="false">
+            <appender-ref ref="CATALINA" />
+            <appender-ref ref="CONSOLE" />
+         </logger>
+         <logger name="org.hibernate.SQL" level="INFO" additivity="false">
+            <appender-ref ref="CATALINA" />
+            <appender-ref ref="CONSOLE" />
+         </logger>
+         
+    </loggers>
+</configuration>
+
