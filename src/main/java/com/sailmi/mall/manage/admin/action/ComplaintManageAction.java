@@ -1,19 +1,20 @@
  package com.sailmi.mall.manage.admin.action;
  
- import com.sailmi.mall.core.annotation.SecurityMapping;
- import com.sailmi.mall.core.domain.virtual.SysMap;
- import com.sailmi.mall.core.mv.JModelAndView;
- import com.sailmi.mall.core.query.support.IPageList;
- import com.sailmi.mall.core.security.support.SecurityUserHolder;
- import com.sailmi.mall.core.tools.CommUtil;
- import com.sailmi.mall.foundation.domain.Complaint;
- import com.sailmi.mall.foundation.domain.SysConfig;
- import com.sailmi.mall.foundation.domain.User;
- import com.sailmi.mall.foundation.domain.query.ComplaintQueryObject;
- import com.sailmi.mall.foundation.service.IComplaintService;
- import com.sailmi.mall.foundation.service.ISysConfigService;
- import com.sailmi.mall.foundation.service.IUserConfigService;
- import java.io.IOException;
+ import com.sailmi.sailplat.core.annotation.SecurityMapping;
+import com.sailmi.sailplat.core.domain.virtual.SysMap;
+import com.sailmi.sailplat.core.mv.JModelAndView;
+import com.sailmi.sailplat.core.query.support.IPageList;
+import com.sailmi.sailplat.core.security.support.SecurityUserHolder;
+import com.sailmi.sailplat.core.tools.CommUtil;
+import com.sailmi.sailplat.foundation.domain.Complaint;
+import com.sailmi.sailplat.foundation.domain.SysConfig;
+import com.sailmi.sailplat.foundation.domain.User;
+import com.sailmi.sailplat.foundation.domain.query.ComplaintQueryObject;
+import com.sailmi.sailplat.foundation.service.IComplaintService;
+import com.sailmi.sailplat.foundation.service.ISysConfigService;
+import com.sailmi.sailplat.foundation.service.IUserConfigService;
+
+import java.io.IOException;
  import java.io.PrintWriter;
  import java.util.ArrayList;
  import java.util.Date;

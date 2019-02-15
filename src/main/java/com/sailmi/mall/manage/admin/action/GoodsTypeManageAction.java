@@ -19,26 +19,26 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.sailmi.mall.core.annotation.SecurityMapping;
-import com.sailmi.mall.core.mv.JModelAndView;
-import com.sailmi.mall.core.query.support.IPageList;
-import com.sailmi.mall.core.tools.CommUtil;
-import com.sailmi.mall.core.tools.WebForm;
-import com.sailmi.mall.foundation.domain.GoodsBrand;
-import com.sailmi.mall.foundation.domain.GoodsClass;
-import com.sailmi.mall.foundation.domain.GoodsSpecification;
-import com.sailmi.mall.foundation.domain.GoodsType;
-import com.sailmi.mall.foundation.domain.GoodsTypeProperty;
-import com.sailmi.mall.foundation.domain.query.GoodsTypeQueryObject;
-import com.sailmi.mall.foundation.service.IGoodsBrandCategoryService;
-import com.sailmi.mall.foundation.service.IGoodsBrandService;
-import com.sailmi.mall.foundation.service.IGoodsClassService;
-import com.sailmi.mall.foundation.service.IGoodsSpecificationService;
-import com.sailmi.mall.foundation.service.IGoodsTypePropertyService;
-import com.sailmi.mall.foundation.service.IGoodsTypeService;
-import com.sailmi.mall.foundation.service.ISysConfigService;
-import com.sailmi.mall.foundation.service.IUserConfigService;
 import com.sailmi.mall.manage.admin.tools.StoreTools;
+import com.sailmi.sailplat.core.annotation.SecurityMapping;
+import com.sailmi.sailplat.core.mv.JModelAndView;
+import com.sailmi.sailplat.core.query.support.IPageList;
+import com.sailmi.sailplat.core.tools.CommUtil;
+import com.sailmi.sailplat.core.tools.WebForm;
+import com.sailmi.sailplat.foundation.domain.GoodsBrand;
+import com.sailmi.sailplat.foundation.domain.GoodsClass;
+import com.sailmi.sailplat.foundation.domain.GoodsSpecification;
+import com.sailmi.sailplat.foundation.domain.GoodsType;
+import com.sailmi.sailplat.foundation.domain.GoodsTypeProperty;
+import com.sailmi.sailplat.foundation.domain.query.GoodsTypeQueryObject;
+import com.sailmi.sailplat.foundation.service.IGoodsBrandCategoryService;
+import com.sailmi.sailplat.foundation.service.IGoodsBrandService;
+import com.sailmi.sailplat.foundation.service.IGoodsClassService;
+import com.sailmi.sailplat.foundation.service.IGoodsSpecificationService;
+import com.sailmi.sailplat.foundation.service.IGoodsTypePropertyService;
+import com.sailmi.sailplat.foundation.service.IGoodsTypeService;
+import com.sailmi.sailplat.foundation.service.ISysConfigService;
+import com.sailmi.sailplat.foundation.service.IUserConfigService;
  
  @Controller
  public class GoodsTypeManageAction

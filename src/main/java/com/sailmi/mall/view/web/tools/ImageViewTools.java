@@ -1,9 +1,10 @@
  package com.sailmi.mall.view.web.tools;
  
- import com.sailmi.mall.foundation.domain.Accessory;
- import com.sailmi.mall.foundation.domain.SysConfig;
- import com.sailmi.mall.foundation.service.ISysConfigService;
- import java.util.List;
+ import com.sailmi.sailplat.foundation.domain.Accessory;
+import com.sailmi.sailplat.foundation.domain.SysConfig;
+import com.sailmi.sailplat.foundation.service.ISysConfigService;
+
+import java.util.List;
  import java.util.Random;
  import org.springframework.beans.factory.annotation.Autowired;
  import org.springframework.stereotype.Component;

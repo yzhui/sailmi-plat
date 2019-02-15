@@ -1,20 +1,21 @@
  package com.sailmi.mall.view.web.tools;
  
- import com.sailmi.mall.core.tools.CommUtil;
- import com.sailmi.mall.foundation.domain.Goods;
- import com.sailmi.mall.foundation.domain.Store;
- import com.sailmi.mall.foundation.domain.StoreClass;
- import com.sailmi.mall.foundation.domain.StoreGrade;
- import com.sailmi.mall.foundation.domain.StorePoint;
- import com.sailmi.mall.foundation.domain.SysConfig;
- import com.sailmi.mall.foundation.domain.User;
- import com.sailmi.mall.foundation.service.IEvaluateService;
- import com.sailmi.mall.foundation.service.IGoodsService;
- import com.sailmi.mall.foundation.service.IStoreClassService;
- import com.sailmi.mall.foundation.service.IStoreService;
- import com.sailmi.mall.foundation.service.ISysConfigService;
- import com.sailmi.mall.foundation.service.IUserService;
- import java.util.ArrayList;
+ import com.sailmi.sailplat.core.tools.CommUtil;
+import com.sailmi.sailplat.foundation.domain.Goods;
+import com.sailmi.sailplat.foundation.domain.Store;
+import com.sailmi.sailplat.foundation.domain.StoreClass;
+import com.sailmi.sailplat.foundation.domain.StoreGrade;
+import com.sailmi.sailplat.foundation.domain.StorePoint;
+import com.sailmi.sailplat.foundation.domain.SysConfig;
+import com.sailmi.sailplat.foundation.domain.User;
+import com.sailmi.sailplat.foundation.service.IEvaluateService;
+import com.sailmi.sailplat.foundation.service.IGoodsService;
+import com.sailmi.sailplat.foundation.service.IStoreClassService;
+import com.sailmi.sailplat.foundation.service.IStoreService;
+import com.sailmi.sailplat.foundation.service.ISysConfigService;
+import com.sailmi.sailplat.foundation.service.IUserService;
+
+import java.util.ArrayList;
  import java.util.Arrays;
  import java.util.Calendar;
  import java.util.Comparator;

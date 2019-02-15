@@ -22,46 +22,46 @@ import org.springframework.aop.support.AopUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.sailmi.mall.core.security.support.SecurityUserHolder;
-import com.sailmi.mall.core.tools.CommUtil;
-import com.sailmi.mall.foundation.domain.Activity;
-import com.sailmi.mall.foundation.domain.ActivityGoods;
-import com.sailmi.mall.foundation.domain.DeliveryGoods;
-import com.sailmi.mall.foundation.domain.Evaluate;
-import com.sailmi.mall.foundation.domain.Goods;
-import com.sailmi.mall.foundation.domain.Group;
-import com.sailmi.mall.foundation.domain.GroupGoods;
-import com.sailmi.mall.foundation.domain.MobileVerifyCode;
-import com.sailmi.mall.foundation.domain.OrderForm;
-import com.sailmi.mall.foundation.domain.OrderFormLog;
-import com.sailmi.mall.foundation.domain.Payment;
-import com.sailmi.mall.foundation.domain.PredepositLog;
-import com.sailmi.mall.foundation.domain.Store;
-import com.sailmi.mall.foundation.domain.StoreClass;
-import com.sailmi.mall.foundation.domain.StorePoint;
-import com.sailmi.mall.foundation.domain.StoreStat;
-import com.sailmi.mall.foundation.domain.User;
-import com.sailmi.mall.foundation.service.IActivityGoodsService;
-import com.sailmi.mall.foundation.service.IActivityService;
-import com.sailmi.mall.foundation.service.IDeliveryGoodsService;
-import com.sailmi.mall.foundation.service.IEvaluateService;
-import com.sailmi.mall.foundation.service.IGoodsService;
-import com.sailmi.mall.foundation.service.IGroupGoodsService;
-import com.sailmi.mall.foundation.service.IGroupService;
-import com.sailmi.mall.foundation.service.IMobileVerifyCodeService;
-import com.sailmi.mall.foundation.service.IOrderFormLogService;
-import com.sailmi.mall.foundation.service.IOrderFormService;
-import com.sailmi.mall.foundation.service.IPaymentService;
-import com.sailmi.mall.foundation.service.IPredepositLogService;
-import com.sailmi.mall.foundation.service.IStoreClassService;
-import com.sailmi.mall.foundation.service.IStorePointService;
-import com.sailmi.mall.foundation.service.IStoreService;
-import com.sailmi.mall.foundation.service.IStoreStatService;
-import com.sailmi.mall.foundation.service.ISysConfigService;
-import com.sailmi.mall.foundation.service.ITemplateService;
-import com.sailmi.mall.foundation.service.IUserService;
 import com.sailmi.mall.manage.admin.tools.MsgTools;
 import com.sailmi.mall.manage.admin.tools.StatTools;
+import com.sailmi.sailplat.core.security.support.SecurityUserHolder;
+import com.sailmi.sailplat.core.tools.CommUtil;
+import com.sailmi.sailplat.foundation.domain.Activity;
+import com.sailmi.sailplat.foundation.domain.ActivityGoods;
+import com.sailmi.sailplat.foundation.domain.DeliveryGoods;
+import com.sailmi.sailplat.foundation.domain.Evaluate;
+import com.sailmi.sailplat.foundation.domain.Goods;
+import com.sailmi.sailplat.foundation.domain.Group;
+import com.sailmi.sailplat.foundation.domain.GroupGoods;
+import com.sailmi.sailplat.foundation.domain.MobileVerifyCode;
+import com.sailmi.sailplat.foundation.domain.OrderForm;
+import com.sailmi.sailplat.foundation.domain.OrderFormLog;
+import com.sailmi.sailplat.foundation.domain.Payment;
+import com.sailmi.sailplat.foundation.domain.PredepositLog;
+import com.sailmi.sailplat.foundation.domain.Store;
+import com.sailmi.sailplat.foundation.domain.StoreClass;
+import com.sailmi.sailplat.foundation.domain.StorePoint;
+import com.sailmi.sailplat.foundation.domain.StoreStat;
+import com.sailmi.sailplat.foundation.domain.User;
+import com.sailmi.sailplat.foundation.service.IActivityGoodsService;
+import com.sailmi.sailplat.foundation.service.IActivityService;
+import com.sailmi.sailplat.foundation.service.IDeliveryGoodsService;
+import com.sailmi.sailplat.foundation.service.IEvaluateService;
+import com.sailmi.sailplat.foundation.service.IGoodsService;
+import com.sailmi.sailplat.foundation.service.IGroupGoodsService;
+import com.sailmi.sailplat.foundation.service.IGroupService;
+import com.sailmi.sailplat.foundation.service.IMobileVerifyCodeService;
+import com.sailmi.sailplat.foundation.service.IOrderFormLogService;
+import com.sailmi.sailplat.foundation.service.IOrderFormService;
+import com.sailmi.sailplat.foundation.service.IPaymentService;
+import com.sailmi.sailplat.foundation.service.IPredepositLogService;
+import com.sailmi.sailplat.foundation.service.IStoreClassService;
+import com.sailmi.sailplat.foundation.service.IStorePointService;
+import com.sailmi.sailplat.foundation.service.IStoreService;
+import com.sailmi.sailplat.foundation.service.IStoreStatService;
+import com.sailmi.sailplat.foundation.service.ISysConfigService;
+import com.sailmi.sailplat.foundation.service.ITemplateService;
+import com.sailmi.sailplat.foundation.service.IUserService;
 
 @Transactional
 @Component("shop_stat")
@@ -636,7 +636,7 @@ public class StatManageAction {
 	}
 
 	private boolean send_email(OrderForm order, String mark) throws Exception {
-		com.sailmi.mall.foundation.domain.Template template = this.templateService
+		com.sailmi.sailplat.foundation.domain.Template template = this.templateService
 				.getObjByProperty("mark", mark);
 		if (template.isOpen()) {
 			String email = order.getStore().getUser().getEmail();
@@ -673,7 +673,7 @@ public class StatManageAction {
 
 	private boolean send_sms(OrderForm order, String mobile, String mark)
 			throws Exception {
-		com.sailmi.mall.foundation.domain.Template template = this.templateService.getObjByProperty("mark", mark);
+		com.sailmi.sailplat.foundation.domain.Template template = this.templateService.getObjByProperty("mark", mark);
 		if (template.isOpen()) {
 			String path = System.getProperty("sailmall.root") + "vm" + File.separator;
 			PrintWriter pwrite = new PrintWriter(

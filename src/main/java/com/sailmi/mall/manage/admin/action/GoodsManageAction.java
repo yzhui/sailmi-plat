@@ -26,39 +26,39 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.sailmi.mall.core.annotation.SecurityMapping;
-import com.sailmi.mall.core.domain.virtual.SysMap;
-import com.sailmi.mall.core.mv.JModelAndView;
-import com.sailmi.mall.core.query.support.IPageList;
-import com.sailmi.mall.core.tools.CommUtil;
-import com.sailmi.mall.core.tools.WebForm;
-import com.sailmi.mall.core.tools.database.DatabaseTools;
-import com.sailmi.mall.foundation.domain.CombinLog;
-import com.sailmi.mall.foundation.domain.Evaluate;
-import com.sailmi.mall.foundation.domain.Goods;
-import com.sailmi.mall.foundation.domain.GoodsCart;
-import com.sailmi.mall.foundation.domain.Message;
-import com.sailmi.mall.foundation.domain.OrderForm;
-import com.sailmi.mall.foundation.domain.User;
-import com.sailmi.mall.foundation.domain.ZTCGoldLog;
-import com.sailmi.mall.foundation.domain.query.GoodsQueryObject;
-import com.sailmi.mall.foundation.service.ICombinLogService;
-import com.sailmi.mall.foundation.service.IEvaluateService;
-import com.sailmi.mall.foundation.service.IGoodsBrandService;
-import com.sailmi.mall.foundation.service.IGoodsCartService;
-import com.sailmi.mall.foundation.service.IGoodsClassService;
-import com.sailmi.mall.foundation.service.IGoodsService;
-import com.sailmi.mall.foundation.service.IMessageService;
-import com.sailmi.mall.foundation.service.IOrderFormLogService;
-import com.sailmi.mall.foundation.service.IOrderFormService;
-import com.sailmi.mall.foundation.service.ISysConfigService;
-import com.sailmi.mall.foundation.service.ITemplateService;
-import com.sailmi.mall.foundation.service.IUserConfigService;
-import com.sailmi.mall.foundation.service.IUserService;
-import com.sailmi.mall.foundation.service.IZTCGoldLogService;
-import com.sailmi.mall.lucene.LuceneUtil;
-import com.sailmi.mall.lucene.LuceneVo;
 import com.sailmi.mall.manage.admin.tools.MsgTools;
+import com.sailmi.sailplat.core.annotation.SecurityMapping;
+import com.sailmi.sailplat.core.domain.virtual.SysMap;
+import com.sailmi.sailplat.core.mv.JModelAndView;
+import com.sailmi.sailplat.core.query.support.IPageList;
+import com.sailmi.sailplat.core.tools.CommUtil;
+import com.sailmi.sailplat.core.tools.WebForm;
+import com.sailmi.sailplat.core.tools.database.DatabaseTools;
+import com.sailmi.sailplat.foundation.domain.CombinLog;
+import com.sailmi.sailplat.foundation.domain.Evaluate;
+import com.sailmi.sailplat.foundation.domain.Goods;
+import com.sailmi.sailplat.foundation.domain.GoodsCart;
+import com.sailmi.sailplat.foundation.domain.Message;
+import com.sailmi.sailplat.foundation.domain.OrderForm;
+import com.sailmi.sailplat.foundation.domain.User;
+import com.sailmi.sailplat.foundation.domain.ZTCGoldLog;
+import com.sailmi.sailplat.foundation.domain.query.GoodsQueryObject;
+import com.sailmi.sailplat.foundation.service.ICombinLogService;
+import com.sailmi.sailplat.foundation.service.IEvaluateService;
+import com.sailmi.sailplat.foundation.service.IGoodsBrandService;
+import com.sailmi.sailplat.foundation.service.IGoodsCartService;
+import com.sailmi.sailplat.foundation.service.IGoodsClassService;
+import com.sailmi.sailplat.foundation.service.IGoodsService;
+import com.sailmi.sailplat.foundation.service.IMessageService;
+import com.sailmi.sailplat.foundation.service.IOrderFormLogService;
+import com.sailmi.sailplat.foundation.service.IOrderFormService;
+import com.sailmi.sailplat.foundation.service.ISysConfigService;
+import com.sailmi.sailplat.foundation.service.ITemplateService;
+import com.sailmi.sailplat.foundation.service.IUserConfigService;
+import com.sailmi.sailplat.foundation.service.IUserService;
+import com.sailmi.sailplat.foundation.service.IZTCGoldLogService;
+import com.sailmi.sailplat.lucene.LuceneUtil;
+import com.sailmi.sailplat.lucene.LuceneVo;
  
  @Controller
  public class GoodsManageAction
@@ -304,7 +304,7 @@ import com.sailmi.mall.manage.admin.tools.MsgTools;
  
    private void send_site_msg(HttpServletRequest request, String mark, User user, Goods goods, String reason) throws Exception
    {
-     com.sailmi.mall.foundation.domain.Template template = this.templateService.getObjByProperty("mark", mark);
+     com.sailmi.sailplat.foundation.domain.Template template = this.templateService.getObjByProperty("mark", mark);
      if (template.isOpen()) {
        String path = request.getSession().getServletContext().getRealPath("/") + "/vm/";
        PrintWriter pwrite = new PrintWriter(new OutputStreamWriter(new FileOutputStream(path + "msg.vm", false), "UTF-8"));

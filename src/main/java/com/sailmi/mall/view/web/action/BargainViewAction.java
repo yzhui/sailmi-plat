@@ -1,15 +1,16 @@
  package com.sailmi.mall.view.web.action;
  
- import com.sailmi.mall.core.domain.virtual.SysMap;
- import com.sailmi.mall.core.mv.JModelAndView;
- import com.sailmi.mall.core.query.support.IPageList;
- import com.sailmi.mall.core.tools.CommUtil;
- import com.sailmi.mall.foundation.domain.SysConfig;
- import com.sailmi.mall.foundation.domain.query.BargainGoodsQueryObject;
- import com.sailmi.mall.foundation.service.IBargainGoodsService;
- import com.sailmi.mall.foundation.service.ISysConfigService;
- import com.sailmi.mall.foundation.service.IUserConfigService;
- import java.util.ArrayList;
+ import com.sailmi.sailplat.core.domain.virtual.SysMap;
+import com.sailmi.sailplat.core.mv.JModelAndView;
+import com.sailmi.sailplat.core.query.support.IPageList;
+import com.sailmi.sailplat.core.tools.CommUtil;
+import com.sailmi.sailplat.foundation.domain.SysConfig;
+import com.sailmi.sailplat.foundation.domain.query.BargainGoodsQueryObject;
+import com.sailmi.sailplat.foundation.service.IBargainGoodsService;
+import com.sailmi.sailplat.foundation.service.ISysConfigService;
+import com.sailmi.sailplat.foundation.service.IUserConfigService;
+
+import java.util.ArrayList;
  import java.util.Calendar;
  import java.util.Date;
  import java.util.HashMap;

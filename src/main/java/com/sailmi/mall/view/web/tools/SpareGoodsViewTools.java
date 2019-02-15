@@ -1,9 +1,10 @@
  package com.sailmi.mall.view.web.tools;
  
- import com.sailmi.mall.foundation.domain.SpareGoodsClass;
- import com.sailmi.mall.foundation.domain.SpareGoodsFloor;
- import com.sailmi.mall.foundation.service.ISpareGoodsClassService;
- import java.io.PrintStream;
+ import com.sailmi.sailplat.foundation.domain.SpareGoodsClass;
+import com.sailmi.sailplat.foundation.domain.SpareGoodsFloor;
+import com.sailmi.sailplat.foundation.service.ISpareGoodsClassService;
+
+import java.io.PrintStream;
  import java.util.ArrayList;
  import java.util.List;
  import java.util.regex.Matcher;

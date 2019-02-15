@@ -7,9 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.stereotype.Component;
 
-import com.sailmi.mall.core.tools.CommUtil;
-import com.sailmi.mall.foundation.domain.User;
-import com.sailmi.mall.foundation.service.IUserService;
+import com.sailmi.sailplat.core.tools.CommUtil;
+import com.sailmi.sailplat.foundation.domain.User;
+import com.sailmi.sailplat.foundation.service.IUserService;
  
  @Component
  public class UserTools

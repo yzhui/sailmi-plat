@@ -1,22 +1,23 @@
  package com.sailmi.mall.manage.seller.action;
  
- import com.sailmi.mall.core.annotation.SecurityMapping;
- import com.sailmi.mall.core.domain.virtual.SysMap;
- import com.sailmi.mall.core.mv.JModelAndView;
- import com.sailmi.mall.core.query.support.IPageList;
- import com.sailmi.mall.core.security.support.SecurityUserHolder;
- import com.sailmi.mall.core.tools.CommUtil;
- import com.sailmi.mall.foundation.domain.Consult;
- import com.sailmi.mall.foundation.domain.Store;
- import com.sailmi.mall.foundation.domain.User;
- import com.sailmi.mall.foundation.domain.query.ConsultQueryObject;
- import com.sailmi.mall.foundation.service.IConsultService;
- import com.sailmi.mall.foundation.service.ISysConfigService;
- import com.sailmi.mall.foundation.service.ITemplateService;
- import com.sailmi.mall.foundation.service.IUserConfigService;
- import com.sailmi.mall.foundation.service.IUserService;
  import com.sailmi.mall.manage.admin.tools.MsgTools;
- import java.io.File;
+import com.sailmi.sailplat.core.annotation.SecurityMapping;
+import com.sailmi.sailplat.core.domain.virtual.SysMap;
+import com.sailmi.sailplat.core.mv.JModelAndView;
+import com.sailmi.sailplat.core.query.support.IPageList;
+import com.sailmi.sailplat.core.security.support.SecurityUserHolder;
+import com.sailmi.sailplat.core.tools.CommUtil;
+import com.sailmi.sailplat.foundation.domain.Consult;
+import com.sailmi.sailplat.foundation.domain.Store;
+import com.sailmi.sailplat.foundation.domain.User;
+import com.sailmi.sailplat.foundation.domain.query.ConsultQueryObject;
+import com.sailmi.sailplat.foundation.service.IConsultService;
+import com.sailmi.sailplat.foundation.service.ISysConfigService;
+import com.sailmi.sailplat.foundation.service.ITemplateService;
+import com.sailmi.sailplat.foundation.service.IUserConfigService;
+import com.sailmi.sailplat.foundation.service.IUserService;
+
+import java.io.File;
  import java.io.FileOutputStream;
  import java.io.OutputStreamWriter;
  import java.io.PrintWriter;
@@ -121,7 +122,7 @@
  
    private void send_email(HttpServletRequest request, Consult obj, String mark) throws Exception
    {
-     com.sailmi.mall.foundation.domain.Template template = this.templateService.getObjByProperty("mark", mark);
+     com.sailmi.sailplat.foundation.domain.Template template = this.templateService.getObjByProperty("mark", mark);
      if (template.isOpen()) {
        String email = obj.getConsult_email();
        String subject = template.getTitle();

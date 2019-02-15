@@ -1,11 +1,12 @@
  package com.sailmi.mall.view.web.tools;
  
- import com.sailmi.mall.foundation.domain.Navigation;
- import com.sailmi.mall.foundation.service.IActivityService;
- import com.sailmi.mall.foundation.service.IArticleService;
- import com.sailmi.mall.foundation.service.IGoodsClassService;
- import com.sailmi.mall.foundation.service.INavigationService;
- import java.util.ArrayList;
+ import com.sailmi.sailplat.foundation.domain.Navigation;
+import com.sailmi.sailplat.foundation.service.IActivityService;
+import com.sailmi.sailplat.foundation.service.IArticleService;
+import com.sailmi.sailplat.foundation.service.IGoodsClassService;
+import com.sailmi.sailplat.foundation.service.INavigationService;
+
+import java.util.ArrayList;
  import java.util.HashMap;
  import java.util.List;
  import java.util.Map;

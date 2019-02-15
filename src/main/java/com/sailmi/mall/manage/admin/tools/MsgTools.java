@@ -1,12 +1,12 @@
  package com.sailmi.mall.manage.admin.tools;
  
- import com.sailmi.mall.core.tools.PopupAuthenticator;
- import com.sailmi.mall.core.tools.SmsBase;
- import com.sailmi.mall.foundation.domain.SysConfig;
- import com.sailmi.mall.foundation.service.ISysConfigService;
- import com.sailmi.mall.foundation.service.IUserService;
+ import com.sailmi.sailplat.core.tools.PopupAuthenticator;
+import com.sailmi.sailplat.core.tools.SmsBase;
+import com.sailmi.sailplat.foundation.domain.SysConfig;
+import com.sailmi.sailplat.foundation.service.ISysConfigService;
+import com.sailmi.sailplat.foundation.service.IUserService;
 
- import java.io.UnsupportedEncodingException;
+import java.io.UnsupportedEncodingException;
  import java.util.Properties;
 
  import javax.activation.DataHandler;

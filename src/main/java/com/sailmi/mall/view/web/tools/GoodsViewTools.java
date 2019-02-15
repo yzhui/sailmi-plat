@@ -1,18 +1,18 @@
  package com.sailmi.mall.view.web.tools;
  
- import com.sailmi.mall.core.security.support.SecurityUserHolder;
- import com.sailmi.mall.core.tools.CommUtil;
- import com.sailmi.mall.foundation.domain.Goods;
- import com.sailmi.mall.foundation.domain.GoodsClass;
- import com.sailmi.mall.foundation.domain.GoodsSpecProperty;
- import com.sailmi.mall.foundation.domain.GoodsSpecification;
- import com.sailmi.mall.foundation.domain.User;
- import com.sailmi.mall.foundation.domain.UserGoodsClass;
- import com.sailmi.mall.foundation.service.IGoodsClassService;
- import com.sailmi.mall.foundation.service.IGoodsService;
- import com.sailmi.mall.foundation.service.IUserGoodsClassService;
+ import com.sailmi.sailplat.core.security.support.SecurityUserHolder;
+import com.sailmi.sailplat.core.tools.CommUtil;
+import com.sailmi.sailplat.foundation.domain.Goods;
+import com.sailmi.sailplat.foundation.domain.GoodsClass;
+import com.sailmi.sailplat.foundation.domain.GoodsSpecProperty;
+import com.sailmi.sailplat.foundation.domain.GoodsSpecification;
+import com.sailmi.sailplat.foundation.domain.User;
+import com.sailmi.sailplat.foundation.domain.UserGoodsClass;
+import com.sailmi.sailplat.foundation.service.IGoodsClassService;
+import com.sailmi.sailplat.foundation.service.IGoodsService;
+import com.sailmi.sailplat.foundation.service.IUserGoodsClassService;
 
- import java.util.ArrayList;
+import java.util.ArrayList;
  import java.util.Collections;
  import java.util.Comparator;
  import java.util.HashMap;

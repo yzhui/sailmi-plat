@@ -18,19 +18,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.sailmi.mall.core.domain.virtual.SysMap;
-import com.sailmi.mall.core.mv.JModelAndView;
-import com.sailmi.mall.core.query.support.IPageList;
-import com.sailmi.mall.core.tools.CommUtil;
-import com.sailmi.mall.foundation.domain.GoodsBrand;
-import com.sailmi.mall.foundation.domain.query.GoodsQueryObject;
-import com.sailmi.mall.foundation.service.IGoodsBrandCategoryService;
-import com.sailmi.mall.foundation.service.IGoodsBrandService;
-import com.sailmi.mall.foundation.service.IGoodsClassService;
-import com.sailmi.mall.foundation.service.IGoodsService;
-import com.sailmi.mall.foundation.service.ISysConfigService;
-import com.sailmi.mall.foundation.service.IUserConfigService;
 import com.sailmi.mall.view.web.tools.StoreViewTools;
+import com.sailmi.sailplat.core.domain.virtual.SysMap;
+import com.sailmi.sailplat.core.mv.JModelAndView;
+import com.sailmi.sailplat.core.query.support.IPageList;
+import com.sailmi.sailplat.core.tools.CommUtil;
+import com.sailmi.sailplat.foundation.domain.GoodsBrand;
+import com.sailmi.sailplat.foundation.domain.query.GoodsQueryObject;
+import com.sailmi.sailplat.foundation.service.IGoodsBrandCategoryService;
+import com.sailmi.sailplat.foundation.service.IGoodsBrandService;
+import com.sailmi.sailplat.foundation.service.IGoodsClassService;
+import com.sailmi.sailplat.foundation.service.IGoodsService;
+import com.sailmi.sailplat.foundation.service.ISysConfigService;
+import com.sailmi.sailplat.foundation.service.IUserConfigService;
  
  @Controller
  public class BrandViewAction

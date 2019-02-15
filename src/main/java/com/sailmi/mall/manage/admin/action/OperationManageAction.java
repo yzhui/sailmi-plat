@@ -1,14 +1,15 @@
  package com.sailmi.mall.manage.admin.action;
  
- import com.sailmi.mall.core.annotation.SecurityMapping;
- import com.sailmi.mall.core.mv.JModelAndView;
- import com.sailmi.mall.core.tools.CommUtil;
- import com.sailmi.mall.foundation.domain.Navigation;
- import com.sailmi.mall.foundation.domain.SysConfig;
- import com.sailmi.mall.foundation.service.INavigationService;
- import com.sailmi.mall.foundation.service.ISysConfigService;
- import com.sailmi.mall.foundation.service.IUserConfigService;
- import java.util.Date;
+ import com.sailmi.sailplat.core.annotation.SecurityMapping;
+import com.sailmi.sailplat.core.mv.JModelAndView;
+import com.sailmi.sailplat.core.tools.CommUtil;
+import com.sailmi.sailplat.foundation.domain.Navigation;
+import com.sailmi.sailplat.foundation.domain.SysConfig;
+import com.sailmi.sailplat.foundation.service.INavigationService;
+import com.sailmi.sailplat.foundation.service.ISysConfigService;
+import com.sailmi.sailplat.foundation.service.IUserConfigService;
+
+import java.util.Date;
  import java.util.HashMap;
  import java.util.List;
  import java.util.Map;

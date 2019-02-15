@@ -23,26 +23,26 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.sailmi.mall.core.domain.virtual.SysMap;
-import com.sailmi.mall.core.mv.JModelAndView;
-import com.sailmi.mall.core.query.support.IPageList;
-import com.sailmi.mall.core.tools.CommUtil;
-import com.sailmi.mall.foundation.domain.Area;
-import com.sailmi.mall.foundation.domain.Goods;
-import com.sailmi.mall.foundation.domain.GoodsClass;
-import com.sailmi.mall.foundation.domain.StoreClass;
-import com.sailmi.mall.foundation.domain.query.StoreQueryObject;
-import com.sailmi.mall.foundation.service.IAreaService;
-import com.sailmi.mall.foundation.service.IGoodsService;
-import com.sailmi.mall.foundation.service.IStoreClassService;
-import com.sailmi.mall.foundation.service.IStoreGradeService;
-import com.sailmi.mall.foundation.service.IStoreService;
-import com.sailmi.mall.foundation.service.ISysConfigService;
-import com.sailmi.mall.foundation.service.IUserConfigService;
-import com.sailmi.mall.lucene.LuceneResult;
-import com.sailmi.mall.lucene.LuceneUtil;
-import com.sailmi.mall.lucene.LuceneVo;
 import com.sailmi.mall.view.web.tools.StoreViewTools;
+import com.sailmi.sailplat.core.domain.virtual.SysMap;
+import com.sailmi.sailplat.core.mv.JModelAndView;
+import com.sailmi.sailplat.core.query.support.IPageList;
+import com.sailmi.sailplat.core.tools.CommUtil;
+import com.sailmi.sailplat.foundation.domain.Area;
+import com.sailmi.sailplat.foundation.domain.Goods;
+import com.sailmi.sailplat.foundation.domain.GoodsClass;
+import com.sailmi.sailplat.foundation.domain.StoreClass;
+import com.sailmi.sailplat.foundation.domain.query.StoreQueryObject;
+import com.sailmi.sailplat.foundation.service.IAreaService;
+import com.sailmi.sailplat.foundation.service.IGoodsService;
+import com.sailmi.sailplat.foundation.service.IStoreClassService;
+import com.sailmi.sailplat.foundation.service.IStoreGradeService;
+import com.sailmi.sailplat.foundation.service.IStoreService;
+import com.sailmi.sailplat.foundation.service.ISysConfigService;
+import com.sailmi.sailplat.foundation.service.IUserConfigService;
+import com.sailmi.sailplat.lucene.LuceneResult;
+import com.sailmi.sailplat.lucene.LuceneUtil;
+import com.sailmi.sailplat.lucene.LuceneVo;
  
  @Controller
  public class SearchViewAction

@@ -1,13 +1,13 @@
  package com.sailmi.mall.view.web.action;
  
- import com.sailmi.mall.core.mv.JModelAndView;
-import com.sailmi.mall.core.tools.CommUtil;
-import com.sailmi.mall.foundation.domain.Advert;
-import com.sailmi.mall.foundation.domain.AdvertPosition;
-import com.sailmi.mall.foundation.service.IAdvertPositionService;
-import com.sailmi.mall.foundation.service.IAdvertService;
-import com.sailmi.mall.foundation.service.ISysConfigService;
-import com.sailmi.mall.foundation.service.IUserConfigService;
+ import com.sailmi.sailplat.core.mv.JModelAndView;
+import com.sailmi.sailplat.core.tools.CommUtil;
+import com.sailmi.sailplat.foundation.domain.Advert;
+import com.sailmi.sailplat.foundation.domain.AdvertPosition;
+import com.sailmi.sailplat.foundation.service.IAdvertPositionService;
+import com.sailmi.sailplat.foundation.service.IAdvertService;
+import com.sailmi.sailplat.foundation.service.ISysConfigService;
+import com.sailmi.sailplat.foundation.service.IUserConfigService;
 
 import java.io.IOException;
 import java.util.ArrayList;

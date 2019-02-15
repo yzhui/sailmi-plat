@@ -1,10 +1,11 @@
  package com.sailmi.mall.view.web.action;
  
- import com.sailmi.mall.core.tools.CommUtil;
- import com.sailmi.mall.foundation.service.IGroupService;
- import com.sailmi.mall.foundation.service.IStoreService;
- import com.sailmi.mall.foundation.service.IUserService;
- import java.awt.Color;
+ import com.sailmi.sailplat.core.tools.CommUtil;
+import com.sailmi.sailplat.foundation.service.IGroupService;
+import com.sailmi.sailplat.foundation.service.IStoreService;
+import com.sailmi.sailplat.foundation.service.IUserService;
+
+import java.awt.Color;
  import java.awt.Font;
  import java.awt.Graphics;
  import java.awt.image.BufferedImage;

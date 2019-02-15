@@ -1,16 +1,17 @@
  package com.sailmi.mall.manage.admin.action;
  
- import com.sailmi.mall.core.annotation.SecurityMapping;
- import com.sailmi.mall.core.mv.JModelAndView;
- import com.sailmi.mall.core.tools.CommUtil;
- import com.sailmi.mall.core.tools.WebForm;
- import com.sailmi.mall.foundation.domain.Payment;
- import com.sailmi.mall.foundation.domain.SysConfig;
- import com.sailmi.mall.foundation.service.IPaymentService;
- import com.sailmi.mall.foundation.service.ISysConfigService;
- import com.sailmi.mall.foundation.service.IUserConfigService;
  import com.sailmi.mall.manage.admin.tools.PaymentTools;
- import java.util.Date;
+import com.sailmi.sailplat.core.annotation.SecurityMapping;
+import com.sailmi.sailplat.core.mv.JModelAndView;
+import com.sailmi.sailplat.core.tools.CommUtil;
+import com.sailmi.sailplat.core.tools.WebForm;
+import com.sailmi.sailplat.foundation.domain.Payment;
+import com.sailmi.sailplat.foundation.domain.SysConfig;
+import com.sailmi.sailplat.foundation.service.IPaymentService;
+import com.sailmi.sailplat.foundation.service.ISysConfigService;
+import com.sailmi.sailplat.foundation.service.IUserConfigService;
+
+import java.util.Date;
  import java.util.HashMap;
  import java.util.Iterator;
  import java.util.List;

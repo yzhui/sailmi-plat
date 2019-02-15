@@ -13,20 +13,20 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.sailmi.mall.core.tools.CommUtil;
-import com.sailmi.mall.foundation.domain.Accessory;
-import com.sailmi.mall.foundation.domain.Advert;
-import com.sailmi.mall.foundation.domain.AdvertPosition;
-import com.sailmi.mall.foundation.domain.Goods;
-import com.sailmi.mall.foundation.domain.GoodsBrand;
-import com.sailmi.mall.foundation.domain.GoodsClass;
-import com.sailmi.mall.foundation.service.IAccessoryService;
-import com.sailmi.mall.foundation.service.IAdvertPositionService;
-import com.sailmi.mall.foundation.service.IAdvertService;
-import com.sailmi.mall.foundation.service.IGoodsBrandService;
-import com.sailmi.mall.foundation.service.IGoodsClassService;
-import com.sailmi.mall.foundation.service.IGoodsFloorService;
-import com.sailmi.mall.foundation.service.IGoodsService;
+import com.sailmi.sailplat.core.tools.CommUtil;
+import com.sailmi.sailplat.foundation.domain.Accessory;
+import com.sailmi.sailplat.foundation.domain.Advert;
+import com.sailmi.sailplat.foundation.domain.AdvertPosition;
+import com.sailmi.sailplat.foundation.domain.Goods;
+import com.sailmi.sailplat.foundation.domain.GoodsBrand;
+import com.sailmi.sailplat.foundation.domain.GoodsClass;
+import com.sailmi.sailplat.foundation.service.IAccessoryService;
+import com.sailmi.sailplat.foundation.service.IAdvertPositionService;
+import com.sailmi.sailplat.foundation.service.IAdvertService;
+import com.sailmi.sailplat.foundation.service.IGoodsBrandService;
+import com.sailmi.sailplat.foundation.service.IGoodsClassService;
+import com.sailmi.sailplat.foundation.service.IGoodsFloorService;
+import com.sailmi.sailplat.foundation.service.IGoodsService;
  
 
  @Component

@@ -20,22 +20,22 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.sailmi.mall.core.annotation.SecurityMapping;
-import com.sailmi.mall.core.mv.JModelAndView;
-import com.sailmi.mall.core.query.support.IPageList;
-import com.sailmi.mall.core.tools.CommUtil;
-import com.sailmi.mall.core.tools.WebForm;
-import com.sailmi.mall.core.tools.database.DatabaseTools;
-import com.sailmi.mall.foundation.domain.Accessory;
-import com.sailmi.mall.foundation.domain.GoodsSpecProperty;
-import com.sailmi.mall.foundation.domain.GoodsSpecification;
-import com.sailmi.mall.foundation.domain.query.GoodsSpecificationQueryObject;
-import com.sailmi.mall.foundation.service.IAccessoryService;
-import com.sailmi.mall.foundation.service.IGoodsSpecPropertyService;
-import com.sailmi.mall.foundation.service.IGoodsSpecificationService;
-import com.sailmi.mall.foundation.service.ISysConfigService;
-import com.sailmi.mall.foundation.service.IUserConfigService;
 import com.sailmi.mall.manage.admin.tools.StoreTools;
+import com.sailmi.sailplat.core.annotation.SecurityMapping;
+import com.sailmi.sailplat.core.mv.JModelAndView;
+import com.sailmi.sailplat.core.query.support.IPageList;
+import com.sailmi.sailplat.core.tools.CommUtil;
+import com.sailmi.sailplat.core.tools.WebForm;
+import com.sailmi.sailplat.core.tools.database.DatabaseTools;
+import com.sailmi.sailplat.foundation.domain.Accessory;
+import com.sailmi.sailplat.foundation.domain.GoodsSpecProperty;
+import com.sailmi.sailplat.foundation.domain.GoodsSpecification;
+import com.sailmi.sailplat.foundation.domain.query.GoodsSpecificationQueryObject;
+import com.sailmi.sailplat.foundation.service.IAccessoryService;
+import com.sailmi.sailplat.foundation.service.IGoodsSpecPropertyService;
+import com.sailmi.sailplat.foundation.service.IGoodsSpecificationService;
+import com.sailmi.sailplat.foundation.service.ISysConfigService;
+import com.sailmi.sailplat.foundation.service.IUserConfigService;
  
  @Controller
  public class GoodsSpecificationManageAction

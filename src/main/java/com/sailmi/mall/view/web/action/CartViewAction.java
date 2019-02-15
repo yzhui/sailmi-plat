@@ -46,56 +46,56 @@ import com.alipay.api.AlipayClient;
 import com.alipay.api.DefaultAlipayClient;
 import com.alipay.api.domain.AlipayTradeWapPayModel;
 import com.alipay.api.request.AlipayTradeWapPayRequest;
-import com.sailmi.mall.core.annotation.SecurityMapping;
-import com.sailmi.mall.core.domain.virtual.SysMap;
-import com.sailmi.mall.core.mv.JModelAndView;
-import com.sailmi.mall.core.query.support.IPageList;
-import com.sailmi.mall.core.security.support.SecurityUserHolder;
-import com.sailmi.mall.core.tools.CommUtil;
-import com.sailmi.mall.core.tools.QRCodeEncoderHandler;
-import com.sailmi.mall.core.tools.WebForm;
-import com.sailmi.mall.core.tools.WxAdvancedUtil;
-import com.sailmi.mall.core.tools.WxCommonUtil;
-import com.sailmi.mall.core.tools.bean.WxOauth2Token;
-import com.sailmi.mall.core.tools.bean.WxToken;
-import com.sailmi.mall.foundation.domain.Address;
-import com.sailmi.mall.foundation.domain.Area;
-import com.sailmi.mall.foundation.domain.CouponInfo;
-import com.sailmi.mall.foundation.domain.Goods;
-import com.sailmi.mall.foundation.domain.GoodsCart;
-import com.sailmi.mall.foundation.domain.GoodsSpecProperty;
-import com.sailmi.mall.foundation.domain.GroupGoods;
-import com.sailmi.mall.foundation.domain.OrderForm;
-import com.sailmi.mall.foundation.domain.OrderFormLog;
-import com.sailmi.mall.foundation.domain.Payment;
-import com.sailmi.mall.foundation.domain.PredepositLog;
-import com.sailmi.mall.foundation.domain.Store;
-import com.sailmi.mall.foundation.domain.StoreCart;
-import com.sailmi.mall.foundation.domain.User;
-import com.sailmi.mall.foundation.domain.query.AddressQueryObject;
-import com.sailmi.mall.foundation.service.IAddressService;
-import com.sailmi.mall.foundation.service.IAreaService;
-import com.sailmi.mall.foundation.service.ICouponInfoService;
-import com.sailmi.mall.foundation.service.IGoodsCartService;
-import com.sailmi.mall.foundation.service.IGoodsService;
-import com.sailmi.mall.foundation.service.IGoodsSpecPropertyService;
-import com.sailmi.mall.foundation.service.IGroupGoodsService;
-import com.sailmi.mall.foundation.service.IOrderFormLogService;
-import com.sailmi.mall.foundation.service.IOrderFormService;
-import com.sailmi.mall.foundation.service.IPaymentService;
-import com.sailmi.mall.foundation.service.IPredepositLogService;
-import com.sailmi.mall.foundation.service.IStoreCartService;
-import com.sailmi.mall.foundation.service.IStoreService;
-import com.sailmi.mall.foundation.service.ISysConfigService;
-import com.sailmi.mall.foundation.service.ITemplateService;
-import com.sailmi.mall.foundation.service.IUserConfigService;
-import com.sailmi.mall.foundation.service.IUserService;
 import com.sailmi.mall.manage.admin.tools.MsgTools;
 import com.sailmi.mall.manage.admin.tools.PaymentTools;
 import com.sailmi.mall.manage.seller.Tools.TransportTools;
-import com.sailmi.mall.pay.alipay.config.AlipayConfig;
-import com.sailmi.mall.pay.tools.PayTools;
 import com.sailmi.mall.view.web.tools.GoodsViewTools;
+import com.sailmi.sailplat.core.annotation.SecurityMapping;
+import com.sailmi.sailplat.core.domain.virtual.SysMap;
+import com.sailmi.sailplat.core.mv.JModelAndView;
+import com.sailmi.sailplat.core.query.support.IPageList;
+import com.sailmi.sailplat.core.security.support.SecurityUserHolder;
+import com.sailmi.sailplat.core.tools.CommUtil;
+import com.sailmi.sailplat.core.tools.QRCodeEncoderHandler;
+import com.sailmi.sailplat.core.tools.WebForm;
+import com.sailmi.sailplat.core.tools.WxAdvancedUtil;
+import com.sailmi.sailplat.core.tools.WxCommonUtil;
+import com.sailmi.sailplat.core.tools.bean.WxOauth2Token;
+import com.sailmi.sailplat.core.tools.bean.WxToken;
+import com.sailmi.sailplat.foundation.domain.Address;
+import com.sailmi.sailplat.foundation.domain.Area;
+import com.sailmi.sailplat.foundation.domain.CouponInfo;
+import com.sailmi.sailplat.foundation.domain.Goods;
+import com.sailmi.sailplat.foundation.domain.GoodsCart;
+import com.sailmi.sailplat.foundation.domain.GoodsSpecProperty;
+import com.sailmi.sailplat.foundation.domain.GroupGoods;
+import com.sailmi.sailplat.foundation.domain.OrderForm;
+import com.sailmi.sailplat.foundation.domain.OrderFormLog;
+import com.sailmi.sailplat.foundation.domain.Payment;
+import com.sailmi.sailplat.foundation.domain.PredepositLog;
+import com.sailmi.sailplat.foundation.domain.Store;
+import com.sailmi.sailplat.foundation.domain.StoreCart;
+import com.sailmi.sailplat.foundation.domain.User;
+import com.sailmi.sailplat.foundation.domain.query.AddressQueryObject;
+import com.sailmi.sailplat.foundation.service.IAddressService;
+import com.sailmi.sailplat.foundation.service.IAreaService;
+import com.sailmi.sailplat.foundation.service.ICouponInfoService;
+import com.sailmi.sailplat.foundation.service.IGoodsCartService;
+import com.sailmi.sailplat.foundation.service.IGoodsService;
+import com.sailmi.sailplat.foundation.service.IGoodsSpecPropertyService;
+import com.sailmi.sailplat.foundation.service.IGroupGoodsService;
+import com.sailmi.sailplat.foundation.service.IOrderFormLogService;
+import com.sailmi.sailplat.foundation.service.IOrderFormService;
+import com.sailmi.sailplat.foundation.service.IPaymentService;
+import com.sailmi.sailplat.foundation.service.IPredepositLogService;
+import com.sailmi.sailplat.foundation.service.IStoreCartService;
+import com.sailmi.sailplat.foundation.service.IStoreService;
+import com.sailmi.sailplat.foundation.service.ISysConfigService;
+import com.sailmi.sailplat.foundation.service.ITemplateService;
+import com.sailmi.sailplat.foundation.service.IUserConfigService;
+import com.sailmi.sailplat.foundation.service.IUserService;
+import com.sailmi.sailplat.pay.alipay.config.AlipayConfig;
+import com.sailmi.sailplat.pay.tools.PayTools;
 
 @Controller
 public class CartViewAction {
@@ -1874,7 +1874,7 @@ public class CartViewAction {
 	   
 
 	private void send_email(HttpServletRequest request, OrderForm order, String email, String mark) throws Exception {
-		com.sailmi.mall.foundation.domain.Template template = this.templateService.getObjByProperty("mark", mark);
+		com.sailmi.sailplat.foundation.domain.Template template = this.templateService.getObjByProperty("mark", mark);
 		if ((template != null) && (template.isOpen())) {
 			String subject = template.getTitle();
 			String path = request.getSession().getServletContext().getRealPath("") + File.separator + "vm"
@@ -1910,7 +1910,7 @@ public class CartViewAction {
 	}
 
 	private void send_sms(HttpServletRequest request, OrderForm order, String mobile, String mark) throws Exception {
-		com.sailmi.mall.foundation.domain.Template template = this.templateService.getObjByProperty("mark", mark);
+		com.sailmi.sailplat.foundation.domain.Template template = this.templateService.getObjByProperty("mark", mark);
 		if ((template != null) && (template.isOpen())) {
 			String path = request.getSession().getServletContext().getRealPath("") + File.separator + "vm"
 					+ File.separator;

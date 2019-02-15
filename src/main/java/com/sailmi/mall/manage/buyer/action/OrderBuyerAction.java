@@ -1,41 +1,41 @@
  package com.sailmi.mall.manage.buyer.action;
  
- import com.sailmi.mall.core.annotation.SecurityMapping;
-import com.sailmi.mall.core.domain.virtual.SysMap;
-import com.sailmi.mall.core.mv.JModelAndView;
-import com.sailmi.mall.core.query.support.IPageList;
-import com.sailmi.mall.core.security.support.SecurityUserHolder;
-import com.sailmi.mall.core.tools.CommUtil;
-import com.sailmi.mall.foundation.domain.Evaluate;
-import com.sailmi.mall.foundation.domain.ExpressCompany;
-import com.sailmi.mall.foundation.domain.Goods;
-import com.sailmi.mall.foundation.domain.GoodsCart;
-import com.sailmi.mall.foundation.domain.OrderForm;
-import com.sailmi.mall.foundation.domain.OrderFormLog;
-import com.sailmi.mall.foundation.domain.Payment;
-import com.sailmi.mall.foundation.domain.PredepositLog;
-import com.sailmi.mall.foundation.domain.Store;
-import com.sailmi.mall.foundation.domain.StorePoint;
-import com.sailmi.mall.foundation.domain.SysConfig;
-import com.sailmi.mall.foundation.domain.User;
-import com.sailmi.mall.foundation.domain.query.OrderFormQueryObject;
-import com.sailmi.mall.foundation.domain.virtual.TransInfo;
-import com.sailmi.mall.foundation.service.IEvaluateService;
-import com.sailmi.mall.foundation.service.IExpressCompanyService;
-import com.sailmi.mall.foundation.service.IGoodsCartService;
-import com.sailmi.mall.foundation.service.IGoodsReturnItemService;
-import com.sailmi.mall.foundation.service.IGoodsReturnService;
-import com.sailmi.mall.foundation.service.IOrderFormLogService;
-import com.sailmi.mall.foundation.service.IOrderFormService;
-import com.sailmi.mall.foundation.service.IPaymentService;
-import com.sailmi.mall.foundation.service.IPredepositLogService;
-import com.sailmi.mall.foundation.service.IStorePointService;
-import com.sailmi.mall.foundation.service.IStoreService;
-import com.sailmi.mall.foundation.service.ISysConfigService;
-import com.sailmi.mall.foundation.service.ITemplateService;
-import com.sailmi.mall.foundation.service.IUserConfigService;
-import com.sailmi.mall.foundation.service.IUserService;
-import com.sailmi.mall.manage.admin.tools.MsgTools;
+ import com.sailmi.mall.manage.admin.tools.MsgTools;
+import com.sailmi.sailplat.core.annotation.SecurityMapping;
+import com.sailmi.sailplat.core.domain.virtual.SysMap;
+import com.sailmi.sailplat.core.mv.JModelAndView;
+import com.sailmi.sailplat.core.query.support.IPageList;
+import com.sailmi.sailplat.core.security.support.SecurityUserHolder;
+import com.sailmi.sailplat.core.tools.CommUtil;
+import com.sailmi.sailplat.foundation.domain.Evaluate;
+import com.sailmi.sailplat.foundation.domain.ExpressCompany;
+import com.sailmi.sailplat.foundation.domain.Goods;
+import com.sailmi.sailplat.foundation.domain.GoodsCart;
+import com.sailmi.sailplat.foundation.domain.OrderForm;
+import com.sailmi.sailplat.foundation.domain.OrderFormLog;
+import com.sailmi.sailplat.foundation.domain.Payment;
+import com.sailmi.sailplat.foundation.domain.PredepositLog;
+import com.sailmi.sailplat.foundation.domain.Store;
+import com.sailmi.sailplat.foundation.domain.StorePoint;
+import com.sailmi.sailplat.foundation.domain.SysConfig;
+import com.sailmi.sailplat.foundation.domain.User;
+import com.sailmi.sailplat.foundation.domain.query.OrderFormQueryObject;
+import com.sailmi.sailplat.foundation.domain.virtual.TransInfo;
+import com.sailmi.sailplat.foundation.service.IEvaluateService;
+import com.sailmi.sailplat.foundation.service.IExpressCompanyService;
+import com.sailmi.sailplat.foundation.service.IGoodsCartService;
+import com.sailmi.sailplat.foundation.service.IGoodsReturnItemService;
+import com.sailmi.sailplat.foundation.service.IGoodsReturnService;
+import com.sailmi.sailplat.foundation.service.IOrderFormLogService;
+import com.sailmi.sailplat.foundation.service.IOrderFormService;
+import com.sailmi.sailplat.foundation.service.IPaymentService;
+import com.sailmi.sailplat.foundation.service.IPredepositLogService;
+import com.sailmi.sailplat.foundation.service.IStorePointService;
+import com.sailmi.sailplat.foundation.service.IStoreService;
+import com.sailmi.sailplat.foundation.service.ISysConfigService;
+import com.sailmi.sailplat.foundation.service.ITemplateService;
+import com.sailmi.sailplat.foundation.service.IUserConfigService;
+import com.sailmi.sailplat.foundation.service.IUserService;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -826,7 +826,7 @@ import org.springframework.web.servlet.ModelAndView;
  
    private void send_email(HttpServletRequest request, OrderForm order, String mark) throws Exception
    {
-     com.sailmi.mall.foundation.domain.Template template = this.templateService.getObjByProperty("mark", mark);
+     com.sailmi.sailplat.foundation.domain.Template template = this.templateService.getObjByProperty("mark", mark);
      if (template.isOpen()) {
        String email = order.getStore().getUser().getEmail();
        String subject = template.getTitle();
@@ -864,7 +864,7 @@ import org.springframework.web.servlet.ModelAndView;
  
    private void send_sms(HttpServletRequest request, OrderForm order, String mobile, String mark) throws Exception
    {
-     com.sailmi.mall.foundation.domain.Template template = this.templateService.getObjByProperty("mark", mark);
+     com.sailmi.sailplat.foundation.domain.Template template = this.templateService.getObjByProperty("mark", mark);
      if (template.isOpen()) {
        String path = request.getSession().getServletContext()
          .getRealPath("/") + 

@@ -1,8 +1,9 @@
  package com.sailmi.mall.view.web.action;
  
- import com.sailmi.mall.foundation.domain.Area;
- import com.sailmi.mall.foundation.service.IAreaService;
- import java.io.IOException;
+ import com.sailmi.sailplat.foundation.domain.Area;
+import com.sailmi.sailplat.foundation.service.IAreaService;
+
+import java.io.IOException;
  import java.io.PrintWriter;
  import java.util.ArrayList;
  import java.util.HashMap;

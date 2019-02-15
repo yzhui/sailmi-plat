@@ -38,49 +38,49 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.alipay.api.AlipayApiException;
 import com.alipay.api.internal.util.AlipaySignature;
-import com.sailmi.mall.core.annotation.SecurityMapping;
-import com.sailmi.mall.core.mv.JModelAndView;
-import com.sailmi.mall.core.security.support.SecurityUserHolder;
-import com.sailmi.mall.core.tools.CommUtil;
-import com.sailmi.mall.core.tools.Md5Encrypt;
-import com.sailmi.mall.core.tools.WxCommonUtil;
-import com.sailmi.mall.foundation.domain.GoldLog;
-import com.sailmi.mall.foundation.domain.GoldRecord;
-import com.sailmi.mall.foundation.domain.Goods;
-import com.sailmi.mall.foundation.domain.GoodsCart;
-import com.sailmi.mall.foundation.domain.GoodsSpecProperty;
-import com.sailmi.mall.foundation.domain.GroupGoods;
-import com.sailmi.mall.foundation.domain.IntegralGoods;
-import com.sailmi.mall.foundation.domain.IntegralGoodsCart;
-import com.sailmi.mall.foundation.domain.IntegralGoodsOrder;
-import com.sailmi.mall.foundation.domain.OrderForm;
-import com.sailmi.mall.foundation.domain.OrderFormLog;
-import com.sailmi.mall.foundation.domain.Payment;
-import com.sailmi.mall.foundation.domain.Predeposit;
-import com.sailmi.mall.foundation.domain.PredepositLog;
-import com.sailmi.mall.foundation.domain.User;
-import com.sailmi.mall.foundation.service.IGoldLogService;
-import com.sailmi.mall.foundation.service.IGoldRecordService;
-import com.sailmi.mall.foundation.service.IGoodsService;
-import com.sailmi.mall.foundation.service.IGroupGoodsService;
-import com.sailmi.mall.foundation.service.IIntegralGoodsOrderService;
-import com.sailmi.mall.foundation.service.IIntegralGoodsService;
-import com.sailmi.mall.foundation.service.IOrderFormLogService;
-import com.sailmi.mall.foundation.service.IOrderFormService;
-import com.sailmi.mall.foundation.service.IPaymentService;
-import com.sailmi.mall.foundation.service.IPredepositLogService;
-import com.sailmi.mall.foundation.service.IPredepositService;
-import com.sailmi.mall.foundation.service.ISysConfigService;
-import com.sailmi.mall.foundation.service.ITemplateService;
-import com.sailmi.mall.foundation.service.IUserConfigService;
-import com.sailmi.mall.foundation.service.IUserService;
 import com.sailmi.mall.manage.admin.tools.MsgTools;
-import com.sailmi.mall.pay.alipay.config.AlipayConfig;
-import com.sailmi.mall.pay.alipay.util.AlipayNotify;
-import com.sailmi.mall.pay.bill.util.MD5Util;
-import com.sailmi.mall.pay.tenpay.RequestHandler;
-import com.sailmi.mall.pay.tenpay.ResponseHandler;
-import com.sailmi.mall.pay.tenpay.util.TenpayUtil;
+import com.sailmi.sailplat.core.annotation.SecurityMapping;
+import com.sailmi.sailplat.core.mv.JModelAndView;
+import com.sailmi.sailplat.core.security.support.SecurityUserHolder;
+import com.sailmi.sailplat.core.tools.CommUtil;
+import com.sailmi.sailplat.core.tools.Md5Encrypt;
+import com.sailmi.sailplat.core.tools.WxCommonUtil;
+import com.sailmi.sailplat.foundation.domain.GoldLog;
+import com.sailmi.sailplat.foundation.domain.GoldRecord;
+import com.sailmi.sailplat.foundation.domain.Goods;
+import com.sailmi.sailplat.foundation.domain.GoodsCart;
+import com.sailmi.sailplat.foundation.domain.GoodsSpecProperty;
+import com.sailmi.sailplat.foundation.domain.GroupGoods;
+import com.sailmi.sailplat.foundation.domain.IntegralGoods;
+import com.sailmi.sailplat.foundation.domain.IntegralGoodsCart;
+import com.sailmi.sailplat.foundation.domain.IntegralGoodsOrder;
+import com.sailmi.sailplat.foundation.domain.OrderForm;
+import com.sailmi.sailplat.foundation.domain.OrderFormLog;
+import com.sailmi.sailplat.foundation.domain.Payment;
+import com.sailmi.sailplat.foundation.domain.Predeposit;
+import com.sailmi.sailplat.foundation.domain.PredepositLog;
+import com.sailmi.sailplat.foundation.domain.User;
+import com.sailmi.sailplat.foundation.service.IGoldLogService;
+import com.sailmi.sailplat.foundation.service.IGoldRecordService;
+import com.sailmi.sailplat.foundation.service.IGoodsService;
+import com.sailmi.sailplat.foundation.service.IGroupGoodsService;
+import com.sailmi.sailplat.foundation.service.IIntegralGoodsOrderService;
+import com.sailmi.sailplat.foundation.service.IIntegralGoodsService;
+import com.sailmi.sailplat.foundation.service.IOrderFormLogService;
+import com.sailmi.sailplat.foundation.service.IOrderFormService;
+import com.sailmi.sailplat.foundation.service.IPaymentService;
+import com.sailmi.sailplat.foundation.service.IPredepositLogService;
+import com.sailmi.sailplat.foundation.service.IPredepositService;
+import com.sailmi.sailplat.foundation.service.ISysConfigService;
+import com.sailmi.sailplat.foundation.service.ITemplateService;
+import com.sailmi.sailplat.foundation.service.IUserConfigService;
+import com.sailmi.sailplat.foundation.service.IUserService;
+import com.sailmi.sailplat.pay.alipay.config.AlipayConfig;
+import com.sailmi.sailplat.pay.alipay.util.AlipayNotify;
+import com.sailmi.sailplat.pay.bill.util.MD5Util;
+import com.sailmi.sailplat.pay.tenpay.RequestHandler;
+import com.sailmi.sailplat.pay.tenpay.ResponseHandler;
+import com.sailmi.sailplat.pay.tenpay.util.TenpayUtil;
  
  @Controller
  public class PayViewAction
@@ -1979,7 +1979,7 @@ import com.sailmi.mall.pay.tenpay.util.TenpayUtil;
  
    private void send_order_email(HttpServletRequest request, OrderForm order, String email, String mark) throws Exception
    {
-     com.sailmi.mall.foundation.domain.Template template = this.templateService.getObjByProperty("mark", mark);
+     com.sailmi.sailplat.foundation.domain.Template template = this.templateService.getObjByProperty("mark", mark);
      if ((template != null) && (template.isOpen())) {
        String subject = template.getTitle();
        String path = request.getSession().getServletContext()
@@ -2016,7 +2016,7 @@ import com.sailmi.mall.pay.tenpay.util.TenpayUtil;
  
    private void send_order_sms(HttpServletRequest request, OrderForm order, String mobile, String mark) throws Exception
    {
-     com.sailmi.mall.foundation.domain.Template template = this.templateService.getObjByProperty("mark", mark);
+     com.sailmi.sailplat.foundation.domain.Template template = this.templateService.getObjByProperty("mark", mark);
      if ((template != null) && (template.isOpen())) {
        String path = request.getSession().getServletContext()
          .getRealPath("/") + 

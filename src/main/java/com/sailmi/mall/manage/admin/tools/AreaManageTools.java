@@ -1,8 +1,9 @@
  package com.sailmi.mall.manage.admin.tools;
  
- import com.sailmi.mall.foundation.domain.Area;
- import com.sailmi.mall.foundation.service.IAreaService;
- import org.springframework.beans.factory.annotation.Autowired;
+ import com.sailmi.sailplat.foundation.domain.Area;
+import com.sailmi.sailplat.foundation.service.IAreaService;
+
+import org.springframework.beans.factory.annotation.Autowired;
  import org.springframework.stereotype.Component;
  
  @Component

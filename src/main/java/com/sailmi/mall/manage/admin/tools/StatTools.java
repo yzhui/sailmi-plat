@@ -11,14 +11,14 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.sailmi.mall.core.tools.CommUtil;
-import com.sailmi.mall.foundation.domain.OrderForm;
-import com.sailmi.mall.foundation.service.IComplaintService;
-import com.sailmi.mall.foundation.service.IGoodsService;
-import com.sailmi.mall.foundation.service.IOrderFormService;
-import com.sailmi.mall.foundation.service.IReportService;
-import com.sailmi.mall.foundation.service.IStoreService;
-import com.sailmi.mall.foundation.service.IUserService;
+import com.sailmi.sailplat.core.tools.CommUtil;
+import com.sailmi.sailplat.foundation.domain.OrderForm;
+import com.sailmi.sailplat.foundation.service.IComplaintService;
+import com.sailmi.sailplat.foundation.service.IGoodsService;
+import com.sailmi.sailplat.foundation.service.IOrderFormService;
+import com.sailmi.sailplat.foundation.service.IReportService;
+import com.sailmi.sailplat.foundation.service.IStoreService;
+import com.sailmi.sailplat.foundation.service.IUserService;
  
  @Component
  @Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW)

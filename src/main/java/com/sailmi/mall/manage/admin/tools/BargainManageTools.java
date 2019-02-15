@@ -1,12 +1,13 @@
  package com.sailmi.mall.manage.admin.tools;
  
- import com.sailmi.mall.foundation.domain.Bargain;
- import com.sailmi.mall.foundation.domain.BargainGoods;
- import com.sailmi.mall.foundation.domain.SysConfig;
- import com.sailmi.mall.foundation.service.IBargainGoodsService;
- import com.sailmi.mall.foundation.service.IBargainService;
- import com.sailmi.mall.foundation.service.ISysConfigService;
- import java.math.BigDecimal;
+ import com.sailmi.sailplat.foundation.domain.Bargain;
+import com.sailmi.sailplat.foundation.domain.BargainGoods;
+import com.sailmi.sailplat.foundation.domain.SysConfig;
+import com.sailmi.sailplat.foundation.service.IBargainGoodsService;
+import com.sailmi.sailplat.foundation.service.IBargainService;
+import com.sailmi.sailplat.foundation.service.ISysConfigService;
+
+import java.math.BigDecimal;
  import java.util.HashMap;
  import java.util.List;
  import java.util.Map;

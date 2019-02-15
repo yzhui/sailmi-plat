@@ -1,11 +1,12 @@
  package com.sailmi.mall.manage.admin.action;
  
- import com.sailmi.mall.core.annotation.SecurityMapping;
- import com.sailmi.mall.core.mv.JModelAndView;
- import com.sailmi.mall.core.tools.CommUtil;
- import com.sailmi.mall.foundation.service.ISysConfigService;
- import com.sailmi.mall.foundation.service.IUserConfigService;
- import javax.servlet.http.HttpServletRequest;
+ import com.sailmi.sailplat.core.annotation.SecurityMapping;
+import com.sailmi.sailplat.core.mv.JModelAndView;
+import com.sailmi.sailplat.core.tools.CommUtil;
+import com.sailmi.sailplat.foundation.service.ISysConfigService;
+import com.sailmi.sailplat.foundation.service.IUserConfigService;
+
+import javax.servlet.http.HttpServletRequest;
  import javax.servlet.http.HttpServletResponse;
  import net.sf.ehcache.Cache;
  import net.sf.ehcache.CacheManager;

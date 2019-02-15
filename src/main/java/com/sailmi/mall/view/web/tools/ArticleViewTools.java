@@ -1,9 +1,10 @@
  package com.sailmi.mall.view.web.tools;
  
- import com.sailmi.mall.foundation.domain.Article;
- import com.sailmi.mall.foundation.domain.ArticleClass;
- import com.sailmi.mall.foundation.service.IArticleService;
- import java.util.HashMap;
+ import com.sailmi.sailplat.foundation.domain.Article;
+import com.sailmi.sailplat.foundation.domain.ArticleClass;
+import com.sailmi.sailplat.foundation.service.IArticleService;
+
+import java.util.HashMap;
  import java.util.List;
  import java.util.Map;
  import org.springframework.beans.factory.annotation.Autowired;

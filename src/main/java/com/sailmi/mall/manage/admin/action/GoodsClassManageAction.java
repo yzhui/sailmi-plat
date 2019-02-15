@@ -27,24 +27,24 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.sailmi.mall.core.annotation.SecurityMapping;
-import com.sailmi.mall.core.mv.JModelAndView;
-import com.sailmi.mall.core.query.support.IPageList;
-import com.sailmi.mall.core.tools.CommUtil;
-import com.sailmi.mall.core.tools.WebForm;
-import com.sailmi.mall.foundation.domain.Accessory;
-import com.sailmi.mall.foundation.domain.Goods;
-import com.sailmi.mall.foundation.domain.GoodsClass;
-import com.sailmi.mall.foundation.domain.GoodsClassStaple;
-import com.sailmi.mall.foundation.domain.GoodsType;
-import com.sailmi.mall.foundation.domain.query.GoodsClassQueryObject;
-import com.sailmi.mall.foundation.service.IAccessoryService;
-import com.sailmi.mall.foundation.service.IGoodsClassService;
-import com.sailmi.mall.foundation.service.IGoodsClassStapleService;
-import com.sailmi.mall.foundation.service.IGoodsService;
-import com.sailmi.mall.foundation.service.IGoodsTypeService;
-import com.sailmi.mall.foundation.service.ISysConfigService;
-import com.sailmi.mall.foundation.service.IUserConfigService;
+import com.sailmi.sailplat.core.annotation.SecurityMapping;
+import com.sailmi.sailplat.core.mv.JModelAndView;
+import com.sailmi.sailplat.core.query.support.IPageList;
+import com.sailmi.sailplat.core.tools.CommUtil;
+import com.sailmi.sailplat.core.tools.WebForm;
+import com.sailmi.sailplat.foundation.domain.Accessory;
+import com.sailmi.sailplat.foundation.domain.Goods;
+import com.sailmi.sailplat.foundation.domain.GoodsClass;
+import com.sailmi.sailplat.foundation.domain.GoodsClassStaple;
+import com.sailmi.sailplat.foundation.domain.GoodsType;
+import com.sailmi.sailplat.foundation.domain.query.GoodsClassQueryObject;
+import com.sailmi.sailplat.foundation.service.IAccessoryService;
+import com.sailmi.sailplat.foundation.service.IGoodsClassService;
+import com.sailmi.sailplat.foundation.service.IGoodsClassStapleService;
+import com.sailmi.sailplat.foundation.service.IGoodsService;
+import com.sailmi.sailplat.foundation.service.IGoodsTypeService;
+import com.sailmi.sailplat.foundation.service.ISysConfigService;
+import com.sailmi.sailplat.foundation.service.IUserConfigService;
 
 @Controller
 public class GoodsClassManageAction {

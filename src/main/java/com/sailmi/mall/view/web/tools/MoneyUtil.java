@@ -3,7 +3,7 @@
  import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-import com.sailmi.mall.core.tools.CommUtil;
+import com.sailmi.sailplat.core.tools.CommUtil;
  
  public class MoneyUtil
  {

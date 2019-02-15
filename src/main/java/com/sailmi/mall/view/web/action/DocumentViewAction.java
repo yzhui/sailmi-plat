@@ -1,11 +1,12 @@
  package com.sailmi.mall.view.web.action;
  
- import com.sailmi.mall.core.mv.JModelAndView;
- import com.sailmi.mall.foundation.domain.Document;
- import com.sailmi.mall.foundation.service.IDocumentService;
- import com.sailmi.mall.foundation.service.ISysConfigService;
- import com.sailmi.mall.foundation.service.IUserConfigService;
- import javax.servlet.http.HttpServletRequest;
+ import com.sailmi.sailplat.core.mv.JModelAndView;
+import com.sailmi.sailplat.foundation.domain.Document;
+import com.sailmi.sailplat.foundation.service.IDocumentService;
+import com.sailmi.sailplat.foundation.service.ISysConfigService;
+import com.sailmi.sailplat.foundation.service.IUserConfigService;
+
+import javax.servlet.http.HttpServletRequest;
  import javax.servlet.http.HttpServletResponse;
  import org.springframework.beans.factory.annotation.Autowired;
  import org.springframework.stereotype.Controller;

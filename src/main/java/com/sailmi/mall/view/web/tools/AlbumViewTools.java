@@ -1,10 +1,11 @@
  package com.sailmi.mall.view.web.tools;
  
- import com.sailmi.mall.core.tools.CommUtil;
- import com.sailmi.mall.foundation.domain.Accessory;
- import com.sailmi.mall.foundation.service.IAccessoryService;
- import com.sailmi.mall.foundation.service.IAlbumService;
- import java.util.ArrayList;
+ import com.sailmi.sailplat.core.tools.CommUtil;
+import com.sailmi.sailplat.foundation.domain.Accessory;
+import com.sailmi.sailplat.foundation.service.IAccessoryService;
+import com.sailmi.sailplat.foundation.service.IAlbumService;
+
+import java.util.ArrayList;
  import java.util.HashMap;
  import java.util.List;
  import java.util.Map;

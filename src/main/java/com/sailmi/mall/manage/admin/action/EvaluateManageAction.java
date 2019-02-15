@@ -1,20 +1,21 @@
  package com.sailmi.mall.manage.admin.action;
  
- import com.sailmi.mall.core.annotation.SecurityMapping;
- import com.sailmi.mall.core.domain.virtual.SysMap;
- import com.sailmi.mall.core.mv.JModelAndView;
- import com.sailmi.mall.core.query.support.IPageList;
- import com.sailmi.mall.core.tools.CommUtil;
- import com.sailmi.mall.foundation.domain.Evaluate;
- import com.sailmi.mall.foundation.domain.Store;
- import com.sailmi.mall.foundation.domain.User;
- import com.sailmi.mall.foundation.domain.query.EvaluateQueryObject;
- import com.sailmi.mall.foundation.service.IEvaluateService;
- import com.sailmi.mall.foundation.service.IStoreService;
- import com.sailmi.mall.foundation.service.ISysConfigService;
- import com.sailmi.mall.foundation.service.IUserConfigService;
- import com.sailmi.mall.foundation.service.IUserService;
- import javax.servlet.http.HttpServletRequest;
+ import com.sailmi.sailplat.core.annotation.SecurityMapping;
+import com.sailmi.sailplat.core.domain.virtual.SysMap;
+import com.sailmi.sailplat.core.mv.JModelAndView;
+import com.sailmi.sailplat.core.query.support.IPageList;
+import com.sailmi.sailplat.core.tools.CommUtil;
+import com.sailmi.sailplat.foundation.domain.Evaluate;
+import com.sailmi.sailplat.foundation.domain.Store;
+import com.sailmi.sailplat.foundation.domain.User;
+import com.sailmi.sailplat.foundation.domain.query.EvaluateQueryObject;
+import com.sailmi.sailplat.foundation.service.IEvaluateService;
+import com.sailmi.sailplat.foundation.service.IStoreService;
+import com.sailmi.sailplat.foundation.service.ISysConfigService;
+import com.sailmi.sailplat.foundation.service.IUserConfigService;
+import com.sailmi.sailplat.foundation.service.IUserService;
+
+import javax.servlet.http.HttpServletRequest;
  import javax.servlet.http.HttpServletResponse;
  import org.springframework.beans.factory.annotation.Autowired;
  import org.springframework.stereotype.Controller;

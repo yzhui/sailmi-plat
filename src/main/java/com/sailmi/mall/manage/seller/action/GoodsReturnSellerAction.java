@@ -1,19 +1,20 @@
  package com.sailmi.mall.manage.seller.action;
  
- import com.sailmi.mall.core.annotation.SecurityMapping;
- import com.sailmi.mall.core.domain.virtual.SysMap;
- import com.sailmi.mall.core.mv.JModelAndView;
- import com.sailmi.mall.core.query.support.IPageList;
- import com.sailmi.mall.core.security.support.SecurityUserHolder;
- import com.sailmi.mall.core.tools.CommUtil;
- import com.sailmi.mall.foundation.domain.GoodsReturn;
- import com.sailmi.mall.foundation.domain.User;
- import com.sailmi.mall.foundation.domain.query.GoodsReturnQueryObject;
- import com.sailmi.mall.foundation.service.IGoodsReturnItemService;
- import com.sailmi.mall.foundation.service.IGoodsReturnService;
- import com.sailmi.mall.foundation.service.ISysConfigService;
- import com.sailmi.mall.foundation.service.IUserConfigService;
- import javax.servlet.http.HttpServletRequest;
+ import com.sailmi.sailplat.core.annotation.SecurityMapping;
+import com.sailmi.sailplat.core.domain.virtual.SysMap;
+import com.sailmi.sailplat.core.mv.JModelAndView;
+import com.sailmi.sailplat.core.query.support.IPageList;
+import com.sailmi.sailplat.core.security.support.SecurityUserHolder;
+import com.sailmi.sailplat.core.tools.CommUtil;
+import com.sailmi.sailplat.foundation.domain.GoodsReturn;
+import com.sailmi.sailplat.foundation.domain.User;
+import com.sailmi.sailplat.foundation.domain.query.GoodsReturnQueryObject;
+import com.sailmi.sailplat.foundation.service.IGoodsReturnItemService;
+import com.sailmi.sailplat.foundation.service.IGoodsReturnService;
+import com.sailmi.sailplat.foundation.service.ISysConfigService;
+import com.sailmi.sailplat.foundation.service.IUserConfigService;
+
+import javax.servlet.http.HttpServletRequest;
  import javax.servlet.http.HttpServletResponse;
  import org.springframework.beans.factory.annotation.Autowired;
  import org.springframework.stereotype.Controller;

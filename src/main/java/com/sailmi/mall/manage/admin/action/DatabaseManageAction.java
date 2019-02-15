@@ -17,14 +17,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.fastjson.JSONObject;
-import com.sailmi.mall.core.annotation.SecurityMapping;
-import com.sailmi.mall.core.domain.virtual.ShopData;
-import com.sailmi.mall.core.mv.JModelAndView;
-import com.sailmi.mall.core.tools.CommUtil;
-import com.sailmi.mall.core.tools.FileSorter;
-import com.sailmi.mall.core.tools.database.DatabaseTools;
-import com.sailmi.mall.foundation.service.ISysConfigService;
-import com.sailmi.mall.foundation.service.IUserConfigService;
+import com.sailmi.sailplat.core.annotation.SecurityMapping;
+import com.sailmi.sailplat.core.domain.virtual.ShopData;
+import com.sailmi.sailplat.core.mv.JModelAndView;
+import com.sailmi.sailplat.core.tools.CommUtil;
+import com.sailmi.sailplat.core.tools.FileSorter;
+import com.sailmi.sailplat.core.tools.database.DatabaseTools;
+import com.sailmi.sailplat.foundation.service.ISysConfigService;
+import com.sailmi.sailplat.foundation.service.IUserConfigService;
 
 import net.sf.ehcache.CacheManager;
  

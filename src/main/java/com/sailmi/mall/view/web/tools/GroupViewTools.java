@@ -1,10 +1,11 @@
  package com.sailmi.mall.view.web.tools;
  
- import com.sailmi.mall.core.tools.CommUtil;
- import com.sailmi.mall.foundation.domain.GroupGoods;
- import com.sailmi.mall.foundation.service.IGroupGoodsService;
- import com.sailmi.mall.foundation.service.IGroupService;
- import java.util.ArrayList;
+ import com.sailmi.sailplat.core.tools.CommUtil;
+import com.sailmi.sailplat.foundation.domain.GroupGoods;
+import com.sailmi.sailplat.foundation.service.IGroupGoodsService;
+import com.sailmi.sailplat.foundation.service.IGroupService;
+
+import java.util.ArrayList;
  import java.util.HashMap;
  import java.util.List;
  import java.util.Map;

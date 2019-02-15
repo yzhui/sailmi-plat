@@ -1,17 +1,18 @@
  package com.sailmi.mall.manage.seller.Tools;
  
- import com.sailmi.mall.core.domain.virtual.CglibBean;
- import com.sailmi.mall.core.domain.virtual.SysMap;
- import com.sailmi.mall.core.tools.CommUtil;
- import com.sailmi.mall.foundation.domain.Area;
- import com.sailmi.mall.foundation.domain.Goods;
- import com.sailmi.mall.foundation.domain.GoodsCart;
- import com.sailmi.mall.foundation.domain.StoreCart;
- import com.sailmi.mall.foundation.domain.Transport;
- import com.sailmi.mall.foundation.service.IAreaService;
- import com.sailmi.mall.foundation.service.IGoodsService;
- import com.sailmi.mall.foundation.service.ITransportService;
- import java.io.PrintStream;
+ import com.sailmi.sailplat.core.domain.virtual.CglibBean;
+import com.sailmi.sailplat.core.domain.virtual.SysMap;
+import com.sailmi.sailplat.core.tools.CommUtil;
+import com.sailmi.sailplat.foundation.domain.Area;
+import com.sailmi.sailplat.foundation.domain.Goods;
+import com.sailmi.sailplat.foundation.domain.GoodsCart;
+import com.sailmi.sailplat.foundation.domain.StoreCart;
+import com.sailmi.sailplat.foundation.domain.Transport;
+import com.sailmi.sailplat.foundation.service.IAreaService;
+import com.sailmi.sailplat.foundation.service.IGoodsService;
+import com.sailmi.sailplat.foundation.service.ITransportService;
+
+import java.io.PrintStream;
  import java.io.UnsupportedEncodingException;
  import java.util.ArrayList;
  import java.util.HashMap;

@@ -13,25 +13,25 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.sailmi.mall.core.annotation.SecurityMapping;
-import com.sailmi.mall.core.domain.virtual.SysMap;
-import com.sailmi.mall.core.mv.JModelAndView;
-import com.sailmi.mall.core.query.support.IPageList;
-import com.sailmi.mall.core.security.support.SecurityUserHolder;
-import com.sailmi.mall.core.tools.CommUtil;
-import com.sailmi.mall.core.tools.WebForm;
-import com.sailmi.mall.foundation.domain.Payment;
-import com.sailmi.mall.foundation.domain.Predeposit;
-import com.sailmi.mall.foundation.domain.PredepositLog;
-import com.sailmi.mall.foundation.domain.query.PredepositLogQueryObject;
-import com.sailmi.mall.foundation.domain.query.PredepositQueryObject;
-import com.sailmi.mall.foundation.service.IPaymentService;
-import com.sailmi.mall.foundation.service.IPredepositLogService;
-import com.sailmi.mall.foundation.service.IPredepositService;
-import com.sailmi.mall.foundation.service.ISysConfigService;
-import com.sailmi.mall.foundation.service.IUserConfigService;
-import com.sailmi.mall.foundation.service.IUserService;
-import com.sailmi.mall.pay.tools.PayTools;
+import com.sailmi.sailplat.core.annotation.SecurityMapping;
+import com.sailmi.sailplat.core.domain.virtual.SysMap;
+import com.sailmi.sailplat.core.mv.JModelAndView;
+import com.sailmi.sailplat.core.query.support.IPageList;
+import com.sailmi.sailplat.core.security.support.SecurityUserHolder;
+import com.sailmi.sailplat.core.tools.CommUtil;
+import com.sailmi.sailplat.core.tools.WebForm;
+import com.sailmi.sailplat.foundation.domain.Payment;
+import com.sailmi.sailplat.foundation.domain.Predeposit;
+import com.sailmi.sailplat.foundation.domain.PredepositLog;
+import com.sailmi.sailplat.foundation.domain.query.PredepositLogQueryObject;
+import com.sailmi.sailplat.foundation.domain.query.PredepositQueryObject;
+import com.sailmi.sailplat.foundation.service.IPaymentService;
+import com.sailmi.sailplat.foundation.service.IPredepositLogService;
+import com.sailmi.sailplat.foundation.service.IPredepositService;
+import com.sailmi.sailplat.foundation.service.ISysConfigService;
+import com.sailmi.sailplat.foundation.service.IUserConfigService;
+import com.sailmi.sailplat.foundation.service.IUserService;
+import com.sailmi.sailplat.pay.tools.PayTools;
  
  @Controller
  public class PredepositBuyerAction

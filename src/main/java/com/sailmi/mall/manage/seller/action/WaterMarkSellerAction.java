@@ -1,20 +1,21 @@
  package com.sailmi.mall.manage.seller.action;
  
- import com.sailmi.mall.core.annotation.SecurityMapping;
- import com.sailmi.mall.core.mv.JModelAndView;
- import com.sailmi.mall.core.security.support.SecurityUserHolder;
- import com.sailmi.mall.core.tools.CommUtil;
- import com.sailmi.mall.core.tools.WebForm;
- import com.sailmi.mall.foundation.domain.Accessory;
- import com.sailmi.mall.foundation.domain.Store;
- import com.sailmi.mall.foundation.domain.User;
- import com.sailmi.mall.foundation.domain.WaterMark;
- import com.sailmi.mall.foundation.service.IAccessoryService;
- import com.sailmi.mall.foundation.service.ISysConfigService;
- import com.sailmi.mall.foundation.service.IUserConfigService;
- import com.sailmi.mall.foundation.service.IUserService;
- import com.sailmi.mall.foundation.service.IWaterMarkService;
- import java.io.IOException;
+ import com.sailmi.sailplat.core.annotation.SecurityMapping;
+import com.sailmi.sailplat.core.mv.JModelAndView;
+import com.sailmi.sailplat.core.security.support.SecurityUserHolder;
+import com.sailmi.sailplat.core.tools.CommUtil;
+import com.sailmi.sailplat.core.tools.WebForm;
+import com.sailmi.sailplat.foundation.domain.Accessory;
+import com.sailmi.sailplat.foundation.domain.Store;
+import com.sailmi.sailplat.foundation.domain.User;
+import com.sailmi.sailplat.foundation.domain.WaterMark;
+import com.sailmi.sailplat.foundation.service.IAccessoryService;
+import com.sailmi.sailplat.foundation.service.ISysConfigService;
+import com.sailmi.sailplat.foundation.service.IUserConfigService;
+import com.sailmi.sailplat.foundation.service.IUserService;
+import com.sailmi.sailplat.foundation.service.IWaterMarkService;
+
+import java.io.IOException;
  import java.util.Date;
  import java.util.HashMap;
  import java.util.List;

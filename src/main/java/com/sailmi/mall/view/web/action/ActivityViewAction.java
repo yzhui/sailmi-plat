@@ -1,16 +1,17 @@
  package com.sailmi.mall.view.web.action;
  
- import com.sailmi.mall.core.domain.virtual.SysMap;
- import com.sailmi.mall.core.mv.JModelAndView;
- import com.sailmi.mall.core.query.support.IPageList;
- import com.sailmi.mall.core.tools.CommUtil;
- import com.sailmi.mall.foundation.domain.Activity;
- import com.sailmi.mall.foundation.domain.query.ActivityGoodsQueryObject;
- import com.sailmi.mall.foundation.service.IActivityGoodsService;
- import com.sailmi.mall.foundation.service.IActivityService;
- import com.sailmi.mall.foundation.service.ISysConfigService;
- import com.sailmi.mall.foundation.service.IUserConfigService;
- import java.util.Date;
+ import com.sailmi.sailplat.core.domain.virtual.SysMap;
+import com.sailmi.sailplat.core.mv.JModelAndView;
+import com.sailmi.sailplat.core.query.support.IPageList;
+import com.sailmi.sailplat.core.tools.CommUtil;
+import com.sailmi.sailplat.foundation.domain.Activity;
+import com.sailmi.sailplat.foundation.domain.query.ActivityGoodsQueryObject;
+import com.sailmi.sailplat.foundation.service.IActivityGoodsService;
+import com.sailmi.sailplat.foundation.service.IActivityService;
+import com.sailmi.sailplat.foundation.service.ISysConfigService;
+import com.sailmi.sailplat.foundation.service.IUserConfigService;
+
+import java.util.Date;
  import javax.servlet.http.HttpServletRequest;
  import javax.servlet.http.HttpServletResponse;
  import org.springframework.beans.factory.annotation.Autowired;

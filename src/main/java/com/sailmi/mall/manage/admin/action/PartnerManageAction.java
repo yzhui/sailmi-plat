@@ -1,20 +1,21 @@
  package com.sailmi.mall.manage.admin.action;
  
- import com.sailmi.mall.core.annotation.SecurityMapping;
- import com.sailmi.mall.core.domain.virtual.SysMap;
- import com.sailmi.mall.core.mv.JModelAndView;
- import com.sailmi.mall.core.query.support.IPageList;
- import com.sailmi.mall.core.tools.CommUtil;
- import com.sailmi.mall.core.tools.WebForm;
- import com.sailmi.mall.foundation.domain.Accessory;
- import com.sailmi.mall.foundation.domain.Partner;
- import com.sailmi.mall.foundation.domain.SysConfig;
- import com.sailmi.mall.foundation.domain.query.PartnerQueryObject;
- import com.sailmi.mall.foundation.service.IAccessoryService;
- import com.sailmi.mall.foundation.service.IPartnerService;
- import com.sailmi.mall.foundation.service.ISysConfigService;
- import com.sailmi.mall.foundation.service.IUserConfigService;
- import java.io.IOException;
+ import com.sailmi.sailplat.core.annotation.SecurityMapping;
+import com.sailmi.sailplat.core.domain.virtual.SysMap;
+import com.sailmi.sailplat.core.mv.JModelAndView;
+import com.sailmi.sailplat.core.query.support.IPageList;
+import com.sailmi.sailplat.core.tools.CommUtil;
+import com.sailmi.sailplat.core.tools.WebForm;
+import com.sailmi.sailplat.foundation.domain.Accessory;
+import com.sailmi.sailplat.foundation.domain.Partner;
+import com.sailmi.sailplat.foundation.domain.SysConfig;
+import com.sailmi.sailplat.foundation.domain.query.PartnerQueryObject;
+import com.sailmi.sailplat.foundation.service.IAccessoryService;
+import com.sailmi.sailplat.foundation.service.IPartnerService;
+import com.sailmi.sailplat.foundation.service.ISysConfigService;
+import com.sailmi.sailplat.foundation.service.IUserConfigService;
+
+import java.io.IOException;
  import java.util.Date;
  import java.util.HashMap;
  import java.util.Map;

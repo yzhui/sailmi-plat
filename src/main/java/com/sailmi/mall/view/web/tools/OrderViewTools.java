@@ -1,10 +1,11 @@
  package com.sailmi.mall.view.web.tools;
  
- import com.sailmi.mall.core.security.support.SecurityUserHolder;
- import com.sailmi.mall.foundation.domain.Store;
- import com.sailmi.mall.foundation.domain.User;
- import com.sailmi.mall.foundation.service.IOrderFormService;
- import java.util.HashMap;
+ import com.sailmi.sailplat.core.security.support.SecurityUserHolder;
+import com.sailmi.sailplat.foundation.domain.Store;
+import com.sailmi.sailplat.foundation.domain.User;
+import com.sailmi.sailplat.foundation.service.IOrderFormService;
+
+import java.util.HashMap;
  import java.util.List;
  import java.util.Map;
  import org.springframework.beans.factory.annotation.Autowired;

@@ -1,22 +1,23 @@
  package com.sailmi.mall.manage.seller.action;
  
- import com.sailmi.mall.core.annotation.SecurityMapping;
- import com.sailmi.mall.core.mv.JModelAndView;
- import com.sailmi.mall.core.security.support.SecurityUserHolder;
- import com.sailmi.mall.core.tools.CommUtil;
- import com.sailmi.mall.foundation.domain.Store;
- import com.sailmi.mall.foundation.domain.User;
- import com.sailmi.mall.foundation.service.IArticleService;
- import com.sailmi.mall.foundation.service.IMessageService;
- import com.sailmi.mall.foundation.service.IStoreService;
- import com.sailmi.mall.foundation.service.ISysConfigService;
- import com.sailmi.mall.foundation.service.IUserConfigService;
- import com.sailmi.mall.foundation.service.IUserService;
  import com.sailmi.mall.manage.seller.Tools.MenuTools;
  import com.sailmi.mall.view.web.tools.AreaViewTools;
  import com.sailmi.mall.view.web.tools.OrderViewTools;
  import com.sailmi.mall.view.web.tools.StoreViewTools;
- import java.util.ArrayList;
+import com.sailmi.sailplat.core.annotation.SecurityMapping;
+import com.sailmi.sailplat.core.mv.JModelAndView;
+import com.sailmi.sailplat.core.security.support.SecurityUserHolder;
+import com.sailmi.sailplat.core.tools.CommUtil;
+import com.sailmi.sailplat.foundation.domain.Store;
+import com.sailmi.sailplat.foundation.domain.User;
+import com.sailmi.sailplat.foundation.service.IArticleService;
+import com.sailmi.sailplat.foundation.service.IMessageService;
+import com.sailmi.sailplat.foundation.service.IStoreService;
+import com.sailmi.sailplat.foundation.service.ISysConfigService;
+import com.sailmi.sailplat.foundation.service.IUserConfigService;
+import com.sailmi.sailplat.foundation.service.IUserService;
+
+import java.util.ArrayList;
  import java.util.HashMap;
  import java.util.List;
  import java.util.Map;

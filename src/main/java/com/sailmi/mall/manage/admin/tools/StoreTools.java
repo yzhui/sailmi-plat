@@ -1,14 +1,15 @@
  package com.sailmi.mall.manage.admin.tools;
  
- import com.sailmi.mall.core.tools.CommUtil;
- import com.sailmi.mall.foundation.domain.GoodsClass;
- import com.sailmi.mall.foundation.domain.GoodsSpecProperty;
- import com.sailmi.mall.foundation.domain.GoodsSpecification;
- import com.sailmi.mall.foundation.domain.Store;
- import com.sailmi.mall.foundation.domain.SysConfig;
- import com.sailmi.mall.foundation.service.IGoodsClassService;
- import com.sailmi.mall.foundation.service.IStoreService;
- import java.io.File;
+ import com.sailmi.sailplat.core.tools.CommUtil;
+import com.sailmi.sailplat.foundation.domain.GoodsClass;
+import com.sailmi.sailplat.foundation.domain.GoodsSpecProperty;
+import com.sailmi.sailplat.foundation.domain.GoodsSpecification;
+import com.sailmi.sailplat.foundation.domain.Store;
+import com.sailmi.sailplat.foundation.domain.SysConfig;
+import com.sailmi.sailplat.foundation.service.IGoodsClassService;
+import com.sailmi.sailplat.foundation.service.IStoreService;
+
+import java.io.File;
  import java.util.Date;
  import javax.servlet.ServletContext;
  import javax.servlet.http.HttpServletRequest;
