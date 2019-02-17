@@ -31,7 +31,7 @@
 	</bean>
 
 	<!-- 扫描注解 -->
-	<context:component-scan base-package="com.sailmi.mall"/>
+	<context:component-scan base-package="com.sailmi"/>
 
 	<!-- 配置事务增强处理Bean，指定事务管理器 -->
 	<tx:annotation-driven proxy-target-class="true"
@@ -98,7 +98,7 @@
 			</props>
 		</property>
 		<!-- 扫描hibernate注解配置的entity -->
-		<property name="packagesToScan" value="com.sailmi.mall" />
+		<property name="packagesToScan" value="com.sailmi" />
 	</bean>
 	
 
@@ -112,14 +112,14 @@
 
 
 	<!-- 定义了与实体相关的dao -->
-	<bean id="genericEntityDao" class="com.sailmi.mall.core.base.GenericEntityDao"
+	<bean id="genericEntityDao" class="com.sailmi.sailplat.core.base.GenericEntityDao"
 		scope="singleton" lazy-init="true">
 		<property name="hibernateTemplate" ref="hibernateTemplate" />
 	</bean>
 	
 	
 	<!--使用泛型DAO作为抽象基类 abstract="true" -->
-	<bean id="genericDAO" class="com.sailmi.mall.core.base.GenericDAO"
+	<bean id="genericDAO" class="com.sailmi.sailplat.core.base.GenericDAO"
 		abstract="true" depends-on="genericEntityDao">
 		<property name="geDao">
 			<ref bean="genericEntityDao" />
@@ -176,7 +176,7 @@
 	<!-- 指定在txAdvice切入点应用txAdvice事务增强处理 -->
 	<aop:config proxy-target-class="true">
 		<aop:pointcut id="transactionPointcut"
-			expression="execution(public * com.sailmi.mall..*.*(..))" />
+			expression="execution(public * com.sailmi..*.*(..))" />
 		<aop:advisor pointcut-ref="transactionPointcut"
 			advice-ref="transactionAdvice" />
 	</aop:config>

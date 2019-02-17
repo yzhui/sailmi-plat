@@ -12,10 +12,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.sailmi.sailplat.core.domain.virtual.SysMap;
-import com.sailmi.sailplat.core.security.support.SecurityUserHolder;
-import com.sailmi.sailplat.core.tools.CommUtil;
-import com.sailmi.sailplat.core.tools.Md5Encrypt;
+import com.sailmi.database.domain.virtual.SysMap;
 import com.sailmi.sailplat.foundation.domain.GoldRecord;
 import com.sailmi.sailplat.foundation.domain.IntegralGoodsOrder;
 import com.sailmi.sailplat.foundation.domain.OrderForm;
@@ -38,6 +35,9 @@ import com.sailmi.sailplat.pay.bill.util.BillCore;
 import com.sailmi.sailplat.pay.bill.util.MD5Util;
 import com.sailmi.sailplat.pay.chinabank.util.ChinaBankSubmit;
 import com.sailmi.sailplat.pay.paypal.PaypalTools;
+import com.sailmi.sailplat.security.support.SecurityUserHolder;
+import com.sailmi.tools.CommUtil;
+import com.sailmi.tools.Md5Encrypt;
  
  @Component
  public class PayTools

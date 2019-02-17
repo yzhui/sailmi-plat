@@ -1,14 +1,14 @@
  package com.sailmi.sailplat.foundation.service.impl;
  
- import com.sailmi.sailplat.core.dao.IGenericDAO;
-import com.sailmi.sailplat.core.query.GenericPageList;
-import com.sailmi.sailplat.core.query.PageObject;
-import com.sailmi.sailplat.core.query.support.IPageList;
-import com.sailmi.sailplat.core.query.support.IQueryObject;
-import com.sailmi.sailplat.core.security.support.SecurityUserHolder;
+ import com.sailmi.database.dao.IGenericDAO;
+import com.sailmi.database.query.GenericPageList;
+import com.sailmi.database.query.PageObject;
+import com.sailmi.database.query.support.IPageList;
+import com.sailmi.database.query.support.IQueryObject;
 import com.sailmi.sailplat.foundation.domain.User;
 import com.sailmi.sailplat.foundation.domain.UserConfig;
 import com.sailmi.sailplat.foundation.service.IUserConfigService;
+import com.sailmi.sailplat.security.support.SecurityUserHolder;
 
 import java.io.Serializable;
  import java.util.List;

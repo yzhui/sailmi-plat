@@ -15,7 +15,7 @@
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
-import com.sailmi.sailplat.core.domain.IdEntity;
+import com.sailmi.database.domain.IdEntity;
  
  @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
  @Entity

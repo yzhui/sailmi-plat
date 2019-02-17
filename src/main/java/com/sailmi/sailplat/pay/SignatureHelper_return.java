@@ -9,7 +9,7 @@
  import java.util.Properties;
  import java.util.Set;
 
-import com.sailmi.sailplat.core.tools.Md5Encrypt;
+import com.sailmi.tools.Md5Encrypt;
  
  public class SignatureHelper_return
  {

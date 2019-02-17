@@ -1,7 +1,7 @@
 package com.sailmi.sailplat.foundation.service;
 
-import com.sailmi.sailplat.core.query.support.IPageList;
-import com.sailmi.sailplat.core.query.support.IQueryObject;
+import com.sailmi.database.query.support.IPageList;
+import com.sailmi.database.query.support.IQueryObject;
 import com.sailmi.sailplat.foundation.domain.OrderFormLog;
 
 import java.io.Serializable;

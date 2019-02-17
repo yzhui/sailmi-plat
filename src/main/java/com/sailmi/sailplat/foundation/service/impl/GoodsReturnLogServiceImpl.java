@@ -1,10 +1,10 @@
  package com.sailmi.sailplat.foundation.service.impl;
  
- import com.sailmi.sailplat.core.dao.IGenericDAO;
-import com.sailmi.sailplat.core.query.GenericPageList;
-import com.sailmi.sailplat.core.query.PageObject;
-import com.sailmi.sailplat.core.query.support.IPageList;
-import com.sailmi.sailplat.core.query.support.IQueryObject;
+ import com.sailmi.database.dao.IGenericDAO;
+import com.sailmi.database.query.GenericPageList;
+import com.sailmi.database.query.PageObject;
+import com.sailmi.database.query.support.IPageList;
+import com.sailmi.database.query.support.IQueryObject;
 import com.sailmi.sailplat.foundation.domain.GoodsReturnLog;
 import com.sailmi.sailplat.foundation.service.IGoodsReturnLogService;
 

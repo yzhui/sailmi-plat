@@ -2,8 +2,8 @@
  
  import java.util.List;
 
-import com.sailmi.sailplat.core.domain.virtual.SysMap;
-import com.sailmi.sailplat.core.tools.CommUtil;
+import com.sailmi.database.domain.virtual.SysMap;
+import com.sailmi.tools.CommUtil;
  
  public class PaypalTools
  {

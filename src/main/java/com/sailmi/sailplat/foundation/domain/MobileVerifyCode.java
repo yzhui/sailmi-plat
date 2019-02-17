@@ -3,7 +3,7 @@
  import javax.persistence.Entity;
  import javax.persistence.Table;
 
-import com.sailmi.sailplat.core.domain.IdEntity;
+import com.sailmi.database.domain.IdEntity;
  
  @Entity
  @Table(name="tbl_mobileverifycode")

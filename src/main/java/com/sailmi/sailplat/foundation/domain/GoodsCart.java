@@ -20,7 +20,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
-import com.sailmi.sailplat.core.domain.IdEntity;
+import com.sailmi.database.domain.IdEntity;
 
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Entity
@@ -43,7 +43,7 @@ public class GoodsCart extends IdEntity {
 	
 	//商品规格属性
 	@ManyToMany(cascade=CascadeType.ALL)
-	@JoinTable(name = "sailmall_cart_gsp", joinColumns = {
+	@JoinTable(name = "tbl_cart_gsp", joinColumns = {
 			@javax.persistence.JoinColumn(name = "cart_id") }, inverseJoinColumns = {
 					@javax.persistence.JoinColumn(name = "gsp_id") })
 	@Fetch(FetchMode.SUBSELECT)

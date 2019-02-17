@@ -26,7 +26,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
-import com.sailmi.sailplat.core.domain.IdEntity;
+import com.sailmi.database.domain.IdEntity;
 
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Entity
@@ -108,20 +108,20 @@ public class Goods extends IdEntity {
 
 	// 货物照片
 	@ManyToMany(cascade = { CascadeType.REMOVE })
-	@JoinTable(name = "sailmall_goods_photo", joinColumns = {
+	@JoinTable(name = "tbl_goods_photo", joinColumns = {
 			@javax.persistence.JoinColumn(name = "goods_id") }, inverseJoinColumns = {
 					@javax.persistence.JoinColumn(name = "photo_id") })
 	@Fetch(FetchMode.SUBSELECT)
 	private List<Accessory> goods_photos = new ArrayList<Accessory>();
 
 	@ManyToMany(cascade = { CascadeType.REMOVE })
-	@JoinTable(name = "sailmall_goods_ugc", joinColumns = {
+	@JoinTable(name = "tbl_goods_ugc", joinColumns = {
 			@javax.persistence.JoinColumn(name = "goods_id") }, inverseJoinColumns = {
 					@javax.persistence.JoinColumn(name = "class_id") })
 	private List<UserGoodsClass> goods_ugcs = new ArrayList<UserGoodsClass>();
 
 	@ManyToMany(cascade = { CascadeType.REMOVE })
-	@JoinTable(name = "sailmall_goods_spec", joinColumns = {
+	@JoinTable(name = "tbl_goods_spec", joinColumns = {
 			@javax.persistence.JoinColumn(name = "goods_id") }, inverseJoinColumns = {
 					@javax.persistence.JoinColumn(name = "spec_id") })
 	@OrderBy("sequence asc")
@@ -212,7 +212,7 @@ public class Goods extends IdEntity {
 	private BigDecimal combin_price;
 
 	@ManyToMany(cascade = { CascadeType.REMOVE })
-	@JoinTable(name = "sailmall_goods_combin")
+	@JoinTable(name = "tbl_goods_combin")
 	private List<Goods> combin_goods = new ArrayList<Goods>();
 
 	@OneToOne(mappedBy = "d_goods", cascade = { javax.persistence.CascadeType.REMOVE })

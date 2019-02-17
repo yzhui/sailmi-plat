@@ -2,7 +2,7 @@
  
  import java.io.PrintStream;
 
-import com.sailmi.sailplat.core.tools.CommUtil;
+import com.sailmi.tools.CommUtil;
  
  public class TestDouble
  {

@@ -7,7 +7,7 @@
  import java.util.Map;
  import java.util.Properties;
 
-import com.sailmi.sailplat.core.tools.CommUtil;
+import com.sailmi.tools.CommUtil;
  
  public class Test
  {

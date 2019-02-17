@@ -16,7 +16,7 @@ import javax.mail.Message;
  import javax.mail.internet.MimeMessage;
  import javax.mail.internet.MimeMultipart;
 
-import com.sailmi.sailplat.core.tools.PopupAuthenticator;
+import com.sailmi.tools.PopupAuthenticator;
  
  public class TestEmail
  {

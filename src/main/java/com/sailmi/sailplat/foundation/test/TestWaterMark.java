@@ -3,7 +3,7 @@
  import java.awt.Font;
  import java.io.PrintStream;
 
-import com.sailmi.sailplat.core.tools.CommUtil;
+import com.sailmi.tools.CommUtil;
  
  public class TestWaterMark
  {
@@ -14,7 +14,7 @@ import com.sailmi.sailplat.core.tools.CommUtil;
      int pos = 9;
      float alpha = 0.9F;
      try {
-       CommUtil.waterMarkWithText(targetImg, "D:\\2.jpg", "sailmall", 
+       CommUtil.waterMarkWithText(targetImg, "D:\\2.jpg", "SailPlat", 
          "#FF0000", new Font("宋体", 1, 30), pos, 100.0F);
        System.out.println("图片水印完成！");
      }

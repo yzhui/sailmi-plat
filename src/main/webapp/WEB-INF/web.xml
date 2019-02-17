@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
-                      http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
-  version="3.1"
-  metadata-complete="true">
-
-  <display-name>SailMall Platform V1.3</display-name>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" metadata-complete="true" version="3.1">
+  <display-name>SailMI Platform V1.3</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
   </welcome-file-list>
@@ -16,21 +10,18 @@
   </context-param>
   <context-param>
     <param-name>webAppRootKey</param-name>
-    <param-value>sailmall.root</param-value>
+    <param-value>sailplat.root</param-value>
   </context-param>
   <listener>
     <listener-class>
     org.springframework.web.util.IntrospectorCleanupListener
     </listener-class>
   </listener>
-	<listener>
-		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-	</listener>
-  
   <listener>
-    <listener-class>
-			com.sailmi.mall.core.loader.ServletContextLoaderListener
-		</listener-class>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  <listener>
+    <listener-class>com.sailmi.sailplat.core.loader.ServletContextLoaderListener</listener-class>
   </listener>
   <listener>
     <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
@@ -40,26 +31,22 @@
 			org.springframework.web.util.WebAppRootListener
 		</listener-class>
   </listener>
-    <filter>
-        <filter-name>OpenSessionInViewFilter</filter-name>
-        <filter-class>org.springframework.orm.hibernate5.support.OpenSessionInViewFilter</filter-class>
-		<init-param>   
-		    <param-name>sessionFactoryBeanName</param-name>  
-		    <param-value>sessionFactory</param-value>  
-		</init-param>  
-        <init-param>  
-            <param-name>singleSession</param-name>  
-            <param-value>true</param-value>  
-        </init-param>   
-    </filter>
-
-   <filter-mapping>
-        <filter-name>OpenSessionInViewFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
-
-
-   
+  <filter>
+    <filter-name>OpenSessionInViewFilter</filter-name>
+    <filter-class>org.springframework.orm.hibernate5.support.OpenSessionInViewFilter</filter-class>
+    <init-param>
+      <param-name>sessionFactoryBeanName</param-name>
+      <param-value>sessionFactory</param-value>
+    </init-param>
+    <init-param>
+      <param-name>singleSession</param-name>
+      <param-value>true</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>OpenSessionInViewFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
   <filter>
     <filter-name>springSecurityFilterChain</filter-name>
     <filter-class>
@@ -71,16 +58,16 @@
     <url-pattern>*.htm</url-pattern>
   </filter-mapping>
   <filter>
-		<filter-name>deviceAccessFilter</filter-name>
-		<filter-class>
+    <filter-name>deviceAccessFilter</filter-name>
+    <filter-class>
 			org.springframework.web.filter.DelegatingFilterProxy
 		</filter-class>
-	</filter>
-	<filter-mapping>
-		<filter-name>deviceAccessFilter</filter-name>
-		<url-pattern>*.htm</url-pattern>
-	</filter-mapping>
-   <filter>
+  </filter>
+  <filter-mapping>
+    <filter-name>deviceAccessFilter</filter-name>
+    <url-pattern>*.htm</url-pattern>
+  </filter-mapping>
+  <filter>
     <filter-name>encoding-filter</filter-name>
     <filter-class>
 			org.springframework.web.filter.CharacterEncodingFilter
@@ -98,7 +85,6 @@
     <filter-name>encoding-filter</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
-  
   <filter>
     <filter-name>UrlRewriteFilter</filter-name>
     <filter-class>
@@ -109,54 +95,41 @@
     <filter-name>UrlRewriteFilter</filter-name>
     <url-pattern>*.htm</url-pattern>
   </filter-mapping>
-  
-  
   <filter>
     <filter-name>GZIPEncoder</filter-name>
-    <filter-class>
-			com.sailmi.mall.core.zip.CompressionFilter
-		</filter-class>
+    <filter-class>com.sailmi.sailplat.core.zip.CompressionFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>GZIPEncoder</filter-name>
-    <servlet-name>/mall</servlet-name>
+    <servlet-name>sailplat</servlet-name>
   </filter-mapping>
- <!--
-    防止发生java.beans.Introspector内存泄露,应将它配置在ContextLoaderListener的前面
-    详细描述见http://blog.csdn.net/jadyer/article/details/11991457  -->
-	<filter>
-		<filter-name>secondDomainFilter</filter-name>
-		<filter-class>
-			org.springframework.web.filter.DelegatingFilterProxy<!-- DelegatingFilterProxy就是一个对于servlet 
-				filter的代理 -->
+  <filter>
+    <filter-name>secondDomainFilter</filter-name>
+    <filter-class>
+			org.springframework.web.filter.DelegatingFilterProxy
 		</filter-class>
-		<init-param>
-			<param-name>targetFilterLifecycle</param-name>
-			<param-value>true</param-value>
-		</init-param>
-	</filter>
-	<filter-mapping>
-		<filter-name>secondDomainFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
-	<filter>
-		<filter-name>SimplePageFragmentCachingFilter</filter-name>
-		<filter-class>com.sailmi.mall.core.ehcache.PageCacheFiler</filter-class>
-		<init-param>
-			<param-name>patterns</param-name>
-			<param-value> </param-value>
-		</init-param>
-	</filter>
-	<filter-mapping>
-		<filter-name>SimplePageFragmentCachingFilter</filter-name>
-		<url-pattern>*.htm</url-pattern>
-		<dispatcher>FORWARD</dispatcher>  
-	    <dispatcher>INCLUDE</dispatcher>  
-	    <dispatcher>REQUEST</dispatcher>
-	</filter-mapping>
-	
+    <init-param>
+      <param-name>targetFilterLifecycle</param-name>
+      <param-value>true</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>secondDomainFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <filter>
+    <filter-name>SimplePageFragmentCachingFilter</filter-name>
+    <filter-class>com.sailmi.sailplat.core.ehcache.PageCacheFiler</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>SimplePageFragmentCachingFilter</filter-name>
+    <url-pattern>*.htm</url-pattern>
+    <dispatcher>FORWARD</dispatcher>
+    <dispatcher>INCLUDE</dispatcher>
+    <dispatcher>REQUEST</dispatcher>
+  </filter-mapping>
   <servlet>
-    <servlet-name>sailmall</servlet-name>
+    <servlet-name>sailplat</servlet-name>
     <servlet-class>
 			org.springframework.web.servlet.DispatcherServlet
 		</servlet-class>
@@ -167,20 +140,17 @@
     <load-on-startup>1</load-on-startup>
   </servlet>
   <servlet-mapping>
-    <servlet-name>sailmall</servlet-name>
+    <servlet-name>sailplat</servlet-name>
     <url-pattern>*.htm</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>UploadServlet</servlet-name>
-    <servlet-class>
-			com.sailmi.mall.servlet.UploadServlet
-		</servlet-class>
+    <servlet-class>com.sailmi.sailplat.foundation.servlet.UploadServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>UploadServlet</servlet-name>
     <url-pattern>/image/upload</url-pattern>
-  </servlet-mapping>  
-
+  </servlet-mapping>
   <error-page>
     <error-code>500</error-code>
     <location>/500.htm</location>

@@ -6,7 +6,7 @@
  import java.util.List;
  import java.util.Map;
 
-import com.sailmi.sailplat.core.tools.Md5Encrypt;
+import com.sailmi.tools.Md5Encrypt;
  
  public class Kuaiqian
  {

@@ -14,7 +14,7 @@
  import org.hibernate.annotations.Cache;
  import org.hibernate.annotations.CacheConcurrencyStrategy;
 
-import com.sailmi.sailplat.core.domain.IdEntity;
+import com.sailmi.database.domain.IdEntity;
  
  @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
  @Entity
@@ -30,7 +30,7 @@ import com.sailmi.sailplat.core.domain.IdEntity;
    private GoodsReturn gr;
    
    @ManyToMany(cascade={javax.persistence.CascadeType.ALL})
-   @JoinTable(name="sailmall_return_gsp", joinColumns={@javax.persistence.JoinColumn(name="item_id")}, inverseJoinColumns={@javax.persistence.JoinColumn(name="gsp_id")})
+   @JoinTable(name="tbl_return_gsp", joinColumns={@javax.persistence.JoinColumn(name="item_id")}, inverseJoinColumns={@javax.persistence.JoinColumn(name="gsp_id")})
    private List<GoodsSpecProperty> gsps = new ArrayList<GoodsSpecProperty>();
  
    //spec信息

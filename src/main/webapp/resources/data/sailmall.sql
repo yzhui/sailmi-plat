@@ -12,16 +12,16 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 
--- 导出 SailMall 的数据库结构
-CREATE DATABASE IF NOT EXISTS `sailmall` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `sailmall`;
+-- 导出 SailPlat 的数据库结构
+CREATE DATABASE IF NOT EXISTS `SailPlat` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `SailPlat`;
 
--- 导出  表 sailmall.hibernate_sequence 结构
+-- 导出  表 SailPlat.hibernate_sequence 结构
 CREATE TABLE IF NOT EXISTS `hibernate_sequence` (
   `next_val` bigint(20) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.hibernate_sequence 的数据：99 rows
+-- 正在导出表  SailPlat.hibernate_sequence 的数据：99 rows
 /*!40000 ALTER TABLE `hibernate_sequence` DISABLE KEYS */;
 REPLACE INTO `hibernate_sequence` (`next_val`) VALUES
 	(1756),
@@ -125,8 +125,8 @@ REPLACE INTO `hibernate_sequence` (`next_val`) VALUES
 	(1756);
 /*!40000 ALTER TABLE `hibernate_sequence` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_accessory 结构
-CREATE TABLE IF NOT EXISTS `sailmall_accessory` (
+-- 导出  表 SailPlat.tbl_accessory 结构
+CREATE TABLE IF NOT EXISTS `tbl_accessory` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -144,14 +144,14 @@ CREATE TABLE IF NOT EXISTS `sailmall_accessory` (
   KEY `FK9BF2D721537B6C51` (`user_id`),
   KEY `FK9BF2D7218603E3C3` (`album_id`),
   KEY `FK9BF2D721707C8F90` (`config_id`),
-  CONSTRAINT `FK9BF2D721537B6C51` FOREIGN KEY (`user_id`) REFERENCES `sailmall_user` (`id`),
-  CONSTRAINT `FK9BF2D721707C8F90` FOREIGN KEY (`config_id`) REFERENCES `sailmall_sysconfig` (`id`),
-  CONSTRAINT `FK9BF2D7218603E3C3` FOREIGN KEY (`album_id`) REFERENCES `sailmall_album` (`id`)
+  CONSTRAINT `FK9BF2D721537B6C51` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`id`),
+  CONSTRAINT `FK9BF2D721707C8F90` FOREIGN KEY (`config_id`) REFERENCES `tbl_sysconfig` (`id`),
+  CONSTRAINT `FK9BF2D7218603E3C3` FOREIGN KEY (`album_id`) REFERENCES `tbl_album` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=426107 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_accessory 的数据：~176 rows (大约)
-/*!40000 ALTER TABLE `sailmall_accessory` DISABLE KEYS */;
-REPLACE INTO `sailmall_accessory` (`id`, `addTime`, `deleteStatus`, `ext`, `height`, `info`, `name`, `path`, `size`, `width`, `album_id`, `user_id`, `config_id`) VALUES
+-- 正在导出表  SailPlat.tbl_accessory 的数据：~176 rows (大约)
+/*!40000 ALTER TABLE `tbl_accessory` DISABLE KEYS */;
+REPLACE INTO `tbl_accessory` (`id`, `addTime`, `deleteStatus`, `ext`, `height`, `info`, `name`, `path`, `size`, `width`, `album_id`, `user_id`, `config_id`) VALUES
 	(1, NULL, b'0', 'jpg', 300, NULL, 'good.jpg', 'resources/style/common/images', 30236, 430, NULL, NULL, NULL),
 	(2, NULL, b'0', NULL, 0, NULL, 'member.jpg', 'resources/style/common/images', 0, 0, NULL, NULL, NULL),
 	(3, NULL, b'0', NULL, 0, NULL, 'store.jpg', 'resources/style/common/images', 0, 0, NULL, NULL, NULL),
@@ -328,10 +328,10 @@ REPLACE INTO `sailmall_accessory` (`id`, `addTime`, `deleteStatus`, `ext`, `heig
 	(426097, '2015-02-28 10:35:40', b'0', 'jpg', 600, NULL, '059cc0ce-3172-425d-9d84-991748c00188.jpg', 'upload/integral_goods', 190037, 600, NULL, NULL, NULL),
 	(426098, '2015-02-28 10:36:40', b'0', 'jpg', 600, NULL, '48f47b4c-f438-42d8-be17-3aed211d6d8b.jpg', 'upload/integral_goods', 262214, 600, NULL, NULL, NULL),
 	(426106, '2015-02-28 16:13:05', b'0', '.jpg', 132, NULL, '32778_big.jpg', 'upload/avatar', 0, 132, NULL, NULL, NULL);
-/*!40000 ALTER TABLE `sailmall_accessory` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_accessory` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_activity 结构
-CREATE TABLE IF NOT EXISTS `sailmall_activity` (
+-- 导出  表 SailPlat.tbl_activity 结构
+CREATE TABLE IF NOT EXISTS `tbl_activity` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -345,17 +345,17 @@ CREATE TABLE IF NOT EXISTS `sailmall_activity` (
   `ac_rebate` decimal(3,2) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK11BFAD20D8BBB351` (`ac_acc_id`),
-  CONSTRAINT `FK11BFAD20D8BBB351` FOREIGN KEY (`ac_acc_id`) REFERENCES `sailmall_accessory` (`id`)
+  CONSTRAINT `FK11BFAD20D8BBB351` FOREIGN KEY (`ac_acc_id`) REFERENCES `tbl_accessory` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_activity 的数据：~0 rows (大约)
-/*!40000 ALTER TABLE `sailmall_activity` DISABLE KEYS */;
-REPLACE INTO `sailmall_activity` (`id`, `addTime`, `deleteStatus`, `ac_begin_time`, `ac_content`, `ac_end_time`, `ac_sequence`, `ac_status`, `ac_title`, `ac_acc_id`, `ac_rebate`) VALUES
+-- 正在导出表  SailPlat.tbl_activity 的数据：~0 rows (大约)
+/*!40000 ALTER TABLE `tbl_activity` DISABLE KEYS */;
+REPLACE INTO `tbl_activity` (`id`, `addTime`, `deleteStatus`, `ac_begin_time`, `ac_content`, `ac_end_time`, `ac_sequence`, `ac_status`, `ac_title`, `ac_acc_id`, `ac_rebate`) VALUES
 	(1, '2014-01-06 11:12:42', b'0', '2014-01-02', '', '2021-01-31', 1, 1, '国庆大酬宾', 229376, NULL);
-/*!40000 ALTER TABLE `sailmall_activity` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_activity` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_activity_goods 结构
-CREATE TABLE IF NOT EXISTS `sailmall_activity_goods` (
+-- 导出  表 SailPlat.tbl_activity_goods 结构
+CREATE TABLE IF NOT EXISTS `tbl_activity_goods` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -368,17 +368,17 @@ CREATE TABLE IF NOT EXISTS `sailmall_activity_goods` (
   KEY `FK614D4F77DC166646` (`ag_admin_id`),
   KEY `FK614D4F7787F8C9EE` (`act_id`),
   KEY `FK614D4F77632F565C` (`ag_goods_id`),
-  CONSTRAINT `FK614D4F77632F565C` FOREIGN KEY (`ag_goods_id`) REFERENCES `sailmall_goods` (`id`),
-  CONSTRAINT `FK614D4F7787F8C9EE` FOREIGN KEY (`act_id`) REFERENCES `sailmall_activity` (`id`),
-  CONSTRAINT `FK614D4F77DC166646` FOREIGN KEY (`ag_admin_id`) REFERENCES `sailmall_user` (`id`)
+  CONSTRAINT `FK614D4F77632F565C` FOREIGN KEY (`ag_goods_id`) REFERENCES `tbl_goods` (`id`),
+  CONSTRAINT `FK614D4F7787F8C9EE` FOREIGN KEY (`act_id`) REFERENCES `tbl_activity` (`id`),
+  CONSTRAINT `FK614D4F77DC166646` FOREIGN KEY (`ag_admin_id`) REFERENCES `tbl_user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_activity_goods 的数据：~0 rows (大约)
-/*!40000 ALTER TABLE `sailmall_activity_goods` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sailmall_activity_goods` ENABLE KEYS */;
+-- 正在导出表  SailPlat.tbl_activity_goods 的数据：~0 rows (大约)
+/*!40000 ALTER TABLE `tbl_activity_goods` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_activity_goods` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_address 结构
-CREATE TABLE IF NOT EXISTS `sailmall_address` (
+-- 导出  表 SailPlat.tbl_address 结构
+CREATE TABLE IF NOT EXISTS `tbl_address` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -392,13 +392,13 @@ CREATE TABLE IF NOT EXISTS `sailmall_address` (
   PRIMARY KEY (`id`),
   KEY `FK9ABDBC32FB91D11` (`area_id`),
   KEY `FK9ABDBC3537B6C51` (`user_id`),
-  CONSTRAINT `FK9ABDBC32FB91D11` FOREIGN KEY (`area_id`) REFERENCES `sailmall_area` (`id`),
-  CONSTRAINT `FK9ABDBC3537B6C51` FOREIGN KEY (`user_id`) REFERENCES `sailmall_user` (`id`)
+  CONSTRAINT `FK9ABDBC32FB91D11` FOREIGN KEY (`area_id`) REFERENCES `tbl_area` (`id`),
+  CONSTRAINT `FK9ABDBC3537B6C51` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=32771 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_address 的数据：~8 rows (大约)
-/*!40000 ALTER TABLE `sailmall_address` DISABLE KEYS */;
-REPLACE INTO `sailmall_address` (`id`, `addTime`, `deleteStatus`, `area_info`, `mobile`, `telephone`, `trueName`, `zip`, `area_id`, `user_id`) VALUES
+-- 正在导出表  SailPlat.tbl_address 的数据：~8 rows (大约)
+/*!40000 ALTER TABLE `tbl_address` DISABLE KEYS */;
+REPLACE INTO `tbl_address` (`id`, `addTime`, `deleteStatus`, `area_info`, `mobile`, `telephone`, `trueName`, `zip`, `area_id`, `user_id`) VALUES
 	(1, '2014-01-02 12:47:07', b'0', '兴华南街47号兴华大厦A座', '18310261753', '020-88888888', '张钰', '110003', 4522489, 1),
 	(1165, '2017-09-26 12:22:04', b'0', '望京摩托罗拉大厦', '13391818768', NULL, '适当放宽', '100000', 4521988, 32795),
 	(1512, '2017-09-29 17:25:52', b'0', '摩托罗拉大厦', '13391818768', '13121087990', '硒鼓', '100000', 4521988, 32796),
@@ -407,10 +407,10 @@ REPLACE INTO `sailmall_address` (`id`, `addTime`, `deleteStatus`, `area_info`, `
 	(32768, '2014-01-05 14:59:11', b'0', '十一纬路51号1218室', '13909827782', '024-83773214', '胡锦涛', '110003', 4521986, 65536),
 	(32769, '2014-09-22 14:50:51', b'0', '黄寺大街108号', '', '010-98098172', '李强', '110000', 4521986, 1),
 	(32770, '2014-09-22 15:02:33', b'0', '兴华南街47号兴华大厦A座1908', '15309882892', '', '李雨聪', '110020', 4522489, 1);
-/*!40000 ALTER TABLE `sailmall_address` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_address` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_advert 结构
-CREATE TABLE IF NOT EXISTS `sailmall_advert` (
+-- 导出  表 SailPlat.tbl_advert 结构
+CREATE TABLE IF NOT EXISTS `tbl_advert` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -430,14 +430,14 @@ CREATE TABLE IF NOT EXISTS `sailmall_advert` (
   KEY `FKCECB7A255A9A4C35` (`ad_user_id`),
   KEY `FKCECB7A25296B4EE3` (`ad_ap_id`),
   KEY `FKCECB7A25409CE030` (`ad_acc_id`),
-  CONSTRAINT `FKCECB7A25296B4EE3` FOREIGN KEY (`ad_ap_id`) REFERENCES `sailmall_adv_pos` (`id`),
-  CONSTRAINT `FKCECB7A25409CE030` FOREIGN KEY (`ad_acc_id`) REFERENCES `sailmall_accessory` (`id`),
-  CONSTRAINT `FKCECB7A255A9A4C35` FOREIGN KEY (`ad_user_id`) REFERENCES `sailmall_user` (`id`)
+  CONSTRAINT `FKCECB7A25296B4EE3` FOREIGN KEY (`ad_ap_id`) REFERENCES `tbl_adv_pos` (`id`),
+  CONSTRAINT `FKCECB7A25409CE030` FOREIGN KEY (`ad_acc_id`) REFERENCES `tbl_accessory` (`id`),
+  CONSTRAINT `FKCECB7A255A9A4C35` FOREIGN KEY (`ad_user_id`) REFERENCES `tbl_user` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=262155 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_advert 的数据：~24 rows (大约)
-/*!40000 ALTER TABLE `sailmall_advert` DISABLE KEYS */;
-REPLACE INTO `sailmall_advert` (`id`, `addTime`, `deleteStatus`, `ad_begin_time`, `ad_click_num`, `ad_end_time`, `ad_gold`, `ad_slide_sequence`, `ad_status`, `ad_text`, `ad_title`, `ad_url`, `ad_acc_id`, `ad_ap_id`, `ad_user_id`) VALUES
+-- 正在导出表  SailPlat.tbl_advert 的数据：~24 rows (大约)
+/*!40000 ALTER TABLE `tbl_advert` DISABLE KEYS */;
+REPLACE INTO `tbl_advert` (`id`, `addTime`, `deleteStatus`, `ad_begin_time`, `ad_click_num`, `ad_end_time`, `ad_gold`, `ad_slide_sequence`, `ad_status`, `ad_text`, `ad_title`, `ad_url`, `ad_acc_id`, `ad_ap_id`, `ad_user_id`) VALUES
 	(1, '2013-12-23 21:16:27', b'0', '2013-12-14', 3, '2022-12-31', 0, 0, 1, '', '首页幻灯广告3', '#', 12, 1, 1),
 	(65536, '2013-12-17 17:13:15', b'0', '2013-12-16', 8, '2022-12-31', 0, 1, 1, '', '首页幻灯图片1', '#', 10, 1, 1),
 	(65537, '2013-12-17 17:16:37', b'0', '2013-12-15', 0, '2022-12-31', 0, 2, 1, '', '首页幻灯图片2', '#', 11, 1, 1),
@@ -462,10 +462,10 @@ REPLACE INTO `sailmall_advert` (`id`, `addTime`, `deleteStatus`, `ad_begin_time`
 	(262152, '2015-02-17 11:51:15', b'0', '2015-01-31', 2, '2024-12-31', 0, 0, 1, '', '首页滚动广告10', '#', 426070, 32768, 1),
 	(262153, '2015-02-17 11:51:55', b'0', '2015-01-31', 0, '2024-12-31', 0, 0, 1, '', '首页滚动广告11', '#', 426071, 32768, 1),
 	(262154, '2015-02-17 11:52:13', b'0', '2015-01-31', 0, '2024-12-31', 0, 0, 1, '', '首页滚动广告12', '#', 426072, 32768, 1);
-/*!40000 ALTER TABLE `sailmall_advert` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_advert` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_adv_pos 结构
-CREATE TABLE IF NOT EXISTS `sailmall_adv_pos` (
+-- 导出  表 SailPlat.tbl_adv_pos 结构
+CREATE TABLE IF NOT EXISTS `tbl_adv_pos` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -486,12 +486,12 @@ CREATE TABLE IF NOT EXISTS `sailmall_adv_pos` (
   `ap_acc_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FKAA108971F2AFAA4` (`ap_acc_id`),
-  CONSTRAINT `FKAA108971F2AFAA4` FOREIGN KEY (`ap_acc_id`) REFERENCES `sailmall_accessory` (`id`)
+  CONSTRAINT `FKAA108971F2AFAA4` FOREIGN KEY (`ap_acc_id`) REFERENCES `tbl_accessory` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=262157 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_adv_pos 的数据：~22 rows (大约)
-/*!40000 ALTER TABLE `sailmall_adv_pos` DISABLE KEYS */;
-REPLACE INTO `sailmall_adv_pos` (`id`, `addTime`, `deleteStatus`, `ap_acc_url`, `ap_code`, `ap_content`, `ap_height`, `ap_price`, `ap_sale_type`, `ap_show_type`, `ap_status`, `ap_sys_type`, `ap_text`, `ap_title`, `ap_type`, `ap_use_status`, `ap_width`, `ap_acc_id`) VALUES
+-- 正在导出表  SailPlat.tbl_adv_pos 的数据：~22 rows (大约)
+/*!40000 ALTER TABLE `tbl_adv_pos` DISABLE KEYS */;
+REPLACE INTO `tbl_adv_pos` (`id`, `addTime`, `deleteStatus`, `ap_acc_url`, `ap_code`, `ap_content`, `ap_height`, `ap_price`, `ap_sale_type`, `ap_show_type`, `ap_status`, `ap_sys_type`, `ap_text`, `ap_title`, `ap_type`, `ap_use_status`, `ap_width`, `ap_acc_id`) VALUES
 	(1, '2013-12-17 12:31:22', b'0', '#', NULL, '首页幻灯广告', 264, 3000, 0, 1, 1, 0, '', '首页幻灯广告', 'slide', 0, 520, 4),
 	(2, '2014-02-25 14:57:28', b'0', '#', NULL, '首页楼层左下方小广告1', 156, 200, 0, 0, 1, 1, '', '首页楼层左下方小广告1', 'img', 0, 156, 262145),
 	(32768, '2013-12-17 13:40:48', b'0', '', NULL, '首页滚动广告', 131, 2800, 0, 1, 1, 0, '', '首页四联滚动广告', 'scroll', 0, 259, NULL),
@@ -506,7 +506,7 @@ REPLACE INTO `sailmall_adv_pos` (`id`, `addTime`, `deleteStatus`, `ap_acc_url`, 
 	(262146, '2014-10-09 14:36:34', b'0', '#', NULL, '闲置商品主页幻灯广告', 264, 100, 0, 0, 1, 0, '', '闲置商品主页幻灯广告', 'slide', 1, 580, NULL),
 	(262147, '2014-10-09 15:17:15', b'0', '#', NULL, '闲置商品主页顶部右上角图片广告', 130, 100, 0, 0, 1, 0, '', '闲置商品主页顶部右上角图片广告', 'img', 0, 180, 426010),
 	(262148, '2015-02-08 18:08:37', b'0', '#', NULL, '首页顶部右侧广告位', 266, 3000, 0, 0, 1, 1, '', '首页顶部右侧上方固定广告位', 'img', 0, 200, 426064),
-	(262149, '2015-02-08 18:12:28', b'0', 'http://ww.sailmall.com', NULL, '首页顶部右侧下方方固定广告位', 266, 3000, 0, 0, 1, 0, '', '首页顶部右侧下方方固定广告位', 'img', 0, 200, 426065),
+	(262149, '2015-02-08 18:12:28', b'0', 'http://ww.SailPlat.com', NULL, '首页顶部右侧下方方固定广告位', 266, 3000, 0, 0, 1, 0, '', '首页顶部右侧下方方固定广告位', 'img', 0, 200, 426065),
 	(262150, '2015-02-08 18:44:45', b'0', '#', NULL, '首页品牌推荐下方广告位', 206, 2000, 0, 0, 1, 0, '', '首页品牌推荐下方广告位', 'img', 0, 288, 426066),
 	(262151, '2015-02-26 09:29:57', b'0', '#', NULL, '商城活动顶部右侧广告', 341, 600, 0, 1, 1, 0, '', '商城活动顶部右侧广告', 'img', 0, 200, 426073),
 	(262152, '2015-02-26 10:02:58', b'0', '#', NULL, '闲置商品主页顶部右下角图片广告', 130, 600, 0, 1, 1, 0, '', '闲置商品主页顶部右下角图片广告', 'img', 0, 180, 426074),
@@ -514,10 +514,10 @@ REPLACE INTO `sailmall_adv_pos` (`id`, `addTime`, `deleteStatus`, `ap_acc_url`, 
 	(262154, '2015-02-26 10:12:38', b'0', '#', NULL, '闲置商品楼层广告', 300, 600, 0, 1, 1, 0, '', '闲置商品楼层广告', 'img', 0, 220, 426076),
 	(262155, '2015-02-28 09:53:52', b'0', '#', NULL, '积分商城幻灯右侧广告', 248, 800, 0, 1, 1, 0, '', '积分商城幻灯右侧广告', 'img', 0, 197, 426077),
 	(262156, '2015-02-28 10:01:27', b'0', '#', NULL, '积分商城右下角广告', 280, 600, 0, 0, 1, 0, '', '积分商城右下角广告', 'img', 0, 262, 426078);
-/*!40000 ALTER TABLE `sailmall_adv_pos` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_adv_pos` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_album 结构
-CREATE TABLE IF NOT EXISTS `sailmall_album` (
+-- 导出  表 SailPlat.tbl_album 结构
+CREATE TABLE IF NOT EXISTS `tbl_album` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -530,13 +530,13 @@ CREATE TABLE IF NOT EXISTS `sailmall_album` (
   PRIMARY KEY (`id`),
   KEY `FK2FF965FE537B6C51` (`user_id`),
   KEY `FK2FF965FE58AB9D6E` (`album_cover_id`),
-  CONSTRAINT `FK2FF965FE537B6C51` FOREIGN KEY (`user_id`) REFERENCES `sailmall_user` (`id`),
-  CONSTRAINT `FK2FF965FE58AB9D6E` FOREIGN KEY (`album_cover_id`) REFERENCES `sailmall_accessory` (`id`)
+  CONSTRAINT `FK2FF965FE537B6C51` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`id`),
+  CONSTRAINT `FK2FF965FE58AB9D6E` FOREIGN KEY (`album_cover_id`) REFERENCES `tbl_accessory` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1597 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_album 的数据：~16 rows (大约)
-/*!40000 ALTER TABLE `sailmall_album` DISABLE KEYS */;
-REPLACE INTO `sailmall_album` (`id`, `addTime`, `deleteStatus`, `alblum_info`, `album_default`, `album_name`, `album_sequence`, `album_cover_id`, `user_id`) VALUES
+-- 正在导出表  SailPlat.tbl_album 的数据：~16 rows (大约)
+/*!40000 ALTER TABLE `tbl_album` DISABLE KEYS */;
+REPLACE INTO `tbl_album` (`id`, `addTime`, `deleteStatus`, `alblum_info`, `album_default`, `album_name`, `album_sequence`, `album_cover_id`, `user_id`) VALUES
 	(1, '2013-12-24 12:52:13', b'0', NULL, b'1', '默认相册', -10000, NULL, 32768),
 	(3, '2014-10-09 18:04:18', b'0', NULL, b'1', '默认相册', -10000, NULL, NULL),
 	(4, '2014-10-10 09:54:11', b'0', NULL, b'1', '默认相册', -10000, NULL, NULL),
@@ -553,10 +553,10 @@ REPLACE INTO `sailmall_album` (`id`, `addTime`, `deleteStatus`, `alblum_info`, `
 	(1567, '2017-10-16 22:08:14', b'0', NULL, b'1', '默认相册', -10000, NULL, NULL),
 	(1570, '2017-10-16 22:20:21', b'0', NULL, b'1', '默认相册', -10000, NULL, NULL),
 	(1596, '2017-10-23 11:47:17', b'0', NULL, b'1', '默认相册', -10000, NULL, NULL);
-/*!40000 ALTER TABLE `sailmall_album` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_album` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_area 结构
-CREATE TABLE IF NOT EXISTS `sailmall_area` (
+-- 导出  表 SailPlat.tbl_area 结构
+CREATE TABLE IF NOT EXISTS `tbl_area` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -567,12 +567,12 @@ CREATE TABLE IF NOT EXISTS `sailmall_area` (
   `common` bit(1) DEFAULT b'0',
   PRIMARY KEY (`id`),
   KEY `FK7D6B3B1ED79E13D4` (`parent_id`),
-  CONSTRAINT `FK7D6B3B1ED79E13D4` FOREIGN KEY (`parent_id`) REFERENCES `sailmall_area` (`id`)
+  CONSTRAINT `FK7D6B3B1ED79E13D4` FOREIGN KEY (`parent_id`) REFERENCES `tbl_area` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4525504 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_area 的数据：~3,516 rows (大约)
-/*!40000 ALTER TABLE `sailmall_area` DISABLE KEYS */;
-REPLACE INTO `sailmall_area` (`id`, `addTime`, `deleteStatus`, `areaName`, `level`, `sequence`, `parent_id`, `common`) VALUES
+-- 正在导出表  SailPlat.tbl_area 的数据：~3,516 rows (大约)
+/*!40000 ALTER TABLE `tbl_area` DISABLE KEYS */;
+REPLACE INTO `tbl_area` (`id`, `addTime`, `deleteStatus`, `areaName`, `level`, `sequence`, `parent_id`, `common`) VALUES
 	(4521984, '2013-07-30 15:37:33', b'0', '北京市', 0, 0, NULL, b'1'),
 	(4521985, '2013-07-30 15:37:33', b'0', '北京市', 1, 0, 4521984, b'0'),
 	(4521986, '2013-07-30 15:37:33', b'0', '东城区', 2, 0, 4521985, b'0'),
@@ -4089,10 +4089,10 @@ REPLACE INTO `sailmall_area` (`id`, `addTime`, `deleteStatus`, `areaName`, `leve
 	(4525501, '2013-07-30 15:41:18', b'0', '阿拉尔市', 2, 0, 4525499, b'0'),
 	(4525502, '2013-07-30 15:41:18', b'0', '图木舒克市', 2, 0, 4525499, b'0'),
 	(4525503, '2013-07-30 15:41:18', b'0', '五家渠市', 2, 0, 4525499, b'0');
-/*!40000 ALTER TABLE `sailmall_area` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_area` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_article 结构
-CREATE TABLE IF NOT EXISTS `sailmall_article` (
+-- 导出  表 SailPlat.tbl_article 结构
+CREATE TABLE IF NOT EXISTS `tbl_article` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -4105,15 +4105,15 @@ CREATE TABLE IF NOT EXISTS `sailmall_article` (
   `articleClass_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK226D0CC544EDEDD1` (`articleClass_id`),
-  CONSTRAINT `FK226D0CC544EDEDD1` FOREIGN KEY (`articleClass_id`) REFERENCES `sailmall_articleclass` (`id`)
+  CONSTRAINT `FK226D0CC544EDEDD1` FOREIGN KEY (`articleClass_id`) REFERENCES `tbl_articleclass` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=196617 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_article 的数据：~38 rows (大约)
-/*!40000 ALTER TABLE `sailmall_article` DISABLE KEYS */;
-REPLACE INTO `sailmall_article` (`id`, `addTime`, `deleteStatus`, `content`, `display`, `mark`, `sequence`, `title`, `url`, `articleClass_id`) VALUES
+-- 正在导出表  SailPlat.tbl_article 的数据：~38 rows (大约)
+/*!40000 ALTER TABLE `tbl_article` DISABLE KEYS */;
+REPLACE INTO `tbl_article` (`id`, `addTime`, `deleteStatus`, `content`, `display`, `mark`, `sequence`, `title`, `url`, `articleClass_id`) VALUES
 	(1, '2013-12-23 21:24:52', b'0', '如何申请开店', b'1', '', 0, '如何申请开店 ', '', 98306),
 	(2, '2013-08-25 12:25:04', b'0', '<p>\r\n	1、积分兑换说明\r\n</p>\r\n<p>\r\n	2、积分兑换说明\r\n</p>\r\n<p>\r\n	3、积分兑换说明\r\n</p>\r\n<p>\r\n	4、积分兑换说明\r\n</p>\r\n<table style="width:100%;" border="1" bordercolor="#000000" cellpadding="2" cellspacing="0">\r\n	<tbody>\r\n		<tr>\r\n			<td>\r\n				<br />\r\n			</td>\r\n			<td>\r\n				<br />\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td>\r\n				<br />\r\n			</td>\r\n			<td>\r\n				<br />\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td>\r\n				<br />\r\n			</td>\r\n			<td>\r\n				<br />\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n<br />\r\n<br />', b'1', NULL, 0, '积分兑换说明', '', 98304),
-	(3, '2013-08-25 12:30:55', b'0', '<br />\r\nsailmall1.0正式版火爆销售中&nbsp; 前10名八折酬宾', b'1', '', 1, 'sailmall1.0正式版火爆销售中  前10名八折酬宾', '#', 1),
+	(3, '2013-08-25 12:30:55', b'0', '<br />\r\nSailPlat1.0正式版火爆销售中&nbsp; 前10名八折酬宾', b'1', '', 1, 'SailPlat1.0正式版火爆销售中  前10名八折酬宾', '#', 1),
 	(4, '2013-12-23 21:26:23', b'0', '商城商品推荐', b'1', '', 0, '商城商品推荐 ', '', 98306),
 	(5, '2013-12-23 21:27:13', b'0', '查看售出商品', b'1', '', 0, '查看售出商品 ', '', 98306),
 	(6, '2013-12-23 21:27:31', b'0', '如何发布商品', b'1', '', 0, '如何发布商品', '', 98306),
@@ -4133,7 +4133,7 @@ REPLACE INTO `sailmall_article` (`id`, `addTime`, `deleteStatus`, `content`, `di
 	(32773, '2013-12-23 21:37:59', b'0', '招聘英才', b'1', 'join', 0, '招聘英才', '', 163841),
 	(32774, '2013-12-23 21:41:10', b'0', '<p>\r\n	欢迎您对我们的站点、工作、产品和服务提出自己宝贵的意见或建议。我们将给予您及时答复。同时也欢迎您到我们公司来洽商业务。\r\n</p>\r\n<p>\r\n	<br />\r\n<strong>公司名称</strong>： 沈阳誉凯利明科技有限公司<br />\r\n<strong>通信地址</strong>： 沈阳市和平区十一纬路51号1218室<br />\r\n<strong>邮政编码</strong>： 100003<br />\r\n<strong>电话</strong>： 86-024-23268235<br />\r\n<strong>商务洽谈</strong>： 86-024-31323528<br />\r\n<strong>传真</strong>：86-024-23268235<strong></strong> \r\n</p>', b'1', 'contact', 0, '联系我们 ', '', 163841),
 	(32775, '2013-12-23 21:42:21', b'0', '广告合作', b'1', 'adver', 0, ' 广告合作', '', 163841),
-	(32776, '2013-12-23 21:44:01', b'0', '<p style="text-indent:24.0pt;">\r\n	<span></span><span style="font-size:16.0pt;font-family:仿宋_GB2312;color:black;"><span style="font-size:16px;font-family:SimSun;color:#999999;">誉凯利明科技有限公司是一家高新科技创业公司，由多位</span><span style="font-size:16px;font-family:SimSun;color:#999999;">web</span><span style="font-size:16px;font-family:SimSun;color:#999999;">开发行业内知名专家、国内著名开源框架</span><span style="font-size:16px;font-family:SimSun;color:#999999;">EasyJWeb</span><span style="font-size:16px;font-family:SimSun;color:#999999;">创始人、</span><span style="font-size:16px;font-family:SimSun;color:#999999;">CSDN</span></span><span style="font-size:16px;font-family:SimSun;color:#999999;">&nbsp;</span><span style="font-size:16px;font-family:SimSun;color:#999999;"> Java</span><span style="font-size:16.0pt;font-family:仿宋_GB2312;color:black;"><span style="font-size:16px;font-family:SimSun;color:#999999;">论坛版主、电子工业出版社</span><span style="font-size:16px;font-family:SimSun;color:#999999;">Java</span><span style="font-size:16px;font-family:SimSun;color:#999999;">专家专业作者共同成立于</span><span style="font-size:16px;font-family:SimSun;color:#999999;">2010</span><span style="font-size:16px;font-family:SimSun;color:#999999;">年，是一家提供专业软件服务、网络服务和企业级解决方案的</span><span style="font-size:16px;font-family:SimSun;color:#999999;">IT</span><span style="font-size:16px;font-family:SimSun;color:#999999;">服务提供商。公司立足自我创业，专门从事</span><span style="font-size:16px;font-family:SimSun;color:#999999;">web</span><span style="font-size:16px;font-family:SimSun;color:#999999;">开发及系统集成业务服务，公司秉承人才之上、诚信经营的策略，公司的核心业务为面向国内外客户提供全方位、高品质的信息系统服务、综合业务系统咨询服务和集成技术服务。</span><span></span></span> \r\n</p>\r\n<p style="text-indent:32.0pt;">\r\n	<span style="font-size:16.0pt;font-family:仿宋_GB2312;color:black;"><span style="font-size:16px;font-family:SimSun;color:#999999;">誉凯利明将先进的软件技术与</span><span style="font-size:16px;font-family:SimSun;color:#999999;">IT</span><span style="font-size:16px;font-family:SimSun;color:#999999;">服务相结合，为政府、企业客户提供高效的信息化解决方案和构筑服务；并通过优秀的咨询服务及强大的</span><span style="font-size:16px;font-family:SimSun;color:#999999;">IT</span><span style="font-size:16px;font-family:SimSun;color:#999999;">服务体系，支持并保障企事业客户业务的正常、高效运行。我们为客户提供的不仅仅是单纯个别的</span><span style="font-size:16px;font-family:SimSun;color:#999999;">IT</span><span style="font-size:16px;font-family:SimSun;color:#999999;">服务，而是针对客户要求，提供包括</span><span style="font-size:16px;font-family:SimSun;color:#999999;">IT</span><span style="font-size:16px;font-family:SimSun;color:#999999;">系统咨询、构筑、维护、运营在内的综合、全面的一站式</span><span style="font-size:16px;font-family:SimSun;color:#999999;">IT</span><span style="font-size:16px;font-family:SimSun;color:#999999;">服务。</span></span><span style="font-size:16px;font-family:SimSun;color:#999999;">&nbsp;</span> \r\n</p>\r\n<p>\r\n	<b><span style="font-size:16.0pt;font-family:楷体_GB2312;"><span style="font-size:16px;font-family:SimSun;color:#999999;">关于我们：</span><span></span></span></b> \r\n</p>\r\n<p>\r\n	<span style="font-size:16.0pt;font-family:Arial;"><span style="font-size:16px;font-family:SimSun;color:#999999;">&nbsp;&nbsp;&nbsp;</span><span style="font-size:16px;font-family:SimSun;color:#999999;">&nbsp; </span></span><span style="font-size:16px;font-family:SimSun;color:#999999;">求知是艰苦的，但我们有足够的劲头；</span><span style="font-size:16px;font-family:SimSun;color:#999999;">&nbsp;</span><span style="font-size:16.0pt;font-family:仿宋_GB2312;"></span> \r\n</p>\r\n<p>\r\n	<span style="font-size:16.0pt;font-family:Arial;"><span style="font-size:16px;font-family:SimSun;color:#999999;">&nbsp;&nbsp;&nbsp;</span><span style="font-size:16px;font-family:SimSun;color:#999999;">&nbsp; </span></span><span style="font-size:16.0pt;font-family:仿宋_GB2312;"><span style="font-size:16px;font-family:SimSun;color:#999999;">创业是艰辛的，但我们有足够的激情；</span><span></span></span> \r\n</p>\r\n<p>\r\n	<span style="font-size:16.0pt;font-family:Arial;"><span style="font-size:16px;font-family:SimSun;color:#999999;">&nbsp;&nbsp;&nbsp;</span><span style="font-size:16px;font-family:SimSun;color:#999999;">&nbsp; </span></span><span style="font-size:16.0pt;font-family:仿宋_GB2312;"><span style="font-size:16px;font-family:SimSun;color:#999999;">成功是艰难的，但我们有正确的方向；</span><span></span></span> \r\n</p>\r\n<p>\r\n	<span style="font-size:16.0pt;font-family:Arial;"><span style="font-size:16px;font-family:SimSun;color:#999999;">&nbsp;&nbsp;&nbsp;</span><span style="font-size:16px;font-family:SimSun;color:#999999;">&nbsp; </span></span><span style="font-size:16px;font-family:SimSun;color:#999999;">经过时间的洗礼，我们惟有不变的是年轻的心、旺盛的激情，年轻的我们不图回报，有的只是感恩。</span><span style="font-size:16.0pt;font-family:Arial;"></span> \r\n</p>\r\n<p>\r\n	<b><span style="font-size:16px;font-family:SimSun;color:#999999;">我们的文化</span></b><span style="font-size:16.0pt;font-family:Arial;"></span> \r\n</p>\r\n<p>\r\n	<span style="font-size:16.0pt;font-family:仿宋_GB2312;"><span style="font-size:16px;font-family:SimSun;color:#999999;">　　诚信</span><span style="font-size:16px;font-family:SimSun;color:#999999;">:</span><span style="font-size:16px;font-family:SimSun;color:#999999;">诚信是我们的安身立命之本，忠诚于企业和工作职责。</span></span><span style="font-size:16px;font-family:SimSun;color:#999999;">&nbsp;</span><span style="font-size:16.0pt;font-family:仿宋_GB2312;"></span> \r\n</p>\r\n<p>\r\n	<span style="font-size:16.0pt;font-family:仿宋_GB2312;"><span style="font-size:16px;font-family:SimSun;color:#999999;">　　敬业</span><span style="font-size:16px;font-family:SimSun;color:#999999;">:</span><span style="font-size:16px;font-family:SimSun;color:#999999;">不断挑战困难、挑战自我、不断的提高、完善，追求做到最好。</span></span><span style="font-size:16.0pt;font-family:Arial;"></span> \r\n</p>\r\n<p>\r\n	<span style="font-size:16.0pt;font-family:仿宋_GB2312;"><span style="font-size:16px;font-family:SimSun;color:#999999;">　　创新</span><span style="font-size:16px;font-family:SimSun;color:#999999;">:</span><span style="font-size:16px;font-family:SimSun;color:#999999;">不断超越过去，不断进取，善于学习、总结和提炼。</span></span><span style="font-size:16.0pt;font-family:Arial;"></span> \r\n</p>\r\n<p>\r\n	<b><span style="font-size:16.0pt;font-family:楷体_GB2312;"><span style="font-size:16px;font-family:SimSun;color:#999999;">我们的宗旨</span><span></span></span></b> \r\n</p>\r\n<p>\r\n	<span style="font-size:16px;font-family:SimSun;color:#999999;">　　</span><span style="font-size:16px;font-family:SimSun;color:#999999;">&nbsp;</span><span style="font-size:16px;font-family:SimSun;color:#999999;">以人为本</span><span style="font-size:16.0pt;font-family:Arial;"></span> \r\n</p>\r\n<p>\r\n	<span style="font-size:16px;font-family:SimSun;color:#999999;">　　</span><span style="font-size:16px;font-family:SimSun;color:#999999;">&nbsp;</span><span style="font-size:16px;font-family:SimSun;color:#999999;">以客户为中心</span><span style="font-size:16px;font-family:SimSun;color:#999999;">&nbsp;</span><span style="font-size:16.0pt;font-family:仿宋_GB2312;"></span> \r\n</p>\r\n<p>\r\n	<span style="font-size:16px;font-family:SimSun;color:#999999;">　　</span><span style="font-size:16px;font-family:SimSun;color:#999999;">&nbsp;</span><span style="font-size:16px;font-family:SimSun;color:#999999;">以知识为动力</span><span style="font-size:16px;font-family:SimSun;color:#999999;">&nbsp;</span><span style="font-size:16.0pt;font-family:仿宋_GB2312;"></span> \r\n</p>\r\n<p>\r\n	<b><span style="font-size:16.0pt;font-family:楷体_GB2312;"><span style="font-size:16px;font-family:SimSun;color:#999999;">我们的目标</span><span></span></span></b> \r\n</p>\r\n<p style="text-indent:32.25pt;">\r\n	<span style="font-size:16.0pt;font-family:仿宋_GB2312;"><span style="font-size:16px;font-family:SimSun;"><span></span><span style="color:#999999;">开发每一款让用户满意的软件产品</span></span><span></span></span><span style="font-size:16.0pt;font-family:仿宋_GB2312;"><span style="font-size:16px;font-family:SimSun;"></span></span> \r\n</p>\r\n<p style="text-indent:32.25pt;">\r\n	<span style="font-size:16.0pt;font-family:仿宋_GB2312;"><span style="font-size:16px;font-family:SimSun;color:#999999;">为客户提供满意的服务</span><span></span></span><span style="font-size:16.0pt;font-family:仿宋_GB2312;"><span style="font-size:16px;font-family:SimSun;"><br />\r\n</span></span> \r\n</p>\r\n<p style="text-indent:32.25pt;">\r\n	<span style="font-size:16.0pt;font-family:仿宋_GB2312;"><span style="font-size:16px;font-family:SimSun;"><span style="font-size:16pt;font-family:仿宋_GB2312;color:#999999;"><span style="font-size:16px;font-family:SimSun;color:#999999;">为社会尽自己的一份责任</span></span><br />\r\n</span><span></span><span></span></span> \r\n</p>', b'1', 'about', 0, '关于sailmall', '', 163841),
+	(32776, '2013-12-23 21:44:01', b'0', '<p style="text-indent:24.0pt;">\r\n	<span></span><span style="font-size:16.0pt;font-family:仿宋_GB2312;color:black;"><span style="font-size:16px;font-family:SimSun;color:#999999;">誉凯利明科技有限公司是一家高新科技创业公司，由多位</span><span style="font-size:16px;font-family:SimSun;color:#999999;">web</span><span style="font-size:16px;font-family:SimSun;color:#999999;">开发行业内知名专家、国内著名开源框架</span><span style="font-size:16px;font-family:SimSun;color:#999999;">EasyJWeb</span><span style="font-size:16px;font-family:SimSun;color:#999999;">创始人、</span><span style="font-size:16px;font-family:SimSun;color:#999999;">CSDN</span></span><span style="font-size:16px;font-family:SimSun;color:#999999;">&nbsp;</span><span style="font-size:16px;font-family:SimSun;color:#999999;"> Java</span><span style="font-size:16.0pt;font-family:仿宋_GB2312;color:black;"><span style="font-size:16px;font-family:SimSun;color:#999999;">论坛版主、电子工业出版社</span><span style="font-size:16px;font-family:SimSun;color:#999999;">Java</span><span style="font-size:16px;font-family:SimSun;color:#999999;">专家专业作者共同成立于</span><span style="font-size:16px;font-family:SimSun;color:#999999;">2010</span><span style="font-size:16px;font-family:SimSun;color:#999999;">年，是一家提供专业软件服务、网络服务和企业级解决方案的</span><span style="font-size:16px;font-family:SimSun;color:#999999;">IT</span><span style="font-size:16px;font-family:SimSun;color:#999999;">服务提供商。公司立足自我创业，专门从事</span><span style="font-size:16px;font-family:SimSun;color:#999999;">web</span><span style="font-size:16px;font-family:SimSun;color:#999999;">开发及系统集成业务服务，公司秉承人才之上、诚信经营的策略，公司的核心业务为面向国内外客户提供全方位、高品质的信息系统服务、综合业务系统咨询服务和集成技术服务。</span><span></span></span> \r\n</p>\r\n<p style="text-indent:32.0pt;">\r\n	<span style="font-size:16.0pt;font-family:仿宋_GB2312;color:black;"><span style="font-size:16px;font-family:SimSun;color:#999999;">誉凯利明将先进的软件技术与</span><span style="font-size:16px;font-family:SimSun;color:#999999;">IT</span><span style="font-size:16px;font-family:SimSun;color:#999999;">服务相结合，为政府、企业客户提供高效的信息化解决方案和构筑服务；并通过优秀的咨询服务及强大的</span><span style="font-size:16px;font-family:SimSun;color:#999999;">IT</span><span style="font-size:16px;font-family:SimSun;color:#999999;">服务体系，支持并保障企事业客户业务的正常、高效运行。我们为客户提供的不仅仅是单纯个别的</span><span style="font-size:16px;font-family:SimSun;color:#999999;">IT</span><span style="font-size:16px;font-family:SimSun;color:#999999;">服务，而是针对客户要求，提供包括</span><span style="font-size:16px;font-family:SimSun;color:#999999;">IT</span><span style="font-size:16px;font-family:SimSun;color:#999999;">系统咨询、构筑、维护、运营在内的综合、全面的一站式</span><span style="font-size:16px;font-family:SimSun;color:#999999;">IT</span><span style="font-size:16px;font-family:SimSun;color:#999999;">服务。</span></span><span style="font-size:16px;font-family:SimSun;color:#999999;">&nbsp;</span> \r\n</p>\r\n<p>\r\n	<b><span style="font-size:16.0pt;font-family:楷体_GB2312;"><span style="font-size:16px;font-family:SimSun;color:#999999;">关于我们：</span><span></span></span></b> \r\n</p>\r\n<p>\r\n	<span style="font-size:16.0pt;font-family:Arial;"><span style="font-size:16px;font-family:SimSun;color:#999999;">&nbsp;&nbsp;&nbsp;</span><span style="font-size:16px;font-family:SimSun;color:#999999;">&nbsp; </span></span><span style="font-size:16px;font-family:SimSun;color:#999999;">求知是艰苦的，但我们有足够的劲头；</span><span style="font-size:16px;font-family:SimSun;color:#999999;">&nbsp;</span><span style="font-size:16.0pt;font-family:仿宋_GB2312;"></span> \r\n</p>\r\n<p>\r\n	<span style="font-size:16.0pt;font-family:Arial;"><span style="font-size:16px;font-family:SimSun;color:#999999;">&nbsp;&nbsp;&nbsp;</span><span style="font-size:16px;font-family:SimSun;color:#999999;">&nbsp; </span></span><span style="font-size:16.0pt;font-family:仿宋_GB2312;"><span style="font-size:16px;font-family:SimSun;color:#999999;">创业是艰辛的，但我们有足够的激情；</span><span></span></span> \r\n</p>\r\n<p>\r\n	<span style="font-size:16.0pt;font-family:Arial;"><span style="font-size:16px;font-family:SimSun;color:#999999;">&nbsp;&nbsp;&nbsp;</span><span style="font-size:16px;font-family:SimSun;color:#999999;">&nbsp; </span></span><span style="font-size:16.0pt;font-family:仿宋_GB2312;"><span style="font-size:16px;font-family:SimSun;color:#999999;">成功是艰难的，但我们有正确的方向；</span><span></span></span> \r\n</p>\r\n<p>\r\n	<span style="font-size:16.0pt;font-family:Arial;"><span style="font-size:16px;font-family:SimSun;color:#999999;">&nbsp;&nbsp;&nbsp;</span><span style="font-size:16px;font-family:SimSun;color:#999999;">&nbsp; </span></span><span style="font-size:16px;font-family:SimSun;color:#999999;">经过时间的洗礼，我们惟有不变的是年轻的心、旺盛的激情，年轻的我们不图回报，有的只是感恩。</span><span style="font-size:16.0pt;font-family:Arial;"></span> \r\n</p>\r\n<p>\r\n	<b><span style="font-size:16px;font-family:SimSun;color:#999999;">我们的文化</span></b><span style="font-size:16.0pt;font-family:Arial;"></span> \r\n</p>\r\n<p>\r\n	<span style="font-size:16.0pt;font-family:仿宋_GB2312;"><span style="font-size:16px;font-family:SimSun;color:#999999;">　　诚信</span><span style="font-size:16px;font-family:SimSun;color:#999999;">:</span><span style="font-size:16px;font-family:SimSun;color:#999999;">诚信是我们的安身立命之本，忠诚于企业和工作职责。</span></span><span style="font-size:16px;font-family:SimSun;color:#999999;">&nbsp;</span><span style="font-size:16.0pt;font-family:仿宋_GB2312;"></span> \r\n</p>\r\n<p>\r\n	<span style="font-size:16.0pt;font-family:仿宋_GB2312;"><span style="font-size:16px;font-family:SimSun;color:#999999;">　　敬业</span><span style="font-size:16px;font-family:SimSun;color:#999999;">:</span><span style="font-size:16px;font-family:SimSun;color:#999999;">不断挑战困难、挑战自我、不断的提高、完善，追求做到最好。</span></span><span style="font-size:16.0pt;font-family:Arial;"></span> \r\n</p>\r\n<p>\r\n	<span style="font-size:16.0pt;font-family:仿宋_GB2312;"><span style="font-size:16px;font-family:SimSun;color:#999999;">　　创新</span><span style="font-size:16px;font-family:SimSun;color:#999999;">:</span><span style="font-size:16px;font-family:SimSun;color:#999999;">不断超越过去，不断进取，善于学习、总结和提炼。</span></span><span style="font-size:16.0pt;font-family:Arial;"></span> \r\n</p>\r\n<p>\r\n	<b><span style="font-size:16.0pt;font-family:楷体_GB2312;"><span style="font-size:16px;font-family:SimSun;color:#999999;">我们的宗旨</span><span></span></span></b> \r\n</p>\r\n<p>\r\n	<span style="font-size:16px;font-family:SimSun;color:#999999;">　　</span><span style="font-size:16px;font-family:SimSun;color:#999999;">&nbsp;</span><span style="font-size:16px;font-family:SimSun;color:#999999;">以人为本</span><span style="font-size:16.0pt;font-family:Arial;"></span> \r\n</p>\r\n<p>\r\n	<span style="font-size:16px;font-family:SimSun;color:#999999;">　　</span><span style="font-size:16px;font-family:SimSun;color:#999999;">&nbsp;</span><span style="font-size:16px;font-family:SimSun;color:#999999;">以客户为中心</span><span style="font-size:16px;font-family:SimSun;color:#999999;">&nbsp;</span><span style="font-size:16.0pt;font-family:仿宋_GB2312;"></span> \r\n</p>\r\n<p>\r\n	<span style="font-size:16px;font-family:SimSun;color:#999999;">　　</span><span style="font-size:16px;font-family:SimSun;color:#999999;">&nbsp;</span><span style="font-size:16px;font-family:SimSun;color:#999999;">以知识为动力</span><span style="font-size:16px;font-family:SimSun;color:#999999;">&nbsp;</span><span style="font-size:16.0pt;font-family:仿宋_GB2312;"></span> \r\n</p>\r\n<p>\r\n	<b><span style="font-size:16.0pt;font-family:楷体_GB2312;"><span style="font-size:16px;font-family:SimSun;color:#999999;">我们的目标</span><span></span></span></b> \r\n</p>\r\n<p style="text-indent:32.25pt;">\r\n	<span style="font-size:16.0pt;font-family:仿宋_GB2312;"><span style="font-size:16px;font-family:SimSun;"><span></span><span style="color:#999999;">开发每一款让用户满意的软件产品</span></span><span></span></span><span style="font-size:16.0pt;font-family:仿宋_GB2312;"><span style="font-size:16px;font-family:SimSun;"></span></span> \r\n</p>\r\n<p style="text-indent:32.25pt;">\r\n	<span style="font-size:16.0pt;font-family:仿宋_GB2312;"><span style="font-size:16px;font-family:SimSun;color:#999999;">为客户提供满意的服务</span><span></span></span><span style="font-size:16.0pt;font-family:仿宋_GB2312;"><span style="font-size:16px;font-family:SimSun;"><br />\r\n</span></span> \r\n</p>\r\n<p style="text-indent:32.25pt;">\r\n	<span style="font-size:16.0pt;font-family:仿宋_GB2312;"><span style="font-size:16px;font-family:SimSun;"><span style="font-size:16pt;font-family:仿宋_GB2312;color:#999999;"><span style="font-size:16px;font-family:SimSun;color:#999999;">为社会尽自己的一份责任</span></span><br />\r\n</span><span></span><span></span></span> \r\n</p>', b'1', 'about', 0, '关于SailPlat', '', 163841),
 	(65536, '2013-08-25 20:37:52', b'0', '', b'1', NULL, 0, '新功能使用说明', '', 1),
 	(65537, '2013-08-25 20:38:09', b'0', '', b'1', NULL, 0, '官方使用提示信息', '', 1),
 	(98305, '2013-08-25 22:41:27', b'0', '', b'1', NULL, 0, '新版“广告管理”功能说明', '', 1),
@@ -4149,10 +4149,10 @@ REPLACE INTO `sailmall_article` (`id`, `addTime`, `deleteStatus`, `content`, `di
 	(196614, '2015-02-26 10:46:40', b'0', '商城团购', b'1', '', 0, '商城团购', '', 163843),
 	(196615, '2015-02-26 10:46:48', b'0', '天天特价', b'1', '', 0, '天天特价', '', 163843),
 	(196616, '2015-02-26 10:47:07', b'0', '买就送', b'1', '', 0, '买就送', '', 163843);
-/*!40000 ALTER TABLE `sailmall_article` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_article` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_articleclass 结构
-CREATE TABLE IF NOT EXISTS `sailmall_articleclass` (
+-- 导出  表 SailPlat.tbl_articleclass 结构
+CREATE TABLE IF NOT EXISTS `tbl_articleclass` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -4164,12 +4164,12 @@ CREATE TABLE IF NOT EXISTS `sailmall_articleclass` (
   `parent_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK29AACFD3987F7269` (`parent_id`),
-  CONSTRAINT `FK29AACFD3987F7269` FOREIGN KEY (`parent_id`) REFERENCES `sailmall_articleclass` (`id`)
+  CONSTRAINT `FK29AACFD3987F7269` FOREIGN KEY (`parent_id`) REFERENCES `tbl_articleclass` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=163844 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_articleclass 的数据：~9 rows (大约)
-/*!40000 ALTER TABLE `sailmall_articleclass` DISABLE KEYS */;
-REPLACE INTO `sailmall_articleclass` (`id`, `addTime`, `deleteStatus`, `className`, `level`, `mark`, `sequence`, `sysClass`, `parent_id`) VALUES
+-- 正在导出表  SailPlat.tbl_articleclass 的数据：~9 rows (大约)
+/*!40000 ALTER TABLE `tbl_articleclass` DISABLE KEYS */;
+REPLACE INTO `tbl_articleclass` (`id`, `addTime`, `deleteStatus`, `className`, `level`, `mark`, `sequence`, `sysClass`, `parent_id`) VALUES
 	(1, '2013-08-23 16:13:51', b'0', '商城新闻', 0, 'news', 1, b'1', NULL),
 	(98304, '2013-08-25 10:18:49', b'0', '帮助中心 ', 0, 'help', 2, b'1', NULL),
 	(98306, '2013-08-25 10:21:10', b'0', '店主之家', 0, 'seller', 3, b'1', NULL),
@@ -4179,10 +4179,10 @@ REPLACE INTO `sailmall_articleclass` (`id`, `addTime`, `deleteStatus`, `classNam
 	(163841, '2013-08-25 10:30:08', b'0', '关于我们', 0, 'about', 8, b'1', NULL),
 	(163842, '2015-02-26 10:15:06', b'0', '新手上路', 0, 'newuser', 0, b'1', NULL),
 	(163843, '2015-02-26 10:25:33', b'0', '特色服务', 0, 'feature', 7, b'1', NULL);
-/*!40000 ALTER TABLE `sailmall_articleclass` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_articleclass` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_bargain 结构
-CREATE TABLE IF NOT EXISTS `sailmall_bargain` (
+-- 导出  表 SailPlat.tbl_bargain 结构
+CREATE TABLE IF NOT EXISTS `tbl_bargain` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -4194,14 +4194,14 @@ CREATE TABLE IF NOT EXISTS `sailmall_bargain` (
   UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_bargain 的数据：~0 rows (大约)
-/*!40000 ALTER TABLE `sailmall_bargain` DISABLE KEYS */;
-REPLACE INTO `sailmall_bargain` (`id`, `addTime`, `deleteStatus`, `bargain_time`, `maximum`, `rebate`, `state`) VALUES
+-- 正在导出表  SailPlat.tbl_bargain 的数据：~0 rows (大约)
+/*!40000 ALTER TABLE `tbl_bargain` DISABLE KEYS */;
+REPLACE INTO `tbl_bargain` (`id`, `addTime`, `deleteStatus`, `bargain_time`, `maximum`, `rebate`, `state`) VALUES
 	(2, '2014-09-26 16:59:50', b'0', '2014-09-29', 300, 6.00, '国庆六折大酬宾');
-/*!40000 ALTER TABLE `sailmall_bargain` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_bargain` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_bargain_goods 结构
-CREATE TABLE IF NOT EXISTS `sailmall_bargain_goods` (
+-- 导出  表 SailPlat.tbl_bargain_goods 结构
+CREATE TABLE IF NOT EXISTS `tbl_bargain_goods` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -4217,16 +4217,16 @@ CREATE TABLE IF NOT EXISTS `sailmall_bargain_goods` (
   UNIQUE KEY `id` (`id`),
   KEY `FKD9E21378E068D8E7` (`bg_admin_user_id`),
   KEY `FKD9E21378F814091D` (`bg_goods_id`),
-  CONSTRAINT `FKD9E21378E068D8E7` FOREIGN KEY (`bg_admin_user_id`) REFERENCES `sailmall_user` (`id`),
-  CONSTRAINT `FKD9E21378F814091D` FOREIGN KEY (`bg_goods_id`) REFERENCES `sailmall_goods` (`id`)
+  CONSTRAINT `FKD9E21378E068D8E7` FOREIGN KEY (`bg_admin_user_id`) REFERENCES `tbl_user` (`id`),
+  CONSTRAINT `FKD9E21378F814091D` FOREIGN KEY (`bg_goods_id`) REFERENCES `tbl_goods` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_bargain_goods 的数据：~0 rows (大约)
-/*!40000 ALTER TABLE `sailmall_bargain_goods` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sailmall_bargain_goods` ENABLE KEYS */;
+-- 正在导出表  SailPlat.tbl_bargain_goods 的数据：~0 rows (大约)
+/*!40000 ALTER TABLE `tbl_bargain_goods` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_bargain_goods` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_brandcategory 结构
-CREATE TABLE IF NOT EXISTS `sailmall_brandcategory` (
+-- 导出  表 SailPlat.tbl_brandcategory 结构
+CREATE TABLE IF NOT EXISTS `tbl_brandcategory` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -4235,32 +4235,32 @@ CREATE TABLE IF NOT EXISTS `sailmall_brandcategory` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1520 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_brandcategory 的数据：~5 rows (大约)
-/*!40000 ALTER TABLE `sailmall_brandcategory` DISABLE KEYS */;
-REPLACE INTO `sailmall_brandcategory` (`id`, `addTime`, `deleteStatus`, `name`, `sequence`) VALUES
+-- 正在导出表  SailPlat.tbl_brandcategory 的数据：~5 rows (大约)
+/*!40000 ALTER TABLE `tbl_brandcategory` DISABLE KEYS */;
+REPLACE INTO `tbl_brandcategory` (`id`, `addTime`, `deleteStatus`, `name`, `sequence`) VALUES
 	(1, '2013-12-24 09:50:45', b'0', '男装', 0),
 	(2, '2013-12-24 09:59:10', b'0', '女装', 0),
 	(3, '2013-12-24 10:07:10', b'0', '数码', 0),
 	(4, '2013-12-24 10:09:05', b'0', '运动', 0),
 	(1519, '2017-10-13 19:10:15', b'0', '家电', 0);
-/*!40000 ALTER TABLE `sailmall_brandcategory` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_brandcategory` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_cart_gsp 结构
-CREATE TABLE IF NOT EXISTS `sailmall_cart_gsp` (
+-- 导出  表 SailPlat.tbl_cart_gsp 结构
+CREATE TABLE IF NOT EXISTS `tbl_cart_gsp` (
   `cart_id` bigint(20) NOT NULL,
   `gsp_id` bigint(20) NOT NULL,
   KEY `FK74DC65762455EE19` (`cart_id`),
   KEY `FK74DC657626F16245` (`gsp_id`),
-  CONSTRAINT `FK74DC65762455EE19` FOREIGN KEY (`cart_id`) REFERENCES `sailmall_goodscart` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `FK74DC657626F16245` FOREIGN KEY (`gsp_id`) REFERENCES `sailmall_goodsspecproperty` (`id`) ON DELETE CASCADE
+  CONSTRAINT `FK74DC65762455EE19` FOREIGN KEY (`cart_id`) REFERENCES `tbl_goodscart` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `FK74DC657626F16245` FOREIGN KEY (`gsp_id`) REFERENCES `tbl_goodsspecproperty` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_cart_gsp 的数据：~0 rows (大约)
-/*!40000 ALTER TABLE `sailmall_cart_gsp` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sailmall_cart_gsp` ENABLE KEYS */;
+-- 正在导出表  SailPlat.tbl_cart_gsp 的数据：~0 rows (大约)
+/*!40000 ALTER TABLE `tbl_cart_gsp` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_cart_gsp` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_chatting 结构
-CREATE TABLE IF NOT EXISTS `sailmall_chatting` (
+-- 导出  表 SailPlat.tbl_chatting 结构
+CREATE TABLE IF NOT EXISTS `tbl_chatting` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -4271,16 +4271,16 @@ CREATE TABLE IF NOT EXISTS `sailmall_chatting` (
   UNIQUE KEY `id` (`id`),
   KEY `FKCA2F34574C4E4476` (`user1_id`),
   KEY `FKCA2F34574C4EB8D5` (`user2_id`),
-  CONSTRAINT `FKCA2F34574C4E4476` FOREIGN KEY (`user1_id`) REFERENCES `sailmall_user` (`id`),
-  CONSTRAINT `FKCA2F34574C4EB8D5` FOREIGN KEY (`user2_id`) REFERENCES `sailmall_user` (`id`)
+  CONSTRAINT `FKCA2F34574C4E4476` FOREIGN KEY (`user1_id`) REFERENCES `tbl_user` (`id`),
+  CONSTRAINT `FKCA2F34574C4EB8D5` FOREIGN KEY (`user2_id`) REFERENCES `tbl_user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_chatting 的数据：~0 rows (大约)
-/*!40000 ALTER TABLE `sailmall_chatting` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sailmall_chatting` ENABLE KEYS */;
+-- 正在导出表  SailPlat.tbl_chatting 的数据：~0 rows (大约)
+/*!40000 ALTER TABLE `tbl_chatting` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_chatting` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_chattingfriend 结构
-CREATE TABLE IF NOT EXISTS `sailmall_chattingfriend` (
+-- 导出  表 SailPlat.tbl_chattingfriend 结构
+CREATE TABLE IF NOT EXISTS `tbl_chattingfriend` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -4293,17 +4293,17 @@ CREATE TABLE IF NOT EXISTS `sailmall_chattingfriend` (
   KEY `FK9DBC61B5537B6C51` (`user_id`),
   KEY `FK9DBC61B516CF789E` (`friend_id`),
   KEY `FK9DBC61B584EFD3F3` (`friendUser_id`),
-  CONSTRAINT `FK9DBC61B516CF789E` FOREIGN KEY (`friend_id`) REFERENCES `sailmall_user` (`id`),
-  CONSTRAINT `FK9DBC61B5537B6C51` FOREIGN KEY (`user_id`) REFERENCES `sailmall_user` (`id`),
-  CONSTRAINT `FK9DBC61B584EFD3F3` FOREIGN KEY (`friendUser_id`) REFERENCES `sailmall_user` (`id`)
+  CONSTRAINT `FK9DBC61B516CF789E` FOREIGN KEY (`friend_id`) REFERENCES `tbl_user` (`id`),
+  CONSTRAINT `FK9DBC61B5537B6C51` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`id`),
+  CONSTRAINT `FK9DBC61B584EFD3F3` FOREIGN KEY (`friendUser_id`) REFERENCES `tbl_user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_chattingfriend 的数据：~0 rows (大约)
-/*!40000 ALTER TABLE `sailmall_chattingfriend` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sailmall_chattingfriend` ENABLE KEYS */;
+-- 正在导出表  SailPlat.tbl_chattingfriend 的数据：~0 rows (大约)
+/*!40000 ALTER TABLE `tbl_chattingfriend` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_chattingfriend` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_chattinglog 结构
-CREATE TABLE IF NOT EXISTS `sailmall_chattinglog` (
+-- 导出  表 SailPlat.tbl_chattinglog 结构
+CREATE TABLE IF NOT EXISTS `tbl_chattinglog` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -4315,16 +4315,16 @@ CREATE TABLE IF NOT EXISTS `sailmall_chattinglog` (
   UNIQUE KEY `id` (`id`),
   KEY `FK6B3D7B8D593482F1` (`chatting_id`),
   KEY `FK6B3D7B8D537B6C51` (`User_id`),
-  CONSTRAINT `FK6B3D7B8D537B6C51` FOREIGN KEY (`User_id`) REFERENCES `sailmall_user` (`id`),
-  CONSTRAINT `FK6B3D7B8D593482F1` FOREIGN KEY (`chatting_id`) REFERENCES `sailmall_chatting` (`id`)
+  CONSTRAINT `FK6B3D7B8D537B6C51` FOREIGN KEY (`User_id`) REFERENCES `tbl_user` (`id`),
+  CONSTRAINT `FK6B3D7B8D593482F1` FOREIGN KEY (`chatting_id`) REFERENCES `tbl_chatting` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_chattinglog 的数据：~0 rows (大约)
-/*!40000 ALTER TABLE `sailmall_chattinglog` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sailmall_chattinglog` ENABLE KEYS */;
+-- 正在导出表  SailPlat.tbl_chattinglog 的数据：~0 rows (大约)
+/*!40000 ALTER TABLE `tbl_chattinglog` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_chattinglog` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_combin_log 结构
-CREATE TABLE IF NOT EXISTS `sailmall_combin_log` (
+-- 导出  表 SailPlat.tbl_combin_log 结构
+CREATE TABLE IF NOT EXISTS `tbl_combin_log` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -4335,17 +4335,17 @@ CREATE TABLE IF NOT EXISTS `sailmall_combin_log` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`),
   KEY `FK1CEAE93C920D7683` (`store_id`),
-  CONSTRAINT `FK1CEAE93C920D7683` FOREIGN KEY (`store_id`) REFERENCES `sailmall_store` (`id`)
+  CONSTRAINT `FK1CEAE93C920D7683` FOREIGN KEY (`store_id`) REFERENCES `tbl_store` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_combin_log 的数据：~0 rows (大约)
-/*!40000 ALTER TABLE `sailmall_combin_log` DISABLE KEYS */;
-REPLACE INTO `sailmall_combin_log` (`id`, `addTime`, `deleteStatus`, `begin_time`, `end_time`, `gold`, `store_id`) VALUES
+-- 正在导出表  SailPlat.tbl_combin_log 的数据：~0 rows (大约)
+/*!40000 ALTER TABLE `tbl_combin_log` DISABLE KEYS */;
+REPLACE INTO `tbl_combin_log` (`id`, `addTime`, `deleteStatus`, `begin_time`, `end_time`, `gold`, `store_id`) VALUES
 	(1, '2014-10-09 12:13:35', b'0', '2014-10-09 12:13:35', '2015-08-09 12:13:35', 600, 1);
-/*!40000 ALTER TABLE `sailmall_combin_log` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_combin_log` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_complaint 结构
-CREATE TABLE IF NOT EXISTS `sailmall_complaint` (
+-- 导出  表 SailPlat.tbl_complaint 结构
+CREATE TABLE IF NOT EXISTS `tbl_complaint` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -4380,25 +4380,25 @@ CREATE TABLE IF NOT EXISTS `sailmall_complaint` (
   KEY `FKC66284BA735C3580` (`to_acc2_id`),
   KEY `FKC66284BA4BA5E0BC` (`from_user_id`),
   KEY `FKC66284BA9F21119E` (`of_id`),
-  CONSTRAINT `FKC66284BA4BA5E0BC` FOREIGN KEY (`from_user_id`) REFERENCES `sailmall_user` (`id`),
-  CONSTRAINT `FKC66284BA735BC121` FOREIGN KEY (`to_acc1_id`) REFERENCES `sailmall_accessory` (`id`),
-  CONSTRAINT `FKC66284BA735C3580` FOREIGN KEY (`to_acc2_id`) REFERENCES `sailmall_accessory` (`id`),
-  CONSTRAINT `FKC66284BA735CA9DF` FOREIGN KEY (`to_acc3_id`) REFERENCES `sailmall_accessory` (`id`),
-  CONSTRAINT `FKC66284BA770D93A` FOREIGN KEY (`handle_user_id`) REFERENCES `sailmall_user` (`id`),
-  CONSTRAINT `FKC66284BA8228D142` FOREIGN KEY (`cs_id`) REFERENCES `sailmall_complaint_subject` (`id`),
-  CONSTRAINT `FKC66284BA9F21119E` FOREIGN KEY (`of_id`) REFERENCES `sailmall_orderform` (`id`),
-  CONSTRAINT `FKC66284BADAFE768D` FOREIGN KEY (`to_user_id`) REFERENCES `sailmall_user` (`id`),
-  CONSTRAINT `FKC66284BAE4032B50` FOREIGN KEY (`from_acc1_id`) REFERENCES `sailmall_accessory` (`id`),
-  CONSTRAINT `FKC66284BAE4039FAF` FOREIGN KEY (`from_acc2_id`) REFERENCES `sailmall_accessory` (`id`),
-  CONSTRAINT `FKC66284BAE404140E` FOREIGN KEY (`from_acc3_id`) REFERENCES `sailmall_accessory` (`id`)
+  CONSTRAINT `FKC66284BA4BA5E0BC` FOREIGN KEY (`from_user_id`) REFERENCES `tbl_user` (`id`),
+  CONSTRAINT `FKC66284BA735BC121` FOREIGN KEY (`to_acc1_id`) REFERENCES `tbl_accessory` (`id`),
+  CONSTRAINT `FKC66284BA735C3580` FOREIGN KEY (`to_acc2_id`) REFERENCES `tbl_accessory` (`id`),
+  CONSTRAINT `FKC66284BA735CA9DF` FOREIGN KEY (`to_acc3_id`) REFERENCES `tbl_accessory` (`id`),
+  CONSTRAINT `FKC66284BA770D93A` FOREIGN KEY (`handle_user_id`) REFERENCES `tbl_user` (`id`),
+  CONSTRAINT `FKC66284BA8228D142` FOREIGN KEY (`cs_id`) REFERENCES `tbl_complaint_subject` (`id`),
+  CONSTRAINT `FKC66284BA9F21119E` FOREIGN KEY (`of_id`) REFERENCES `tbl_orderform` (`id`),
+  CONSTRAINT `FKC66284BADAFE768D` FOREIGN KEY (`to_user_id`) REFERENCES `tbl_user` (`id`),
+  CONSTRAINT `FKC66284BAE4032B50` FOREIGN KEY (`from_acc1_id`) REFERENCES `tbl_accessory` (`id`),
+  CONSTRAINT `FKC66284BAE4039FAF` FOREIGN KEY (`from_acc2_id`) REFERENCES `tbl_accessory` (`id`),
+  CONSTRAINT `FKC66284BAE404140E` FOREIGN KEY (`from_acc3_id`) REFERENCES `tbl_accessory` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_complaint 的数据：~0 rows (大约)
-/*!40000 ALTER TABLE `sailmall_complaint` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sailmall_complaint` ENABLE KEYS */;
+-- 正在导出表  SailPlat.tbl_complaint 的数据：~0 rows (大约)
+/*!40000 ALTER TABLE `tbl_complaint` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_complaint` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_complaint_goods 结构
-CREATE TABLE IF NOT EXISTS `sailmall_complaint_goods` (
+-- 导出  表 SailPlat.tbl_complaint_goods 结构
+CREATE TABLE IF NOT EXISTS `tbl_complaint_goods` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -4408,16 +4408,16 @@ CREATE TABLE IF NOT EXISTS `sailmall_complaint_goods` (
   PRIMARY KEY (`id`),
   KEY `FKC2B28B91A995E663` (`goods_id`),
   KEY `FKC2B28B915E500DC3` (`complaint_id`),
-  CONSTRAINT `FKC2B28B915E500DC3` FOREIGN KEY (`complaint_id`) REFERENCES `sailmall_complaint` (`id`),
-  CONSTRAINT `FKC2B28B91A995E663` FOREIGN KEY (`goods_id`) REFERENCES `sailmall_goods` (`id`)
+  CONSTRAINT `FKC2B28B915E500DC3` FOREIGN KEY (`complaint_id`) REFERENCES `tbl_complaint` (`id`),
+  CONSTRAINT `FKC2B28B91A995E663` FOREIGN KEY (`goods_id`) REFERENCES `tbl_goods` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_complaint_goods 的数据：~0 rows (大约)
-/*!40000 ALTER TABLE `sailmall_complaint_goods` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sailmall_complaint_goods` ENABLE KEYS */;
+-- 正在导出表  SailPlat.tbl_complaint_goods 的数据：~0 rows (大约)
+/*!40000 ALTER TABLE `tbl_complaint_goods` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_complaint_goods` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_complaint_subject 结构
-CREATE TABLE IF NOT EXISTS `sailmall_complaint_subject` (
+-- 导出  表 SailPlat.tbl_complaint_subject 结构
+CREATE TABLE IF NOT EXISTS `tbl_complaint_subject` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -4427,12 +4427,12 @@ CREATE TABLE IF NOT EXISTS `sailmall_complaint_subject` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_complaint_subject 的数据：~0 rows (大约)
-/*!40000 ALTER TABLE `sailmall_complaint_subject` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sailmall_complaint_subject` ENABLE KEYS */;
+-- 正在导出表  SailPlat.tbl_complaint_subject 的数据：~0 rows (大约)
+/*!40000 ALTER TABLE `tbl_complaint_subject` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_complaint_subject` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_consult 结构
-CREATE TABLE IF NOT EXISTS `sailmall_consult` (
+-- 导出  表 SailPlat.tbl_consult 结构
+CREATE TABLE IF NOT EXISTS `tbl_consult` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -4448,17 +4448,17 @@ CREATE TABLE IF NOT EXISTS `sailmall_consult` (
   KEY `FK86CB3BBB66DC9BFC` (`reply_user_id`),
   KEY `FK86CB3BBBA995E663` (`goods_id`),
   KEY `FK86CB3BBBCAAD62FE` (`consult_user_id`),
-  CONSTRAINT `FK86CB3BBB66DC9BFC` FOREIGN KEY (`reply_user_id`) REFERENCES `sailmall_user` (`id`),
-  CONSTRAINT `FK86CB3BBBA995E663` FOREIGN KEY (`goods_id`) REFERENCES `sailmall_goods` (`id`),
-  CONSTRAINT `FK86CB3BBBCAAD62FE` FOREIGN KEY (`consult_user_id`) REFERENCES `sailmall_user` (`id`)
+  CONSTRAINT `FK86CB3BBB66DC9BFC` FOREIGN KEY (`reply_user_id`) REFERENCES `tbl_user` (`id`),
+  CONSTRAINT `FK86CB3BBBA995E663` FOREIGN KEY (`goods_id`) REFERENCES `tbl_goods` (`id`),
+  CONSTRAINT `FK86CB3BBBCAAD62FE` FOREIGN KEY (`consult_user_id`) REFERENCES `tbl_user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_consult 的数据：~0 rows (大约)
-/*!40000 ALTER TABLE `sailmall_consult` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sailmall_consult` ENABLE KEYS */;
+-- 正在导出表  SailPlat.tbl_consult 的数据：~0 rows (大约)
+/*!40000 ALTER TABLE `tbl_consult` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_consult` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_coupon 结构
-CREATE TABLE IF NOT EXISTS `sailmall_coupon` (
+-- 导出  表 SailPlat.tbl_coupon 结构
+CREATE TABLE IF NOT EXISTS `tbl_coupon` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -4472,19 +4472,19 @@ CREATE TABLE IF NOT EXISTS `sailmall_coupon` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`),
   KEY `FKD2CFE277EA801ACD` (`coupon_acc_id`),
-  CONSTRAINT `FKD2CFE277EA801ACD` FOREIGN KEY (`coupon_acc_id`) REFERENCES `sailmall_accessory` (`id`)
+  CONSTRAINT `FKD2CFE277EA801ACD` FOREIGN KEY (`coupon_acc_id`) REFERENCES `tbl_accessory` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_coupon 的数据：~3 rows (大约)
-/*!40000 ALTER TABLE `sailmall_coupon` DISABLE KEYS */;
-REPLACE INTO `sailmall_coupon` (`id`, `addTime`, `deleteStatus`, `coupon_amount`, `coupon_begin_time`, `coupon_count`, `coupon_end_time`, `coupon_name`, `coupon_order_amount`, `coupon_acc_id`) VALUES
+-- 正在导出表  SailPlat.tbl_coupon 的数据：~3 rows (大约)
+/*!40000 ALTER TABLE `tbl_coupon` DISABLE KEYS */;
+REPLACE INTO `tbl_coupon` (`id`, `addTime`, `deleteStatus`, `coupon_amount`, `coupon_begin_time`, `coupon_count`, `coupon_end_time`, `coupon_name`, `coupon_order_amount`, `coupon_acc_id`) VALUES
 	(1, '2014-09-23 16:42:45', b'0', 5.00, '2014-09-01', 10, '2014-12-31', '5元优惠券', 100.00, 425993),
 	(2, '2014-09-23 19:52:36', b'0', 10.00, '2014-09-01', 100, '2014-12-31', '10元优惠券', 100.00, 425994),
 	(3, '2014-09-24 10:39:07', b'0', 20.00, '2014-09-01', 10, '2014-12-31', '20元优惠券', 200.00, 425995);
-/*!40000 ALTER TABLE `sailmall_coupon` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_coupon` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_coupon_info 结构
-CREATE TABLE IF NOT EXISTS `sailmall_coupon_info` (
+-- 导出  表 SailPlat.tbl_coupon_info 结构
+CREATE TABLE IF NOT EXISTS `tbl_coupon_info` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -4496,18 +4496,18 @@ CREATE TABLE IF NOT EXISTS `sailmall_coupon_info` (
   UNIQUE KEY `id` (`id`),
   KEY `FKE4A2D7682F288B1` (`coupon_id`),
   KEY `FKE4A2D76537B6C51` (`user_id`),
-  CONSTRAINT `FKE4A2D76537B6C51` FOREIGN KEY (`user_id`) REFERENCES `sailmall_user` (`id`),
-  CONSTRAINT `FKE4A2D7682F288B1` FOREIGN KEY (`coupon_id`) REFERENCES `sailmall_coupon` (`id`)
+  CONSTRAINT `FKE4A2D76537B6C51` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`id`),
+  CONSTRAINT `FKE4A2D7682F288B1` FOREIGN KEY (`coupon_id`) REFERENCES `tbl_coupon` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_coupon_info 的数据：~0 rows (大约)
-/*!40000 ALTER TABLE `sailmall_coupon_info` DISABLE KEYS */;
-REPLACE INTO `sailmall_coupon_info` (`id`, `addTime`, `deleteStatus`, `coupon_sn`, `status`, `coupon_id`, `user_id`) VALUES
+-- 正在导出表  SailPlat.tbl_coupon_info 的数据：~0 rows (大约)
+/*!40000 ALTER TABLE `tbl_coupon_info` DISABLE KEYS */;
+REPLACE INTO `tbl_coupon_info` (`id`, `addTime`, `deleteStatus`, `coupon_sn`, `status`, `coupon_id`, `user_id`) VALUES
 	(1, '2014-09-23 16:42:59', b'0', '3eec33f0-a548-4768-b0d0-3dc152129c03', 1, 1, 1);
-/*!40000 ALTER TABLE `sailmall_coupon_info` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_coupon_info` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_delivery_goods 结构
-CREATE TABLE IF NOT EXISTS `sailmall_delivery_goods` (
+-- 导出  表 SailPlat.tbl_delivery_goods 结构
+CREATE TABLE IF NOT EXISTS `tbl_delivery_goods` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -4524,17 +4524,17 @@ CREATE TABLE IF NOT EXISTS `sailmall_delivery_goods` (
   KEY `FK858B789CC3254733` (`d_delivery_goods_id`),
   KEY `FK858B789C1BAB47DE` (`d_goods_id`),
   KEY `FK858B789C78FFAAC6` (`d_admin_user_id`),
-  CONSTRAINT `FK858B789C1BAB47DE` FOREIGN KEY (`d_goods_id`) REFERENCES `sailmall_goods` (`id`),
-  CONSTRAINT `FK858B789C78FFAAC6` FOREIGN KEY (`d_admin_user_id`) REFERENCES `sailmall_user` (`id`),
-  CONSTRAINT `FK858B789CC3254733` FOREIGN KEY (`d_delivery_goods_id`) REFERENCES `sailmall_goods` (`id`)
+  CONSTRAINT `FK858B789C1BAB47DE` FOREIGN KEY (`d_goods_id`) REFERENCES `tbl_goods` (`id`),
+  CONSTRAINT `FK858B789C78FFAAC6` FOREIGN KEY (`d_admin_user_id`) REFERENCES `tbl_user` (`id`),
+  CONSTRAINT `FK858B789CC3254733` FOREIGN KEY (`d_delivery_goods_id`) REFERENCES `tbl_goods` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_delivery_goods 的数据：~0 rows (大约)
-/*!40000 ALTER TABLE `sailmall_delivery_goods` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sailmall_delivery_goods` ENABLE KEYS */;
+-- 正在导出表  SailPlat.tbl_delivery_goods 的数据：~0 rows (大约)
+/*!40000 ALTER TABLE `tbl_delivery_goods` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_delivery_goods` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_delivery_log 结构
-CREATE TABLE IF NOT EXISTS `sailmall_delivery_log` (
+-- 导出  表 SailPlat.tbl_delivery_log 结构
+CREATE TABLE IF NOT EXISTS `tbl_delivery_log` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -4545,18 +4545,18 @@ CREATE TABLE IF NOT EXISTS `sailmall_delivery_log` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`),
   KEY `FK69A11E0A920D7683` (`store_id`),
-  CONSTRAINT `FK69A11E0A920D7683` FOREIGN KEY (`store_id`) REFERENCES `sailmall_store` (`id`)
+  CONSTRAINT `FK69A11E0A920D7683` FOREIGN KEY (`store_id`) REFERENCES `tbl_store` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_delivery_log 的数据：~2 rows (大约)
-/*!40000 ALTER TABLE `sailmall_delivery_log` DISABLE KEYS */;
-REPLACE INTO `sailmall_delivery_log` (`id`, `addTime`, `deleteStatus`, `begin_time`, `end_time`, `gold`, `store_id`) VALUES
+-- 正在导出表  SailPlat.tbl_delivery_log 的数据：~2 rows (大约)
+/*!40000 ALTER TABLE `tbl_delivery_log` DISABLE KEYS */;
+REPLACE INTO `tbl_delivery_log` (`id`, `addTime`, `deleteStatus`, `begin_time`, `end_time`, `gold`, `store_id`) VALUES
 	(1, '2014-09-28 10:51:36', b'0', '2014-09-28 10:51:36', '2014-11-28 10:51:35', 60, 1),
 	(2, '2014-11-29 12:06:45', b'0', '2014-11-29 12:06:45', '2015-11-28 10:51:35', 360, 1);
-/*!40000 ALTER TABLE `sailmall_delivery_log` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_delivery_log` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_document 结构
-CREATE TABLE IF NOT EXISTS `sailmall_document` (
+-- 导出  表 SailPlat.tbl_document 结构
+CREATE TABLE IF NOT EXISTS `tbl_document` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -4566,18 +4566,18 @@ CREATE TABLE IF NOT EXISTS `sailmall_document` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=65538 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_document 的数据：~5 rows (大约)
-/*!40000 ALTER TABLE `sailmall_document` DISABLE KEYS */;
-REPLACE INTO `sailmall_document` (`id`, `addTime`, `deleteStatus`, `content`, `mark`, `title`) VALUES
+-- 正在导出表  SailPlat.tbl_document 的数据：~5 rows (大约)
+/*!40000 ALTER TABLE `tbl_document` DISABLE KEYS */;
+REPLACE INTO `tbl_document` (`id`, `addTime`, `deleteStatus`, `content`, `mark`, `title`) VALUES
 	(1, '2014-02-21 18:26:18', b'0', '<p>\r\n	一、团购的所有权和运作权归本公司。\r\n</p>\r\n<p>\r\n	二、本公司有权在必要时修改本协议，本协议一旦发生变更，将会在相关页面上公布。如果您不同意所改动的内容，您应主动停止使用团购服务。如果您继续使用服务，则视为接受本协议的变更。\r\n</p>\r\n<p>\r\n	三、如发生下列任何一种情形，本公司有权中断或终止向您提供的服务而无需通知您：\r\n</p>\r\n1、 您提供的个人资料不真实；<br />\r\n2、您违反本协议的规定；<br />\r\n3、 按照政府主管部门的监管要求；<br />\r\n4、本公司认为您的行为违反团购服务性质或需求的特殊情形。\r\n<p>\r\n	四、尽管本协议可能另有其他规定，本公司仍然可以随时终止本协议。\r\n</p>\r\n<p>\r\n	五、本公司终止本协议的权利不会妨害本公司可能拥有的在本协议终止前因您违反本协议或本公司本应享有的任何其他权利。\r\n</p>\r\n<p>\r\n	六、您理解并完全接受，本公司有权自行对团购资源作下线处理。\r\n</p>', 'group', '团购协议'),
 	(32768, '2013-09-17 23:24:19', b'0', '<p>\r\n	特别提醒用户认真阅读本《用户服务协议》(下称《协议》) 中各条款。除非您接受本《协议》条款，否则您无权使用本网站提供的相关服务。您的使用行为将视为对本《协议》的接受，并同意接受本《协议》各项条款的约束。 <br />\r\n<br />\r\n<strong>一、定义</strong>\r\n</p>\r\n<ol>\r\n	<li>\r\n		"用户"指符合本协议所规定的条件，同意遵守本网站各种规则、条款（包括但不限于本协议），并使用本网站的个人或机构。\r\n	</li>\r\n	<li>\r\n		"卖家"是指在本网站上出售物品的用户。"买家"是指在本网站购买物品的用户。\r\n	</li>\r\n	<li>\r\n		"成交"指买家根据卖家所刊登的交易要求，在特定时间内提出最优的交易条件，因而取得依其提出的条件购买该交易物品的权利。\r\n	</li>\r\n</ol>\r\n<p>\r\n	<br />\r\n<br />\r\n<strong>二、用户资格</strong><br />\r\n<br />\r\n只有符合下列条件之一的人员或实体才能申请成为本网站用户，可以使用本网站的服务。\r\n</p>\r\n<ol>\r\n	<li>\r\n		年满十八岁，并具有民事权利能力和民事行为能力的自然人；\r\n	</li>\r\n	<li>\r\n		未满十八岁，但监护人（包括但不仅限于父母）予以书面同意的自然人；\r\n	</li>\r\n	<li>\r\n		根据中国法律或设立地法律、法规和/或规章成立并合法存在的公司、企事业单位、社团组织和其他组织。\r\n	</li>\r\n</ol>\r\n<p>\r\n	<br />\r\n无民事行为能力人、限制民事行为能力人以及无经营或特定经营资格的组织不当注册为本网站用户或超过其民事权利或行为能力范围从事交易的，其与本网站之间的协议自始无效，本网站一经发现，有权立即注销该用户，并追究其使用本网站"服务"的一切法律责任。<br />\r\n<br />\r\n<strong>三.用户的权利和义务</strong>\r\n</p>\r\n<ol>\r\n	<li>\r\n		用户有权根据本协议的规定及本网站发布的相关规则，利用本网站网上交易平台登录物品、发布交易信息、查询物品信息、购买物品、与其他用户订立物品买卖合同、在本网站社区发帖、参加本网站的有关活动及有权享受本网站提供的其他的有关资讯及信息服务。\r\n	</li>\r\n	<li>\r\n		用户有权根据需要更改密码和交易密码。用户应对以该用户名进行的所有活动和事件负全部责任。\r\n	</li>\r\n	<li>\r\n		用户有义务确保向本网站提供的任何资料、注册信息真实准确，包括但不限于真实姓名、身份证号、联系电话、地址、邮政编码等。保证本网站及其他用户可以通过上述联系方式与自己进行联系。同时，用户也有义务在相关资料实际变更时及时更新有关注册资料。\r\n	</li>\r\n	<li>\r\n		用户不得以任何形式擅自转让或授权他人使用自己在本网站的用户帐号。\r\n	</li>\r\n	<li>\r\n		用户有义务确保在本网站网上交易平台上登录物品、发布的交易信息真实、准确，无误导性。\r\n	</li>\r\n	<li>\r\n		用户不得在本网站网上交易平台买卖国家禁止销售的或限制销售的物品、不得买卖侵犯他人知识产权或其他合法权益的物品，也不得买卖违背社会公共利益或公共道德的物品。\r\n	</li>\r\n	<li>\r\n		用户不得在本网站发布各类违法或违规信息。包括但不限于物品信息、交易信息、社区帖子、物品留言，店铺留言，评价内容等。\r\n	</li>\r\n	<li>\r\n		用户在本网站交易中应当遵守诚实信用原则，不得以干预或操纵物品价格等不正当竞争方式扰乱网上交易秩序，不得从事与网上交易无关的不当行为，不得在交易平台上发布任何违法信息。\r\n	</li>\r\n	<li>\r\n		用户不应采取不正当手段（包括但不限于虚假交易、互换好评等方式）提高自身或他人信用度，或采用不正当手段恶意评价其他用户，降低其他用户信用度。\r\n	</li>\r\n	<li>\r\n		用户承诺自己在使用本网站网上交易平台实施的所有行为遵守国家法律、法规和本网站的相关规定以及各种社会公共利益或公共道德。对于任何法律后果的发生，用户将以自己的名义独立承担所有相应的法律责任。\r\n	</li>\r\n	<li>\r\n		用户在本网站网上交易过程中如与其他用户因交易产生纠纷，可以请求本网站从中予以协调。用户如发现其他用户有违法或违反本协议的行为，可以向本网站举报。如用户因网上交易与其他用户产生诉讼的，用户有权通过司法部门要求本网站提供相关资料。\r\n	</li>\r\n	<li>\r\n		用户应自行承担因交易产生的相关费用，并依法纳税。\r\n	</li>\r\n	<li>\r\n		未经本网站书面允许，用户不得将本网站资料以及在交易平台上所展示的任何信息以复制、修改、翻译等形式制作衍生作品、分发或公开展示。\r\n	</li>\r\n	<li>\r\n		用户同意接收来自本网站的信息，包括但不限于活动信息、交易信息、促销信息等。\r\n	</li>\r\n</ol>\r\n<p>\r\n	<br />\r\n<br />\r\n<strong>四、 本网站的权利和义务</strong>\r\n</p>\r\n<ol>\r\n	<li>\r\n		本\r\n网站不是传统意义上的"拍卖商"，仅为用户提供一个信息交流、进行物品买卖的平台，充当买卖双方之间的交流媒介，而非买主或卖主的代理商、合伙  \r\n人、雇员或雇主等经营关系人。公布在本网站上的交易物品是用户自行上传进行交易的物品，并非本网站所有。对于用户刊登物品、提供的信息或参与竞标的过程，\r\n本网站均不加以监视或控制，亦不介入物品的交易过程，包括运送、付款、退款、瑕疵担保及其它交易事项，且不承担因交易物品存在品质、权利上的瑕疵以及交易\r\n  方履行交易协议的能力而产生的任何责任，对于出现在拍卖上的物品品质、安全性或合法性，本网站均不予保证。\r\n	</li>\r\n	<li>\r\n		本网站有义务在现有技术水平的基础上努力确保整个网上交易平台的正常运行，尽力避免服务中断或将中断时间限制在最短时间内，保证用户网上交易活动的顺利进行。\r\n	</li>\r\n	<li>\r\n		本网站有义务对用户在注册使用本网站网上交易平台中所遇到的问题及反映的情况及时作出回复。\r\n	</li>\r\n	<li>\r\n		本网站有权对用户的注册资料进行查阅，对存在任何问题或怀疑的注册资料，本网站有权发出通知询问用户并要求用户做出解释、改正，或直接做出处罚、删除等处理。\r\n	</li>\r\n	<li>\r\n		用\r\n户因在本网站网上交易与其他用户产生纠纷的，用户通过司法部门或行政部门依照法定程序要求本网站提供相关资料，本网站将积极配合并提供有关资料；用户将纠\r\n纷告知本网站，或本网站知悉纠纷情况的，经审核后，本网站有权通过电子邮件及电话联系向纠纷双方了解纠纷情况，并将所了解的情况通过电子邮件互相通知对 \r\n 方。\r\n	</li>\r\n	<li>\r\n		因网上交易平台的特殊性，本网站没有义务对所有用户的注册资料、所有的交易行为以及与交易有关的其他事项进行事先审查，但如发生以下情形，本网站有权限制用户的活动、向用户核实有关资料、发出警告通知、暂时中止、无限期地中止及拒绝向该用户提供服务：\r\n		<ul>\r\n			<li>\r\n				用户违反本协议或因被提及而纳入本协议的文件；\r\n			</li>\r\n			<li>\r\n				存在用户或其他第三方通知本网站，认为某个用户或具体交易事项存在违法或不当行为，并提供相关证据，而本网站无法联系到该用户核证或验证该用户向本网站提供的任何资料；\r\n			</li>\r\n			<li>\r\n				存在用户或其他第三方通知本网站，认为某个用户或具体交易事项存在违法或不当行为，并提供相关证据。本网站以普通非专业交易者的知识水平标准对相关内容进行判别，可以明显认为这些内容或行为可能对本网站用户或本网站造成财务损失或法律责任。\r\n			</li>\r\n		</ul>\r\n	</li>\r\n	<li>\r\n		在反网络欺诈行动中，本着保护广大用户利益的原则，当用户举报自己交易可能存在欺诈而产生交易争议时，本网站有权通过表面判断暂时冻结相关用户账号，并有权核对当事人身份资料及要求提供交易相关证明材料。\r\n	</li>\r\n	<li>\r\n		根据国家法律法规、本协议的内容和本网站所掌握的事实依据，可以认定用户存在违法或违反本协议行为以及在本网站交易平台上的其他不当行为，本网站有权在本网站交易平台及所在网站上以网络发布形式公布用户的违法行为，并有权随时作出删除相关信息，而无须征得用户的同意。\r\n	</li>\r\n	<li>\r\n		本\r\n网站有权在不通知用户的前提下删除或采取其他限制性措施处理下列信息：包括但不限于以规避费用为目的；以炒作信用为目的；存在欺诈等恶意或虚假内容；与网\r\n  上交易无关或不是以交易为目的；存在恶意竞价或其他试图扰乱正常交易秩序因素；该信息违反公共利益或可能严重损害本网站和其他用户合法利益的。\r\n	</li>\r\n	<li>\r\n		用\r\n  户授予本网站独家的、全球通用的、永久的、免费的信息许可使用权利，本网站有权对该权利进行再授权，依此授权本网站有权(全部或部份地)  \r\n使用、复制、修订、改写、发布、翻译、分发、执行和展示用户公示于网站的各类信息或制作其派生作品，以现在已知或日后开发的任何形式、媒体或技术，将上述\r\n  信息纳入其他作品内。\r\n	</li>\r\n</ol>\r\n<p>\r\n	<br />\r\n<br />\r\n<strong>五、服务的中断和终止</strong>\r\n</p>\r\n<ol>\r\n	<li>\r\n		在\r\n  本网站未向用户收取相关服务费用的情况下，本网站可自行全权决定以任何理由  \r\n(包括但不限于本网站认为用户已违反本协议的字面意义和精神，或用户在超过180天内未登录本网站等)  \r\n终止对用户的服务，并不再保存用户在本网站的全部资料（包括但不限于用户信息、商品信息、交易信息等）。同时本网站可自行全权决定，在发出通知或不发出通\r\n知的情况下，随时停止提供全部或部分服务。服务终止后，本网站没有义务为用户保留原用户资料或与之相关的任何信息，或转发任何未曾阅读或发送的信息给用户\r\n  或第三方。此外，本网站不就终止对用户的服务而对用户或任何第三方承担任何责任。\r\n	</li>\r\n	<li>\r\n		如用户向本网站提出注销本网站注册用户身份，需经本网站审核同意，由本网站注销该注册用户，用户即解除与本网站的协议关系，但本网站仍保留下列权利：\r\n		<ul>\r\n			<li>\r\n				用户注销后，本网站有权保留该用户的资料,包括但不限于以前的用户资料、店铺资料、商品资料和交易记录等。\r\n			</li>\r\n			<li>\r\n				用户注销后，如用户在注销前在本网站交易平台上存在违法行为或违反本协议的行为，本网站仍可行使本协议所规定的权利。\r\n			</li>\r\n		</ul>\r\n	</li>\r\n	<li>\r\n		如存在下列情况，本网站可以通过注销用户的方式终止服务：\r\n		<ul>\r\n			<li>\r\n				在用户违反本协议相关规定时，本网站有权终止向该用户提供服务。本网站将在中断服务时通知用户。但如该用户在被本网站终止提供服务后，再一次直接或间接或以他人名义注册为本网站用户的，本网站有权再次单方面终止为该用户提供服务；\r\n			</li>\r\n			<li>\r\n				一旦本网站发现用户注册资料中主要内容是虚假的，本网站有权随时终止为该用户提供服务；\r\n			</li>\r\n			<li>\r\n				本协议终止或更新时，用户未确认新的协议的。\r\n			</li>\r\n			<li>\r\n				其它本网站认为需终止服务的情况。\r\n			</li>\r\n		</ul>\r\n	</li>\r\n	<li>\r\n		因用户违反相关法律法规或者违反本协议规定等原因而致使本网站中断、终止对用户服务的，对于服务中断、终止之前用户交易行为依下列原则处理：\r\n		<ul>\r\n			<li>\r\n				本网站有权决定是否在中断、终止对用户服务前将用户被中断或终止服务的情况和原因通知用户交易关系方，包括但不限于对该交易有意向但尚未达成交易的用户,参与该交易竞价的用户，已达成交易要约用户。\r\n			</li>\r\n			<li>\r\n				服务中断、终止之前，用户已经上传至本网站的物品尚未交易或交易尚未完成的，本网站有权在中断、终止服务的同时删除此项物品的相关信息。\r\n			</li>\r\n			<li>\r\n				服务中断、终止之前，用户已经就其他用户出售的具体物品作出要约，但交易尚未结束，本网站有权在中断或终止服务的同时删除该用户的相关要约和信息。\r\n			</li>\r\n		</ul>\r\n	</li>\r\n	<li>\r\n		本网站若因用户的行为（包括但不限于刊登的商品、在本网站社区发帖等）侵害了第三方的权利或违反了相关规定，而受到第三方的追偿或受到主管机关的处分时，用户应赔偿本网站因此所产生的一切损失及费用。\r\n	</li>\r\n	<li>\r\n		对违反相关法律法规或者违反本协议规定，且情节严重的用户，本网站有权终止该用户的其它服务。\r\n	</li>\r\n</ol>\r\n<p>\r\n	<br />\r\n<br />\r\n<strong>六、协议的修订</strong><br />\r\n<br />\r\n本协议可由本网站随时修订，并将修订后的协议公告于本网站之上，修订后的条款内容自公告时起生效，并成为本协议的一部分。用户若在本协议修改之后，仍继续使用本网站，则视为用户接受和自愿遵守修订后的协议。本网站行使修改或中断服务时，不需对任何第三方负责。<br />\r\n<br />\r\n<strong>七、 本网站的责任范围 </strong><br />\r\n<br />\r\n当用户接受该协议时，用户应明确了解并同意∶\r\n</p>\r\n<ol>\r\n	<li>\r\n		是否经由本网站下载或取得任何资料，由用户自行考虑、衡量并且自负风险，因下载任何资料而导致用户电脑系统的任何损坏或资料流失，用户应负完全责任。\r\n	</li>\r\n	<li>\r\n		用户经由本网站取得的建议和资讯，无论其形式或表现，绝不构成本协议未明示规定的任何保证。\r\n	</li>\r\n	<li>\r\n		基于以下原因而造成的利润、商誉、使用、资料损失或其它无形损失，本网站不承担任何直接、间接、附带、特别、衍生性或惩罚性赔偿（即使本网站已被告知前款赔偿的可能性）：\r\n		<ul>\r\n			<li>\r\n				本网站的使用或无法使用。\r\n			</li>\r\n			<li>\r\n				经由或通过本网站购买或取得的任何物品，或接收之信息，或进行交易所随之产生的替代物品及服务的购买成本。\r\n			</li>\r\n			<li>\r\n				用户的传输或资料遭到未获授权的存取或变更。\r\n			</li>\r\n			<li>\r\n				本网站中任何第三方之声明或行为。\r\n			</li>\r\n			<li>\r\n				本网站其它相关事宜。\r\n			</li>\r\n		</ul>\r\n	</li>\r\n	<li>\r\n		本网站只是为用户提供一个交易的平台，对于用户所刊登的交易物品的合法性、真实性及其品质，以及用户履行交易的能力等，本网站一律不负任何担保责任。用户如果因使用本网站，或因购买刊登于本网站的任何物品，而受有损害时，本网站不负任何补偿或赔偿责任。\r\n	</li>\r\n	<li>\r\n		本\r\n网站提供与其它互联网上的网站或资源的链接，用户可能会因此连结至其它运营商经营的网站，但不表示本网站与这些运营商有任何关系。其它运营商经营的网站均\r\n由各经营者自行负责，不属于本网站控制及负责范围之内。对于存在或来源于此类网站或资源的任何内容、广告、产品或其它资料，本网站亦不予保证或负责。因使\r\n  用或依赖任何此类网站或资源发布的或经由此类网站或资源获得的任何内容、物品或服务所产生的任何损害或损失，本网站不负任何直接或间接的责任。\r\n	</li>\r\n</ol>\r\n<p>\r\n	<br />\r\n<br />\r\n<strong>八.、不可抗力</strong><br />\r\n<br />\r\n因不可抗力或者其他意外事件，使得本协议的履行不可能、不必要或者无意义的，双方均不承担责任。本合同所称之不可抗力意指不能预见、不能避免并不能克服的\r\n客观情况，包括但不限于战争、台风、水灾、火灾、雷击或地震、罢工、暴动、法定疾病、黑客攻击、网络病毒、电信部门技术管制、政府行为或任何其它自然或人\r\n  为造成的灾难等客观情况。<br />\r\n<br />\r\n<strong>九、争议解决方式</strong>\r\n</p>\r\n<ol>\r\n	<li>\r\n		本协议及其修订本的有效性、履行和与本协议及其修订本效力有关的所有事宜，将受中华人民共和国法律管辖，任何争议仅适用中华人民共和国法律。\r\n	</li>\r\n	<li>\r\n		因\r\n使用本网站服务所引起与本网站的任何争议，均应提交深圳仲裁委员会按照该会届时有效的仲裁规则进行仲裁。相关争议应单独仲裁，不得与任何其它方的争议在任\r\n  何仲裁中合并处理，该仲裁裁决是终局，对各方均有约束力。如果所涉及的争议不适于仲裁解决，用户同意一切争议由人民法院管辖。\r\n	</li>\r\n</ol>\r\n<br />', 'agree', '用户服务协议'),
 	(32769, '2013-09-17 23:25:05', b'0', '<p>\r\n	<strong>什么是实名认证？</strong>\r\n</p>\r\n<p>\r\n	“认证店铺”服务是一项对店主身份真实性识别服务。店主可以通过站内PM、电话或管理员EMail的方式 联系并申请该项认证。经过管理员审核确认了店主的真实身份，就可以开通该项认证。\r\n</p>\r\n<p>\r\n	通过该认证，可以说明店主身份的真实有效性，为买家在网络交易的过程中提供一定的信心和保证。\r\n</p>\r\n<p>\r\n	<strong>认证申请的方式：</strong>\r\n</p>\r\n<p>\r\n	Email：XXXX@XX.com\r\n</p>\r\n<p>\r\n	管理员：XXXXXX\r\n</p>\r\n<br />', 'realname', '什么是实名认证'),
 	(65536, '2013-09-17 23:26:20', b'0', '<p>\r\n	<strong>什么是实体店铺认证？</strong>\r\n</p>\r\n<p>\r\n	“认证店铺”服务是一项对店主身份真实性识别服务。店主可以通过站内PM、电话或管理员EMail的方式 联系并申请该项认证。经过管理员审核确认了店主的真实身份，就可以开通该项认证。\r\n</p>\r\n<p>\r\n	通过该认证，可以说明店主身份的真实有效性，为买家在网络交易的过程中提供一定的信心和保证。\r\n</p>\r\n<p>\r\n	<strong>认证申请的方式：</strong>\r\n</p>\r\n<p>\r\n	Email：XXXX@XX.com\r\n</p>\r\n<p>\r\n	管理员：XXXXXX\r\n</p>\r\n<br />', 'realstore', '什么是实体店铺认证'),
 	(65537, '2013-09-17 23:26:43', b'0', '<p>\r\n	使用本公司服务所须遵守的条款和条件。<br />\r\n<br />\r\n1.用户资格<br />\r\n本公司的服务仅向适用法律下能够签订具有法律约束力的合同的个人提供并\r\n仅由其使用。在不限制前述规定的前提下，本公司的服务不向18周岁以下或被临时或无限期中止的用户提供。如您不合资格，请勿使用本公司的服务。此外，您的\r\n帐户（包括信用评价）和用户名不得向其他方转让或出售。另外，本公司保留根据其意愿中止或终止您的帐户的权利。<br />\r\n<br />\r\n2.您的资料（包括但不限于所添加的任何商品）不得：<br />\r\n*具有欺诈性、虚假、不准确或具误导性；<br />\r\n*侵犯任何第三方著作权、专利权、商标权、商业秘密或其他专有权利或发表权或隐私权；<br />\r\n*违反任何适用的法律或法规（包括但不限于有关出口管制、消费者保护、不正当竞争、刑法、反歧视或贸易惯例/公平贸易法律的法律或法规）；<br />\r\n*有侮辱或者诽谤他人，侵害他人合法权益的内容；<br />\r\n*有淫秽、色情、赌博、暴力、凶杀、恐怖或者教唆犯罪的内容；<br />\r\n*包含可能破坏、改变、删除、不利影响、秘密截取、未经授权而接触或征用任何系统、数据或个人资料的任何病毒、特洛依木马、蠕虫、定时炸弹、删除蝇、复活节彩蛋、间谍软件或其他电脑程序；<br />\r\n<br />\r\n3.违约<br />\r\n如发生以下情形，本公司可能限制您的活动、立即删除您的商品、向本公司社区发出有关您的行为的警告、发出警告通知、暂时中止、无限期地中止或终止您的用户资格及拒绝向您提供服务：<br />\r\n(a)您违反本协议或纳入本协议的文件；<br />\r\n(b)本公司无法核证或验证您向本公司提供的任何资料；<br />\r\n(c)本公司相信您的行为可能对您、本公司用户或本公司造成损失或法律责任。<br />\r\n<br />\r\n4.责任限制<br />\r\n本\r\n公司、本公司的关联公司和相关实体或本公司的供应商在任何情况下均不就因本公司的网站、本公司的服务或本协议而产生或与之有关的利润损失或任何特别、间接\r\n或后果性的损害（无论以何种方式产生，包括疏忽）承担任何责任。您同意您就您自身行为之合法性单独承担责任。您同意，本公司和本公司的所有关联公司和相关\r\n实体对本公司用户的行为的合法性及产生的任何结果不承担责任。<br />\r\n<br />\r\n5.无代理关系<br />\r\n用户和本公司是独立的合同方，本协议无意建立也没有创立任何代理、合伙、合营、雇员与雇主或特许经营关系。本公司也不对任何用户及其网上交易行为做出明示或默许的推荐、承诺或担保。<br />\r\n<br />\r\n6.一般规定<br />\r\n本协议在所有方面均受中华人民共和国法律管辖。本协议的规定是可分割的，如本协议任何规定被裁定为无效或不可执行，该规定可被删除而其余条款应予以执行。\r\n</p>', 'store', '开店协议');
-/*!40000 ALTER TABLE `sailmall_document` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_document` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_dynamic 结构
-CREATE TABLE IF NOT EXISTS `sailmall_dynamic` (
+-- 导出  表 SailPlat.tbl_dynamic 结构
+CREATE TABLE IF NOT EXISTS `tbl_dynamic` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -4601,17 +4601,17 @@ CREATE TABLE IF NOT EXISTS `sailmall_dynamic` (
   KEY `FKCCB9A00E54ED135B` (`turnParent_id`),
   KEY `FKCCB9A00EEB7ECE12` (`img_id`),
   KEY `FKCCB9A00E920D7683` (`store_id`),
-  CONSTRAINT `FKCCB9A00E537B6C51` FOREIGN KEY (`user_id`) REFERENCES `sailmall_user` (`id`),
-  CONSTRAINT `FKCCB9A00E54ED135B` FOREIGN KEY (`turnParent_id`) REFERENCES `sailmall_dynamic` (`id`),
-  CONSTRAINT `FKCCB9A00E6ABCD333` FOREIGN KEY (`dissParent_id`) REFERENCES `sailmall_dynamic` (`id`),
-  CONSTRAINT `FKCCB9A00E920D7683` FOREIGN KEY (`store_id`) REFERENCES `sailmall_store` (`id`),
-  CONSTRAINT `FKCCB9A00EA995E663` FOREIGN KEY (`goods_id`) REFERENCES `sailmall_goods` (`id`),
-  CONSTRAINT `FKCCB9A00EEB7ECE12` FOREIGN KEY (`img_id`) REFERENCES `sailmall_accessory` (`id`)
+  CONSTRAINT `FKCCB9A00E537B6C51` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`id`),
+  CONSTRAINT `FKCCB9A00E54ED135B` FOREIGN KEY (`turnParent_id`) REFERENCES `tbl_dynamic` (`id`),
+  CONSTRAINT `FKCCB9A00E6ABCD333` FOREIGN KEY (`dissParent_id`) REFERENCES `tbl_dynamic` (`id`),
+  CONSTRAINT `FKCCB9A00E920D7683` FOREIGN KEY (`store_id`) REFERENCES `tbl_store` (`id`),
+  CONSTRAINT `FKCCB9A00EA995E663` FOREIGN KEY (`goods_id`) REFERENCES `tbl_goods` (`id`),
+  CONSTRAINT `FKCCB9A00EEB7ECE12` FOREIGN KEY (`img_id`) REFERENCES `tbl_accessory` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1750 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_dynamic 的数据：~6 rows (大约)
-/*!40000 ALTER TABLE `sailmall_dynamic` DISABLE KEYS */;
-REPLACE INTO `sailmall_dynamic` (`id`, `addTime`, `deleteStatus`, `content`, `discussNum`, `praiseNum`, `turnNum`, `dissParent_id`, `goods_id`, `turnParent_id`, `user_id`, `locked`, `img_id`, `store_id`, `display`) VALUES
+-- 正在导出表  SailPlat.tbl_dynamic 的数据：~6 rows (大约)
+/*!40000 ALTER TABLE `tbl_dynamic` DISABLE KEYS */;
+REPLACE INTO `tbl_dynamic` (`id`, `addTime`, `deleteStatus`, `content`, `discussNum`, `praiseNum`, `turnNum`, `dissParent_id`, `goods_id`, `turnParent_id`, `user_id`, `locked`, `img_id`, `store_id`, `display`) VALUES
 	(1, '2014-08-27 10:59:25', b'0', 'test特特特', 0, 0, 0, NULL, NULL, NULL, 1, b'0', NULL, NULL, b'0'),
 	(10, '2014-10-10 16:37:46', b'0', '分享一个商品，这个很不错哦', 0, 0, 1, NULL, NULL, NULL, 1, b'0', NULL, NULL, b'1'),
 	(12, '2014-10-10 16:45:33', b'0', '转发一个//转自admin:分享一个商品，这个很不错哦', 0, 0, 0, NULL, NULL, NULL, 1, b'0', NULL, NULL, b'0'),
@@ -4619,10 +4619,10 @@ REPLACE INTO `sailmall_dynamic` (`id`, `addTime`, `deleteStatus`, `content`, `di
 	(1745, '2017-12-09 21:45:01', b'0', '测试动态了，我很烦', 0, 0, 0, NULL, NULL, NULL, 32795, b'0', NULL, NULL, b'1'),
 	(1748, '2017-12-09 21:53:40', b'0', 'imj yaa ', 0, 0, 0, 1745, NULL, NULL, 32795, b'0', NULL, NULL, b'0'),
 	(1749, '2017-12-09 21:55:04', b'0', '11111', 0, 0, 0, 1745, NULL, NULL, 32795, b'0', NULL, NULL, b'0');
-/*!40000 ALTER TABLE `sailmall_dynamic` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_dynamic` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_evaluate 结构
-CREATE TABLE IF NOT EXISTS `sailmall_evaluate` (
+-- 导出  表 SailPlat.tbl_evaluate 结构
+CREATE TABLE IF NOT EXISTS `tbl_evaluate` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -4647,18 +4647,18 @@ CREATE TABLE IF NOT EXISTS `sailmall_evaluate` (
   KEY `FK7E1866AA95BC8749` (`evaluate_goods_id`),
   KEY `FK7E1866AA9D2A16AB` (`evaluate_user_id`),
   KEY `FK7E1866AA9F21119E` (`of_id`),
-  CONSTRAINT `FK7E1866AA95BC8749` FOREIGN KEY (`evaluate_goods_id`) REFERENCES `sailmall_goods` (`id`),
-  CONSTRAINT `FK7E1866AA9D2A16AB` FOREIGN KEY (`evaluate_user_id`) REFERENCES `sailmall_user` (`id`),
-  CONSTRAINT `FK7E1866AA9F21119E` FOREIGN KEY (`of_id`) REFERENCES `sailmall_orderform` (`id`),
-  CONSTRAINT `FK7E1866AAAC64FF7` FOREIGN KEY (`evaluate_seller_user_id`) REFERENCES `sailmall_user` (`id`)
+  CONSTRAINT `FK7E1866AA95BC8749` FOREIGN KEY (`evaluate_goods_id`) REFERENCES `tbl_goods` (`id`),
+  CONSTRAINT `FK7E1866AA9D2A16AB` FOREIGN KEY (`evaluate_user_id`) REFERENCES `tbl_user` (`id`),
+  CONSTRAINT `FK7E1866AA9F21119E` FOREIGN KEY (`of_id`) REFERENCES `tbl_orderform` (`id`),
+  CONSTRAINT `FK7E1866AAAC64FF7` FOREIGN KEY (`evaluate_seller_user_id`) REFERENCES `tbl_user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_evaluate 的数据：~0 rows (大约)
-/*!40000 ALTER TABLE `sailmall_evaluate` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sailmall_evaluate` ENABLE KEYS */;
+-- 正在导出表  SailPlat.tbl_evaluate 的数据：~0 rows (大约)
+/*!40000 ALTER TABLE `tbl_evaluate` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_evaluate` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_express_company 结构
-CREATE TABLE IF NOT EXISTS `sailmall_express_company` (
+-- 导出  表 SailPlat.tbl_express_company 结构
+CREATE TABLE IF NOT EXISTS `tbl_express_company` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -4671,9 +4671,9 @@ CREATE TABLE IF NOT EXISTS `sailmall_express_company` (
   UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_express_company 的数据：~27 rows (大约)
-/*!40000 ALTER TABLE `sailmall_express_company` DISABLE KEYS */;
-REPLACE INTO `sailmall_express_company` (`id`, `addTime`, `deleteStatus`, `company_mark`, `company_name`, `company_status`, `company_sequence`, `company_type`) VALUES
+-- 正在导出表  SailPlat.tbl_express_company 的数据：~27 rows (大约)
+/*!40000 ALTER TABLE `tbl_express_company` DISABLE KEYS */;
+REPLACE INTO `tbl_express_company` (`id`, `addTime`, `deleteStatus`, `company_mark`, `company_name`, `company_status`, `company_sequence`, `company_type`) VALUES
 	(1, '2014-08-12 11:49:16', b'0', 'shunfeng', '顺丰速递', 0, 0, 'EXPRESS'),
 	(2, '2014-08-12 11:51:18', b'0', 'shentong', '申通', 0, 1, 'EXPRESS'),
 	(3, '2014-08-12 11:52:55', b'0', 'tiantian', '天天快递', 0, 2, 'EXPRESS'),
@@ -4701,10 +4701,10 @@ REPLACE INTO `sailmall_express_company` (`id`, `addTime`, `deleteStatus`, `compa
 	(26, '2014-08-12 12:08:05', b'0', 'huitongkuaidi', '汇通快运', 0, 25, 'EXPRESS'),
 	(27, '2014-08-12 12:08:31', b'0', 'huiqiangkuaidi', '汇强快递', 0, 26, 'EXPRESS'),
 	(28, '2014-08-12 12:08:51', b'0', 'tiandihuayu', '华宇物流', 0, 27, 'EXPRESS');
-/*!40000 ALTER TABLE `sailmall_express_company` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_express_company` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_favorite 结构
-CREATE TABLE IF NOT EXISTS `sailmall_favorite` (
+-- 导出  表 SailPlat.tbl_favorite 结构
+CREATE TABLE IF NOT EXISTS `tbl_favorite` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -4716,20 +4716,20 @@ CREATE TABLE IF NOT EXISTS `sailmall_favorite` (
   KEY `FKB31583ADA995E663` (`goods_id`),
   KEY `FKB31583AD537B6C51` (`user_id`),
   KEY `FKB31583AD920D7683` (`store_id`),
-  CONSTRAINT `FKB31583AD537B6C51` FOREIGN KEY (`user_id`) REFERENCES `sailmall_user` (`id`),
-  CONSTRAINT `FKB31583AD920D7683` FOREIGN KEY (`store_id`) REFERENCES `sailmall_store` (`id`),
-  CONSTRAINT `FKB31583ADA995E663` FOREIGN KEY (`goods_id`) REFERENCES `sailmall_goods` (`id`)
+  CONSTRAINT `FKB31583AD537B6C51` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`id`),
+  CONSTRAINT `FKB31583AD920D7683` FOREIGN KEY (`store_id`) REFERENCES `tbl_store` (`id`),
+  CONSTRAINT `FKB31583ADA995E663` FOREIGN KEY (`goods_id`) REFERENCES `tbl_goods` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=65537 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_favorite 的数据：~2 rows (大约)
-/*!40000 ALTER TABLE `sailmall_favorite` DISABLE KEYS */;
-REPLACE INTO `sailmall_favorite` (`id`, `addTime`, `deleteStatus`, `type`, `goods_id`, `store_id`, `user_id`) VALUES
+-- 正在导出表  SailPlat.tbl_favorite 的数据：~2 rows (大约)
+/*!40000 ALTER TABLE `tbl_favorite` DISABLE KEYS */;
+REPLACE INTO `tbl_favorite` (`id`, `addTime`, `deleteStatus`, `type`, `goods_id`, `store_id`, `user_id`) VALUES
 	(1, '2013-12-30 11:22:24', b'0', 1, NULL, 1, 32768),
 	(65536, '2014-01-02 12:31:24', b'0', 1, NULL, 1, 1);
-/*!40000 ALTER TABLE `sailmall_favorite` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_favorite` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_gold_log 结构
-CREATE TABLE IF NOT EXISTS `sailmall_gold_log` (
+-- 导出  表 SailPlat.tbl_gold_log 结构
+CREATE TABLE IF NOT EXISTS `tbl_gold_log` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -4747,14 +4747,14 @@ CREATE TABLE IF NOT EXISTS `sailmall_gold_log` (
   KEY `FKEDD9DCF6FDCC66F7` (`gr_id`),
   KEY `FKEDD9DCF61EE1CC67` (`gl_admin_id`),
   KEY `FKEDD9DCF6B6766AF7` (`gl_user_id`),
-  CONSTRAINT `FKEDD9DCF61EE1CC67` FOREIGN KEY (`gl_admin_id`) REFERENCES `sailmall_user` (`id`),
-  CONSTRAINT `FKEDD9DCF6B6766AF7` FOREIGN KEY (`gl_user_id`) REFERENCES `sailmall_user` (`id`),
-  CONSTRAINT `FKEDD9DCF6FDCC66F7` FOREIGN KEY (`gr_id`) REFERENCES `sailmall_gold_record` (`id`)
+  CONSTRAINT `FKEDD9DCF61EE1CC67` FOREIGN KEY (`gl_admin_id`) REFERENCES `tbl_user` (`id`),
+  CONSTRAINT `FKEDD9DCF6B6766AF7` FOREIGN KEY (`gl_user_id`) REFERENCES `tbl_user` (`id`),
+  CONSTRAINT `FKEDD9DCF6FDCC66F7` FOREIGN KEY (`gr_id`) REFERENCES `tbl_gold_record` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_gold_log 的数据：~11 rows (大约)
-/*!40000 ALTER TABLE `sailmall_gold_log` DISABLE KEYS */;
-REPLACE INTO `sailmall_gold_log` (`id`, `addTime`, `deleteStatus`, `gl_admin_content`, `gl_admin_time`, `gl_content`, `gl_count`, `gl_money`, `gl_payment`, `gl_type`, `gl_admin_id`, `gl_user_id`, `gr_id`) VALUES
+-- 正在导出表  SailPlat.tbl_gold_log 的数据：~11 rows (大约)
+/*!40000 ALTER TABLE `tbl_gold_log` DISABLE KEYS */;
+REPLACE INTO `tbl_gold_log` (`id`, `addTime`, `deleteStatus`, `gl_admin_content`, `gl_admin_time`, `gl_content`, `gl_count`, `gl_money`, `gl_payment`, `gl_type`, `gl_admin_id`, `gl_user_id`, `gr_id`) VALUES
 	(1, '2014-09-27 17:34:00', b'0', NULL, NULL, '线下支付', 10000, 1000, 'outline', 0, NULL, 1, 1),
 	(2, '2014-09-27 17:34:30', b'0', '管理员审核金币', '2014-09-27 17:34:30', '管理员审核金币记录', 10000, 1000, 'outline', 0, 1, 1, NULL),
 	(3, '2014-09-27 17:36:37', b'0', NULL, NULL, '线下支付', 10000, 1000, 'outline', 0, NULL, 32768, 2),
@@ -4766,10 +4766,10 @@ REPLACE INTO `sailmall_gold_log` (`id`, `addTime`, `deleteStatus`, `gl_admin_con
 	(9, '2014-11-29 12:06:44', b'0', NULL, NULL, '购买买就送套餐', 360, 0, NULL, -1, NULL, 32768, NULL),
 	(10, '2015-02-28 19:28:15', b'0', NULL, NULL, '购买微信商城', 50, 0, NULL, -1, NULL, 32768, NULL),
 	(11, '2015-03-01 12:36:02', b'0', NULL, NULL, '购买微信商城', 250, 0, NULL, -1, NULL, 32768, NULL);
-/*!40000 ALTER TABLE `sailmall_gold_log` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_gold_log` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_gold_record 结构
-CREATE TABLE IF NOT EXISTS `sailmall_gold_record` (
+-- 导出  表 SailPlat.tbl_gold_record 结构
+CREATE TABLE IF NOT EXISTS `tbl_gold_record` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -4787,19 +4787,19 @@ CREATE TABLE IF NOT EXISTS `sailmall_gold_record` (
   PRIMARY KEY (`id`),
   KEY `FK5A87D5FB1CC134C` (`gold_admin_id`),
   KEY `FK5A87D5F81653372` (`gold_user_id`),
-  CONSTRAINT `FK5A87D5F81653372` FOREIGN KEY (`gold_user_id`) REFERENCES `sailmall_user` (`id`),
-  CONSTRAINT `FK5A87D5FB1CC134C` FOREIGN KEY (`gold_admin_id`) REFERENCES `sailmall_user` (`id`)
+  CONSTRAINT `FK5A87D5F81653372` FOREIGN KEY (`gold_user_id`) REFERENCES `tbl_user` (`id`),
+  CONSTRAINT `FK5A87D5FB1CC134C` FOREIGN KEY (`gold_admin_id`) REFERENCES `tbl_user` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_gold_record 的数据：~2 rows (大约)
-/*!40000 ALTER TABLE `sailmall_gold_record` DISABLE KEYS */;
-REPLACE INTO `sailmall_gold_record` (`id`, `addTime`, `deleteStatus`, `gold_admin_info`, `gold_admin_time`, `gold_count`, `gold_exchange_info`, `gold_money`, `gold_pay_status`, `gold_payment`, `gold_sn`, `gold_status`, `gold_admin_id`, `gold_user_id`) VALUES
+-- 正在导出表  SailPlat.tbl_gold_record 的数据：~2 rows (大约)
+/*!40000 ALTER TABLE `tbl_gold_record` DISABLE KEYS */;
+REPLACE INTO `tbl_gold_record` (`id`, `addTime`, `deleteStatus`, `gold_admin_info`, `gold_admin_time`, `gold_count`, `gold_exchange_info`, `gold_money`, `gold_pay_status`, `gold_payment`, `gold_sn`, `gold_status`, `gold_admin_id`, `gold_user_id`) VALUES
 	(1, '2014-09-27 17:34:00', b'0', '管理员审核金币', '2014-09-27 17:34:29', 10000, '兑换金币10000', 1000, 2, 'outline', 'gold201409271734001', 1, 1, 1),
 	(2, '2014-09-27 17:36:36', b'0', '管理员审核金币', '2014-09-27 17:38:09', 10000, '', 1000, 2, 'outline', 'gold2014092717363632768', 1, 1, 32768);
-/*!40000 ALTER TABLE `sailmall_gold_record` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_gold_record` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_goods 结构
-CREATE TABLE IF NOT EXISTS `sailmall_goods` (
+-- 导出  表 SailPlat.tbl_goods 结构
+CREATE TABLE IF NOT EXISTS `tbl_goods` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -4868,28 +4868,28 @@ CREATE TABLE IF NOT EXISTS `sailmall_goods` (
   KEY `FK304F7EE5C292B563` (`ztc_admin_id`),
   KEY `FK304F7EE5493829C3` (`group_id`),
   KEY `FK304F7EE5914F1503` (`transport_id`),
-  CONSTRAINT `FK304F7EE51ED8F14C` FOREIGN KEY (`goods_store_id`) REFERENCES `sailmall_store` (`id`),
-  CONSTRAINT `FK304F7EE5493829C3` FOREIGN KEY (`group_id`) REFERENCES `sailmall_group` (`id`),
-  CONSTRAINT `FK304F7EE56BDDCC57` FOREIGN KEY (`gc_id`) REFERENCES `sailmall_goodsclass` (`id`),
-  CONSTRAINT `FK304F7EE5914F1503` FOREIGN KEY (`transport_id`) REFERENCES `sailmall_transport` (`id`),
-  CONSTRAINT `FK304F7EE5AD5743E0` FOREIGN KEY (`goods_main_photo_id`) REFERENCES `sailmall_accessory` (`id`),
-  CONSTRAINT `FK304F7EE5C292B563` FOREIGN KEY (`ztc_admin_id`) REFERENCES `sailmall_user` (`id`),
-  CONSTRAINT `FK304F7EE5F140A6A4` FOREIGN KEY (`goods_brand_id`) REFERENCES `sailmall_goodsbrand` (`id`)
+  CONSTRAINT `FK304F7EE51ED8F14C` FOREIGN KEY (`goods_store_id`) REFERENCES `tbl_store` (`id`),
+  CONSTRAINT `FK304F7EE5493829C3` FOREIGN KEY (`group_id`) REFERENCES `tbl_group` (`id`),
+  CONSTRAINT `FK304F7EE56BDDCC57` FOREIGN KEY (`gc_id`) REFERENCES `tbl_goodsclass` (`id`),
+  CONSTRAINT `FK304F7EE5914F1503` FOREIGN KEY (`transport_id`) REFERENCES `tbl_transport` (`id`),
+  CONSTRAINT `FK304F7EE5AD5743E0` FOREIGN KEY (`goods_main_photo_id`) REFERENCES `tbl_accessory` (`id`),
+  CONSTRAINT `FK304F7EE5C292B563` FOREIGN KEY (`ztc_admin_id`) REFERENCES `tbl_user` (`id`),
+  CONSTRAINT `FK304F7EE5F140A6A4` FOREIGN KEY (`goods_brand_id`) REFERENCES `tbl_goodsbrand` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1596 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_goods 的数据：~6 rows (大约)
-/*!40000 ALTER TABLE `sailmall_goods` DISABLE KEYS */;
-REPLACE INTO `sailmall_goods` (`id`, `addTime`, `deleteStatus`, `goods_click`, `goods_details`, `goods_fee`, `goods_inventory`, `goods_inventory_detail`, `goods_name`, `goods_price`, `goods_property`, `goods_recommend`, `goods_salenum`, `goods_seller_time`, `goods_serial`, `goods_status`, `goods_transfee`, `goods_weight`, `inventory_type`, `seo_description`, `seo_keywords`, `store_price`, `store_recommend`, `store_recommend_time`, `ztc_admin_content`, `ztc_apply_time`, `ztc_begin_time`, `ztc_click_num`, `ztc_dredge_price`, `ztc_gold`, `ztc_pay_status`, `ztc_price`, `ztc_status`, `gc_id`, `goods_brand_id`, `goods_main_photo_id`, `goods_store_id`, `ztc_admin_id`, `goods_collect`, `group_buy`, `goods_choice_type`, `group_id`, `activity_status`, `bargain_status`, `delivery_status`, `goods_current_price`, `goods_volume`, `ems_trans_fee`, `express_trans_fee`, `mail_trans_fee`, `transport_id`, `combin_status`, `combin_begin_time`, `combin_end_time`, `combin_price`, `description_evaluate`, `weixin_shop_hot`, `weixin_shop_hotTime`, `weixin_shop_recommend`, `weixin_shop_recommendTime`) VALUES
+-- 正在导出表  SailPlat.tbl_goods 的数据：~6 rows (大约)
+/*!40000 ALTER TABLE `tbl_goods` DISABLE KEYS */;
+REPLACE INTO `tbl_goods` (`id`, `addTime`, `deleteStatus`, `goods_click`, `goods_details`, `goods_fee`, `goods_inventory`, `goods_inventory_detail`, `goods_name`, `goods_price`, `goods_property`, `goods_recommend`, `goods_salenum`, `goods_seller_time`, `goods_serial`, `goods_status`, `goods_transfee`, `goods_weight`, `inventory_type`, `seo_description`, `seo_keywords`, `store_price`, `store_recommend`, `store_recommend_time`, `ztc_admin_content`, `ztc_apply_time`, `ztc_begin_time`, `ztc_click_num`, `ztc_dredge_price`, `ztc_gold`, `ztc_pay_status`, `ztc_price`, `ztc_status`, `gc_id`, `goods_brand_id`, `goods_main_photo_id`, `goods_store_id`, `ztc_admin_id`, `goods_collect`, `group_buy`, `goods_choice_type`, `group_id`, `activity_status`, `bargain_status`, `delivery_status`, `goods_current_price`, `goods_volume`, `ems_trans_fee`, `express_trans_fee`, `mail_trans_fee`, `transport_id`, `combin_status`, `combin_begin_time`, `combin_end_time`, `combin_price`, `description_evaluate`, `weixin_shop_hot`, `weixin_shop_hotTime`, `weixin_shop_recommend`, `weixin_shop_recommendTime`) VALUES
 	(1509, '2017-09-29 17:23:13', b'0', 6, '', NULL, 22, '[]', '冲值 卡', 12312.00, '[]', b'1', 0, NULL, 'cz-100', 0, 1, 33.00, 'all', '', '', 80.00, b'1', NULL, NULL, NULL, NULL, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, 1207, NULL, 0, 0, 0, NULL, 0, 0, 0, 80.00, 10.00, 0.00, 0.00, 0.00, NULL, 0, NULL, NULL, NULL, NULL, b'0', NULL, b'0', NULL),
 	(1526, '2017-10-13 19:30:55', b'0', 4, '', NULL, 20, '[]', '海尔冰箱', 5000.00, '[]', b'1', 0, NULL, 'HaiBox01', 0, 1, 23.00, 'all', '', '', 4500.00, b'1', NULL, NULL, NULL, NULL, 0, 0, 0, 0, 0, 0, 110, 14, 1525, 1207, NULL, 0, 0, 0, NULL, 0, 0, 0, 4500.00, 10.00, 0.00, 0.00, 0.00, NULL, 0, NULL, NULL, NULL, NULL, b'0', NULL, b'0', NULL),
 	(1542, '2017-10-15 10:16:40', b'0', 52, '', NULL, 100, '[]', '海乐洗衣机', 6000.00, '[]', b'1', 0, NULL, '', 0, 1, 3.00, 'all', '', '', 0.01, b'1', NULL, NULL, NULL, NULL, 0, 0, 0, 0, 0, 0, 111, 14, 1541, 1207, NULL, 0, 0, 0, NULL, 0, 0, 0, 0.01, 10.00, 0.00, 0.00, 0.00, NULL, 0, NULL, NULL, NULL, NULL, b'0', NULL, b'0', NULL),
 	(1547, '2017-10-15 10:27:25', b'0', 16, '', NULL, 99, '[]', '美的空调', 6000.00, '[]', b'1', 1, NULL, 'MiDear001', 0, 1, 3.00, 'all', '', '', 0.01, b'1', NULL, NULL, NULL, NULL, 0, 0, 0, 0, 0, 0, 109, 1523, 1571, 1207, NULL, 0, 0, 0, NULL, 0, 0, 0, 0.01, 10.00, 0.00, 0.00, 0.00, NULL, 0, NULL, NULL, NULL, NULL, b'0', NULL, b'0', NULL),
 	(1569, '2017-10-16 22:08:36', b'0', 14, '', NULL, 100, '[]', '海尔洗衣机-Vip', 6000.00, '[]', b'1', 0, NULL, 'HaiR001', 0, 1, 3.00, 'all', '', '', 0.01, b'1', NULL, NULL, NULL, NULL, 0, 0, 0, 0, 0, 0, 111, 14, 1568, 1207, NULL, 0, 0, 0, NULL, 0, 0, 0, 0.01, 10.00, 0.00, 0.00, 0.00, NULL, 0, NULL, NULL, NULL, NULL, b'0', NULL, b'0', NULL),
 	(1595, '2017-10-23 11:40:54', b'0', 6, '背光类型/E-LED or D-LED；显示比例：16：9；分辨率：1366*768；像素/Color：16.7M（8bits）；USB接口/USB：2.0 支持升级和多媒体播放；开机LOGO，锁定设置、开机设置、智能恢复、USB克隆', NULL, 1, '[]', 'H32E16(含座架)', 1150.00, '[]', b'1', 0, NULL, '0001', 0, 1, 16.00, 'all', '', '海尔电视', 1120.00, b'0', NULL, NULL, NULL, NULL, 0, 0, 0, 0, 0, 0, 108, 14, 1597, 1207, NULL, 0, 0, 0, NULL, 0, 0, 0, 1120.00, 0.10, 0.00, 0.00, 0.00, NULL, 0, NULL, NULL, NULL, NULL, b'0', NULL, b'0', NULL);
-/*!40000 ALTER TABLE `sailmall_goods` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_goods` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_goodsbrand 结构
-CREATE TABLE IF NOT EXISTS `sailmall_goodsbrand` (
+-- 导出  表 SailPlat.tbl_goodsbrand 结构
+CREATE TABLE IF NOT EXISTS `tbl_goodsbrand` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -4909,21 +4909,21 @@ CREATE TABLE IF NOT EXISTS `sailmall_goodsbrand` (
   KEY `FK380F53C292ACC22` (`category_id`),
   KEY `FK380F53C25F95F5C3` (`brandLogo_id`),
   KEY `FK380F53C2537B6C51` (`user_id`),
-  CONSTRAINT `FK1vvx4a42n85inxsmqlrd2f0mk` FOREIGN KEY (`user_id`) REFERENCES `sailmall_user` (`id`),
-  CONSTRAINT `FK380F53C2537B6C51` FOREIGN KEY (`user_id`) REFERENCES `sailmall_user` (`id`),
-  CONSTRAINT `FK380F53C25F95F5C3` FOREIGN KEY (`brandLogo_id`) REFERENCES `sailmall_accessory` (`id`),
-  CONSTRAINT `FK380F53C292ACC22` FOREIGN KEY (`category_id`) REFERENCES `sailmall_brandcategory` (`id`)
+  CONSTRAINT `FK1vvx4a42n85inxsmqlrd2f0mk` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`id`),
+  CONSTRAINT `FK380F53C2537B6C51` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`id`),
+  CONSTRAINT `FK380F53C25F95F5C3` FOREIGN KEY (`brandLogo_id`) REFERENCES `tbl_accessory` (`id`),
+  CONSTRAINT `FK380F53C292ACC22` FOREIGN KEY (`category_id`) REFERENCES `tbl_brandcategory` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1524 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_goodsbrand 的数据：~2 rows (大约)
-/*!40000 ALTER TABLE `sailmall_goodsbrand` DISABLE KEYS */;
-REPLACE INTO `sailmall_goodsbrand` (`id`, `addTime`, `deleteStatus`, `audit`, `name`, `recommend`, `sequence`, `brandLogo_id`, `category_id`, `remark`, `userStatus`, `user_id`, `weixin_shop_recommend`, `weixin_shop_recommendTime`, `first_word`) VALUES
+-- 正在导出表  SailPlat.tbl_goodsbrand 的数据：~2 rows (大约)
+/*!40000 ALTER TABLE `tbl_goodsbrand` DISABLE KEYS */;
+REPLACE INTO `tbl_goodsbrand` (`id`, `addTime`, `deleteStatus`, `audit`, `name`, `recommend`, `sequence`, `brandLogo_id`, `category_id`, `remark`, `userStatus`, `user_id`, `weixin_shop_recommend`, `weixin_shop_recommendTime`, `first_word`) VALUES
 	(14, '2013-12-24 10:15:17', b'0', b'1', '海尔', b'1', 13, 32788, 1519, NULL, 0, NULL, b'0', NULL, 'L'),
 	(1523, '2017-10-13 19:22:51', b'0', b'1', '美的', b'1', 15, 1522, 1519, NULL, 0, NULL, b'0', NULL, 'M');
-/*!40000 ALTER TABLE `sailmall_goodsbrand` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_goodsbrand` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_goodscart 结构
-CREATE TABLE IF NOT EXISTS `sailmall_goodscart` (
+-- 导出  表 SailPlat.tbl_goodscart 结构
+CREATE TABLE IF NOT EXISTS `tbl_goodscart` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -4938,24 +4938,24 @@ CREATE TABLE IF NOT EXISTS `sailmall_goodscart` (
   KEY `FK6D29FF85A995E663` (`goods_id`),
   KEY `FK6D29FF859F21119E` (`of_id`),
   KEY `FK6D29FF851B86F0F4` (`sc_id`),
-  CONSTRAINT `FKj912uu9g70dewwnsgghpngli3` FOREIGN KEY (`goods_id`) REFERENCES `sailmall_goods` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `FKrf0a0ol9m5dixxv31oaqso115` FOREIGN KEY (`of_id`) REFERENCES `sailmall_orderform` (`id`),
-  CONSTRAINT `FKtk07ip72matg5w1dtmshhs878` FOREIGN KEY (`sc_id`) REFERENCES `sailmall_storecart` (`id`) ON DELETE CASCADE
+  CONSTRAINT `FKj912uu9g70dewwnsgghpngli3` FOREIGN KEY (`goods_id`) REFERENCES `tbl_goods` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `FKrf0a0ol9m5dixxv31oaqso115` FOREIGN KEY (`of_id`) REFERENCES `tbl_orderform` (`id`),
+  CONSTRAINT `FKtk07ip72matg5w1dtmshhs878` FOREIGN KEY (`sc_id`) REFERENCES `tbl_storecart` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=1729 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_goodscart 的数据：~6 rows (大约)
-/*!40000 ALTER TABLE `sailmall_goodscart` DISABLE KEYS */;
-REPLACE INTO `sailmall_goodscart` (`id`, `addTime`, `deleteStatus`, `count`, `price`, `spec_info`, `goods_id`, `of_id`, `cart_type`, `sc_id`) VALUES
+-- 正在导出表  SailPlat.tbl_goodscart 的数据：~6 rows (大约)
+/*!40000 ALTER TABLE `tbl_goodscart` DISABLE KEYS */;
+REPLACE INTO `tbl_goodscart` (`id`, `addTime`, `deleteStatus`, `count`, `price`, `spec_info`, `goods_id`, `of_id`, `cart_type`, `sc_id`) VALUES
 	(1711, '2017-11-21 12:50:26', b'0', 1, 0.01, '', 1569, NULL, NULL, 1710),
 	(1713, '2017-11-21 12:52:06', b'0', 1, 0.01, '', 1542, NULL, NULL, 1712),
 	(1715, '2017-11-21 12:52:40', b'0', 1, 0.01, '', 1542, NULL, NULL, 1714),
 	(1722, '2017-11-21 13:47:33', b'0', 1, 0.01, '', 1542, NULL, NULL, 1723),
 	(1725, '2017-11-21 13:53:00', b'0', 1, 0.01, '', 1542, NULL, NULL, 1726),
 	(1728, '2017-11-21 13:55:46', b'0', 1, 0.01, '', 1542, 1729, NULL, 1606);
-/*!40000 ALTER TABLE `sailmall_goodscart` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_goodscart` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_goodsclass 结构
-CREATE TABLE IF NOT EXISTS `sailmall_goodsclass` (
+-- 导出  表 SailPlat.tbl_goodsclass 结构
+CREATE TABLE IF NOT EXISTS `tbl_goodsclass` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -4975,14 +4975,14 @@ CREATE TABLE IF NOT EXISTS `sailmall_goodsclass` (
   KEY `FK381AB1B3F8D6DBC3` (`goodstype_id`),
   KEY `FK381AB1B3E16A95C9` (`parent_id`),
   KEY `FK381AB1B3F55AC31A` (`icon_acc_id`),
-  CONSTRAINT `FK381AB1B3E16A95C9` FOREIGN KEY (`parent_id`) REFERENCES `sailmall_goodsclass` (`id`),
-  CONSTRAINT `FK381AB1B3F55AC31A` FOREIGN KEY (`icon_acc_id`) REFERENCES `sailmall_accessory` (`id`),
-  CONSTRAINT `FK381AB1B3F8D6DBC3` FOREIGN KEY (`goodsType_id`) REFERENCES `sailmall_goodstype` (`id`)
+  CONSTRAINT `FK381AB1B3E16A95C9` FOREIGN KEY (`parent_id`) REFERENCES `tbl_goodsclass` (`id`),
+  CONSTRAINT `FK381AB1B3F55AC31A` FOREIGN KEY (`icon_acc_id`) REFERENCES `tbl_accessory` (`id`),
+  CONSTRAINT `FK381AB1B3F8D6DBC3` FOREIGN KEY (`goodsType_id`) REFERENCES `tbl_goodstype` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=65679 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_goodsclass 的数据：~75 rows (大约)
-/*!40000 ALTER TABLE `sailmall_goodsclass` DISABLE KEYS */;
-REPLACE INTO `sailmall_goodsclass` (`id`, `addTime`, `deleteStatus`, `className`, `display`, `level`, `recommend`, `sequence`, `goodstype_id`, `parent_id`, `seo_description`, `seo_keywords`, `icon_sys`, `icon_type`, `icon_acc_id`) VALUES
+-- 正在导出表  SailPlat.tbl_goodsclass 的数据：~75 rows (大约)
+/*!40000 ALTER TABLE `tbl_goodsclass` DISABLE KEYS */;
+REPLACE INTO `tbl_goodsclass` (`id`, `addTime`, `deleteStatus`, `className`, `display`, `level`, `recommend`, `sequence`, `goodstype_id`, `parent_id`, `seo_description`, `seo_keywords`, `icon_sys`, `icon_type`, `icon_acc_id`) VALUES
 	(95, '2013-12-24 11:28:46', b'0', '家用电器', b'1', 0, b'0', 4, NULL, NULL, '', '', '34', 0, NULL),
 	(103, '2013-12-24 11:30:58', b'0', '大 家 电', b'1', 1, b'1', 0, NULL, 95, NULL, NULL, NULL, 0, NULL),
 	(104, '2013-12-24 11:31:07', b'0', '生活电器', b'1', 1, b'1', 0, NULL, 95, NULL, NULL, NULL, 0, NULL),
@@ -5058,10 +5058,10 @@ REPLACE INTO `sailmall_goodsclass` (`id`, `addTime`, `deleteStatus`, `className`
 	(65676, '2015-03-01 13:14:30', b'0', '斗地主', b'1', 2, b'1', 0, NULL, 65669, '', '', '', 0, NULL),
 	(65677, '2015-03-01 13:14:36', b'0', '代练', b'1', 2, b'1', 0, NULL, 65669, '', '', '', 0, NULL),
 	(65678, '2015-03-01 13:14:44', b'0', '剑灵', b'1', 2, b'1', 0, NULL, 65669, '', '', '', 0, NULL);
-/*!40000 ALTER TABLE `sailmall_goodsclass` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_goodsclass` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_goodsclassstaple 结构
-CREATE TABLE IF NOT EXISTS `sailmall_goodsclassstaple` (
+-- 导出  表 SailPlat.tbl_goodsclassstaple 结构
+CREATE TABLE IF NOT EXISTS `tbl_goodsclassstaple` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -5071,16 +5071,16 @@ CREATE TABLE IF NOT EXISTS `sailmall_goodsclassstaple` (
   PRIMARY KEY (`id`),
   KEY `FK335B1F3C6BDDCC57` (`gc_id`),
   KEY `FK335B1F3C920D7683` (`store_id`),
-  CONSTRAINT `FK335B1F3C6BDDCC57` FOREIGN KEY (`gc_id`) REFERENCES `sailmall_goodsclass` (`id`),
-  CONSTRAINT `FK335B1F3C920D7683` FOREIGN KEY (`store_id`) REFERENCES `sailmall_store` (`id`)
+  CONSTRAINT `FK335B1F3C6BDDCC57` FOREIGN KEY (`gc_id`) REFERENCES `tbl_goodsclass` (`id`),
+  CONSTRAINT `FK335B1F3C920D7683` FOREIGN KEY (`store_id`) REFERENCES `tbl_store` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_goodsclassstaple 的数据：~0 rows (大约)
-/*!40000 ALTER TABLE `sailmall_goodsclassstaple` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sailmall_goodsclassstaple` ENABLE KEYS */;
+-- 正在导出表  SailPlat.tbl_goodsclassstaple 的数据：~0 rows (大约)
+/*!40000 ALTER TABLE `tbl_goodsclassstaple` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_goodsclassstaple` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_goodsrecommend 结构
-CREATE TABLE IF NOT EXISTS `sailmall_goodsrecommend` (
+-- 导出  表 SailPlat.tbl_goodsrecommend 结构
+CREATE TABLE IF NOT EXISTS `tbl_goodsrecommend` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -5097,12 +5097,12 @@ CREATE TABLE IF NOT EXISTS `sailmall_goodsrecommend` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_goodsrecommend 的数据：~0 rows (大约)
-/*!40000 ALTER TABLE `sailmall_goodsrecommend` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sailmall_goodsrecommend` ENABLE KEYS */;
+-- 正在导出表  SailPlat.tbl_goodsrecommend 的数据：~0 rows (大约)
+/*!40000 ALTER TABLE `tbl_goodsrecommend` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_goodsrecommend` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_goodsspecification 结构
-CREATE TABLE IF NOT EXISTS `sailmall_goodsspecification` (
+-- 导出  表 SailPlat.tbl_goodsspecification 结构
+CREATE TABLE IF NOT EXISTS `tbl_goodsspecification` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -5112,16 +5112,16 @@ CREATE TABLE IF NOT EXISTS `sailmall_goodsspecification` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=32769 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_goodsspecification 的数据：~3 rows (大约)
-/*!40000 ALTER TABLE `sailmall_goodsspecification` DISABLE KEYS */;
-REPLACE INTO `sailmall_goodsspecification` (`id`, `addTime`, `deleteStatus`, `name`, `sequence`, `type`) VALUES
+-- 正在导出表  SailPlat.tbl_goodsspecification 的数据：~3 rows (大约)
+/*!40000 ALTER TABLE `tbl_goodsspecification` DISABLE KEYS */;
+REPLACE INTO `tbl_goodsspecification` (`id`, `addTime`, `deleteStatus`, `name`, `sequence`, `type`) VALUES
 	(1, '2013-12-24 08:57:34', b'0', '尺', 0, 'text'),
 	(2, '2013-12-24 08:59:56', b'0', '尺码', 1, 'text'),
 	(32768, '2013-12-24 09:41:36', b'0', '颜色', 3, 'img');
-/*!40000 ALTER TABLE `sailmall_goodsspecification` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_goodsspecification` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_goodsspecproperty 结构
-CREATE TABLE IF NOT EXISTS `sailmall_goodsspecproperty` (
+-- 导出  表 SailPlat.tbl_goodsspecproperty 结构
+CREATE TABLE IF NOT EXISTS `tbl_goodsspecproperty` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -5132,23 +5132,23 @@ CREATE TABLE IF NOT EXISTS `sailmall_goodsspecproperty` (
   PRIMARY KEY (`id`),
   KEY `FK1F5139F54F314235` (`specImage_id`),
   KEY `FK1F5139F574A287A3` (`spec_id`),
-  CONSTRAINT `FK1F5139F54F314235` FOREIGN KEY (`specImage_id`) REFERENCES `sailmall_accessory` (`id`),
-  CONSTRAINT `FK1F5139F574A287A3` FOREIGN KEY (`spec_id`) REFERENCES `sailmall_goodsspecification` (`id`)
+  CONSTRAINT `FK1F5139F54F314235` FOREIGN KEY (`specImage_id`) REFERENCES `tbl_accessory` (`id`),
+  CONSTRAINT `FK1F5139F574A287A3` FOREIGN KEY (`spec_id`) REFERENCES `tbl_goodsspecification` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=32775 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_goodsspecproperty 的数据：~6 rows (大约)
-/*!40000 ALTER TABLE `sailmall_goodsspecproperty` DISABLE KEYS */;
-REPLACE INTO `sailmall_goodsspecproperty` (`id`, `addTime`, `deleteStatus`, `sequence`, `value`, `spec_id`, `specImage_id`) VALUES
+-- 正在导出表  SailPlat.tbl_goodsspecproperty 的数据：~6 rows (大约)
+/*!40000 ALTER TABLE `tbl_goodsspecproperty` DISABLE KEYS */;
+REPLACE INTO `tbl_goodsspecproperty` (`id`, `addTime`, `deleteStatus`, `sequence`, `value`, `spec_id`, `specImage_id`) VALUES
 	(32769, '2013-12-24 09:43:19', b'0', 1, '黑色', 32768, 32769),
 	(32770, '2013-12-24 09:43:19', b'0', 2, '红色', 32768, 32770),
 	(32771, '2013-12-24 09:43:19', b'0', 3, '紫色', 32768, 32771),
 	(32772, '2013-12-24 09:43:19', b'0', 4, '桔色', 32768, 32772),
 	(32773, '2013-12-24 09:43:19', b'0', 5, '蓝色', 32768, 32773),
 	(32774, '2013-12-24 09:43:19', b'0', 6, '透明', 32768, 32774);
-/*!40000 ALTER TABLE `sailmall_goodsspecproperty` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_goodsspecproperty` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_goodstype 结构
-CREATE TABLE IF NOT EXISTS `sailmall_goodstype` (
+-- 导出  表 SailPlat.tbl_goodstype 结构
+CREATE TABLE IF NOT EXISTS `tbl_goodstype` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -5157,15 +5157,15 @@ CREATE TABLE IF NOT EXISTS `sailmall_goodstype` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_goodstype 的数据：~2 rows (大约)
-/*!40000 ALTER TABLE `sailmall_goodstype` DISABLE KEYS */;
-REPLACE INTO `sailmall_goodstype` (`id`, `addTime`, `deleteStatus`, `name`, `sequence`) VALUES
+-- 正在导出表  SailPlat.tbl_goodstype 的数据：~2 rows (大约)
+/*!40000 ALTER TABLE `tbl_goodstype` DISABLE KEYS */;
+REPLACE INTO `tbl_goodstype` (`id`, `addTime`, `deleteStatus`, `name`, `sequence`) VALUES
 	(1, '2013-12-24 10:17:33', b'0', '电器', 0),
 	(2, '2013-12-24 10:18:13', b'0', '服务', 1);
-/*!40000 ALTER TABLE `sailmall_goodstype` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_goodstype` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_goodstypeproperty 结构
-CREATE TABLE IF NOT EXISTS `sailmall_goodstypeproperty` (
+-- 导出  表 SailPlat.tbl_goodstypeproperty 结构
+CREATE TABLE IF NOT EXISTS `tbl_goodstypeproperty` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -5176,70 +5176,70 @@ CREATE TABLE IF NOT EXISTS `sailmall_goodstypeproperty` (
   `goodsType_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FKABDE274F8D6DBC3` (`goodsType_id`),
-  CONSTRAINT `FKABDE274F8D6DBC3` FOREIGN KEY (`goodsType_id`) REFERENCES `sailmall_goodstype` (`id`)
+  CONSTRAINT `FKABDE274F8D6DBC3` FOREIGN KEY (`goodsType_id`) REFERENCES `tbl_goodstype` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_goodstypeproperty 的数据：~3 rows (大约)
-/*!40000 ALTER TABLE `sailmall_goodstypeproperty` DISABLE KEYS */;
-REPLACE INTO `sailmall_goodstypeproperty` (`id`, `addTime`, `deleteStatus`, `display`, `name`, `sequence`, `value`, `goodsType_id`) VALUES
+-- 正在导出表  SailPlat.tbl_goodstypeproperty 的数据：~3 rows (大约)
+/*!40000 ALTER TABLE `tbl_goodstypeproperty` DISABLE KEYS */;
+REPLACE INTO `tbl_goodstypeproperty` (`id`, `addTime`, `deleteStatus`, `display`, `name`, `sequence`, `value`, `goodsType_id`) VALUES
 	(1, '2014-08-27 14:13:57', b'0', b'1', '款式', 1, '长袖,短袖,七分/五分袖,无袖,两件套,宽松', 1),
 	(2, '2014-08-27 14:13:57', b'0', b'1', '材质', 2, '纯棉,真丝,聚酯,棉+氨伦,氨伦（卡莱）,人造棉,其他', 1),
 	(3, '2014-08-27 14:13:57', b'0', b'1', '衣长', 3, '短款（衣长35-50CM）,中长款（衣长50-70CM）,长款（衣长70-100CM）', 1);
-/*!40000 ALTER TABLE `sailmall_goodstypeproperty` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_goodstypeproperty` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_goodstype_brand 结构
-CREATE TABLE IF NOT EXISTS `sailmall_goodstype_brand` (
+-- 导出  表 SailPlat.tbl_goodstype_brand 结构
+CREATE TABLE IF NOT EXISTS `tbl_goodstype_brand` (
   `type_id` bigint(20) NOT NULL,
   `brand_id` bigint(20) NOT NULL,
   KEY `FKD8CD4EE764752BDB` (`brand_id`),
   KEY `FKD8CD4EE7D0793FD9` (`type_id`),
-  CONSTRAINT `FKD8CD4EE764752BDB` FOREIGN KEY (`brand_id`) REFERENCES `sailmall_goodsbrand` (`id`),
-  CONSTRAINT `FKD8CD4EE7D0793FD9` FOREIGN KEY (`type_id`) REFERENCES `sailmall_goodstype` (`id`)
+  CONSTRAINT `FKD8CD4EE764752BDB` FOREIGN KEY (`brand_id`) REFERENCES `tbl_goodsbrand` (`id`),
+  CONSTRAINT `FKD8CD4EE7D0793FD9` FOREIGN KEY (`type_id`) REFERENCES `tbl_goodstype` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_goodstype_brand 的数据：~0 rows (大约)
-/*!40000 ALTER TABLE `sailmall_goodstype_brand` DISABLE KEYS */;
-REPLACE INTO `sailmall_goodstype_brand` (`type_id`, `brand_id`) VALUES
+-- 正在导出表  SailPlat.tbl_goodstype_brand 的数据：~0 rows (大约)
+/*!40000 ALTER TABLE `tbl_goodstype_brand` DISABLE KEYS */;
+REPLACE INTO `tbl_goodstype_brand` (`type_id`, `brand_id`) VALUES
 	(1, 14);
-/*!40000 ALTER TABLE `sailmall_goodstype_brand` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_goodstype_brand` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_goodstype_spec 结构
-CREATE TABLE IF NOT EXISTS `sailmall_goodstype_spec` (
+-- 导出  表 SailPlat.tbl_goodstype_spec 结构
+CREATE TABLE IF NOT EXISTS `tbl_goodstype_spec` (
   `type_id` bigint(20) NOT NULL,
   `spec_id` bigint(20) NOT NULL,
   KEY `FK82E5085B74A287A3` (`spec_id`),
   KEY `FK82E5085BD0793FD9` (`type_id`),
-  CONSTRAINT `FK82E5085B74A287A3` FOREIGN KEY (`spec_id`) REFERENCES `sailmall_goodsspecification` (`id`),
-  CONSTRAINT `FK82E5085BD0793FD9` FOREIGN KEY (`type_id`) REFERENCES `sailmall_goodstype` (`id`)
+  CONSTRAINT `FK82E5085B74A287A3` FOREIGN KEY (`spec_id`) REFERENCES `tbl_goodsspecification` (`id`),
+  CONSTRAINT `FK82E5085BD0793FD9` FOREIGN KEY (`type_id`) REFERENCES `tbl_goodstype` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_goodstype_spec 的数据：~4 rows (大约)
-/*!40000 ALTER TABLE `sailmall_goodstype_spec` DISABLE KEYS */;
-REPLACE INTO `sailmall_goodstype_spec` (`type_id`, `spec_id`) VALUES
+-- 正在导出表  SailPlat.tbl_goodstype_spec 的数据：~4 rows (大约)
+/*!40000 ALTER TABLE `tbl_goodstype_spec` DISABLE KEYS */;
+REPLACE INTO `tbl_goodstype_spec` (`type_id`, `spec_id`) VALUES
 	(2, 1),
 	(2, 32768),
 	(1, 2),
 	(1, 32768);
-/*!40000 ALTER TABLE `sailmall_goodstype_spec` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_goodstype_spec` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_goods_combin 结构
-CREATE TABLE IF NOT EXISTS `sailmall_goods_combin` (
-  `sailmall_goods_id` bigint(20) NOT NULL,
+-- 导出  表 SailPlat.tbl_goods_combin 结构
+CREATE TABLE IF NOT EXISTS `tbl_goods_combin` (
+  `tbl_goods_id` bigint(20) NOT NULL,
   `combin_goods_id` bigint(20) NOT NULL,
   `Goods_id` bigint(20) NOT NULL,
-  KEY `FKBA02E2801E09A074` (`sailmall_goods_id`),
+  KEY `FKBA02E2801E09A074` (`tbl_goods_id`),
   KEY `FKBA02E280E7269A9C` (`combin_goods_id`),
   KEY `FKp1vqrk25muvxr603no50gqm9u` (`Goods_id`),
-  CONSTRAINT `FKBA02E2801E09A074` FOREIGN KEY (`sailmall_goods_id`) REFERENCES `sailmall_goods` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `FKBA02E280E7269A9C` FOREIGN KEY (`combin_goods_id`) REFERENCES `sailmall_goods` (`id`) ON DELETE CASCADE
+  CONSTRAINT `FKBA02E2801E09A074` FOREIGN KEY (`tbl_goods_id`) REFERENCES `tbl_goods` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `FKBA02E280E7269A9C` FOREIGN KEY (`combin_goods_id`) REFERENCES `tbl_goods` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_goods_combin 的数据：~0 rows (大约)
-/*!40000 ALTER TABLE `sailmall_goods_combin` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sailmall_goods_combin` ENABLE KEYS */;
+-- 正在导出表  SailPlat.tbl_goods_combin 的数据：~0 rows (大约)
+/*!40000 ALTER TABLE `tbl_goods_combin` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_goods_combin` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_goods_floor 结构
-CREATE TABLE IF NOT EXISTS `sailmall_goods_floor` (
+-- 导出  表 SailPlat.tbl_goods_floor 结构
+CREATE TABLE IF NOT EXISTS `tbl_goods_floor` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -5259,34 +5259,34 @@ CREATE TABLE IF NOT EXISTS `sailmall_goods_floor` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`),
   KEY `FKC4188632E195105D` (`parent_id`),
-  CONSTRAINT `FKC4188632E195105D` FOREIGN KEY (`parent_id`) REFERENCES `sailmall_goods_floor` (`id`)
+  CONSTRAINT `FKC4188632E195105D` FOREIGN KEY (`parent_id`) REFERENCES `tbl_goods_floor` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=131078 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_goods_floor 的数据：~4 rows (大约)
-/*!40000 ALTER TABLE `sailmall_goods_floor` DISABLE KEYS */;
-REPLACE INTO `sailmall_goods_floor` (`id`, `addTime`, `deleteStatus`, `gf_css`, `gf_display`, `gf_goods_count`, `gf_level`, `gf_name`, `gf_sequence`, `parent_id`, `gf_gc_goods`, `gf_gc_list`, `gf_left_adv`, `gf_list_goods`, `gf_right_adv`, `gf_brand_list`) VALUES
+-- 正在导出表  SailPlat.tbl_goods_floor 的数据：~4 rows (大约)
+/*!40000 ALTER TABLE `tbl_goods_floor` DISABLE KEYS */;
+REPLACE INTO `tbl_goods_floor` (`id`, `addTime`, `deleteStatus`, `gf_css`, `gf_display`, `gf_goods_count`, `gf_level`, `gf_name`, `gf_sequence`, `parent_id`, `gf_gc_goods`, `gf_gc_list`, `gf_left_adv`, `gf_list_goods`, `gf_right_adv`, `gf_brand_list`) VALUES
 	(98304, '2014-02-25 11:33:09', b'0', 'floor_blue', b'1', 0, 0, '家电家具', 2, NULL, NULL, '[{"gc_count":4,"gc_id1":"75","pid":"70","gc_id4":"78","gc_id2":"76","gc_id3":"77"}, {"gc_id6":"87","gc_id7":"88","gc_count":7,"gc_id1":"65542","pid":"73","gc_id4":"85","gc_id5":"86","gc_id2":"83","gc_id3":"84"}, {"gc_id6":"94","gc_count":6,"gc_id1":"89","pid":"74","gc_id4":"92","gc_id5":"93","gc_id2":"90","gc_id3":"91"}]', '{"acc_url":"","adv_id":"32770","acc_id":""}', '{"goods_id6":"98451","goods_id4":"98448","goods_id5":"98447","goods_id3":"98449","goods_id2":"98456","goods_id1":"98454","list_title":"商品排行"}', '{"acc_url":"#","adv_id":"","acc_id":360449}', '{"brand_id9":"11","brand_id8":"8","brand_id7":"7","brand_id6":"5","brand_id5":"6","brand_id4":"2","brand_id3":"3","brand_id1":"14","brand_id2":"13"}'),
 	(131072, '2014-02-25 17:49:51', b'0', '', b'1', 0, 1, '冰箱', 0, 98304, '{"goods_id6":"98409","goods_id7":"98401","goods_id4":"98413","goods_id5":"98411","goods_id8":"98403","goods_id9":"98407","goods_id3":"98414","goods_id2":"98415","goods_id10":"98405","goods_id1":"98416"}', NULL, NULL, NULL, NULL, NULL),
 	(131076, '2014-02-25 17:57:30', b'0', NULL, b'1', 0, 1, '空调', 1, 98304, '{"goods_id6":"98442","goods_id7":"98441","goods_id4":"98444","goods_id5":"98443","goods_id8":"98440","goods_id9":"98439","goods_id3":"98445","goods_id2":"98446","goods_id10":"98428","goods_id1":"98447"}', NULL, NULL, NULL, NULL, NULL),
 	(131077, '2014-02-25 18:02:45', b'0', NULL, b'1', 0, 1, '洗衣机', 2, 98304, '{"goods_id6":"98428","goods_id7":"98409","goods_id4":"98424","goods_id5":"98422","goods_id8":"98417","goods_id9":"98438","goods_id3":"98436","goods_id2":"98454","goods_id10":"98437","goods_id1":"98448"}', NULL, NULL, NULL, NULL, NULL);
-/*!40000 ALTER TABLE `sailmall_goods_floor` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_goods_floor` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_goods_photo 结构
-CREATE TABLE IF NOT EXISTS `sailmall_goods_photo` (
+-- 导出  表 SailPlat.tbl_goods_photo 结构
+CREATE TABLE IF NOT EXISTS `tbl_goods_photo` (
   `goods_id` bigint(20) NOT NULL,
   `photo_id` bigint(20) NOT NULL,
   KEY `FKC4A3A058A995E663` (`goods_id`),
   KEY `FKC4A3A058E62DDD43` (`photo_id`),
-  CONSTRAINT `FKC4A3A058A995E663` FOREIGN KEY (`goods_id`) REFERENCES `sailmall_goods` (`id`),
-  CONSTRAINT `FKC4A3A058E62DDD43` FOREIGN KEY (`photo_id`) REFERENCES `sailmall_accessory` (`id`)
+  CONSTRAINT `FKC4A3A058A995E663` FOREIGN KEY (`goods_id`) REFERENCES `tbl_goods` (`id`),
+  CONSTRAINT `FKC4A3A058E62DDD43` FOREIGN KEY (`photo_id`) REFERENCES `tbl_accessory` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_goods_photo 的数据：~0 rows (大约)
-/*!40000 ALTER TABLE `sailmall_goods_photo` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sailmall_goods_photo` ENABLE KEYS */;
+-- 正在导出表  SailPlat.tbl_goods_photo 的数据：~0 rows (大约)
+/*!40000 ALTER TABLE `tbl_goods_photo` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_goods_photo` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_goods_return 结构
-CREATE TABLE IF NOT EXISTS `sailmall_goods_return` (
+-- 导出  表 SailPlat.tbl_goods_return 结构
+CREATE TABLE IF NOT EXISTS `tbl_goods_return` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -5297,16 +5297,16 @@ CREATE TABLE IF NOT EXISTS `sailmall_goods_return` (
   PRIMARY KEY (`id`),
   KEY `FKD3121FCA537B6C51` (`user_id`),
   KEY `FKD3121FCA9F21119E` (`of_id`),
-  CONSTRAINT `FKD3121FCA537B6C51` FOREIGN KEY (`user_id`) REFERENCES `sailmall_user` (`id`),
-  CONSTRAINT `FKD3121FCA9F21119E` FOREIGN KEY (`of_id`) REFERENCES `sailmall_orderform` (`id`)
+  CONSTRAINT `FKD3121FCA537B6C51` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`id`),
+  CONSTRAINT `FKD3121FCA9F21119E` FOREIGN KEY (`of_id`) REFERENCES `tbl_orderform` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_goods_return 的数据：~0 rows (大约)
-/*!40000 ALTER TABLE `sailmall_goods_return` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sailmall_goods_return` ENABLE KEYS */;
+-- 正在导出表  SailPlat.tbl_goods_return 的数据：~0 rows (大约)
+/*!40000 ALTER TABLE `tbl_goods_return` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_goods_return` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_goods_returnitem 结构
-CREATE TABLE IF NOT EXISTS `sailmall_goods_returnitem` (
+-- 导出  表 SailPlat.tbl_goods_returnitem 结构
+CREATE TABLE IF NOT EXISTS `tbl_goods_returnitem` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -5317,16 +5317,16 @@ CREATE TABLE IF NOT EXISTS `sailmall_goods_returnitem` (
   PRIMARY KEY (`id`),
   KEY `FKBA3AA5DD79982ABE` (`gr_id`),
   KEY `FKBA3AA5DDA995E663` (`goods_id`),
-  CONSTRAINT `FKBA3AA5DD79982ABE` FOREIGN KEY (`gr_id`) REFERENCES `sailmall_goods_return` (`id`),
-  CONSTRAINT `FKBA3AA5DDA995E663` FOREIGN KEY (`goods_id`) REFERENCES `sailmall_goods` (`id`)
+  CONSTRAINT `FKBA3AA5DD79982ABE` FOREIGN KEY (`gr_id`) REFERENCES `tbl_goods_return` (`id`),
+  CONSTRAINT `FKBA3AA5DDA995E663` FOREIGN KEY (`goods_id`) REFERENCES `tbl_goods` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_goods_returnitem 的数据：~0 rows (大约)
-/*!40000 ALTER TABLE `sailmall_goods_returnitem` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sailmall_goods_returnitem` ENABLE KEYS */;
+-- 正在导出表  SailPlat.tbl_goods_returnitem 的数据：~0 rows (大约)
+/*!40000 ALTER TABLE `tbl_goods_returnitem` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_goods_returnitem` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_goods_returnlog 结构
-CREATE TABLE IF NOT EXISTS `sailmall_goods_returnlog` (
+-- 导出  表 SailPlat.tbl_goods_returnlog 结构
+CREATE TABLE IF NOT EXISTS `tbl_goods_returnlog` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -5337,45 +5337,45 @@ CREATE TABLE IF NOT EXISTS `sailmall_goods_returnlog` (
   KEY `FK8A22F73A79982ABE` (`gr_id`),
   KEY `FK8A22F73A95A12042` (`return_user_id`),
   KEY `FK8A22F73A9F21119E` (`of_id`),
-  CONSTRAINT `FK8A22F73A79982ABE` FOREIGN KEY (`gr_id`) REFERENCES `sailmall_goods_return` (`id`),
-  CONSTRAINT `FK8A22F73A95A12042` FOREIGN KEY (`return_user_id`) REFERENCES `sailmall_user` (`id`),
-  CONSTRAINT `FK8A22F73A9F21119E` FOREIGN KEY (`of_id`) REFERENCES `sailmall_orderform` (`id`)
+  CONSTRAINT `FK8A22F73A79982ABE` FOREIGN KEY (`gr_id`) REFERENCES `tbl_goods_return` (`id`),
+  CONSTRAINT `FK8A22F73A95A12042` FOREIGN KEY (`return_user_id`) REFERENCES `tbl_user` (`id`),
+  CONSTRAINT `FK8A22F73A9F21119E` FOREIGN KEY (`of_id`) REFERENCES `tbl_orderform` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_goods_returnlog 的数据：~0 rows (大约)
-/*!40000 ALTER TABLE `sailmall_goods_returnlog` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sailmall_goods_returnlog` ENABLE KEYS */;
+-- 正在导出表  SailPlat.tbl_goods_returnlog 的数据：~0 rows (大约)
+/*!40000 ALTER TABLE `tbl_goods_returnlog` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_goods_returnlog` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_goods_spec 结构
-CREATE TABLE IF NOT EXISTS `sailmall_goods_spec` (
+-- 导出  表 SailPlat.tbl_goods_spec 结构
+CREATE TABLE IF NOT EXISTS `tbl_goods_spec` (
   `goods_id` bigint(20) NOT NULL,
   `spec_id` bigint(20) NOT NULL,
   KEY `FK37E5B8D5A995E663` (`goods_id`),
   KEY `FK37E5B8D5F8EE6C2E` (`spec_id`),
-  CONSTRAINT `FK37E5B8D5A995E663` FOREIGN KEY (`goods_id`) REFERENCES `sailmall_goods` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `FK37E5B8D5F8EE6C2E` FOREIGN KEY (`spec_id`) REFERENCES `sailmall_goodsspecproperty` (`id`) ON DELETE CASCADE
+  CONSTRAINT `FK37E5B8D5A995E663` FOREIGN KEY (`goods_id`) REFERENCES `tbl_goods` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `FK37E5B8D5F8EE6C2E` FOREIGN KEY (`spec_id`) REFERENCES `tbl_goodsspecproperty` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_goods_spec 的数据：~0 rows (大约)
-/*!40000 ALTER TABLE `sailmall_goods_spec` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sailmall_goods_spec` ENABLE KEYS */;
+-- 正在导出表  SailPlat.tbl_goods_spec 的数据：~0 rows (大约)
+/*!40000 ALTER TABLE `tbl_goods_spec` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_goods_spec` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_goods_ugc 结构
-CREATE TABLE IF NOT EXISTS `sailmall_goods_ugc` (
+-- 导出  表 SailPlat.tbl_goods_ugc 结构
+CREATE TABLE IF NOT EXISTS `tbl_goods_ugc` (
   `goods_id` bigint(20) NOT NULL,
   `class_id` bigint(20) NOT NULL,
   KEY `FK6D2877B7AF32ECE6` (`class_id`),
   KEY `FK6D2877B7A995E663` (`goods_id`),
-  CONSTRAINT `FK6D2877B7A995E663` FOREIGN KEY (`goods_id`) REFERENCES `sailmall_goods` (`id`),
-  CONSTRAINT `FK6D2877B7AF32ECE6` FOREIGN KEY (`class_id`) REFERENCES `sailmall_usergoodsclass` (`id`)
+  CONSTRAINT `FK6D2877B7A995E663` FOREIGN KEY (`goods_id`) REFERENCES `tbl_goods` (`id`),
+  CONSTRAINT `FK6D2877B7AF32ECE6` FOREIGN KEY (`class_id`) REFERENCES `tbl_usergoodsclass` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_goods_ugc 的数据：~0 rows (大约)
-/*!40000 ALTER TABLE `sailmall_goods_ugc` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sailmall_goods_ugc` ENABLE KEYS */;
+-- 正在导出表  SailPlat.tbl_goods_ugc 的数据：~0 rows (大约)
+/*!40000 ALTER TABLE `tbl_goods_ugc` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_goods_ugc` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_group 结构
-CREATE TABLE IF NOT EXISTS `sailmall_group` (
+-- 导出  表 SailPlat.tbl_group 结构
+CREATE TABLE IF NOT EXISTS `tbl_group` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -5388,15 +5388,15 @@ CREATE TABLE IF NOT EXISTS `sailmall_group` (
   UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_group 的数据：~2 rows (大约)
-/*!40000 ALTER TABLE `sailmall_group` DISABLE KEYS */;
-REPLACE INTO `sailmall_group` (`id`, `addTime`, `deleteStatus`, `beginTime`, `endTime`, `group_name`, `joinEndTime`, `status`) VALUES
+-- 正在导出表  SailPlat.tbl_group 的数据：~2 rows (大约)
+/*!40000 ALTER TABLE `tbl_group` DISABLE KEYS */;
+REPLACE INTO `tbl_group` (`id`, `addTime`, `deleteStatus`, `beginTime`, `endTime`, `group_name`, `joinEndTime`, `status`) VALUES
 	(1, '2014-02-26 11:48:52', b'0', '2014-02-25 00:00:00', '2014-05-20 00:00:00', '蛇年首期优惠大团购', '2014-04-30 00:00:00', -2),
 	(2, '2014-09-25 15:22:46', b'0', '2014-09-23 00:00:00', '2020-12-31 00:00:00', '新团购', '2015-12-01 00:00:00', 0);
-/*!40000 ALTER TABLE `sailmall_group` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_group` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_group_area 结构
-CREATE TABLE IF NOT EXISTS `sailmall_group_area` (
+-- 导出  表 SailPlat.tbl_group_area 结构
+CREATE TABLE IF NOT EXISTS `tbl_group_area` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -5407,12 +5407,12 @@ CREATE TABLE IF NOT EXISTS `sailmall_group_area` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`),
   KEY `FK72D6441ED32BF465` (`parent_id`),
-  CONSTRAINT `FK72D6441ED32BF465` FOREIGN KEY (`parent_id`) REFERENCES `sailmall_group_area` (`id`)
+  CONSTRAINT `FK72D6441ED32BF465` FOREIGN KEY (`parent_id`) REFERENCES `tbl_group_area` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_group_area 的数据：~7 rows (大约)
-/*!40000 ALTER TABLE `sailmall_group_area` DISABLE KEYS */;
-REPLACE INTO `sailmall_group_area` (`id`, `addTime`, `deleteStatus`, `ga_level`, `ga_name`, `ga_sequence`, `parent_id`) VALUES
+-- 正在导出表  SailPlat.tbl_group_area 的数据：~7 rows (大约)
+/*!40000 ALTER TABLE `tbl_group_area` DISABLE KEYS */;
+REPLACE INTO `tbl_group_area` (`id`, `addTime`, `deleteStatus`, `ga_level`, `ga_name`, `ga_sequence`, `parent_id`) VALUES
 	(1, '2014-02-26 11:42:46', b'0', 0, '沈阳', 0, NULL),
 	(2, '2014-02-26 11:42:55', b'0', 0, '北京', 1, NULL),
 	(3, '2014-02-26 11:43:04', b'0', 0, '重庆', 2, NULL),
@@ -5420,10 +5420,10 @@ REPLACE INTO `sailmall_group_area` (`id`, `addTime`, `deleteStatus`, `ga_level`,
 	(5, '2014-02-26 11:43:20', b'0', 0, '武汉', 4, NULL),
 	(6, '2014-02-26 11:43:43', b'0', 0, '上海', 5, NULL),
 	(7, '2014-02-26 11:43:52', b'0', 0, '哈尔滨', 6, NULL);
-/*!40000 ALTER TABLE `sailmall_group_area` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_group_area` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_group_class 结构
-CREATE TABLE IF NOT EXISTS `sailmall_group_class` (
+-- 导出  表 SailPlat.tbl_group_class 结构
+CREATE TABLE IF NOT EXISTS `tbl_group_class` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -5434,20 +5434,20 @@ CREATE TABLE IF NOT EXISTS `sailmall_group_class` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`),
   KEY `FKE80BA8071C634840` (`parent_id`),
-  CONSTRAINT `FKE80BA8071C634840` FOREIGN KEY (`parent_id`) REFERENCES `sailmall_group_class` (`id`)
+  CONSTRAINT `FKE80BA8071C634840` FOREIGN KEY (`parent_id`) REFERENCES `tbl_group_class` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_group_class 的数据：~4 rows (大约)
-/*!40000 ALTER TABLE `sailmall_group_class` DISABLE KEYS */;
-REPLACE INTO `sailmall_group_class` (`id`, `addTime`, `deleteStatus`, `gc_level`, `gc_name`, `gc_sequence`, `parent_id`) VALUES
+-- 正在导出表  SailPlat.tbl_group_class 的数据：~4 rows (大约)
+/*!40000 ALTER TABLE `tbl_group_class` DISABLE KEYS */;
+REPLACE INTO `tbl_group_class` (`id`, `addTime`, `deleteStatus`, `gc_level`, `gc_name`, `gc_sequence`, `parent_id`) VALUES
 	(1, '2014-02-26 11:41:17', b'0', 0, '手机数码', 0, NULL),
 	(2, '2014-02-26 11:41:34', b'0', 0, '流行服饰', 1, NULL),
 	(3, '2014-02-26 11:42:06', b'0', 0, '美食天下', 2, NULL),
 	(4, '2014-02-26 11:42:23', b'0', 0, '最新电影', 3, NULL);
-/*!40000 ALTER TABLE `sailmall_group_class` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_group_class` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_group_goods 结构
-CREATE TABLE IF NOT EXISTS `sailmall_group_goods` (
+-- 导出  表 SailPlat.tbl_group_goods 结构
+CREATE TABLE IF NOT EXISTS `tbl_group_goods` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -5479,19 +5479,19 @@ CREATE TABLE IF NOT EXISTS `sailmall_group_goods` (
   KEY `FKE84595E5493829C3` (`group_id`),
   KEY `FKE84595E5E08B86E2` (`gg_goods_id`),
   KEY `FKE84595E513F58A16` (`gg_ga_id`),
-  CONSTRAINT `FKE84595E5108251` FOREIGN KEY (`gg_img_id`) REFERENCES `sailmall_accessory` (`id`),
-  CONSTRAINT `FKE84595E513F58A16` FOREIGN KEY (`gg_ga_id`) REFERENCES `sailmall_group_area` (`id`),
-  CONSTRAINT `FKE84595E5493829C3` FOREIGN KEY (`group_id`) REFERENCES `sailmall_group` (`id`),
-  CONSTRAINT `FKE84595E55D2DC6AF` FOREIGN KEY (`gg_gc_id`) REFERENCES `sailmall_group_class` (`id`),
-  CONSTRAINT `FKE84595E5E08B86E2` FOREIGN KEY (`gg_goods_id`) REFERENCES `sailmall_goods` (`id`)
+  CONSTRAINT `FKE84595E5108251` FOREIGN KEY (`gg_img_id`) REFERENCES `tbl_accessory` (`id`),
+  CONSTRAINT `FKE84595E513F58A16` FOREIGN KEY (`gg_ga_id`) REFERENCES `tbl_group_area` (`id`),
+  CONSTRAINT `FKE84595E5493829C3` FOREIGN KEY (`group_id`) REFERENCES `tbl_group` (`id`),
+  CONSTRAINT `FKE84595E55D2DC6AF` FOREIGN KEY (`gg_gc_id`) REFERENCES `tbl_group_class` (`id`),
+  CONSTRAINT `FKE84595E5E08B86E2` FOREIGN KEY (`gg_goods_id`) REFERENCES `tbl_goods` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_group_goods 的数据：~0 rows (大约)
-/*!40000 ALTER TABLE `sailmall_group_goods` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sailmall_group_goods` ENABLE KEYS */;
+-- 正在导出表  SailPlat.tbl_group_goods 的数据：~0 rows (大约)
+/*!40000 ALTER TABLE `tbl_group_goods` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_group_goods` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_group_price_range 结构
-CREATE TABLE IF NOT EXISTS `sailmall_group_price_range` (
+-- 导出  表 SailPlat.tbl_group_price_range 结构
+CREATE TABLE IF NOT EXISTS `tbl_group_price_range` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -5502,18 +5502,18 @@ CREATE TABLE IF NOT EXISTS `sailmall_group_price_range` (
   UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_group_price_range 的数据：~5 rows (大约)
-/*!40000 ALTER TABLE `sailmall_group_price_range` DISABLE KEYS */;
-REPLACE INTO `sailmall_group_price_range` (`id`, `addTime`, `deleteStatus`, `gpr_begin`, `gpr_end`, `gpr_name`) VALUES
+-- 正在导出表  SailPlat.tbl_group_price_range 的数据：~5 rows (大约)
+/*!40000 ALTER TABLE `tbl_group_price_range` DISABLE KEYS */;
+REPLACE INTO `tbl_group_price_range` (`id`, `addTime`, `deleteStatus`, `gpr_begin`, `gpr_end`, `gpr_name`) VALUES
 	(1, '2014-02-26 11:45:27', b'0', 0, 100, '100元以下'),
 	(2, '2014-02-26 11:45:40', b'0', 101, 500, '101元-500元'),
 	(3, '2014-02-26 11:45:58', b'0', 501, 1000, '501元-1000元'),
 	(4, '2014-02-26 11:46:13', b'0', 1001, 3000, '1001元-3000元'),
 	(5, '2014-02-26 11:46:27', b'0', 3001, 8000, '3001元-8000元');
-/*!40000 ALTER TABLE `sailmall_group_price_range` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_group_price_range` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_homepage 结构
-CREATE TABLE IF NOT EXISTS `sailmall_homepage` (
+-- 导出  表 SailPlat.tbl_homepage 结构
+CREATE TABLE IF NOT EXISTS `tbl_homepage` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -5521,12 +5521,12 @@ CREATE TABLE IF NOT EXISTS `sailmall_homepage` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`),
   KEY `FK578589FFBF621C69` (`owner_id`),
-  CONSTRAINT `FK578589FFBF621C69` FOREIGN KEY (`owner_id`) REFERENCES `sailmall_user` (`id`) ON DELETE CASCADE
+  CONSTRAINT `FK578589FFBF621C69` FOREIGN KEY (`owner_id`) REFERENCES `tbl_user` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=1756 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_homepage 的数据：~15 rows (大约)
-/*!40000 ALTER TABLE `sailmall_homepage` DISABLE KEYS */;
-REPLACE INTO `sailmall_homepage` (`id`, `addTime`, `deleteStatus`, `owner_id`) VALUES
+-- 正在导出表  SailPlat.tbl_homepage 的数据：~15 rows (大约)
+/*!40000 ALTER TABLE `tbl_homepage` DISABLE KEYS */;
+REPLACE INTO `tbl_homepage` (`id`, `addTime`, `deleteStatus`, `owner_id`) VALUES
 	(1, '2014-08-15 11:00:37', b'0', 1),
 	(3, '2014-08-27 09:54:10', b'0', 1),
 	(4, '2014-08-27 09:56:33', b'0', 1),
@@ -5547,10 +5547,10 @@ REPLACE INTO `sailmall_homepage` (`id`, `addTime`, `deleteStatus`, `owner_id`) V
 	(1753, '2018-01-01 13:05:43', b'0', NULL),
 	(1754, '2018-01-01 13:05:44', b'0', NULL),
 	(1755, '2018-01-01 13:05:49', b'0', NULL);
-/*!40000 ALTER TABLE `sailmall_homepage` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_homepage` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_homepage_goodsclass 结构
-CREATE TABLE IF NOT EXISTS `sailmall_homepage_goodsclass` (
+-- 导出  表 SailPlat.tbl_homepage_goodsclass 结构
+CREATE TABLE IF NOT EXISTS `tbl_homepage_goodsclass` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -5560,18 +5560,18 @@ CREATE TABLE IF NOT EXISTS `sailmall_homepage_goodsclass` (
   UNIQUE KEY `id` (`id`),
   KEY `FK415A1E22537B6C51` (`user_id`),
   KEY `FK415A1E226BDDCC57` (`gc_id`),
-  CONSTRAINT `FK415A1E22537B6C51` FOREIGN KEY (`user_id`) REFERENCES `sailmall_user` (`id`),
-  CONSTRAINT `FK415A1E226BDDCC57` FOREIGN KEY (`gc_id`) REFERENCES `sailmall_goodsclass` (`id`)
+  CONSTRAINT `FK415A1E22537B6C51` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`id`),
+  CONSTRAINT `FK415A1E226BDDCC57` FOREIGN KEY (`gc_id`) REFERENCES `tbl_goodsclass` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_homepage_goodsclass 的数据：~0 rows (大约)
-/*!40000 ALTER TABLE `sailmall_homepage_goodsclass` DISABLE KEYS */;
-REPLACE INTO `sailmall_homepage_goodsclass` (`id`, `addTime`, `deleteStatus`, `user_id`, `gc_id`) VALUES
+-- 正在导出表  SailPlat.tbl_homepage_goodsclass 的数据：~0 rows (大约)
+/*!40000 ALTER TABLE `tbl_homepage_goodsclass` DISABLE KEYS */;
+REPLACE INTO `tbl_homepage_goodsclass` (`id`, `addTime`, `deleteStatus`, `user_id`, `gc_id`) VALUES
 	(1, '2014-10-10 16:44:25', b'0', 1, NULL);
-/*!40000 ALTER TABLE `sailmall_homepage_goodsclass` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_homepage_goodsclass` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_homepage_goodsclass_log 结构
-CREATE TABLE IF NOT EXISTS `sailmall_homepage_goodsclass_log` (
+-- 导出  表 SailPlat.tbl_homepage_goodsclass_log 结构
+CREATE TABLE IF NOT EXISTS `tbl_homepage_goodsclass_log` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -5581,16 +5581,16 @@ CREATE TABLE IF NOT EXISTS `sailmall_homepage_goodsclass_log` (
   UNIQUE KEY `id` (`id`),
   KEY `FKAD270FA765403E11` (`homepageGoodsClass_id`),
   KEY `FKAD270FA7729F7B91` (`goodsClass_id`),
-  CONSTRAINT `FKAD270FA765403E11` FOREIGN KEY (`homepageGoodsClass_id`) REFERENCES `sailmall_homepage_goodsclass` (`id`),
-  CONSTRAINT `FKAD270FA7729F7B91` FOREIGN KEY (`goodsClass_id`) REFERENCES `sailmall_goodsclass` (`id`) ON DELETE CASCADE
+  CONSTRAINT `FKAD270FA765403E11` FOREIGN KEY (`homepageGoodsClass_id`) REFERENCES `tbl_homepage_goodsclass` (`id`),
+  CONSTRAINT `FKAD270FA7729F7B91` FOREIGN KEY (`goodsClass_id`) REFERENCES `tbl_goodsclass` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_homepage_goodsclass_log 的数据：~0 rows (大约)
-/*!40000 ALTER TABLE `sailmall_homepage_goodsclass_log` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sailmall_homepage_goodsclass_log` ENABLE KEYS */;
+-- 正在导出表  SailPlat.tbl_homepage_goodsclass_log 的数据：~0 rows (大约)
+/*!40000 ALTER TABLE `tbl_homepage_goodsclass_log` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_homepage_goodsclass_log` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_home_addention 结构
-CREATE TABLE IF NOT EXISTS `sailmall_home_addention` (
+-- 导出  表 SailPlat.tbl_home_addention 结构
+CREATE TABLE IF NOT EXISTS `tbl_home_addention` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -5600,16 +5600,16 @@ CREATE TABLE IF NOT EXISTS `sailmall_home_addention` (
   UNIQUE KEY `id` (`id`),
   KEY `FKD4036D0F78D5D162` (`attentioned_id`),
   KEY `FKD4036D0FF2DAF870` (`attention_homepage_id`),
-  CONSTRAINT `FKD4036D0F78D5D162` FOREIGN KEY (`attentioned_id`) REFERENCES `sailmall_homepage` (`id`),
-  CONSTRAINT `FKD4036D0FF2DAF870` FOREIGN KEY (`attention_homepage_id`) REFERENCES `sailmall_homepage` (`id`)
+  CONSTRAINT `FKD4036D0F78D5D162` FOREIGN KEY (`attentioned_id`) REFERENCES `tbl_homepage` (`id`),
+  CONSTRAINT `FKD4036D0FF2DAF870` FOREIGN KEY (`attention_homepage_id`) REFERENCES `tbl_homepage` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_home_addention 的数据：~0 rows (大约)
-/*!40000 ALTER TABLE `sailmall_home_addention` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sailmall_home_addention` ENABLE KEYS */;
+-- 正在导出表  SailPlat.tbl_home_addention 的数据：~0 rows (大约)
+/*!40000 ALTER TABLE `tbl_home_addention` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_home_addention` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_integrallog 结构
-CREATE TABLE IF NOT EXISTS `sailmall_integrallog` (
+-- 导出  表 SailPlat.tbl_integrallog 结构
+CREATE TABLE IF NOT EXISTS `tbl_integrallog` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -5621,13 +5621,13 @@ CREATE TABLE IF NOT EXISTS `sailmall_integrallog` (
   PRIMARY KEY (`id`),
   KEY `FKEC2A9E67F65B7CBE` (`integral_user_id`),
   KEY `FKEC2A9E67C8F25896` (`operate_user_id`),
-  CONSTRAINT `FKEC2A9E67C8F25896` FOREIGN KEY (`operate_user_id`) REFERENCES `sailmall_user` (`id`),
-  CONSTRAINT `FKEC2A9E67F65B7CBE` FOREIGN KEY (`integral_user_id`) REFERENCES `sailmall_user` (`id`)
+  CONSTRAINT `FKEC2A9E67C8F25896` FOREIGN KEY (`operate_user_id`) REFERENCES `tbl_user` (`id`),
+  CONSTRAINT `FKEC2A9E67F65B7CBE` FOREIGN KEY (`integral_user_id`) REFERENCES `tbl_user` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1835238 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_integrallog 的数据：~190 rows (大约)
-/*!40000 ALTER TABLE `sailmall_integrallog` DISABLE KEYS */;
-REPLACE INTO `sailmall_integrallog` (`id`, `addTime`, `deleteStatus`, `content`, `integral`, `type`, `integral_user_id`, `operate_user_id`) VALUES
+-- 正在导出表  SailPlat.tbl_integrallog 的数据：~190 rows (大约)
+/*!40000 ALTER TABLE `tbl_integrallog` DISABLE KEYS */;
+REPLACE INTO `tbl_integrallog` (`id`, `addTime`, `deleteStatus`, `content`, `integral`, `type`, `integral_user_id`, `operate_user_id`) VALUES
 	(1, '2013-12-31 14:15:04', b'0', '用户2013-12-31 14:15:04登录增加0分', 0, 'login', 32768, NULL),
 	(1705, '2017-11-21 10:14:39', b'0', '用户2017-11-21 10:14:39登录增加0分', 0, 'login', 32795, NULL),
 	(1724, '2017-11-21 13:48:50', b'0', '用户2017-11-21 13:48:50登录增加0分', 0, 'login', 32796, NULL),
@@ -5829,10 +5829,10 @@ REPLACE INTO `sailmall_integrallog` (`id`, `addTime`, `deleteStatus`, `content`,
 	(1835232, '2015-03-02 10:15:36', b'0', '用户2015-03-02 10:15:36登录增加0分', 0, 'login', 32775, NULL),
 	(1835233, '2015-03-02 10:22:09', b'0', '用户2015-03-02 10:22:09登录增加0分', 0, 'login', 32768, NULL),
 	(1835237, '2015-03-03 09:43:45', b'0', '用户2015-03-03 09:43:45登录增加0分', 0, 'login', 1, NULL);
-/*!40000 ALTER TABLE `sailmall_integrallog` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_integrallog` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_integral_goods 结构
-CREATE TABLE IF NOT EXISTS `sailmall_integral_goods` (
+-- 导出  表 SailPlat.tbl_integral_goods 结构
+CREATE TABLE IF NOT EXISTS `tbl_integral_goods` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -5860,12 +5860,12 @@ CREATE TABLE IF NOT EXISTS `sailmall_integral_goods` (
   `ig_goods_img_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FKDCFD0854F326849C` (`ig_goods_img_id`),
-  CONSTRAINT `FKDCFD0854F326849C` FOREIGN KEY (`ig_goods_img_id`) REFERENCES `sailmall_accessory` (`id`)
+  CONSTRAINT `FKDCFD0854F326849C` FOREIGN KEY (`ig_goods_img_id`) REFERENCES `tbl_accessory` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_integral_goods 的数据：~21 rows (大约)
-/*!40000 ALTER TABLE `sailmall_integral_goods` DISABLE KEYS */;
-REPLACE INTO `sailmall_integral_goods` (`id`, `addTime`, `deleteStatus`, `ig_begin_time`, `ig_click_count`, `ig_content`, `ig_end_time`, `ig_exchange_count`, `ig_goods_count`, `ig_goods_integral`, `ig_goods_name`, `ig_goods_price`, `ig_goods_sn`, `ig_goods_tag`, `ig_limit_count`, `ig_limit_type`, `ig_recommend`, `ig_seo_description`, `ig_seo_keywords`, `ig_sequence`, `ig_show`, `ig_time_type`, `ig_transfee`, `ig_transfee_type`, `ig_goods_img_id`) VALUES
+-- 正在导出表  SailPlat.tbl_integral_goods 的数据：~21 rows (大约)
+/*!40000 ALTER TABLE `tbl_integral_goods` DISABLE KEYS */;
+REPLACE INTO `tbl_integral_goods` (`id`, `addTime`, `deleteStatus`, `ig_begin_time`, `ig_click_count`, `ig_content`, `ig_end_time`, `ig_exchange_count`, `ig_goods_count`, `ig_goods_integral`, `ig_goods_name`, `ig_goods_price`, `ig_goods_sn`, `ig_goods_tag`, `ig_limit_count`, `ig_limit_type`, `ig_recommend`, `ig_seo_description`, `ig_seo_keywords`, `ig_sequence`, `ig_show`, `ig_time_type`, `ig_transfee`, `ig_transfee_type`, `ig_goods_img_id`) VALUES
 	(1, '2014-04-22 14:48:34', b'0', NULL, 5, '<h1 align="center">	01_雅马哈NS-9502(6件套)</h1><p align="center">	&nbsp;</p>', NULL, 0, 10, 50000, '01_雅马哈NS-9502(6件套)', 3000.00, 'gift201404221448341', '', 1, b'1', b'1', '', '', 10, b'1', b'0', 0.00, 0, 425992),
 	(2, '2015-02-28 10:04:41', b'0', NULL, 0, '华硕CG8580-C11C精品鼠标', NULL, 0, 50, 990, '华硕CG8580-C11C精品鼠标', 99.00, 'gift201502281004411', '', 1, b'1', b'1', '', '', 1, b'1', b'0', 0.00, 0, 426079),
 	(3, '2015-02-28 10:05:34', b'0', NULL, 1, '魔声录音师耳机', NULL, 0, 30, 1500, '魔声录音师耳机', 168.00, 'gift201502281005341', '', 0, b'0', b'1', '', '', 0, b'1', b'0', 0.00, 0, 426080),
@@ -5887,10 +5887,10 @@ REPLACE INTO `sailmall_integral_goods` (`id`, `addTime`, `deleteStatus`, `ig_beg
 	(19, '2015-02-28 10:32:43', b'0', NULL, 0, '阿迪达斯 adidas 专柜正品中性双肩包', NULL, 0, 260, 4000, '阿迪达斯 adidas 专柜正品中性双肩包', 450.00, 'gift201502281032431', '', 1, b'1', b'0', '', '', -14, b'1', b'0', 0.00, 0, 426096),
 	(20, '2015-02-28 10:35:40', b'0', NULL, 0, '阿迪达斯adidas 2013年新款中性单间斜跨包', NULL, 0, 200, 3000, '阿迪达斯adidas 2013年新款中性单间斜跨包', 350.00, 'gift201502281035401', '', 1, b'1', b'0', '', '', 0, b'1', b'0', 0.00, 0, 426097),
 	(21, '2015-02-28 10:36:40', b'0', NULL, 0, '正品包邮 STAR世达专业比赛高级超纤革5号耐磨足球', NULL, 0, 500, 1000, '正品包邮 STAR世达专业比赛高级超纤革5号耐磨足球', 150.00, 'gift201502281036401', '', 1, b'1', b'0', '', '', 0, b'1', b'0', 0.00, 0, 426098);
-/*!40000 ALTER TABLE `sailmall_integral_goods` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_integral_goods` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_integral_goodscart 结构
-CREATE TABLE IF NOT EXISTS `sailmall_integral_goodscart` (
+-- 导出  表 SailPlat.tbl_integral_goodscart 结构
+CREATE TABLE IF NOT EXISTS `tbl_integral_goodscart` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -5902,16 +5902,16 @@ CREATE TABLE IF NOT EXISTS `sailmall_integral_goodscart` (
   PRIMARY KEY (`id`),
   KEY `FK8C073974B96C5317` (`goods_id`),
   KEY `FK8C07397494B72647` (`order_id`),
-  CONSTRAINT `FK8C07397494B72647` FOREIGN KEY (`order_id`) REFERENCES `sailmall_integral_goodsorder` (`id`),
-  CONSTRAINT `FK8C073974B96C5317` FOREIGN KEY (`goods_id`) REFERENCES `sailmall_integral_goods` (`id`)
+  CONSTRAINT `FK8C07397494B72647` FOREIGN KEY (`order_id`) REFERENCES `tbl_integral_goodsorder` (`id`),
+  CONSTRAINT `FK8C073974B96C5317` FOREIGN KEY (`goods_id`) REFERENCES `tbl_integral_goods` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_integral_goodscart 的数据：~0 rows (大约)
-/*!40000 ALTER TABLE `sailmall_integral_goodscart` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sailmall_integral_goodscart` ENABLE KEYS */;
+-- 正在导出表  SailPlat.tbl_integral_goodscart 的数据：~0 rows (大约)
+/*!40000 ALTER TABLE `tbl_integral_goodscart` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_integral_goodscart` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_integral_goodsorder 结构
-CREATE TABLE IF NOT EXISTS `sailmall_integral_goodsorder` (
+-- 导出  表 SailPlat.tbl_integral_goodsorder 结构
+CREATE TABLE IF NOT EXISTS `tbl_integral_goodsorder` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -5931,16 +5931,16 @@ CREATE TABLE IF NOT EXISTS `sailmall_integral_goodsorder` (
   PRIMARY KEY (`id`),
   KEY `FKF590937A26B00318` (`igo_addr_id`),
   KEY `FKF590937A85110923` (`igo_user_id`),
-  CONSTRAINT `FKF590937A26B00318` FOREIGN KEY (`igo_addr_id`) REFERENCES `sailmall_address` (`id`),
-  CONSTRAINT `FKF590937A85110923` FOREIGN KEY (`igo_user_id`) REFERENCES `sailmall_user` (`id`)
+  CONSTRAINT `FKF590937A26B00318` FOREIGN KEY (`igo_addr_id`) REFERENCES `tbl_address` (`id`),
+  CONSTRAINT `FKF590937A85110923` FOREIGN KEY (`igo_user_id`) REFERENCES `tbl_user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_integral_goodsorder 的数据：~0 rows (大约)
-/*!40000 ALTER TABLE `sailmall_integral_goodsorder` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sailmall_integral_goodsorder` ENABLE KEYS */;
+-- 正在导出表  SailPlat.tbl_integral_goodsorder 的数据：~0 rows (大约)
+/*!40000 ALTER TABLE `tbl_integral_goodsorder` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_integral_goodsorder` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_message 结构
-CREATE TABLE IF NOT EXISTS `sailmall_message` (
+-- 导出  表 SailPlat.tbl_message 结构
+CREATE TABLE IF NOT EXISTS `tbl_message` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -5956,14 +5956,14 @@ CREATE TABLE IF NOT EXISTS `sailmall_message` (
   KEY `FK86FF3FD68D202D76` (`toUser_id`),
   KEY `FK86FF3FD6323CF700` (`parent_id`),
   KEY `FK86FF3FD6F3DB4167` (`fromUser_id`),
-  CONSTRAINT `FK86FF3FD6323CF700` FOREIGN KEY (`parent_id`) REFERENCES `sailmall_message` (`id`),
-  CONSTRAINT `FK86FF3FD68D202D76` FOREIGN KEY (`toUser_id`) REFERENCES `sailmall_user` (`id`),
-  CONSTRAINT `FK86FF3FD6F3DB4167` FOREIGN KEY (`fromUser_id`) REFERENCES `sailmall_user` (`id`)
+  CONSTRAINT `FK86FF3FD6323CF700` FOREIGN KEY (`parent_id`) REFERENCES `tbl_message` (`id`),
+  CONSTRAINT `FK86FF3FD68D202D76` FOREIGN KEY (`toUser_id`) REFERENCES `tbl_user` (`id`),
+  CONSTRAINT `FK86FF3FD6F3DB4167` FOREIGN KEY (`fromUser_id`) REFERENCES `tbl_user` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1505 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_message 的数据：~283 rows (大约)
-/*!40000 ALTER TABLE `sailmall_message` DISABLE KEYS */;
-REPLACE INTO `sailmall_message` (`id`, `addTime`, `deleteStatus`, `content`, `status`, `title`, `type`, `fromUser_id`, `parent_id`, `toUser_id`, `reply_status`) VALUES
+-- 正在导出表  SailPlat.tbl_message 的数据：~283 rows (大约)
+/*!40000 ALTER TABLE `tbl_message` DISABLE KEYS */;
+REPLACE INTO `tbl_message` (`id`, `addTime`, `deleteStatus`, `content`, `status`, `title`, `type`, `fromUser_id`, `parent_id`, `toUser_id`, `reply_status`) VALUES
 	(2, '2014-05-06 18:13:38', b'0', '<p>\r\n	,您好!\r\n</p>\r\n<p>\r\n	&nbsp;&nbsp; 您的商品被管理员删除！原因是:\r\n</p>', 0, '商品被管理员删除时的通知', 0, 1, NULL, NULL, 0),
 	(3, '2015-03-01 17:11:46', b'0', '123', 0, NULL, 1, 32775, NULL, 32768, 0),
 	(1219, '2017-09-28 09:24:20', b'0', '<p>\r\n	,您好!\r\n</p>\r\n<p>\r\n	&nbsp;&nbsp; 您的商品被管理员删除！原因是:\r\n</p>', 0, '商品被管理员删除时的通知', 0, NULL, NULL, NULL, 0),
@@ -6247,10 +6247,10 @@ REPLACE INTO `sailmall_message` (`id`, `addTime`, `deleteStatus`, `content`, `st
 	(1502, '2017-09-28 18:49:53', b'0', '<p>\r\n	,您好!\r\n</p>\r\n<p>\r\n	&nbsp;&nbsp; 您的商品被管理员删除！原因是:商城存在违规\r\n</p>', 0, '商品被管理员删除时的通知', 0, NULL, NULL, NULL, 0),
 	(1503, '2017-09-28 18:50:21', b'0', '<p>\r\n	,您好!\r\n</p>\r\n<p>\r\n	&nbsp;&nbsp; 您的商品被管理员删除！原因是:商城存在违规\r\n</p>', 0, '商品被管理员删除时的通知', 0, NULL, NULL, NULL, 0),
 	(1504, '2017-09-28 18:54:00', b'0', '<p>\r\n	,您好!\r\n</p>\r\n<p>\r\n	&nbsp;&nbsp; 您的商品被管理员删除！原因是:商城存在违规\r\n</p>', 0, '商品被管理员删除时的通知', 0, NULL, NULL, NULL, 0);
-/*!40000 ALTER TABLE `sailmall_message` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_message` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_mobileverifycode 结构
-CREATE TABLE IF NOT EXISTS `sailmall_mobileverifycode` (
+-- 导出  表 SailPlat.tbl_mobileverifycode 结构
+CREATE TABLE IF NOT EXISTS `tbl_mobileverifycode` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -6259,12 +6259,12 @@ CREATE TABLE IF NOT EXISTS `sailmall_mobileverifycode` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_mobileverifycode 的数据：~0 rows (大约)
-/*!40000 ALTER TABLE `sailmall_mobileverifycode` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sailmall_mobileverifycode` ENABLE KEYS */;
+-- 正在导出表  SailPlat.tbl_mobileverifycode 的数据：~0 rows (大约)
+/*!40000 ALTER TABLE `tbl_mobileverifycode` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_mobileverifycode` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_navigation 结构
-CREATE TABLE IF NOT EXISTS `sailmall_navigation` (
+-- 导出  表 SailPlat.tbl_navigation 结构
+CREATE TABLE IF NOT EXISTS `tbl_navigation` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -6281,9 +6281,9 @@ CREATE TABLE IF NOT EXISTS `sailmall_navigation` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=229383 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_navigation 的数据：~15 rows (大约)
-/*!40000 ALTER TABLE `sailmall_navigation` DISABLE KEYS */;
-REPLACE INTO `sailmall_navigation` (`id`, `addTime`, `deleteStatus`, `display`, `location`, `new_win`, `sequence`, `sysNav`, `title`, `type`, `type_id`, `url`, `original_url`) VALUES
+-- 正在导出表  SailPlat.tbl_navigation 的数据：~15 rows (大约)
+/*!40000 ALTER TABLE `tbl_navigation` DISABLE KEYS */;
+REPLACE INTO `tbl_navigation` (`id`, `addTime`, `deleteStatus`, `display`, `location`, `new_win`, `sequence`, `sysNav`, `title`, `type`, `type_id`, `url`, `original_url`) VALUES
 	(2, '2013-12-30 19:08:13', b'0', b'1', 0, 1, 2, b'1', '积分商城', 'diy', NULL, 'integral.htm', 'integral.htm'),
 	(32768, '2014-01-06 11:16:13', b'0', b'1', 0, 1, 4, b'0', '国庆大酬宾', 'activity', 1, 'activity_1.htm', 'activity.htm?id=1'),
 	(65536, '2014-02-21 18:14:23', b'0', b'1', 0, 1, 3, b'1', '团购', 'diy', NULL, 'group.htm', 'group.htm'),
@@ -6292,17 +6292,17 @@ REPLACE INTO `sailmall_navigation` (`id`, `addTime`, `deleteStatus`, `display`, 
 	(196608, '2013-12-18 14:37:16', b'0', b'1', 1, 1, 1, b'0', '招聘英才', 'diy', NULL, 'article_join.htm', 'article_join.htm'),
 	(196609, '2013-12-18 14:37:43', b'0', b'1', 1, 1, 2, b'0', '广告合作', 'diy', NULL, 'article_adver.htm', 'article_adver.htm'),
 	(196610, '2013-12-18 14:38:33', b'0', b'1', 1, 1, 3, b'0', '联系我们', 'diy', NULL, 'article_contact.htm', 'article_contact.htm'),
-	(196611, '2013-12-18 14:39:42', b'0', b'1', 1, 1, 4, b'0', '关于sailmall', 'diy', NULL, 'article_about.htm', 'article_about.htm'),
+	(196611, '2013-12-18 14:39:42', b'0', b'1', 1, 1, 4, b'0', '关于SailPlat', 'diy', NULL, 'article_about.htm', 'article_about.htm'),
 	(229376, '2013-12-18 14:42:24', b'0', b'1', 1, 0, 0, b'0', '首页', 'diy', NULL, 'index.htm', 'index.htm'),
 	(229377, '2014-09-25 18:40:03', b'0', b'1', 0, 1, 5, b'1', '天天特价', 'diy', NULL, 'bargain.htm', 'bargain.htm'),
 	(229379, '2014-09-27 10:50:01', b'0', b'1', 0, 1, 6, b'1', '买就送', 'diy', NULL, 'delivery.htm', 'delivery.htm'),
 	(229380, '2014-10-09 14:31:44', b'0', b'1', 0, 1, 7, b'0', '闲置商品', 'diy', NULL, 'sparegoods.htm', 'sparegoods.htm'),
 	(229381, '2014-10-14 17:33:52', b'0', b'1', 0, 1, 0, b'0', '首页', 'sparegoods', NULL, 'index.htm', 'index.htm'),
 	(229382, '2014-10-14 17:34:34', b'0', b'1', 0, 1, 0, b'0', '闲置数码', 'sparegoods', NULL, 'sparegoods_search.htm?cid=1', 'sparegoods_search.htm?cid=1');
-/*!40000 ALTER TABLE `sailmall_navigation` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_navigation` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_orderform 结构
-CREATE TABLE IF NOT EXISTS `sailmall_orderform` (
+-- 导出  表 SailPlat.tbl_orderform 结构
+CREATE TABLE IF NOT EXISTS `tbl_orderform` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -6345,24 +6345,24 @@ CREATE TABLE IF NOT EXISTS `sailmall_orderform` (
   KEY `FK2B4C5212601E900` (`ec_id`),
   KEY `FK2B4C521800F0EBF` (`ci_id`),
   KEY `FK2B4C5216535E531` (`return_ec_id`),
-  CONSTRAINT `FK2B4C5212601E900` FOREIGN KEY (`ec_id`) REFERENCES `sailmall_express_company` (`id`),
-  CONSTRAINT `FK2B4C521537B6C51` FOREIGN KEY (`user_id`) REFERENCES `sailmall_user` (`id`),
-  CONSTRAINT `FK2B4C5216535E531` FOREIGN KEY (`return_ec_id`) REFERENCES `sailmall_express_company` (`id`),
-  CONSTRAINT `FK2B4C521800F0EBF` FOREIGN KEY (`ci_id`) REFERENCES `sailmall_coupon_info` (`id`),
-  CONSTRAINT `FK2B4C521920D7683` FOREIGN KEY (`store_id`) REFERENCES `sailmall_store` (`id`),
-  CONSTRAINT `FK2B4C521AF2A3223` FOREIGN KEY (`payment_id`) REFERENCES `sailmall_payment` (`id`),
-  CONSTRAINT `FK2B4C521F51A6646` FOREIGN KEY (`addr_id`) REFERENCES `sailmall_address` (`id`)
+  CONSTRAINT `FK2B4C5212601E900` FOREIGN KEY (`ec_id`) REFERENCES `tbl_express_company` (`id`),
+  CONSTRAINT `FK2B4C521537B6C51` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`id`),
+  CONSTRAINT `FK2B4C5216535E531` FOREIGN KEY (`return_ec_id`) REFERENCES `tbl_express_company` (`id`),
+  CONSTRAINT `FK2B4C521800F0EBF` FOREIGN KEY (`ci_id`) REFERENCES `tbl_coupon_info` (`id`),
+  CONSTRAINT `FK2B4C521920D7683` FOREIGN KEY (`store_id`) REFERENCES `tbl_store` (`id`),
+  CONSTRAINT `FK2B4C521AF2A3223` FOREIGN KEY (`payment_id`) REFERENCES `tbl_payment` (`id`),
+  CONSTRAINT `FK2B4C521F51A6646` FOREIGN KEY (`addr_id`) REFERENCES `tbl_address` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=229437 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_orderform 的数据：~2 rows (大约)
-/*!40000 ALTER TABLE `sailmall_orderform` DISABLE KEYS */;
-REPLACE INTO `sailmall_orderform` (`id`, `addTime`, `deleteStatus`, `finishTime`, `goods_amount`, `invoice`, `invoiceType`, `msg`, `order_id`, `order_status`, `payTime`, `pay_msg`, `refund`, `refund_type`, `shipCode`, `shipTime`, `ship_price`, `totalPrice`, `addr_id`, `payment_id`, `store_id`, `user_id`, `auto_confirm_email`, `auto_confirm_sms`, `transport`, `out_order_id`, `ec_id`, `ci_id`, `order_seller_intro`, `return_shipCode`, `return_ec_id`, `return_content`, `return_shipTime`, `order_type`) VALUES
+-- 正在导出表  SailPlat.tbl_orderform 的数据：~2 rows (大约)
+/*!40000 ALTER TABLE `tbl_orderform` DISABLE KEYS */;
+REPLACE INTO `tbl_orderform` (`id`, `addTime`, `deleteStatus`, `finishTime`, `goods_amount`, `invoice`, `invoiceType`, `msg`, `order_id`, `order_status`, `payTime`, `pay_msg`, `refund`, `refund_type`, `shipCode`, `shipTime`, `ship_price`, `totalPrice`, `addr_id`, `payment_id`, `store_id`, `user_id`, `auto_confirm_email`, `auto_confirm_sms`, `transport`, `out_order_id`, `ec_id`, `ci_id`, `order_seller_intro`, `return_shipCode`, `return_ec_id`, `return_content`, `return_shipTime`, `order_type`) VALUES
 	(1513, '2017-09-29 17:26:20', b'0', NULL, 0.01, '北京寓道科技有限公司', 1, '', '3279620170929172620', 10, NULL, NULL, NULL, NULL, NULL, NULL, 0.00, 0.01, 1512, 1168, 1207, 32796, b'0', b'0', '平邮', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'web'),
 	(1729, '2017-11-21 14:07:17', b'0', NULL, 0.01, NULL, 0, '', '3279620171121140717', 10, NULL, NULL, NULL, NULL, NULL, NULL, 0.00, 0.01, 1608, 1170, 1207, 32796, b'0', b'0', '平邮', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'web');
-/*!40000 ALTER TABLE `sailmall_orderform` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_orderform` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_order_log 结构
-CREATE TABLE IF NOT EXISTS `sailmall_order_log` (
+-- 导出  表 SailPlat.tbl_order_log 结构
+CREATE TABLE IF NOT EXISTS `tbl_order_log` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -6373,18 +6373,18 @@ CREATE TABLE IF NOT EXISTS `sailmall_order_log` (
   PRIMARY KEY (`id`),
   KEY `FK2B18AE243E73256` (`log_user_id`),
   KEY `FK2B18AE29F21119E` (`of_id`),
-  CONSTRAINT `FK2B18AE243E73256` FOREIGN KEY (`log_user_id`) REFERENCES `sailmall_user` (`id`),
-  CONSTRAINT `FK2B18AE29F21119E` FOREIGN KEY (`of_id`) REFERENCES `sailmall_orderform` (`id`)
+  CONSTRAINT `FK2B18AE243E73256` FOREIGN KEY (`log_user_id`) REFERENCES `tbl_user` (`id`),
+  CONSTRAINT `FK2B18AE29F21119E` FOREIGN KEY (`of_id`) REFERENCES `tbl_orderform` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1731 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_order_log 的数据：~0 rows (大约)
-/*!40000 ALTER TABLE `sailmall_order_log` DISABLE KEYS */;
-REPLACE INTO `sailmall_order_log` (`id`, `addTime`, `deleteStatus`, `log_info`, `state_info`, `log_user_id`, `of_id`) VALUES
+-- 正在导出表  SailPlat.tbl_order_log 的数据：~0 rows (大约)
+/*!40000 ALTER TABLE `tbl_order_log` DISABLE KEYS */;
+REPLACE INTO `tbl_order_log` (`id`, `addTime`, `deleteStatus`, `log_info`, `state_info`, `log_user_id`, `of_id`) VALUES
 	(1730, '2017-11-21 14:07:35', b'0', '提交订单', NULL, 32796, 1729);
-/*!40000 ALTER TABLE `sailmall_order_log` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_order_log` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_partner 结构
-CREATE TABLE IF NOT EXISTS `sailmall_partner` (
+-- 导出  表 SailPlat.tbl_partner 结构
+CREATE TABLE IF NOT EXISTS `tbl_partner` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -6394,15 +6394,15 @@ CREATE TABLE IF NOT EXISTS `sailmall_partner` (
   `image_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK1ED11C97FEE5357A` (`image_id`),
-  CONSTRAINT `FK1ED11C97FEE5357A` FOREIGN KEY (`image_id`) REFERENCES `sailmall_accessory` (`id`)
+  CONSTRAINT `FK1ED11C97FEE5357A` FOREIGN KEY (`image_id`) REFERENCES `tbl_accessory` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_partner 的数据：~0 rows (大约)
-/*!40000 ALTER TABLE `sailmall_partner` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sailmall_partner` ENABLE KEYS */;
+-- 正在导出表  SailPlat.tbl_partner 的数据：~0 rows (大约)
+/*!40000 ALTER TABLE `tbl_partner` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_partner` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_payment 结构
-CREATE TABLE IF NOT EXISTS `sailmall_payment` (
+-- 导出  表 SailPlat.tbl_payment 结构
+CREATE TABLE IF NOT EXISTS `tbl_payment` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -6441,27 +6441,27 @@ CREATE TABLE IF NOT EXISTS `sailmall_payment` (
   `weixin_paySignKey` longtext DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK1F3071D5920D7683` (`store_id`),
-  CONSTRAINT `FK1F3071D5920D7683` FOREIGN KEY (`store_id`) REFERENCES `sailmall_store` (`id`)
+  CONSTRAINT `FK1F3071D5920D7683` FOREIGN KEY (`store_id`) REFERENCES `tbl_store` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1171 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_payment 的数据：~11 rows (大约)
-/*!40000 ALTER TABLE `sailmall_payment` DISABLE KEYS */;
-REPLACE INTO `sailmall_payment` (`id`, `addTime`, `deleteStatus`, `chinabank_account`, `chinabank_key`, `content`, `install`, `interfaceType`, `mark`, `merchantAcctId`, `name`, `partner`, `pid`, `rmbKey`, `safeKey`, `seller_email`, `spname`, `tenpay_key`, `tenpay_partner`, `trade_mode`, `type`, `store_id`, `alipay_divide_rate`, `alipay_rate`, `balance_divide_rate`, `currency_code`, `paypal_userId`, `poundage`, `lzbank_key`, `lzbank_partner`, `lzbank_trade_mode`, `weixin_appId`, `weixin_appSecret`, `weixin_partnerId`, `weixin_partnerKey`, `weixin_paySignKey`) VALUES
-	(1, '2014-01-02 14:30:41', b'0', NULL, NULL, '', b'1', 0, 'alipay', NULL, NULL, '2088111998914580', NULL, NULL, '1kwnjaqfo9ssv663z4e8rti7w9d4bycr', 'admin@sailmall.com', NULL, NULL, NULL, 0, 'user', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+-- 正在导出表  SailPlat.tbl_payment 的数据：~11 rows (大约)
+/*!40000 ALTER TABLE `tbl_payment` DISABLE KEYS */;
+REPLACE INTO `tbl_payment` (`id`, `addTime`, `deleteStatus`, `chinabank_account`, `chinabank_key`, `content`, `install`, `interfaceType`, `mark`, `merchantAcctId`, `name`, `partner`, `pid`, `rmbKey`, `safeKey`, `seller_email`, `spname`, `tenpay_key`, `tenpay_partner`, `trade_mode`, `type`, `store_id`, `alipay_divide_rate`, `alipay_rate`, `balance_divide_rate`, `currency_code`, `paypal_userId`, `poundage`, `lzbank_key`, `lzbank_partner`, `lzbank_trade_mode`, `weixin_appId`, `weixin_appSecret`, `weixin_partnerId`, `weixin_partnerKey`, `weixin_paySignKey`) VALUES
+	(1, '2014-01-02 14:30:41', b'0', NULL, NULL, '', b'1', 0, 'alipay', NULL, NULL, '2088111998914580', NULL, NULL, '1kwnjaqfo9ssv663z4e8rti7w9d4bycr', 'admin@SailPlat.com', NULL, NULL, NULL, 0, 'user', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 	(2, '2014-01-02 14:30:53', b'0', NULL, NULL, '', b'1', 0, 'outline', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 'user', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 	(3, '2014-03-15 17:12:11', b'0', NULL, NULL, '', b'1', 0, 'balance', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 'user', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 	(6, '2014-09-27 17:33:33', b'0', NULL, NULL, NULL, b'1', 0, 'outline', NULL, '线下支付', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 'admin', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 	(9, '2014-10-31 12:33:04', b'0', NULL, NULL, '', b'1', 0, 'paypal', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 'user', 1, NULL, NULL, NULL, 'USD', 'erikchang@163.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 	(11, '2014-11-30 18:18:04', b'0', NULL, NULL, NULL, b'1', 0, 'alipay_wap', NULL, '支付宝手机网页支付', '', NULL, NULL, '', '', NULL, NULL, NULL, 0, 'admin', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-	(12, '2014-12-02 12:16:30', b'0', NULL, NULL, '', b'1', 0, 'alipay_wap', NULL, NULL, '2088111998914580', NULL, NULL, '1kwnjaqfo9ssv663z4e8rti7w9d4bycr', 'admin@sailmall.com', NULL, NULL, NULL, 0, 'user', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+	(12, '2014-12-02 12:16:30', b'0', NULL, NULL, '', b'1', 0, 'alipay_wap', NULL, NULL, '2088111998914580', NULL, NULL, '1kwnjaqfo9ssv663z4e8rti7w9d4bycr', 'admin@SailPlat.com', NULL, NULL, NULL, 0, 'user', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 	(13, '2015-01-15 11:45:36', b'0', NULL, NULL, NULL, b'1', 0, 'weixin', NULL, '微信支付', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 'admin', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'wxf8b4f85f3a794e77', '4333d426b8d01a3fe64d53f36892df', '1900000109', '8934e7d15453e97507ef794cf7b0519d', '2Wozy2aksie1puXUBpWD8oZxiD1DfQuEaiC7KcRATv1Ino3mdop\r\nKaPGQQ7TtkNySuAmCaDCrw4xhPY5qKTBl7Fzm0RgR3c0WaVY\r\nIXZARsxzHV2x7iwPPzOz94dnwPWSn'),
 	(1168, '2017-09-26 12:38:23', b'0', NULL, NULL, NULL, b'1', 0, 'alipay', NULL, '支付宝', '2088521376004525', NULL, NULL, 'bh8qgv0vwg95y9wibeyyifik4y6einl6', 'lt@yudorm.com', NULL, NULL, NULL, 0, 'admin', NULL, 0.10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 	(1169, '2017-09-26 12:38:27', b'0', NULL, NULL, NULL, b'1', 0, 'balance', NULL, '预存款支付', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 'admin', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 	(1170, '2017-09-26 12:38:42', b'0', NULL, NULL, NULL, b'1', 0, 'alipay_mobile', NULL, '支付宝手机网页支付', '2088521376004525', NULL, NULL, 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDQ8lbRr5ViMD8sj4l7SfWBjiOfKdd6RjOQpnNkT8UJ+hMuK2C3QF0hkPV5iLdnJXRx6sO7FCWfrHR7aFd/a7PVEQmalnuEfcSzSq2PXg2QdSTQajFTUFY1ECxpeLkgS0Nf8h/0YMLuQ9KPngL0UxvbVflWYAfYq7jZaU/cqmSgAQIDAQAB', 'lt@yudorm.com', NULL, NULL, NULL, 0, 'admin', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-/*!40000 ALTER TABLE `sailmall_payment` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_payment` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_predeposit 结构
-CREATE TABLE IF NOT EXISTS `sailmall_predeposit` (
+-- 导出  表 SailPlat.tbl_predeposit 结构
+CREATE TABLE IF NOT EXISTS `tbl_predeposit` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -6480,16 +6480,16 @@ CREATE TABLE IF NOT EXISTS `sailmall_predeposit` (
   PRIMARY KEY (`id`),
   KEY `FK6586306CB8A08C38` (`pd_admin_id`),
   KEY `FK6586306CAAE7ED06` (`pd_user_id`),
-  CONSTRAINT `FK6586306CAAE7ED06` FOREIGN KEY (`pd_user_id`) REFERENCES `sailmall_user` (`id`),
-  CONSTRAINT `FK6586306CB8A08C38` FOREIGN KEY (`pd_admin_id`) REFERENCES `sailmall_user` (`id`)
+  CONSTRAINT `FK6586306CAAE7ED06` FOREIGN KEY (`pd_user_id`) REFERENCES `tbl_user` (`id`),
+  CONSTRAINT `FK6586306CB8A08C38` FOREIGN KEY (`pd_admin_id`) REFERENCES `tbl_user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_predeposit 的数据：~0 rows (大约)
-/*!40000 ALTER TABLE `sailmall_predeposit` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sailmall_predeposit` ENABLE KEYS */;
+-- 正在导出表  SailPlat.tbl_predeposit 的数据：~0 rows (大约)
+/*!40000 ALTER TABLE `tbl_predeposit` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_predeposit` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_predeposit_cash 结构
-CREATE TABLE IF NOT EXISTS `sailmall_predeposit_cash` (
+-- 导出  表 SailPlat.tbl_predeposit_cash 结构
+CREATE TABLE IF NOT EXISTS `tbl_predeposit_cash` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -6508,16 +6508,16 @@ CREATE TABLE IF NOT EXISTS `sailmall_predeposit_cash` (
   PRIMARY KEY (`id`),
   KEY `FKC48C67263D30AB45` (`cash_user_id`),
   KEY `FKC48C67266F6F95D9` (`cash_admin_id`),
-  CONSTRAINT `FKC48C67263D30AB45` FOREIGN KEY (`cash_user_id`) REFERENCES `sailmall_user` (`id`),
-  CONSTRAINT `FKC48C67266F6F95D9` FOREIGN KEY (`cash_admin_id`) REFERENCES `sailmall_user` (`id`)
+  CONSTRAINT `FKC48C67263D30AB45` FOREIGN KEY (`cash_user_id`) REFERENCES `tbl_user` (`id`),
+  CONSTRAINT `FKC48C67266F6F95D9` FOREIGN KEY (`cash_admin_id`) REFERENCES `tbl_user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_predeposit_cash 的数据：~0 rows (大约)
-/*!40000 ALTER TABLE `sailmall_predeposit_cash` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sailmall_predeposit_cash` ENABLE KEYS */;
+-- 正在导出表  SailPlat.tbl_predeposit_cash 的数据：~0 rows (大约)
+/*!40000 ALTER TABLE `tbl_predeposit_cash` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_predeposit_cash` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_predeposit_log 结构
-CREATE TABLE IF NOT EXISTS `sailmall_predeposit_log` (
+-- 导出  表 SailPlat.tbl_predeposit_log 结构
+CREATE TABLE IF NOT EXISTS `tbl_predeposit_log` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -6532,14 +6532,14 @@ CREATE TABLE IF NOT EXISTS `sailmall_predeposit_log` (
   KEY `FKDD0C74D11B0A508B` (`pd_log_user_id`),
   KEY `FKDD0C74D1321DC511` (`predeposit_id`),
   KEY `FKDD0C74D14CCA9953` (`pd_log_admin_id`),
-  CONSTRAINT `FKDD0C74D11B0A508B` FOREIGN KEY (`pd_log_user_id`) REFERENCES `sailmall_user` (`id`),
-  CONSTRAINT `FKDD0C74D1321DC511` FOREIGN KEY (`predeposit_id`) REFERENCES `sailmall_predeposit` (`id`),
-  CONSTRAINT `FKDD0C74D14CCA9953` FOREIGN KEY (`pd_log_admin_id`) REFERENCES `sailmall_user` (`id`)
+  CONSTRAINT `FKDD0C74D11B0A508B` FOREIGN KEY (`pd_log_user_id`) REFERENCES `tbl_user` (`id`),
+  CONSTRAINT `FKDD0C74D1321DC511` FOREIGN KEY (`predeposit_id`) REFERENCES `tbl_predeposit` (`id`),
+  CONSTRAINT `FKDD0C74D14CCA9953` FOREIGN KEY (`pd_log_admin_id`) REFERENCES `tbl_user` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1157 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_predeposit_log 的数据：~193 rows (大约)
-/*!40000 ALTER TABLE `sailmall_predeposit_log` DISABLE KEYS */;
-REPLACE INTO `sailmall_predeposit_log` (`id`, `addTime`, `deleteStatus`, `pd_log_amount`, `pd_log_info`, `pd_op_type`, `pd_type`, `pd_log_admin_id`, `pd_log_user_id`, `predeposit_id`) VALUES
+-- 正在导出表  SailPlat.tbl_predeposit_log 的数据：~193 rows (大约)
+/*!40000 ALTER TABLE `tbl_predeposit_log` DISABLE KEYS */;
+REPLACE INTO `tbl_predeposit_log` (`id`, `addTime`, `deleteStatus`, `pd_log_amount`, `pd_log_info`, `pd_op_type`, `pd_type`, `pd_log_admin_id`, `pd_log_user_id`, `predeposit_id`) VALUES
 	(1, '2014-03-15 17:08:11', b'0', 10000.00, '', '手动修改', '可用预存款', 1, 1, NULL),
 	(2, '2014-03-15 17:14:36', b'0', -190.00, '订单120140315170930购物减少可用预存款', '消费', '可用预存款', NULL, 1, NULL),
 	(3, '2014-03-15 17:17:46', b'0', -190.00, '订单120140315171723购物减少可用预存款', '消费', '可用预存款', NULL, 1, NULL),
@@ -6733,10 +6733,10 @@ REPLACE INTO `sailmall_predeposit_log` (`id`, `addTime`, `deleteStatus`, `pd_log
 	(1144, '2017-09-25 18:30:00', b'0', 190.00, '自动确认收货增加预存款,订单号120140315171723', '增加', '可用预存款', NULL, 32768, NULL),
 	(1154, '2017-09-25 19:00:00', b'0', 190.00, '自动确认收货增加预存款,订单号120140315170930', '增加', '可用预存款', NULL, 32768, NULL),
 	(1156, '2017-09-25 19:00:00', b'0', 190.00, '自动确认收货增加预存款,订单号120140315171723', '增加', '可用预存款', NULL, 32768, NULL);
-/*!40000 ALTER TABLE `sailmall_predeposit_log` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_predeposit_log` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_refund_log 结构
-CREATE TABLE IF NOT EXISTS `sailmall_refund_log` (
+-- 导出  表 SailPlat.tbl_refund_log 结构
+CREATE TABLE IF NOT EXISTS `tbl_refund_log` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -6749,16 +6749,16 @@ CREATE TABLE IF NOT EXISTS `sailmall_refund_log` (
   PRIMARY KEY (`id`),
   KEY `FKC075AFCE8E17FA8A` (`refund_user_id`),
   KEY `FKC075AFCE9F21119E` (`of_id`),
-  CONSTRAINT `FKC075AFCE8E17FA8A` FOREIGN KEY (`refund_user_id`) REFERENCES `sailmall_user` (`id`),
-  CONSTRAINT `FKC075AFCE9F21119E` FOREIGN KEY (`of_id`) REFERENCES `sailmall_orderform` (`id`)
+  CONSTRAINT `FKC075AFCE8E17FA8A` FOREIGN KEY (`refund_user_id`) REFERENCES `tbl_user` (`id`),
+  CONSTRAINT `FKC075AFCE9F21119E` FOREIGN KEY (`of_id`) REFERENCES `tbl_orderform` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_refund_log 的数据：~0 rows (大约)
-/*!40000 ALTER TABLE `sailmall_refund_log` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sailmall_refund_log` ENABLE KEYS */;
+-- 正在导出表  SailPlat.tbl_refund_log 的数据：~0 rows (大约)
+/*!40000 ALTER TABLE `tbl_refund_log` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_refund_log` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_report 结构
-CREATE TABLE IF NOT EXISTS `sailmall_report` (
+-- 导出  表 SailPlat.tbl_report 结构
+CREATE TABLE IF NOT EXISTS `tbl_report` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -6780,20 +6780,20 @@ CREATE TABLE IF NOT EXISTS `sailmall_report` (
   KEY `FKEBD95F85537B6C51` (`user_id`),
   KEY `FKEBD95F85EBD99FA3` (`acc3_id`),
   KEY `FKEBD95F85EBD8B6E5` (`acc1_id`),
-  CONSTRAINT `FKEBD95F85537B6C51` FOREIGN KEY (`user_id`) REFERENCES `sailmall_user` (`id`),
-  CONSTRAINT `FKEBD95F85A995E663` FOREIGN KEY (`goods_id`) REFERENCES `sailmall_goods` (`id`),
-  CONSTRAINT `FKEBD95F85C84755CF` FOREIGN KEY (`subject_id`) REFERENCES `sailmall_report_subject` (`id`),
-  CONSTRAINT `FKEBD95F85EBD8B6E5` FOREIGN KEY (`acc1_id`) REFERENCES `sailmall_accessory` (`id`),
-  CONSTRAINT `FKEBD95F85EBD92B44` FOREIGN KEY (`acc2_id`) REFERENCES `sailmall_accessory` (`id`),
-  CONSTRAINT `FKEBD95F85EBD99FA3` FOREIGN KEY (`acc3_id`) REFERENCES `sailmall_accessory` (`id`)
+  CONSTRAINT `FKEBD95F85537B6C51` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`id`),
+  CONSTRAINT `FKEBD95F85A995E663` FOREIGN KEY (`goods_id`) REFERENCES `tbl_goods` (`id`),
+  CONSTRAINT `FKEBD95F85C84755CF` FOREIGN KEY (`subject_id`) REFERENCES `tbl_report_subject` (`id`),
+  CONSTRAINT `FKEBD95F85EBD8B6E5` FOREIGN KEY (`acc1_id`) REFERENCES `tbl_accessory` (`id`),
+  CONSTRAINT `FKEBD95F85EBD92B44` FOREIGN KEY (`acc2_id`) REFERENCES `tbl_accessory` (`id`),
+  CONSTRAINT `FKEBD95F85EBD99FA3` FOREIGN KEY (`acc3_id`) REFERENCES `tbl_accessory` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_report 的数据：~0 rows (大约)
-/*!40000 ALTER TABLE `sailmall_report` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sailmall_report` ENABLE KEYS */;
+-- 正在导出表  SailPlat.tbl_report 的数据：~0 rows (大约)
+/*!40000 ALTER TABLE `tbl_report` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_report` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_report_subject 结构
-CREATE TABLE IF NOT EXISTS `sailmall_report_subject` (
+-- 导出  表 SailPlat.tbl_report_subject 结构
+CREATE TABLE IF NOT EXISTS `tbl_report_subject` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -6801,15 +6801,15 @@ CREATE TABLE IF NOT EXISTS `sailmall_report_subject` (
   `type_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK8CD20672965F1C05` (`type_id`),
-  CONSTRAINT `FK8CD20672965F1C05` FOREIGN KEY (`type_id`) REFERENCES `sailmall_report_type` (`id`)
+  CONSTRAINT `FK8CD20672965F1C05` FOREIGN KEY (`type_id`) REFERENCES `tbl_report_type` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_report_subject 的数据：~0 rows (大约)
-/*!40000 ALTER TABLE `sailmall_report_subject` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sailmall_report_subject` ENABLE KEYS */;
+-- 正在导出表  SailPlat.tbl_report_subject 的数据：~0 rows (大约)
+/*!40000 ALTER TABLE `tbl_report_subject` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_report_subject` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_report_type 结构
-CREATE TABLE IF NOT EXISTS `sailmall_report_type` (
+-- 导出  表 SailPlat.tbl_report_type 结构
+CREATE TABLE IF NOT EXISTS `tbl_report_type` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -6818,14 +6818,14 @@ CREATE TABLE IF NOT EXISTS `sailmall_report_type` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_report_type 的数据：~0 rows (大约)
-/*!40000 ALTER TABLE `sailmall_report_type` DISABLE KEYS */;
-REPLACE INTO `sailmall_report_type` (`id`, `addTime`, `deleteStatus`, `content`, `name`) VALUES
+-- 正在导出表  SailPlat.tbl_report_type 的数据：~0 rows (大约)
+/*!40000 ALTER TABLE `tbl_report_type` DISABLE KEYS */;
+REPLACE INTO `tbl_report_type` (`id`, `addTime`, `deleteStatus`, `content`, `name`) VALUES
 	(1, '2015-03-02 20:02:54', b'0', '抄袭图片和内容', '抄袭举报');
-/*!40000 ALTER TABLE `sailmall_report_type` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_report_type` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_res 结构
-CREATE TABLE IF NOT EXISTS `sailmall_res` (
+-- 导出  表 SailPlat.tbl_res 结构
+CREATE TABLE IF NOT EXISTS `tbl_res` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -6837,9 +6837,9 @@ CREATE TABLE IF NOT EXISTS `sailmall_res` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=779 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_res 的数据：~778 rows (大约)
-/*!40000 ALTER TABLE `sailmall_res` DISABLE KEYS */;
-REPLACE INTO `sailmall_res` (`id`, `addTime`, `deleteStatus`, `info`, `resName`, `sequence`, `type`, `value`) VALUES
+-- 正在导出表  SailPlat.tbl_res 的数据：~778 rows (大约)
+/*!40000 ALTER TABLE `tbl_res` DISABLE KEYS */;
+REPLACE INTO `tbl_res` (`id`, `addTime`, `deleteStatus`, `info`, `resName`, `sequence`, `type`, `value`) VALUES
 	(1, '2015-02-26 14:59:09', b'0', NULL, '商城后台管理', 0, 'URL', '/admin/index.htm*'),
 	(2, '2015-02-26 14:59:09', b'0', NULL, '欢迎页面', 0, 'URL', NULL),
 	(3, '2015-02-26 14:59:09', b'0', NULL, '关于我们', 0, 'URL', NULL),
@@ -7618,24 +7618,24 @@ REPLACE INTO `sailmall_res` (`id`, `addTime`, `deleteStatus`, `info`, `resName`,
 	(776, '2015-02-26 15:00:25', b'0', NULL, '订单支付结果', 0, 'URL', '/weixin/order_finish.htm*'),
 	(777, '2015-02-26 15:00:25', b'0', NULL, '地址新增', 0, 'URL', '/weixin/cart_address.htm*'),
 	(778, '2015-02-26 15:00:25', b'0', NULL, '地址切换', 0, 'URL', '/weixin/order_address.htm*');
-/*!40000 ALTER TABLE `sailmall_res` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_res` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_return_gsp 结构
-CREATE TABLE IF NOT EXISTS `sailmall_return_gsp` (
+-- 导出  表 SailPlat.tbl_return_gsp 结构
+CREATE TABLE IF NOT EXISTS `tbl_return_gsp` (
   `item_id` bigint(20) NOT NULL,
   `gsp_id` bigint(20) NOT NULL,
   KEY `FK76265F4682419B49` (`item_id`),
   KEY `FK76265F4626F16245` (`gsp_id`),
-  CONSTRAINT `FK76265F4626F16245` FOREIGN KEY (`gsp_id`) REFERENCES `sailmall_goodsspecproperty` (`id`),
-  CONSTRAINT `FK76265F4682419B49` FOREIGN KEY (`item_id`) REFERENCES `sailmall_goods_returnitem` (`id`)
+  CONSTRAINT `FK76265F4626F16245` FOREIGN KEY (`gsp_id`) REFERENCES `tbl_goodsspecproperty` (`id`),
+  CONSTRAINT `FK76265F4682419B49` FOREIGN KEY (`item_id`) REFERENCES `tbl_goods_returnitem` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_return_gsp 的数据：~0 rows (大约)
-/*!40000 ALTER TABLE `sailmall_return_gsp` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sailmall_return_gsp` ENABLE KEYS */;
+-- 正在导出表  SailPlat.tbl_return_gsp 的数据：~0 rows (大约)
+/*!40000 ALTER TABLE `tbl_return_gsp` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_return_gsp` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_role 结构
-CREATE TABLE IF NOT EXISTS `sailmall_role` (
+-- 导出  表 SailPlat.tbl_role 结构
+CREATE TABLE IF NOT EXISTS `tbl_role` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -7648,12 +7648,12 @@ CREATE TABLE IF NOT EXISTS `sailmall_role` (
   `rg_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK7D72EB07C95D7AF7` (`rg_id`),
-  CONSTRAINT `FK7D72EB07C95D7AF7` FOREIGN KEY (`rg_id`) REFERENCES `sailmall_rolegroup` (`id`)
+  CONSTRAINT `FK7D72EB07C95D7AF7` FOREIGN KEY (`rg_id`) REFERENCES `tbl_rolegroup` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=110 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_role 的数据：~109 rows (大约)
-/*!40000 ALTER TABLE `sailmall_role` DISABLE KEYS */;
-REPLACE INTO `sailmall_role` (`id`, `addTime`, `deleteStatus`, `display`, `info`, `roleCode`, `roleName`, `sequence`, `type`, `rg_id`) VALUES
+-- 正在导出表  SailPlat.tbl_role 的数据：~109 rows (大约)
+/*!40000 ALTER TABLE `tbl_role` DISABLE KEYS */;
+REPLACE INTO `tbl_role` (`id`, `addTime`, `deleteStatus`, `display`, `info`, `roleCode`, `roleName`, `sequence`, `type`, `rg_id`) VALUES
 	(1, '2015-02-26 14:59:21', b'0', b'0', NULL, 'ROLE_ADMIN_INDEX', '商城后台管理', 0, 'ADMIN', 1),
 	(2, '2015-02-26 14:59:09', b'0', b'1', NULL, 'ROLE_ADMIN_SET_SITE', '站点设置', 0, 'ADMIN', 1),
 	(3, '2015-02-26 14:59:09', b'0', b'1', NULL, 'ROLE_ADMIN_SET_IMAGE', '上传设置', 0, 'ADMIN', 1),
@@ -7763,10 +7763,10 @@ REPLACE INTO `sailmall_role` (`id`, `addTime`, `deleteStatus`, `display`, `info`
 	(107, '2015-02-26 15:00:24', b'0', b'1', NULL, 'ROLE_GOODS_CART', '购物流程3', 0, 'BUYER', 21),
 	(108, '2015-02-26 15:00:22', b'0', b'1', NULL, 'ROLE_WEIXIN_USER_CENTER', '微信用户中心', 0, 'BUYER', 22),
 	(109, '2015-02-26 15:00:25', b'0', b'1', NULL, 'ROLE_WEIXIN_GOODS_CART', '微信购物流程3', 0, 'BUYER', 23);
-/*!40000 ALTER TABLE `sailmall_role` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_role` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_rolegroup 结构
-CREATE TABLE IF NOT EXISTS `sailmall_rolegroup` (
+-- 导出  表 SailPlat.tbl_rolegroup 结构
+CREATE TABLE IF NOT EXISTS `tbl_rolegroup` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -7776,9 +7776,9 @@ CREATE TABLE IF NOT EXISTS `sailmall_rolegroup` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_rolegroup 的数据：~23 rows (大约)
-/*!40000 ALTER TABLE `sailmall_rolegroup` DISABLE KEYS */;
-REPLACE INTO `sailmall_rolegroup` (`id`, `addTime`, `deleteStatus`, `name`, `sequence`, `type`) VALUES
+-- 正在导出表  SailPlat.tbl_rolegroup 的数据：~23 rows (大约)
+/*!40000 ALTER TABLE `tbl_rolegroup` DISABLE KEYS */;
+REPLACE INTO `tbl_rolegroup` (`id`, `addTime`, `deleteStatus`, `name`, `sequence`, `type`) VALUES
 	(1, '2015-02-26 14:59:09', b'0', '设置', 0, 'ADMIN'),
 	(2, '2015-02-26 14:59:12', b'0', '商品', 5, 'ADMIN'),
 	(3, '2015-02-26 14:59:15', b'0', '闲置', 10, 'ADMIN'),
@@ -7802,21 +7802,21 @@ REPLACE INTO `sailmall_rolegroup` (`id`, `addTime`, `deleteStatus`, `name`, `seq
 	(21, '2015-02-26 15:00:17', b'0', '在线购物', 98, 'BUYER'),
 	(22, '2015-02-26 15:00:20', b'0', '微信用户中心', 102, 'BUYER'),
 	(23, '2015-02-26 15:00:24', b'0', '微信在线购物', 106, 'BUYER');
-/*!40000 ALTER TABLE `sailmall_rolegroup` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_rolegroup` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_role_res 结构
-CREATE TABLE IF NOT EXISTS `sailmall_role_res` (
+-- 导出  表 SailPlat.tbl_role_res 结构
+CREATE TABLE IF NOT EXISTS `tbl_role_res` (
   `role_id` bigint(20) NOT NULL,
   `res_id` bigint(20) NOT NULL,
   KEY `FK6494F768261DF063` (`res_id`),
   KEY `FK6494F768AE50A871` (`role_id`),
-  CONSTRAINT `FK6494F768261DF063` FOREIGN KEY (`res_id`) REFERENCES `sailmall_res` (`id`),
-  CONSTRAINT `FK6494F768AE50A871` FOREIGN KEY (`role_id`) REFERENCES `sailmall_role` (`id`)
+  CONSTRAINT `FK6494F768261DF063` FOREIGN KEY (`res_id`) REFERENCES `tbl_res` (`id`),
+  CONSTRAINT `FK6494F768AE50A871` FOREIGN KEY (`role_id`) REFERENCES `tbl_role` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_role_res 的数据：~778 rows (大约)
-/*!40000 ALTER TABLE `sailmall_role_res` DISABLE KEYS */;
-REPLACE INTO `sailmall_role_res` (`role_id`, `res_id`) VALUES
+-- 正在导出表  SailPlat.tbl_role_res 的数据：~778 rows (大约)
+/*!40000 ALTER TABLE `tbl_role_res` DISABLE KEYS */;
+REPLACE INTO `tbl_role_res` (`role_id`, `res_id`) VALUES
 	(2, 4),
 	(3, 5),
 	(4, 6),
@@ -8595,10 +8595,10 @@ REPLACE INTO `sailmall_role_res` (`role_id`, `res_id`) VALUES
 	(109, 776),
 	(109, 777),
 	(109, 778);
-/*!40000 ALTER TABLE `sailmall_role_res` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_role_res` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_shipping 结构
-CREATE TABLE IF NOT EXISTS `sailmall_shipping` (
+-- 导出  表 SailPlat.tbl_shipping 结构
+CREATE TABLE IF NOT EXISTS `tbl_shipping` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -8614,15 +8614,15 @@ CREATE TABLE IF NOT EXISTS `sailmall_shipping` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`),
   KEY `FK55AE97BF920D7683` (`store_id`),
-  CONSTRAINT `FK55AE97BF920D7683` FOREIGN KEY (`store_id`) REFERENCES `sailmall_store` (`id`)
+  CONSTRAINT `FK55AE97BF920D7683` FOREIGN KEY (`store_id`) REFERENCES `tbl_store` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_shipping 的数据：~0 rows (大约)
-/*!40000 ALTER TABLE `sailmall_shipping` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sailmall_shipping` ENABLE KEYS */;
+-- 正在导出表  SailPlat.tbl_shipping 的数据：~0 rows (大约)
+/*!40000 ALTER TABLE `tbl_shipping` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_shipping` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_spare_goods 结构
-CREATE TABLE IF NOT EXISTS `sailmall_spare_goods` (
+-- 导出  表 SailPlat.tbl_spare_goods 结构
+CREATE TABLE IF NOT EXISTS `tbl_spare_goods` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -8667,25 +8667,25 @@ CREATE TABLE IF NOT EXISTS `sailmall_spare_goods` (
   KEY `FK6124F03DA453D986` (`img2_id`),
   KEY `FK6124F03DA45536A3` (`img5_id`),
   KEY `FK6124F03DE2CED19E` (`sgf_id`),
-  CONSTRAINT `FK6124F03D2FB91D11` FOREIGN KEY (`area_id`) REFERENCES `sailmall_area` (`id`),
-  CONSTRAINT `FK6124F03D537B6C51` FOREIGN KEY (`user_id`) REFERENCES `sailmall_user` (`id`),
-  CONSTRAINT `FK6124F03D557BFC43` FOREIGN KEY (`spareGoodsClass_id`) REFERENCES `sailmall_spare_goodsclass` (`id`),
-  CONSTRAINT `FK6124F03DA4536527` FOREIGN KEY (`img1_id`) REFERENCES `sailmall_accessory` (`id`),
-  CONSTRAINT `FK6124F03DA453D986` FOREIGN KEY (`img2_id`) REFERENCES `sailmall_accessory` (`id`),
-  CONSTRAINT `FK6124F03DA4544DE5` FOREIGN KEY (`img3_id`) REFERENCES `sailmall_accessory` (`id`),
-  CONSTRAINT `FK6124F03DA454C244` FOREIGN KEY (`img4_id`) REFERENCES `sailmall_accessory` (`id`),
-  CONSTRAINT `FK6124F03DA45536A3` FOREIGN KEY (`img5_id`) REFERENCES `sailmall_accessory` (`id`),
-  CONSTRAINT `FK6124F03DE2CED19E` FOREIGN KEY (`sgf_id`) REFERENCES `sailmall_spare_goodsfloor` (`id`),
-  CONSTRAINT `FK6124F03DEB7ECE12` FOREIGN KEY (`img_id`) REFERENCES `sailmall_accessory` (`id`),
-  CONSTRAINT `FK6124F03DF4F59358` FOREIGN KEY (`main_img_id`) REFERENCES `sailmall_accessory` (`id`)
+  CONSTRAINT `FK6124F03D2FB91D11` FOREIGN KEY (`area_id`) REFERENCES `tbl_area` (`id`),
+  CONSTRAINT `FK6124F03D537B6C51` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`id`),
+  CONSTRAINT `FK6124F03D557BFC43` FOREIGN KEY (`spareGoodsClass_id`) REFERENCES `tbl_spare_goodsclass` (`id`),
+  CONSTRAINT `FK6124F03DA4536527` FOREIGN KEY (`img1_id`) REFERENCES `tbl_accessory` (`id`),
+  CONSTRAINT `FK6124F03DA453D986` FOREIGN KEY (`img2_id`) REFERENCES `tbl_accessory` (`id`),
+  CONSTRAINT `FK6124F03DA4544DE5` FOREIGN KEY (`img3_id`) REFERENCES `tbl_accessory` (`id`),
+  CONSTRAINT `FK6124F03DA454C244` FOREIGN KEY (`img4_id`) REFERENCES `tbl_accessory` (`id`),
+  CONSTRAINT `FK6124F03DA45536A3` FOREIGN KEY (`img5_id`) REFERENCES `tbl_accessory` (`id`),
+  CONSTRAINT `FK6124F03DE2CED19E` FOREIGN KEY (`sgf_id`) REFERENCES `tbl_spare_goodsfloor` (`id`),
+  CONSTRAINT `FK6124F03DEB7ECE12` FOREIGN KEY (`img_id`) REFERENCES `tbl_accessory` (`id`),
+  CONSTRAINT `FK6124F03DF4F59358` FOREIGN KEY (`main_img_id`) REFERENCES `tbl_accessory` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_spare_goods 的数据：~0 rows (大约)
-/*!40000 ALTER TABLE `sailmall_spare_goods` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sailmall_spare_goods` ENABLE KEYS */;
+-- 正在导出表  SailPlat.tbl_spare_goods 的数据：~0 rows (大约)
+/*!40000 ALTER TABLE `tbl_spare_goods` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_spare_goods` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_spare_goodsclass 结构
-CREATE TABLE IF NOT EXISTS `sailmall_spare_goodsclass` (
+-- 导出  表 SailPlat.tbl_spare_goodsclass 结构
+CREATE TABLE IF NOT EXISTS `tbl_spare_goodsclass` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -8697,12 +8697,12 @@ CREATE TABLE IF NOT EXISTS `sailmall_spare_goodsclass` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`),
   KEY `FKAC6B673B93F273F2` (`parent_id`),
-  CONSTRAINT `FKAC6B673B93F273F2` FOREIGN KEY (`parent_id`) REFERENCES `sailmall_spare_goodsclass` (`id`)
+  CONSTRAINT `FKAC6B673B93F273F2` FOREIGN KEY (`parent_id`) REFERENCES `tbl_spare_goodsclass` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=154 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_spare_goodsclass 的数据：~153 rows (大约)
-/*!40000 ALTER TABLE `sailmall_spare_goodsclass` DISABLE KEYS */;
-REPLACE INTO `sailmall_spare_goodsclass` (`id`, `addTime`, `deleteStatus`, `className`, `level`, `sequence`, `parent_id`, `viewInFloor`) VALUES
+-- 正在导出表  SailPlat.tbl_spare_goodsclass 的数据：~153 rows (大约)
+/*!40000 ALTER TABLE `tbl_spare_goodsclass` DISABLE KEYS */;
+REPLACE INTO `tbl_spare_goodsclass` (`id`, `addTime`, `deleteStatus`, `className`, `level`, `sequence`, `parent_id`, `viewInFloor`) VALUES
 	(1, '2014-09-22 19:28:37', b'0', '闲置数码', 1, 1, NULL, b'1'),
 	(2, '2014-09-22 19:28:52', b'0', '闲置母婴', 1, 2, NULL, b'1'),
 	(3, '2014-09-22 19:29:43', b'0', '家居日用', 1, 3, NULL, b'1'),
@@ -8856,10 +8856,10 @@ REPLACE INTO `sailmall_spare_goodsclass` (`id`, `addTime`, `deleteStatus`, `clas
 	(151, '2014-10-09 17:07:05', b'0', '和田玉', 3, 0, 130, b'0'),
 	(152, '2014-10-09 17:07:13', b'0', '古玉', 3, 0, 130, b'0'),
 	(153, '2014-10-09 17:07:20', b'0', '陶瓷', 3, 0, 130, b'0');
-/*!40000 ALTER TABLE `sailmall_spare_goodsclass` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_spare_goodsclass` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_spare_goodsfloor 结构
-CREATE TABLE IF NOT EXISTS `sailmall_spare_goodsfloor` (
+-- 导出  表 SailPlat.tbl_spare_goodsfloor 结构
+CREATE TABLE IF NOT EXISTS `tbl_spare_goodsfloor` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -8880,21 +8880,21 @@ CREATE TABLE IF NOT EXISTS `sailmall_spare_goodsfloor` (
   KEY `FKAC95E1CF8DEA4DD` (`advert_img_id`),
   KEY `FKAC95E1CF20641F1` (`advert_id`),
   KEY `FKAC95E1CF26BE20C1` (`adp_id`),
-  CONSTRAINT `FKAC95E1CF20641F1` FOREIGN KEY (`advert_id`) REFERENCES `sailmall_advert` (`id`),
-  CONSTRAINT `FKAC95E1CF26BE20C1` FOREIGN KEY (`adp_id`) REFERENCES `sailmall_adv_pos` (`id`),
-  CONSTRAINT `FKAC95E1CF8DEA4DD` FOREIGN KEY (`advert_img_id`) REFERENCES `sailmall_accessory` (`id`),
-  CONSTRAINT `FKAC95E1CFE2A2F9ED` FOREIGN KEY (`sgc_id`) REFERENCES `sailmall_spare_goodsclass` (`id`)
+  CONSTRAINT `FKAC95E1CF20641F1` FOREIGN KEY (`advert_id`) REFERENCES `tbl_advert` (`id`),
+  CONSTRAINT `FKAC95E1CF26BE20C1` FOREIGN KEY (`adp_id`) REFERENCES `tbl_adv_pos` (`id`),
+  CONSTRAINT `FKAC95E1CF8DEA4DD` FOREIGN KEY (`advert_img_id`) REFERENCES `tbl_accessory` (`id`),
+  CONSTRAINT `FKAC95E1CFE2A2F9ED` FOREIGN KEY (`sgc_id`) REFERENCES `tbl_spare_goodsclass` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_spare_goodsfloor 的数据：~2 rows (大约)
-/*!40000 ALTER TABLE `sailmall_spare_goodsfloor` DISABLE KEYS */;
-REPLACE INTO `sailmall_spare_goodsfloor` (`id`, `addTime`, `deleteStatus`, `adver_id`, `sequence`, `title`, `visable`, `sgc_id`, `adver_type`, `advert_url`, `advert_id`, `advert_img_id`, `display`, `adp_id`) VALUES
+-- 正在导出表  SailPlat.tbl_spare_goodsfloor 的数据：~2 rows (大约)
+/*!40000 ALTER TABLE `tbl_spare_goodsfloor` DISABLE KEYS */;
+REPLACE INTO `tbl_spare_goodsfloor` (`id`, `addTime`, `deleteStatus`, `adver_id`, `sequence`, `title`, `visable`, `sgc_id`, `adver_type`, `advert_url`, `advert_id`, `advert_img_id`, `display`, `adp_id`) VALUES
 	(2, '2014-10-10 10:17:41', b'0', '1222', 0, '数码控.土豪来袭', 1, 1, 0, '#', NULL, 426022, b'1', NULL),
 	(3, '2014-10-14 12:30:23', b'0', NULL, 1, '少女&辣妈都是我', 1, 2, 0, '#', NULL, 426027, b'1', NULL);
-/*!40000 ALTER TABLE `sailmall_spare_goodsfloor` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_spare_goodsfloor` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_store 结构
-CREATE TABLE IF NOT EXISTS `sailmall_store` (
+-- 导出  表 SailPlat.tbl_store 结构
+CREATE TABLE IF NOT EXISTS `tbl_store` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -8959,27 +8959,27 @@ CREATE TABLE IF NOT EXISTS `sailmall_store` (
   KEY `FK30FAE07059BC5EF2` (`store_license_id`),
   KEY `FK30FAE070CA8E3053` (`weixin_qr_img_id`),
   KEY `FK30FAE0708244156B` (`store_weixin_logo_id`),
-  CONSTRAINT `FK30FAE0702FB91D11` FOREIGN KEY (`area_id`) REFERENCES `sailmall_area` (`id`),
-  CONSTRAINT `FK30FAE0704B5425CC` FOREIGN KEY (`store_logo_id`) REFERENCES `sailmall_accessory` (`id`),
-  CONSTRAINT `FK30FAE07053260BA5` FOREIGN KEY (`card_id`) REFERENCES `sailmall_accessory` (`id`),
-  CONSTRAINT `FK30FAE07059BC5EF2` FOREIGN KEY (`store_license_id`) REFERENCES `sailmall_accessory` (`id`),
-  CONSTRAINT `FK30FAE07066DDB1E6` FOREIGN KEY (`update_grade_id`) REFERENCES `sailmall_storegrade` (`id`),
-  CONSTRAINT `FK30FAE0708244156B` FOREIGN KEY (`store_weixin_logo_id`) REFERENCES `sailmall_accessory` (`id`),
-  CONSTRAINT `FK30FAE070910FE730` FOREIGN KEY (`grade_id`) REFERENCES `sailmall_storegrade` (`id`),
-  CONSTRAINT `FK30FAE0709201C3B8` FOREIGN KEY (`sc_id`) REFERENCES `sailmall_storeclass` (`id`),
-  CONSTRAINT `FK30FAE070C084502B` FOREIGN KEY (`store_banner_id`) REFERENCES `sailmall_accessory` (`id`),
-  CONSTRAINT `FK30FAE070CA8E3053` FOREIGN KEY (`weixin_qr_img_id`) REFERENCES `sailmall_accessory` (`id`)
+  CONSTRAINT `FK30FAE0702FB91D11` FOREIGN KEY (`area_id`) REFERENCES `tbl_area` (`id`),
+  CONSTRAINT `FK30FAE0704B5425CC` FOREIGN KEY (`store_logo_id`) REFERENCES `tbl_accessory` (`id`),
+  CONSTRAINT `FK30FAE07053260BA5` FOREIGN KEY (`card_id`) REFERENCES `tbl_accessory` (`id`),
+  CONSTRAINT `FK30FAE07059BC5EF2` FOREIGN KEY (`store_license_id`) REFERENCES `tbl_accessory` (`id`),
+  CONSTRAINT `FK30FAE07066DDB1E6` FOREIGN KEY (`update_grade_id`) REFERENCES `tbl_storegrade` (`id`),
+  CONSTRAINT `FK30FAE0708244156B` FOREIGN KEY (`store_weixin_logo_id`) REFERENCES `tbl_accessory` (`id`),
+  CONSTRAINT `FK30FAE070910FE730` FOREIGN KEY (`grade_id`) REFERENCES `tbl_storegrade` (`id`),
+  CONSTRAINT `FK30FAE0709201C3B8` FOREIGN KEY (`sc_id`) REFERENCES `tbl_storeclass` (`id`),
+  CONSTRAINT `FK30FAE070C084502B` FOREIGN KEY (`store_banner_id`) REFERENCES `tbl_accessory` (`id`),
+  CONSTRAINT `FK30FAE070CA8E3053` FOREIGN KEY (`weixin_qr_img_id`) REFERENCES `tbl_accessory` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1208 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_store 的数据：~2 rows (大约)
-/*!40000 ALTER TABLE `sailmall_store` DISABLE KEYS */;
-REPLACE INTO `sailmall_store` (`id`, `addTime`, `deleteStatus`, `card_approve`, `realstore_approve`, `store_address`, `store_credit`, `store_info`, `store_msn`, `store_name`, `store_ower`, `store_ower_card`, `store_qq`, `store_recommend`, `store_recommend_time`, `store_seo_description`, `store_seo_keywords`, `store_status`, `store_telephone`, `store_zip`, `template`, `validity`, `violation_reseaon`, `area_id`, `card_id`, `grade_id`, `sc_id`, `store_banner_id`, `store_license_id`, `store_logo_id`, `update_grade_id`, `domain_modify_count`, `store_second_domain`, `favorite_count`, `store_lat`, `store_lng`, `store_ww`, `map_type`, `delivery_begin_time`, `delivery_end_time`, `combin_begin_time`, `combin_end_time`, `weixin_begin_time`, `weixin_end_time`, `weixin_status`, `weixin_appId`, `weixin_appSecret`, `weixin_token`, `weixin_welecome_content`, `weixin_qr_img_id`, `weixin_account`, `store_weixin_logo_id`, `weixin_store_name`) VALUES
-	(1, '2013-12-24 12:55:25', b'0', b'1', b'1', 'xxxxx', 1801, '', '88888888@qq.con', '寓道资源中心', '寓道科技', '123456789012345678', '88888888', b'1', '2017-10-08 13:50:47', '', '', 2, '13910740105', '110003', 'default', NULL, '', 4521988, NULL, 1, 16, NULL, NULL, NULL, NULL, 3, 'sailmall', 1, 41.79, 123.37, NULL, 'baidu', '2014-09-28 10:51:35', '2015-11-28 10:51:35', '2014-10-09 12:13:35', '2015-08-09 12:13:35', '2014-11-12', '2015-07-12', 2, 'wx9c8421965912b0f5', '390fc5d329489a203df74407109ea46c', 'sailmall_c2c', '<p>\r\n	欢迎来到sailmall商城</p>', 426061, 'sailmall_c2c商城', NULL, NULL),
+-- 正在导出表  SailPlat.tbl_store 的数据：~2 rows (大约)
+/*!40000 ALTER TABLE `tbl_store` DISABLE KEYS */;
+REPLACE INTO `tbl_store` (`id`, `addTime`, `deleteStatus`, `card_approve`, `realstore_approve`, `store_address`, `store_credit`, `store_info`, `store_msn`, `store_name`, `store_ower`, `store_ower_card`, `store_qq`, `store_recommend`, `store_recommend_time`, `store_seo_description`, `store_seo_keywords`, `store_status`, `store_telephone`, `store_zip`, `template`, `validity`, `violation_reseaon`, `area_id`, `card_id`, `grade_id`, `sc_id`, `store_banner_id`, `store_license_id`, `store_logo_id`, `update_grade_id`, `domain_modify_count`, `store_second_domain`, `favorite_count`, `store_lat`, `store_lng`, `store_ww`, `map_type`, `delivery_begin_time`, `delivery_end_time`, `combin_begin_time`, `combin_end_time`, `weixin_begin_time`, `weixin_end_time`, `weixin_status`, `weixin_appId`, `weixin_appSecret`, `weixin_token`, `weixin_welecome_content`, `weixin_qr_img_id`, `weixin_account`, `store_weixin_logo_id`, `weixin_store_name`) VALUES
+	(1, '2013-12-24 12:55:25', b'0', b'1', b'1', 'xxxxx', 1801, '', '88888888@qq.con', '寓道资源中心', '寓道科技', '123456789012345678', '88888888', b'1', '2017-10-08 13:50:47', '', '', 2, '13910740105', '110003', 'default', NULL, '', 4521988, NULL, 1, 16, NULL, NULL, NULL, NULL, 3, 'SailPlat', 1, 41.79, 123.37, NULL, 'baidu', '2014-09-28 10:51:35', '2015-11-28 10:51:35', '2014-10-09 12:13:35', '2015-08-09 12:13:35', '2014-11-12', '2015-07-12', 2, 'wx9c8421965912b0f5', '390fc5d329489a203df74407109ea46c', 'tbl_c2c', '<p>\r\n	欢迎来到SailPlat商城</p>', 426061, 'tbl_c2c商城', NULL, NULL),
 	(1207, '2017-09-27 20:22:12', b'0', b'0', b'0', '', 0, NULL, NULL, '测试店铺', '测试店铺', '324324324324324', NULL, b'1', '2017-10-16 22:04:55', NULL, NULL, 2, NULL, '', 'green', NULL, NULL, 4521988, NULL, 1, 17, NULL, NULL, NULL, NULL, 0, 'shop32795', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-/*!40000 ALTER TABLE `sailmall_store` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_store` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_storecart 结构
-CREATE TABLE IF NOT EXISTS `sailmall_storecart` (
+-- 导出  表 SailPlat.tbl_storecart 结构
+CREATE TABLE IF NOT EXISTS `tbl_storecart` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -8992,13 +8992,13 @@ CREATE TABLE IF NOT EXISTS `sailmall_storecart` (
   UNIQUE KEY `id` (`id`),
   KEY `FK7EE3A390537B6C51` (`user_id`),
   KEY `FK7EE3A390920D7683` (`store_id`),
-  CONSTRAINT `FK7EE3A390537B6C51` FOREIGN KEY (`user_id`) REFERENCES `sailmall_user` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `FK7EE3A390920D7683` FOREIGN KEY (`store_id`) REFERENCES `sailmall_store` (`id`) ON DELETE CASCADE
+  CONSTRAINT `FK7EE3A390537B6C51` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `FK7EE3A390920D7683` FOREIGN KEY (`store_id`) REFERENCES `tbl_store` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=1727 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_storecart 的数据：~16 rows (大约)
-/*!40000 ALTER TABLE `sailmall_storecart` DISABLE KEYS */;
-REPLACE INTO `sailmall_storecart` (`id`, `addTime`, `deleteStatus`, `cart_session_id`, `total_price`, `store_id`, `user_id`, `sc_status`) VALUES
+-- 正在导出表  SailPlat.tbl_storecart 的数据：~16 rows (大约)
+/*!40000 ALTER TABLE `tbl_storecart` DISABLE KEYS */;
+REPLACE INTO `tbl_storecart` (`id`, `addTime`, `deleteStatus`, `cart_session_id`, `total_price`, `store_id`, `user_id`, `sc_status`) VALUES
 	(1510, '2017-09-29 17:25:05', b'0', NULL, 80.00, 1207, 32796, 1),
 	(1515, '2017-09-30 11:12:58', b'0', NULL, 80.00, 1207, 32796, 1),
 	(1548, '2017-10-15 11:28:33', b'0', NULL, 0.01, 1207, 32796, 1),
@@ -9017,10 +9017,10 @@ REPLACE INTO `sailmall_storecart` (`id`, `addTime`, `deleteStatus`, `cart_sessio
 	(1714, '2017-11-21 12:52:40', b'0', NULL, NULL, 1207, NULL, 0),
 	(1723, '2017-11-21 13:47:33', b'0', NULL, NULL, 1207, NULL, 0),
 	(1726, '2017-11-21 13:53:00', b'0', NULL, NULL, 1207, NULL, 0);
-/*!40000 ALTER TABLE `sailmall_storecart` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_storecart` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_storeclass 结构
-CREATE TABLE IF NOT EXISTS `sailmall_storeclass` (
+-- 导出  表 SailPlat.tbl_storeclass 结构
+CREATE TABLE IF NOT EXISTS `tbl_storeclass` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -9033,12 +9033,12 @@ CREATE TABLE IF NOT EXISTS `sailmall_storeclass` (
   `ship_evaluate` decimal(4,1) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK5D958F086E5731E` (`parent_id`),
-  CONSTRAINT `FK5D958F086E5731E` FOREIGN KEY (`parent_id`) REFERENCES `sailmall_storeclass` (`id`)
+  CONSTRAINT `FK5D958F086E5731E` FOREIGN KEY (`parent_id`) REFERENCES `tbl_storeclass` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_storeclass 的数据：~20 rows (大约)
-/*!40000 ALTER TABLE `sailmall_storeclass` DISABLE KEYS */;
-REPLACE INTO `sailmall_storeclass` (`id`, `addTime`, `deleteStatus`, `className`, `level`, `sequence`, `parent_id`, `description_evaluate`, `service_evaluate`, `ship_evaluate`) VALUES
+-- 正在导出表  SailPlat.tbl_storeclass 的数据：~20 rows (大约)
+/*!40000 ALTER TABLE `tbl_storeclass` DISABLE KEYS */;
+REPLACE INTO `tbl_storeclass` (`id`, `addTime`, `deleteStatus`, `className`, `level`, `sequence`, `parent_id`, `description_evaluate`, `service_evaluate`, `ship_evaluate`) VALUES
 	(1, '2013-12-24 10:22:29', b'0', '男女服装', 0, 0, NULL, 0.0, 0.0, 0.0),
 	(2, '2013-12-24 10:22:46', b'0', '男装', 1, 1, 1, 0.0, 0.0, 0.0),
 	(3, '2013-12-24 10:22:55', b'0', '女装', 1, 2, 1, 0.0, 0.0, 0.0),
@@ -9059,10 +9059,10 @@ REPLACE INTO `sailmall_storeclass` (`id`, `addTime`, `deleteStatus`, `className`
 	(18, '2013-12-24 10:28:36', b'0', '摄像照相', 1, 1, 16, 0.0, 0.0, 0.0),
 	(19, '2013-12-24 10:28:48', b'0', '办公数码', 1, 2, 16, 0.0, 0.0, 0.0),
 	(20, '2013-12-24 10:29:01', b'0', '数码配件', 1, 4, 16, 0.0, 0.0, 0.0);
-/*!40000 ALTER TABLE `sailmall_storeclass` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_storeclass` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_storegrade 结构
-CREATE TABLE IF NOT EXISTS `sailmall_storegrade` (
+-- 导出  表 SailPlat.tbl_storegrade 结构
+CREATE TABLE IF NOT EXISTS `tbl_storegrade` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -9081,16 +9081,16 @@ CREATE TABLE IF NOT EXISTS `sailmall_storegrade` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_storegrade 的数据：~3 rows (大约)
-/*!40000 ALTER TABLE `sailmall_storegrade` DISABLE KEYS */;
-REPLACE INTO `sailmall_storegrade` (`id`, `addTime`, `deleteStatus`, `add_funciton`, `audit`, `content`, `goodsCount`, `gradeLevel`, `gradeName`, `price`, `sequence`, `spaceSize`, `sysGrade`, `templates`, `acount_num`) VALUES
+-- 正在导出表  SailPlat.tbl_storegrade 的数据：~3 rows (大约)
+/*!40000 ALTER TABLE `tbl_storegrade` DISABLE KEYS */;
+REPLACE INTO `tbl_storegrade` (`id`, `addTime`, `deleteStatus`, `add_funciton`, `audit`, `content`, `goodsCount`, `gradeLevel`, `gradeName`, `price`, `sequence`, `spaceSize`, `sysGrade`, `templates`, `acount_num`) VALUES
 	(1, '2013-12-24 10:20:27', b'0', 'editor_multimedia', b'0', '免费店铺', 300, 0, '默认等级', '免费店铺', 0, 0, b'0', 'flax,bamboo,chocolate,orange,coloured_glaze,redware,classic_black,tea,embossed,lovely,wood,clothes,china,beach,violet,black,green,pink,blue,default,', 2),
 	(2, '2013-12-24 10:20:59', b'0', 'editor_multimedia', b'1', '每月100元', 500, 1, '蓝钻级', '每月100元', 1, 0, b'0', 'green,pink,blue,default,', 0),
 	(3, '2013-12-24 10:21:31', b'0', 'editor_multimedia', b'1', '每月200元', 1000, 2, '黄钻级', '每月200元', 2, 0, b'0', 'wood,clothes,china,beach,violet,black,green,pink,blue,default,', 0);
-/*!40000 ALTER TABLE `sailmall_storegrade` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_storegrade` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_storegrade_log 结构
-CREATE TABLE IF NOT EXISTS `sailmall_storegrade_log` (
+-- 导出  表 SailPlat.tbl_storegrade_log 结构
+CREATE TABLE IF NOT EXISTS `tbl_storegrade_log` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -9100,15 +9100,15 @@ CREATE TABLE IF NOT EXISTS `sailmall_storegrade_log` (
   `store_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK10CE6C6C920D7683` (`store_id`),
-  CONSTRAINT `FK10CE6C6C920D7683` FOREIGN KEY (`store_id`) REFERENCES `sailmall_store` (`id`)
+  CONSTRAINT `FK10CE6C6C920D7683` FOREIGN KEY (`store_id`) REFERENCES `tbl_store` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_storegrade_log 的数据：~0 rows (大约)
-/*!40000 ALTER TABLE `sailmall_storegrade_log` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sailmall_storegrade_log` ENABLE KEYS */;
+-- 正在导出表  SailPlat.tbl_storegrade_log 的数据：~0 rows (大约)
+/*!40000 ALTER TABLE `tbl_storegrade_log` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_storegrade_log` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_store_nav 结构
-CREATE TABLE IF NOT EXISTS `sailmall_store_nav` (
+-- 导出  表 SailPlat.tbl_store_nav 结构
+CREATE TABLE IF NOT EXISTS `tbl_store_nav` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -9121,15 +9121,15 @@ CREATE TABLE IF NOT EXISTS `sailmall_store_nav` (
   `store_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK7EE200D4920D7683` (`store_id`),
-  CONSTRAINT `FK7EE200D4920D7683` FOREIGN KEY (`store_id`) REFERENCES `sailmall_store` (`id`)
+  CONSTRAINT `FK7EE200D4920D7683` FOREIGN KEY (`store_id`) REFERENCES `tbl_store` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_store_nav 的数据：~0 rows (大约)
-/*!40000 ALTER TABLE `sailmall_store_nav` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sailmall_store_nav` ENABLE KEYS */;
+-- 正在导出表  SailPlat.tbl_store_nav 的数据：~0 rows (大约)
+/*!40000 ALTER TABLE `tbl_store_nav` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_store_nav` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_store_partner 结构
-CREATE TABLE IF NOT EXISTS `sailmall_store_partner` (
+-- 导出  表 SailPlat.tbl_store_partner 结构
+CREATE TABLE IF NOT EXISTS `tbl_store_partner` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -9139,15 +9139,15 @@ CREATE TABLE IF NOT EXISTS `sailmall_store_partner` (
   `store_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FKB357F3F9920D7683` (`store_id`),
-  CONSTRAINT `FKB357F3F9920D7683` FOREIGN KEY (`store_id`) REFERENCES `sailmall_store` (`id`)
+  CONSTRAINT `FKB357F3F9920D7683` FOREIGN KEY (`store_id`) REFERENCES `tbl_store` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_store_partner 的数据：~0 rows (大约)
-/*!40000 ALTER TABLE `sailmall_store_partner` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sailmall_store_partner` ENABLE KEYS */;
+-- 正在导出表  SailPlat.tbl_store_partner 的数据：~0 rows (大约)
+/*!40000 ALTER TABLE `tbl_store_partner` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_store_partner` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_store_point 结构
-CREATE TABLE IF NOT EXISTS `sailmall_store_point` (
+-- 导出  表 SailPlat.tbl_store_point 结构
+CREATE TABLE IF NOT EXISTS `tbl_store_point` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -9178,18 +9178,18 @@ CREATE TABLE IF NOT EXISTS `sailmall_store_point` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`),
   KEY `FK4E878501920D7683` (`store_id`),
-  CONSTRAINT `FK4E878501920D7683` FOREIGN KEY (`store_id`) REFERENCES `sailmall_store` (`id`)
+  CONSTRAINT `FK4E878501920D7683` FOREIGN KEY (`store_id`) REFERENCES `tbl_store` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1209 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_store_point 的数据：~2 rows (大约)
-/*!40000 ALTER TABLE `sailmall_store_point` DISABLE KEYS */;
-REPLACE INTO `sailmall_store_point` (`id`, `addTime`, `deleteStatus`, `description_evaluate`, `description_evaluate_halfyear`, `description_evaluate_halfyear_count1`, `description_evaluate_halfyear_count2`, `description_evaluate_halfyear_count3`, `description_evaluate_halfyear_count4`, `description_evaluate_halfyear_count5`, `service_evaluate`, `service_evaluate_halfyear`, `service_evaluate_halfyear_count1`, `service_evaluate_halfyear_count2`, `service_evaluate_halfyear_count3`, `service_evaluate_halfyear_count4`, `service_evaluate_halfyear_count5`, `ship_evaluate`, `ship_evaluate_halfyear`, `ship_evaluate_halfyear_count1`, `ship_evaluate_halfyear_count2`, `ship_evaluate_halfyear_count3`, `ship_evaluate_halfyear_count4`, `ship_evaluate_halfyear_count5`, `store_evaluate1`, `store_id`, `statTime`) VALUES
+-- 正在导出表  SailPlat.tbl_store_point 的数据：~2 rows (大约)
+/*!40000 ALTER TABLE `tbl_store_point` DISABLE KEYS */;
+REPLACE INTO `tbl_store_point` (`id`, `addTime`, `deleteStatus`, `description_evaluate`, `description_evaluate_halfyear`, `description_evaluate_halfyear_count1`, `description_evaluate_halfyear_count2`, `description_evaluate_halfyear_count3`, `description_evaluate_halfyear_count4`, `description_evaluate_halfyear_count5`, `service_evaluate`, `service_evaluate_halfyear`, `service_evaluate_halfyear_count1`, `service_evaluate_halfyear_count2`, `service_evaluate_halfyear_count3`, `service_evaluate_halfyear_count4`, `service_evaluate_halfyear_count5`, `ship_evaluate`, `ship_evaluate_halfyear`, `ship_evaluate_halfyear_count1`, `ship_evaluate_halfyear_count2`, `ship_evaluate_halfyear_count3`, `ship_evaluate_halfyear_count4`, `ship_evaluate_halfyear_count5`, `store_evaluate1`, `store_id`, `statTime`) VALUES
 	(1, '2014-01-05 15:07:48', b'0', 0.0, 0.0, 0, 0, 0, 0, 0, 0.0, 0.0, 0, 0, 0, 0, 0, 0.0, 0.0, 0, 0, 0, 0, 0, 0.0, 1, '2018-01-01 20:30:01'),
 	(1208, NULL, b'0', 0.0, 0.0, 0, 0, 0, 0, 0, 0.0, 0.0, 0, 0, 0, 0, 0, 0.0, 0.0, 0, 0, 0, 0, 0, 0.0, 1207, '2018-01-01 20:30:01');
-/*!40000 ALTER TABLE `sailmall_store_point` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_store_point` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_store_slide 结构
-CREATE TABLE IF NOT EXISTS `sailmall_store_slide` (
+-- 导出  表 SailPlat.tbl_store_slide 结构
+CREATE TABLE IF NOT EXISTS `tbl_store_slide` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -9199,16 +9199,16 @@ CREATE TABLE IF NOT EXISTS `sailmall_store_slide` (
   PRIMARY KEY (`id`),
   KEY `FK4EB06D22920D7683` (`store_id`),
   KEY `FK4EB06D22DD494C94` (`acc_id`),
-  CONSTRAINT `FK4EB06D22920D7683` FOREIGN KEY (`store_id`) REFERENCES `sailmall_store` (`id`),
-  CONSTRAINT `FK4EB06D22DD494C94` FOREIGN KEY (`acc_id`) REFERENCES `sailmall_accessory` (`id`)
+  CONSTRAINT `FK4EB06D22920D7683` FOREIGN KEY (`store_id`) REFERENCES `tbl_store` (`id`),
+  CONSTRAINT `FK4EB06D22DD494C94` FOREIGN KEY (`acc_id`) REFERENCES `tbl_accessory` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_store_slide 的数据：~0 rows (大约)
-/*!40000 ALTER TABLE `sailmall_store_slide` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sailmall_store_slide` ENABLE KEYS */;
+-- 正在导出表  SailPlat.tbl_store_slide 的数据：~0 rows (大约)
+/*!40000 ALTER TABLE `tbl_store_slide` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_store_slide` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_store_stat 结构
-CREATE TABLE IF NOT EXISTS `sailmall_store_stat` (
+-- 导出  表 SailPlat.tbl_store_stat 结构
+CREATE TABLE IF NOT EXISTS `tbl_store_stat` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -9227,14 +9227,14 @@ CREATE TABLE IF NOT EXISTS `sailmall_store_stat` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_store_stat 的数据：~0 rows (大约)
-/*!40000 ALTER TABLE `sailmall_store_stat` DISABLE KEYS */;
-REPLACE INTO `sailmall_store_stat` (`id`, `addTime`, `deleteStatus`, `all_goods`, `all_store`, `all_user`, `next_time`, `order_amount`, `store_update`, `week_complaint`, `week_goods`, `week_order`, `week_report`, `week_store`, `week_user`) VALUES
+-- 正在导出表  SailPlat.tbl_store_stat 的数据：~0 rows (大约)
+/*!40000 ALTER TABLE `tbl_store_stat` DISABLE KEYS */;
+REPLACE INTO `tbl_store_stat` (`id`, `addTime`, `deleteStatus`, `all_goods`, `all_store`, `all_user`, `next_time`, `order_amount`, `store_update`, `week_complaint`, `week_goods`, `week_order`, `week_report`, `week_store`, `week_user`) VALUES
 	(1, '2018-01-01 20:30:00', b'0', 6, 2, 4, '2018-01-01 21:00:00', 0.00, 0, 0, 0, 0, 0, 0, 0);
-/*!40000 ALTER TABLE `sailmall_store_stat` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_store_stat` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_sysconfig 结构
-CREATE TABLE IF NOT EXISTS `sailmall_sysconfig` (
+-- 导出  表 SailPlat.tbl_sysconfig 结构
+CREATE TABLE IF NOT EXISTS `tbl_sysconfig` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -9369,22 +9369,22 @@ CREATE TABLE IF NOT EXISTS `sailmall_sysconfig` (
   KEY `FK40DBBC5EE23B16D0` (`goodsImage_id`),
   KEY `FK40DBBC5ECA8E3053` (`weixin_qr_img_id`),
   KEY `FK40DBBC5E8244156B` (`store_weixin_logo_id`),
-  CONSTRAINT `FK40DBBC5E771DBD5B` FOREIGN KEY (`storeImage_id`) REFERENCES `sailmall_accessory` (`id`),
-  CONSTRAINT `FK40DBBC5E8244156B` FOREIGN KEY (`store_weixin_logo_id`) REFERENCES `sailmall_accessory` (`id`),
-  CONSTRAINT `FK40DBBC5E900C422F` FOREIGN KEY (`websiteLogo_id`) REFERENCES `sailmall_accessory` (`id`),
-  CONSTRAINT `FK40DBBC5ECA8E3053` FOREIGN KEY (`weixin_qr_img_id`) REFERENCES `sailmall_accessory` (`id`),
-  CONSTRAINT `FK40DBBC5ED57299C2` FOREIGN KEY (`memberIcon_id`) REFERENCES `sailmall_accessory` (`id`),
-  CONSTRAINT `FK40DBBC5EE23B16D0` FOREIGN KEY (`goodsImage_id`) REFERENCES `sailmall_accessory` (`id`)
+  CONSTRAINT `FK40DBBC5E771DBD5B` FOREIGN KEY (`storeImage_id`) REFERENCES `tbl_accessory` (`id`),
+  CONSTRAINT `FK40DBBC5E8244156B` FOREIGN KEY (`store_weixin_logo_id`) REFERENCES `tbl_accessory` (`id`),
+  CONSTRAINT `FK40DBBC5E900C422F` FOREIGN KEY (`websiteLogo_id`) REFERENCES `tbl_accessory` (`id`),
+  CONSTRAINT `FK40DBBC5ECA8E3053` FOREIGN KEY (`weixin_qr_img_id`) REFERENCES `tbl_accessory` (`id`),
+  CONSTRAINT `FK40DBBC5ED57299C2` FOREIGN KEY (`memberIcon_id`) REFERENCES `tbl_accessory` (`id`),
+  CONSTRAINT `FK40DBBC5EE23B16D0` FOREIGN KEY (`goodsImage_id`) REFERENCES `tbl_accessory` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_sysconfig 的数据：~0 rows (大约)
-/*!40000 ALTER TABLE `sailmall_sysconfig` DISABLE KEYS */;
-REPLACE INTO `sailmall_sysconfig` (`id`, `addTime`, `deleteStatus`, `address`, `bigHeight`, `bigWidth`, `closeReason`, `codeStat`, `complaint_time`, `consumptionRatio`, `copyRight`, `creditrule`, `deposit`, `description`, `emailEnable`, `emailHost`, `emailPort`, `emailPws`, `emailTest`, `emailUser`, `emailUserName`, `everyIndentLimit`, `gold`, `goldMarketValue`, `groupBuy`, `hotSearch`, `imageFilesize`, `imageSaveType`, `imageSuffix`, `indentComment`, `integral`, `integralRate`, `integralStore`, `keywords`, `memberDayLogin`, `memberRegister`, `middleHeight`, `middleWidth`, `securityCodeConsult`, `securityCodeLogin`, `securityCodeRegister`, `securityCodeType`, `share_code`, `smallHeight`, `smallWidth`, `smsEnbale`, `smsPassword`, `smsTest`, `smsURL`, `smsUserName`, `store_allow`, `store_payment`, `sysLanguage`, `templates`, `title`, `uploadFilePath`, `user_creditrule`, `visitorConsult`, `voucher`, `websiteName`, `websiteState`, `ztc_price`, `ztc_status`, `goodsImage_id`, `memberIcon_id`, `storeImage_id`, `websiteLogo_id`, `domain_allow_count`, `second_domain_open`, `sys_domain`, `qq_login`, `qq_login_id`, `qq_login_key`, `qq_domain_code`, `sina_domain_code`, `sina_login`, `sina_login_id`, `sina_login_key`, `imageWebServer`, `lucene_update`, `alipay_fenrun`, `balance_fenrun`, `auto_order_confirm`, `auto_order_notice`, `bargain_maximum`, `bargain_rebate`, `bargain_state`, `bargain_status`, `bargain_title`, `service_qq_list`, `service_telphone_list`, `sys_delivery_maximum`, `uc_bbs`, `kuaidi_id`, `uc_api`, `uc_appid`, `uc_database`, `uc_database_port`, `uc_database_pws`, `uc_database_url`, `uc_database_username`, `uc_ip`, `uc_key`, `uc_table_preffix`, `currency_code`, `bargain_validity`, `delivery_amount`, `delivery_status`, `delivery_title`, `websiteCss`, `combin_amount`, `combin_count`, `ztc_goods_view`, `auto_order_evaluate`, `auto_order_return`, `weixin_store`, `weixin_amount`, `config_payment_type`, `weixin_account`, `weixin_appId`, `weixin_appSecret`, `weixin_token`, `weixin_welecome_content`, `store_weixin_logo_id`, `weixin_qr_img_id`, `site_url`, `loginUrl`) VALUES
-	(1, '2015-03-03 14:47:41', b'0', '', 1024, 1024, '系统维护中...', '', 30, 0, NULL, '{"creditrule29":1500,"creditrule28":1401,"creditrule27":1400,"creditrule26":1301,"creditrule25":1300,"creditrule24":1201,"creditrule23":1200,"creditrule22":1101,"creditrule21":1100,"creditrule20":1001,"creditrule2":101,"creditrule1":100,"creditrule4":201,"creditrule3":200,"creditrule0":1,"creditrule19":1000,"creditrule18":901,"creditrule9":500,"creditrule7":400,"creditrule15":800,"creditrule8":401,"creditrule14":701,"creditrule5":300,"creditrule17":900,"creditrule6":301,"creditrule16":801,"creditrule11":600,"creditrule10":501,"creditrule13":700,"creditrule12":601}', b'1', 'sailmall1', b'1', 'smtp.qq.com', 25, 'test123456', '2111610942@qq.com', '2111610942@qq.com', '2111610942@qq.com', 0, b'1', 10, b'1', '空调,洗衣机,宽带，冰箱', 1024, 'sidYearMonthDayImg', 'gif|jpg|jpeg|bmp|png|tbi', 0, b'1', 0, b'1', 'sailmall1', 0, 0, 300, 300, b'0', b'1', b'1', 'normal', '<div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">\r\n<a class="bds_tsina"></a>\r\n<a class="bds_tqq"></a>\r\n<span class="bds_more">更多</span>\r\n<a class="shareCount"></a>\r\n</div>\r\n<script type="text/javascript" id="bdshare_js" data="type=tools&uid=5015224" ></script>\r\n<script type="text/javascript" id="bdshell_js"></script>\r\n<script type="text/javascript">\r\ndocument.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)\r\n</script>', 160, 160, b'0', '123456', '13641194411', NULL, 'sailmall_admin', b'1', '{"alipay_wap":true,"balance":true,"payafter":true,"weixin":true,"alipay":true,"paypal":true,"outline":true}', 'zh_cn', 'default\r\nblue\r\npink\r\ngreen\r\nblack\r\nviolet\r\nbeach\r\nchina\r\nclothes\r\nwood\r\nlovely\r\nembossed\r\ntea\r\nclassic_black\r\nredware\r\ncoloured_glaze\r\norange\r\nchocolate\r\nbamboo\r\nflax', '寓道服务平台1.0', 'upload', '{"creditrule29":800,"creditrule28":751,"creditrule27":700,"creditrule26":651,"creditrule25":650,"creditrule24":601,"creditrule23":600,"creditrule22":551,"creditrule21":550,"creditrule20":501,"creditrule2":51,"creditrule1":50,"creditrule4":101,"creditrule3":100,"creditrule0":1,"creditrule19":500,"creditrule18":451,"creditrule9":250,"creditrule7":200,"creditrule15":400,"creditrule8":201,"creditrule14":351,"creditrule5":150,"creditrule17":450,"creditrule6":151,"creditrule16":401,"creditrule11":300,"creditrule10":251,"creditrule13":350,"creditrule12":301}', b'0', b'0', '寓道服务平台1.0', b'1', 30, b'1', 1, 2, 3, 1215, 3, b'0', 'bbs\r\nforum', b'1', '', '', '', '<meta property="wb:webmaster" content="3c0d2bedd819ab1c" />', b'1', '1040103781', '1269d747b443e5ce4b68fcf3e2707165', NULL, '2017-12-31 00:00:01', 0, 0, 7, 3, 20, 8.00, '', 1, '天天特价', '2111610942\r\n2111610942', '024-25872040', 0, b'0', '4c68365adbe58d72', '', '', '', '', '', '', '', '', '', '', '¥', 3, 30, 1, '买就送', 'blue', 60, 5, 0, 7, 7, b'1', 50, 1, 'sailmall-微商城', 'jkdserdfger3dfgdfgvbd54dfgdf', '34sdfsdfsdge34sdgsdgdshtgf657sdfgsd43sdfsdgsd', 'sailmall_c2c', '微信关注欢迎词\r\n          \r\n          \r\n          \r\n          ', NULL, 426063, NULL, NULL);
-/*!40000 ALTER TABLE `sailmall_sysconfig` ENABLE KEYS */;
+-- 正在导出表  SailPlat.tbl_sysconfig 的数据：~0 rows (大约)
+/*!40000 ALTER TABLE `tbl_sysconfig` DISABLE KEYS */;
+REPLACE INTO `tbl_sysconfig` (`id`, `addTime`, `deleteStatus`, `address`, `bigHeight`, `bigWidth`, `closeReason`, `codeStat`, `complaint_time`, `consumptionRatio`, `copyRight`, `creditrule`, `deposit`, `description`, `emailEnable`, `emailHost`, `emailPort`, `emailPws`, `emailTest`, `emailUser`, `emailUserName`, `everyIndentLimit`, `gold`, `goldMarketValue`, `groupBuy`, `hotSearch`, `imageFilesize`, `imageSaveType`, `imageSuffix`, `indentComment`, `integral`, `integralRate`, `integralStore`, `keywords`, `memberDayLogin`, `memberRegister`, `middleHeight`, `middleWidth`, `securityCodeConsult`, `securityCodeLogin`, `securityCodeRegister`, `securityCodeType`, `share_code`, `smallHeight`, `smallWidth`, `smsEnbale`, `smsPassword`, `smsTest`, `smsURL`, `smsUserName`, `store_allow`, `store_payment`, `sysLanguage`, `templates`, `title`, `uploadFilePath`, `user_creditrule`, `visitorConsult`, `voucher`, `websiteName`, `websiteState`, `ztc_price`, `ztc_status`, `goodsImage_id`, `memberIcon_id`, `storeImage_id`, `websiteLogo_id`, `domain_allow_count`, `second_domain_open`, `sys_domain`, `qq_login`, `qq_login_id`, `qq_login_key`, `qq_domain_code`, `sina_domain_code`, `sina_login`, `sina_login_id`, `sina_login_key`, `imageWebServer`, `lucene_update`, `alipay_fenrun`, `balance_fenrun`, `auto_order_confirm`, `auto_order_notice`, `bargain_maximum`, `bargain_rebate`, `bargain_state`, `bargain_status`, `bargain_title`, `service_qq_list`, `service_telphone_list`, `sys_delivery_maximum`, `uc_bbs`, `kuaidi_id`, `uc_api`, `uc_appid`, `uc_database`, `uc_database_port`, `uc_database_pws`, `uc_database_url`, `uc_database_username`, `uc_ip`, `uc_key`, `uc_table_preffix`, `currency_code`, `bargain_validity`, `delivery_amount`, `delivery_status`, `delivery_title`, `websiteCss`, `combin_amount`, `combin_count`, `ztc_goods_view`, `auto_order_evaluate`, `auto_order_return`, `weixin_store`, `weixin_amount`, `config_payment_type`, `weixin_account`, `weixin_appId`, `weixin_appSecret`, `weixin_token`, `weixin_welecome_content`, `store_weixin_logo_id`, `weixin_qr_img_id`, `site_url`, `loginUrl`) VALUES
+	(1, '2015-03-03 14:47:41', b'0', '', 1024, 1024, '系统维护中...', '', 30, 0, NULL, '{"creditrule29":1500,"creditrule28":1401,"creditrule27":1400,"creditrule26":1301,"creditrule25":1300,"creditrule24":1201,"creditrule23":1200,"creditrule22":1101,"creditrule21":1100,"creditrule20":1001,"creditrule2":101,"creditrule1":100,"creditrule4":201,"creditrule3":200,"creditrule0":1,"creditrule19":1000,"creditrule18":901,"creditrule9":500,"creditrule7":400,"creditrule15":800,"creditrule8":401,"creditrule14":701,"creditrule5":300,"creditrule17":900,"creditrule6":301,"creditrule16":801,"creditrule11":600,"creditrule10":501,"creditrule13":700,"creditrule12":601}', b'1', 'SailPlat1', b'1', 'smtp.qq.com', 25, 'test123456', '2111610942@qq.com', '2111610942@qq.com', '2111610942@qq.com', 0, b'1', 10, b'1', '空调,洗衣机,宽带，冰箱', 1024, 'sidYearMonthDayImg', 'gif|jpg|jpeg|bmp|png|tbi', 0, b'1', 0, b'1', 'SailPlat1', 0, 0, 300, 300, b'0', b'1', b'1', 'normal', '<div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">\r\n<a class="bds_tsina"></a>\r\n<a class="bds_tqq"></a>\r\n<span class="bds_more">更多</span>\r\n<a class="shareCount"></a>\r\n</div>\r\n<script type="text/javascript" id="bdshare_js" data="type=tools&uid=5015224" ></script>\r\n<script type="text/javascript" id="bdshell_js"></script>\r\n<script type="text/javascript">\r\ndocument.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)\r\n</script>', 160, 160, b'0', '123456', '13641194411', NULL, 'tbl_admin', b'1', '{"alipay_wap":true,"balance":true,"payafter":true,"weixin":true,"alipay":true,"paypal":true,"outline":true}', 'zh_cn', 'default\r\nblue\r\npink\r\ngreen\r\nblack\r\nviolet\r\nbeach\r\nchina\r\nclothes\r\nwood\r\nlovely\r\nembossed\r\ntea\r\nclassic_black\r\nredware\r\ncoloured_glaze\r\norange\r\nchocolate\r\nbamboo\r\nflax', '寓道服务平台1.0', 'upload', '{"creditrule29":800,"creditrule28":751,"creditrule27":700,"creditrule26":651,"creditrule25":650,"creditrule24":601,"creditrule23":600,"creditrule22":551,"creditrule21":550,"creditrule20":501,"creditrule2":51,"creditrule1":50,"creditrule4":101,"creditrule3":100,"creditrule0":1,"creditrule19":500,"creditrule18":451,"creditrule9":250,"creditrule7":200,"creditrule15":400,"creditrule8":201,"creditrule14":351,"creditrule5":150,"creditrule17":450,"creditrule6":151,"creditrule16":401,"creditrule11":300,"creditrule10":251,"creditrule13":350,"creditrule12":301}', b'0', b'0', '寓道服务平台1.0', b'1', 30, b'1', 1, 2, 3, 1215, 3, b'0', 'bbs\r\nforum', b'1', '', '', '', '<meta property="wb:webmaster" content="3c0d2bedd819ab1c" />', b'1', '1040103781', '1269d747b443e5ce4b68fcf3e2707165', NULL, '2017-12-31 00:00:01', 0, 0, 7, 3, 20, 8.00, '', 1, '天天特价', '2111610942\r\n2111610942', '024-25872040', 0, b'0', '4c68365adbe58d72', '', '', '', '', '', '', '', '', '', '', '¥', 3, 30, 1, '买就送', 'blue', 60, 5, 0, 7, 7, b'1', 50, 1, 'SailPlat-微商城', 'jkdserdfger3dfgdfgvbd54dfgdf', '34sdfsdfsdge34sdgsdgdshtgf657sdfgsd43sdfsdgsd', 'tbl_c2c', '微信关注欢迎词\r\n          \r\n          \r\n          \r\n          ', NULL, 426063, NULL, NULL);
+/*!40000 ALTER TABLE `tbl_sysconfig` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_syslog 结构
-CREATE TABLE IF NOT EXISTS `sailmall_syslog` (
+-- 导出  表 SailPlat.tbl_syslog 结构
+CREATE TABLE IF NOT EXISTS `tbl_syslog` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -9395,18 +9395,18 @@ CREATE TABLE IF NOT EXISTS `sailmall_syslog` (
   `user_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FKEEA95FA8537B6C51` (`user_id`),
-  CONSTRAINT `FKEEA95FA8537B6C51` FOREIGN KEY (`user_id`) REFERENCES `sailmall_user` (`id`)
+  CONSTRAINT `FKEEA95FA8537B6C51` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_syslog 的数据：~2 rows (大约)
-/*!40000 ALTER TABLE `sailmall_syslog` DISABLE KEYS */;
-REPLACE INTO `sailmall_syslog` (`id`, `addTime`, `deleteStatus`, `content`, `ip`, `title`, `type`, `user_id`) VALUES
+-- 正在导出表  SailPlat.tbl_syslog 的数据：~2 rows (大约)
+/*!40000 ALTER TABLE `tbl_syslog` DISABLE KEYS */;
+REPLACE INTO `tbl_syslog` (`id`, `addTime`, `deleteStatus`, `content`, `ip`, `title`, `type`, `user_id`) VALUES
 	(1, '2015-03-03 10:34:51', b'0', '于2015-03-03 10:34:51登录系统', '192.168.1.128', '用户登陆', 0, 1),
 	(2, '2015-03-03 10:34:59', b'0', '于2015-03-03 10:34:59登录系统', '192.168.1.128', '用户登陆', 0, 1);
-/*!40000 ALTER TABLE `sailmall_syslog` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_syslog` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_template 结构
-CREATE TABLE IF NOT EXISTS `sailmall_template` (
+-- 导出  表 SailPlat.tbl_template 结构
+CREATE TABLE IF NOT EXISTS `tbl_template` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -9419,9 +9419,9 @@ CREATE TABLE IF NOT EXISTS `sailmall_template` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=229416 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_template 的数据：~32 rows (大约)
-/*!40000 ALTER TABLE `sailmall_template` DISABLE KEYS */;
-REPLACE INTO `sailmall_template` (`id`, `addTime`, `deleteStatus`, `content`, `info`, `mark`, `open`, `title`, `type`) VALUES
+-- 正在导出表  SailPlat.tbl_template 的数据：~32 rows (大约)
+/*!40000 ALTER TABLE `tbl_template` DISABLE KEYS */;
+REPLACE INTO `tbl_template` (`id`, `addTime`, `deleteStatus`, `content`, `info`, `mark`, `open`, `title`, `type`) VALUES
 	(229384, '2013-09-03 10:32:50', b'0', '$!user.userName,您好，您的店铺因违规被关闭！原因是:$!reason<br />', '[给卖家]店铺被管理员关闭时的通知', 'msg_toseller_store_closed_notify', b'1', '店铺违规关闭', 'msg'),
 	(229385, '2013-12-21 13:44:33', b'0', '尊敬的用户，您的店铺已被关闭，原因是：店铺已到期', '[给卖家]店铺过期被自动关闭时的通知', 'msg_toseller_store_auto_closed_notify', b'1', '店铺过期被自动关闭时的通知', 'msg'),
 	(229386, '2013-12-21 14:43:06', b'0', '<p>\r\n	$!user.userName,您好!\r\n</p>\r\n<p>\r\n	&nbsp;&nbsp; 您的商品$!{goods.goods_name}被管理员删除！原因是:$!reason\r\n</p>', '[给卖家]商品被管理员删除时的通知', 'msg_toseller_goods_delete_by_admin_notify', b'1', '商品被管理员删除时的通知', 'msg'),
@@ -9454,10 +9454,10 @@ REPLACE INTO `sailmall_template` (`id`, `addTime`, `deleteStatus`, `content`, `i
 	(229413, '2014-03-25 18:02:16', b'0', '$!{seller.userName}，您好，$!{buyer.userName}订单$!{order.order_id}使用$!{order.payment.name}付款成功，请及时发货。<br />\r\n<p>\r\n	<span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $!{config.title}\r\n</p>\r\n<p>\r\n	<span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $!{send_time}\r\n</p>', '[给卖家]买家已经完成在线付款的邮件通知', 'email_toseller_online_pay_ok_notify', b'1', '买家已经完成在线付款的邮件通知', 'email'),
 	(229414, '2014-03-25 18:03:03', b'0', '$!{buyer.userName}，您好，您的订单$!{order.order_id}使用$!{order.payment.name}向卖家$!{seller.store.store_name}付款成功，请等待卖家发货。$!{config.title}$!{send_time}', '[给买家]买家完成在线付款的短信通知', 'sms_tobuyer_online_pay_ok_notify', b'1', '买家完成在线付款的短信通知', 'sms'),
 	(229415, '2014-03-25 18:03:58', b'0', '$!{seller.userName}，您好，$!{buyer.userName}订单$!{order.order_id}使用$!{order.payment.name}付款成功，请及时发货。$!{config.title} $!{send_time}', '[给卖家]买家已经完成在线付款的短信通知', 'sms_toseller_online_pay_ok_notify', b'1', '买家已经完成在线付款的短信通知', 'sms');
-/*!40000 ALTER TABLE `sailmall_template` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_template` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_transport 结构
-CREATE TABLE IF NOT EXISTS `sailmall_transport` (
+-- 导出  表 SailPlat.tbl_transport 结构
+CREATE TABLE IF NOT EXISTS `tbl_transport` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -9474,17 +9474,17 @@ CREATE TABLE IF NOT EXISTS `sailmall_transport` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`),
   KEY `FK58C67F38920D7683` (`store_id`),
-  CONSTRAINT `FK58C67F38920D7683` FOREIGN KEY (`store_id`) REFERENCES `sailmall_store` (`id`)
+  CONSTRAINT `FK58C67F38920D7683` FOREIGN KEY (`store_id`) REFERENCES `tbl_store` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_transport 的数据：~0 rows (大约)
-/*!40000 ALTER TABLE `sailmall_transport` DISABLE KEYS */;
-REPLACE INTO `sailmall_transport` (`id`, `addTime`, `deleteStatus`, `trans_ems`, `trans_ems_info`, `trans_express`, `trans_express_info`, `trans_mail`, `trans_mail_info`, `trans_name`, `store_id`, `trans_time`, `trans_type`) VALUES
+-- 正在导出表  SailPlat.tbl_transport 的数据：~0 rows (大约)
+/*!40000 ALTER TABLE `tbl_transport` DISABLE KEYS */;
+REPLACE INTO `tbl_transport` (`id`, `addTime`, `deleteStatus`, `trans_ems`, `trans_ems_info`, `trans_express`, `trans_express_info`, `trans_mail`, `trans_mail_info`, `trans_name`, `store_id`, `trans_time`, `trans_type`) VALUES
 	(2, '2014-09-24 16:44:08', b'0', b'1', '[{"city_id":"-1","city_name":"全国","trans_add_fee":5.0,"trans_fee":20.0,"trans_add_weight":1,"trans_weight":1}, {"city_id":"67,66,65,64,63,62,61,60,59,58,57,56,55,54,53,52,51,50,49,48,47,46,45,44,43,42,41,40,39,38,37,36,35,34,33,32,31,30,29,28,27,26,25,24,23,22,21,20,19,18,17,16,","city_name":"景德镇、萍乡、抚州、赣州、南昌、吉安、宜春、新余、上饶、九江、鹰潭、阜阳、六安、宿州、安庆、池州、亳州、宣城、合肥、黄山、淮南、马鞍山、铜陵、淮北、蚌埠、芜湖、滁州、台州、丽水、嘉兴、湖州、温州、宁波、金华、绍兴、杭州、衢州、舟山、扬州、苏州、常州、泰州、镇江、南通、宿迁、连云港、无锡、徐州、盐城、淮安、南京、上海、","trans_add_fee":4.0,"trans_fee":20.0,"trans_add_weight":1,"trans_weight":1}, {"city_id":"287,286,285,284,283,282,281,280,279,278,277,276,275,274,273,272,271,270,269,268,267,266,265,264,263,262,261,260,259,258,257,256,255,254,253,252,","city_name":"七台河、双鸭山、鹤岗、哈尔滨、牡丹江、佳木斯、齐齐哈尔、鸡西、绥化、伊春、大庆、黑河、大兴安岭、长春、白山、松原、通化、辽源、白城、四平、吉林、延边朝鲜族、丹东、锦州、盘锦、铁岭、葫芦岛、辽阳、朝阳、本溪、抚顺、营口、阜新、沈阳、大连、鞍山、","trans_add_fee":3.0,"trans_fee":20.0,"trans_add_weight":1,"trans_weight":1}]', b'1', '[{"city_id":"-1","city_name":"全国","trans_add_fee":2.0,"trans_fee":12.0,"trans_add_weight":1,"trans_weight":1}, {"city_id":"353,74,16,","city_name":"重庆、北京、上海、","trans_add_fee":3.0,"trans_fee":13.0,"trans_add_weight":1,"trans_weight":1}, {"city_id":"274,273,272,271,270,269,268,267,266,265,264,263,262,261,260,259,258,257,256,255,254,253,252,","city_name":"长春、白山、松原、通化、辽源、白城、四平、吉林、延边朝鲜族、丹东、锦州、盘锦、铁岭、葫芦岛、辽阳、朝阳、本溪、抚顺、营口、阜新、沈阳、大连、鞍山、","trans_add_fee":4.0,"trans_fee":14.0,"trans_add_weight":1,"trans_weight":1}]', b'1', '[{"city_id":"-1","city_name":"全国","trans_add_fee":2.0,"trans_fee":10.0,"trans_add_weight":1,"trans_weight":1}, {"city_id":"74,16,","city_name":"北京、上海、","trans_add_fee":3.0,"trans_fee":10.0,"trans_add_weight":1,"trans_weight":1}, {"city_id":"265,264,263,262,261,260,259,258,257,256,255,254,253,252,","city_name":"丹东、锦州、盘锦、铁岭、葫芦岛、辽阳、朝阳、本溪、抚顺、营口、阜新、沈阳、大连、鞍山、","trans_add_fee":3.0,"trans_fee":10.0,"trans_add_weight":1,"trans_weight":1}]', '顺丰物流', 1, 24, 0);
-/*!40000 ALTER TABLE `sailmall_transport` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_transport` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_trans_area 结构
-CREATE TABLE IF NOT EXISTS `sailmall_trans_area` (
+-- 导出  表 SailPlat.tbl_trans_area 结构
+CREATE TABLE IF NOT EXISTS `tbl_trans_area` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -9495,12 +9495,12 @@ CREATE TABLE IF NOT EXISTS `sailmall_trans_area` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`),
   KEY `FKBF1379956A46B40E` (`parent_id`),
-  CONSTRAINT `FKBF1379956A46B40E` FOREIGN KEY (`parent_id`) REFERENCES `sailmall_trans_area` (`id`)
+  CONSTRAINT `FKBF1379956A46B40E` FOREIGN KEY (`parent_id`) REFERENCES `tbl_trans_area` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=437 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_trans_area 的数据：~434 rows (大约)
-/*!40000 ALTER TABLE `sailmall_trans_area` DISABLE KEYS */;
-REPLACE INTO `sailmall_trans_area` (`id`, `addTime`, `deleteStatus`, `areaName`, `level`, `sequence`, `parent_id`) VALUES
+-- 正在导出表  SailPlat.tbl_trans_area 的数据：~434 rows (大约)
+/*!40000 ALTER TABLE `tbl_trans_area` DISABLE KEYS */;
+REPLACE INTO `tbl_trans_area` (`id`, `addTime`, `deleteStatus`, `areaName`, `level`, `sequence`, `parent_id`) VALUES
 	(1, '2014-09-02 12:03:41', b'0', '华东', 0, 1, NULL),
 	(2, '2014-09-02 12:03:41', b'0', '华北', 0, 2, NULL),
 	(3, '2014-09-02 12:03:41', b'0', '华中', 0, 3, NULL),
@@ -9935,10 +9935,10 @@ REPLACE INTO `sailmall_trans_area` (`id`, `addTime`, `deleteStatus`, `areaName`,
 	(434, '2014-09-05 18:39:41', b'0', '云林', 2, 20, 409),
 	(435, '2014-09-05 18:40:05', b'0', '海外', 1, 1, 9),
 	(436, '2014-09-06 09:52:06', b'0', '海外', 2, 1, 435);
-/*!40000 ALTER TABLE `sailmall_trans_area` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_trans_area` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_user 结构
-CREATE TABLE IF NOT EXISTS `sailmall_user` (
+-- 导出  表 SailPlat.tbl_user 结构
+CREATE TABLE IF NOT EXISTS `tbl_user` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -9983,25 +9983,25 @@ CREATE TABLE IF NOT EXISTS `sailmall_user` (
   KEY `FK7D74565CD7A72F12` (`parent_id`),
   KEY `FK7D74565C2FB91D11` (`area_id`),
   KEY `FKetrjq6vnh7b1cbixcdec0rey2` (`homePage_id`),
-  CONSTRAINT `FK7D74565C2FB91D11` FOREIGN KEY (`area_id`) REFERENCES `sailmall_area` (`id`),
-  CONSTRAINT `FK7D74565C920D7683` FOREIGN KEY (`store_id`) REFERENCES `sailmall_store` (`id`),
-  CONSTRAINT `FK7D74565CD7A72F12` FOREIGN KEY (`parent_id`) REFERENCES `sailmall_user` (`id`),
-  CONSTRAINT `FK7D74565CE62DDD43` FOREIGN KEY (`photo_id`) REFERENCES `sailmall_accessory` (`id`)
+  CONSTRAINT `FK7D74565C2FB91D11` FOREIGN KEY (`area_id`) REFERENCES `tbl_area` (`id`),
+  CONSTRAINT `FK7D74565C920D7683` FOREIGN KEY (`store_id`) REFERENCES `tbl_store` (`id`),
+  CONSTRAINT `FK7D74565CD7A72F12` FOREIGN KEY (`parent_id`) REFERENCES `tbl_user` (`id`),
+  CONSTRAINT `FK7D74565CE62DDD43` FOREIGN KEY (`photo_id`) REFERENCES `tbl_accessory` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=32797 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_user 的数据：~6 rows (大约)
-/*!40000 ALTER TABLE `sailmall_user` DISABLE KEYS */;
-REPLACE INTO `sailmall_user` (`id`, `addTime`, `deleteStatus`, `MSN`, `QQ`, `WW`, `address`, `availableBalance`, `birthday`, `email`, `freezeBlance`, `gold`, `integral`, `lastLoginDate`, `lastLoginIp`, `loginCount`, `loginDate`, `loginIp`, `mobile`, `password`, `report`, `sex`, `status`, `telephone`, `trueName`, `userName`, `userRole`, `user_credit`, `photo_id`, `store_id`, `qq_openid`, `sina_openid`, `store_quick_menu`, `parent_id`, `years`, `area_id`, `userCode`, `homePage_id`) VALUES
+-- 正在导出表  SailPlat.tbl_user 的数据：~6 rows (大约)
+/*!40000 ALTER TABLE `tbl_user` DISABLE KEYS */;
+REPLACE INTO `tbl_user` (`id`, `addTime`, `deleteStatus`, `MSN`, `QQ`, `WW`, `address`, `availableBalance`, `birthday`, `email`, `freezeBlance`, `gold`, `integral`, `lastLoginDate`, `lastLoginIp`, `loginCount`, `loginDate`, `loginIp`, `mobile`, `password`, `report`, `sex`, `status`, `telephone`, `trueName`, `userName`, `userRole`, `user_credit`, `photo_id`, `store_id`, `qq_openid`, `sina_openid`, `store_quick_menu`, `parent_id`, `years`, `area_id`, `userCode`, `homePage_id`) VALUES
 	(1, NULL, b'0', '', '', '', NULL, 9620.00, NULL, NULL, -35720.00, 10000, 0, '2015-03-01 12:39:08', '119.119.85.200', 814, '2015-03-03 14:49:03', '0:0:0:0:0:0:0:1', NULL, 'e10adc3949ba59abbe56e057f20f883e', 0, 1, 0, NULL, '', 'bossadmin', 'ADMIN', 0, NULL, NULL, '', '1651674012', '[{"menu_url":"http://localhost/seller/add_goods_first.htm","menu_name":"商品发布"}, {"menu_url":"http://localhost/seller/order.htm","menu_name":"订单管理"}]', NULL, 0, 4522489, '8a9aa1dd5a8eaa21015a91e00de10074', NULL),
 	(1578, NULL, b'0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, NULL, 0, NULL, NULL, NULL, 'FbtA&iJCDiaI43M', 0, 0, 0, NULL, NULL, '13508047756', 'BUYER_SELLER,BUYER,SELLER', 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, '8a9aa1dd586c6d7501586cb6dce100ec', NULL),
-	(32768, '2013-12-24 12:52:13', b'0', '', '', '', NULL, 36100.00, NULL, 'yzh@yudorm.com', NULL, 2580, 0, '2015-03-01 12:26:20', '119.119.85.200', 472, '2015-03-02 10:22:09', '27.191.147.242', '', 'e10adc3949ba59abbe56e057f20f883e', 0, 0, 0, NULL, '商帆', 'SailMall', 'BUYER_SELLER', 0, NULL, NULL, '9A6383AD4B58E8B1ACF65DC68E0B3B68', NULL, '[{"menu_url":"http://demo.sailmall.com/seller/store_set.htm","menu_name":"店铺设置"}, {"menu_url":"http://demo.sailmall.com/seller/refund.htm","menu_name":"退款记录"}, {"menu_url":"http://demo.sailmall.com/seller/gold_record.htm","menu_name":"金币管理"}, {"menu_url":"http://demo.sailmall.com/seller/advert_list.htm","menu_name":"广告管理"}]', NULL, 0, NULL, NULL, NULL),
-	(32775, '2014-12-05 10:48:21', b'0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '2015-03-02 10:15:36', '27.191.147.242', 45, '2015-03-02 21:59:30', '223.72.70.160', NULL, 'e10adc3949ba59abbe56e057f20f883e', 0, 0, 0, NULL, '商帆管理员', 'SailMallAdmin', 'ADMIN', 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL),
+	(32768, '2013-12-24 12:52:13', b'0', '', '', '', NULL, 36100.00, NULL, 'yzh@yudorm.com', NULL, 2580, 0, '2015-03-01 12:26:20', '119.119.85.200', 472, '2015-03-02 10:22:09', '27.191.147.242', '', 'e10adc3949ba59abbe56e057f20f883e', 0, 0, 0, NULL, '商帆', 'SailPlat', 'BUYER_SELLER', 0, NULL, NULL, '9A6383AD4B58E8B1ACF65DC68E0B3B68', NULL, '[{"menu_url":"http://demo.SailPlat.com/seller/store_set.htm","menu_name":"店铺设置"}, {"menu_url":"http://demo.SailPlat.com/seller/refund.htm","menu_name":"退款记录"}, {"menu_url":"http://demo.SailPlat.com/seller/gold_record.htm","menu_name":"金币管理"}, {"menu_url":"http://demo.SailPlat.com/seller/advert_list.htm","menu_name":"广告管理"}]', NULL, 0, NULL, NULL, NULL),
+	(32775, '2014-12-05 10:48:21', b'0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '2015-03-02 10:15:36', '27.191.147.242', 45, '2015-03-02 21:59:30', '223.72.70.160', NULL, 'e10adc3949ba59abbe56e057f20f883e', 0, 0, 0, NULL, '商帆管理员', 'SailPlatAdmin', 'ADMIN', 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL),
 	(32795, NULL, b'0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, NULL, 25, '2018-01-01 20:08:04', '127.0.0.1', NULL, '875f26fdb1cecf20ceb4ca028263dec6', 0, 0, 0, NULL, NULL, '13910740105', '\'BUYER_SELLER\',\'BUYER\',\'SELLER\'', 0, NULL, 1207, NULL, NULL, NULL, NULL, 0, NULL, '8a9aa1dd5866a166015866a1f0c20000', NULL),
 	(32796, NULL, b'0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, NULL, 4, '2017-11-21 14:14:33', '0:0:0:0:0:0:0:1', NULL, '0b4e7a0e5fe84ad35fb5f95b9ceeac79', 0, 0, 0, NULL, NULL, '13121087990', 'BUYER_SELLER', 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, '8a9aa1dd596dc53a015991770d4200a1', NULL);
-/*!40000 ALTER TABLE `sailmall_user` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_user` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_userconfig 结构
-CREATE TABLE IF NOT EXISTS `sailmall_userconfig` (
+-- 导出  表 SailPlat.tbl_userconfig 结构
+CREATE TABLE IF NOT EXISTS `tbl_userconfig` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -10009,15 +10009,15 @@ CREATE TABLE IF NOT EXISTS `sailmall_userconfig` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`),
   KEY `FKA058A49E537B6C51` (`user_id`),
-  CONSTRAINT `FKA058A49E537B6C51` FOREIGN KEY (`user_id`) REFERENCES `sailmall_user` (`id`)
+  CONSTRAINT `FKA058A49E537B6C51` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_userconfig 的数据：~0 rows (大约)
-/*!40000 ALTER TABLE `sailmall_userconfig` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sailmall_userconfig` ENABLE KEYS */;
+-- 正在导出表  SailPlat.tbl_userconfig 的数据：~0 rows (大约)
+/*!40000 ALTER TABLE `tbl_userconfig` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_userconfig` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_usergoodsclass 结构
-CREATE TABLE IF NOT EXISTS `sailmall_usergoodsclass` (
+-- 导出  表 SailPlat.tbl_usergoodsclass 结构
+CREATE TABLE IF NOT EXISTS `tbl_usergoodsclass` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -10030,13 +10030,13 @@ CREATE TABLE IF NOT EXISTS `sailmall_usergoodsclass` (
   PRIMARY KEY (`id`),
   KEY `FKA45E4B3E537B6C51` (`user_id`),
   KEY `FKA45E4B3E153E874` (`parent_id`),
-  CONSTRAINT `FKA45E4B3E153E874` FOREIGN KEY (`parent_id`) REFERENCES `sailmall_usergoodsclass` (`id`),
-  CONSTRAINT `FKA45E4B3E537B6C51` FOREIGN KEY (`user_id`) REFERENCES `sailmall_user` (`id`)
+  CONSTRAINT `FKA45E4B3E153E874` FOREIGN KEY (`parent_id`) REFERENCES `tbl_usergoodsclass` (`id`),
+  CONSTRAINT `FKA45E4B3E537B6C51` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=32770 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_usergoodsclass 的数据：~18 rows (大约)
-/*!40000 ALTER TABLE `sailmall_usergoodsclass` DISABLE KEYS */;
-REPLACE INTO `sailmall_usergoodsclass` (`id`, `addTime`, `deleteStatus`, `className`, `display`, `level`, `sequence`, `parent_id`, `user_id`) VALUES
+-- 正在导出表  SailPlat.tbl_usergoodsclass 的数据：~18 rows (大约)
+/*!40000 ALTER TABLE `tbl_usergoodsclass` DISABLE KEYS */;
+REPLACE INTO `tbl_usergoodsclass` (`id`, `addTime`, `deleteStatus`, `className`, `display`, `level`, `sequence`, `parent_id`, `user_id`) VALUES
 	(1, '2013-12-24 12:58:33', b'0', '男女服装', b'1', 0, 0, NULL, 32768),
 	(2, '2013-12-24 13:00:17', b'0', '男装', b'1', 0, 1, 1, 32768),
 	(3, '2013-12-24 13:00:28', b'0', '女装', b'1', 0, 1, 1, 32768),
@@ -10055,10 +10055,10 @@ REPLACE INTO `sailmall_usergoodsclass` (`id`, `addTime`, `deleteStatus`, `classN
 	(16, '2013-12-24 13:06:25', b'0', '体育健身', b'1', 0, 0, 13, 32768),
 	(32768, '2013-12-24 16:01:45', b'0', '饰品', b'1', 0, 0, 6, 32768),
 	(32769, '2013-12-24 16:15:29', b'0', '箱包', b'1', 0, 0, 6, 32768);
-/*!40000 ALTER TABLE `sailmall_usergoodsclass` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_usergoodsclass` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_user_attention 结构
-CREATE TABLE IF NOT EXISTS `sailmall_user_attention` (
+-- 导出  表 SailPlat.tbl_user_attention 结构
+CREATE TABLE IF NOT EXISTS `tbl_user_attention` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -10068,16 +10068,16 @@ CREATE TABLE IF NOT EXISTS `sailmall_user_attention` (
   UNIQUE KEY `id` (`id`),
   KEY `FK24D92EFB8D202D76` (`toUser_id`),
   KEY `FK24D92EFBF3DB4167` (`fromUser_id`),
-  CONSTRAINT `FK24D92EFB8D202D76` FOREIGN KEY (`toUser_id`) REFERENCES `sailmall_user` (`id`),
-  CONSTRAINT `FK24D92EFBF3DB4167` FOREIGN KEY (`fromUser_id`) REFERENCES `sailmall_user` (`id`)
+  CONSTRAINT `FK24D92EFB8D202D76` FOREIGN KEY (`toUser_id`) REFERENCES `tbl_user` (`id`),
+  CONSTRAINT `FK24D92EFBF3DB4167` FOREIGN KEY (`fromUser_id`) REFERENCES `tbl_user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_user_attention 的数据：~0 rows (大约)
-/*!40000 ALTER TABLE `sailmall_user_attention` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sailmall_user_attention` ENABLE KEYS */;
+-- 正在导出表  SailPlat.tbl_user_attention 的数据：~0 rows (大约)
+/*!40000 ALTER TABLE `tbl_user_attention` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_user_attention` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_user_friend 结构
-CREATE TABLE IF NOT EXISTS `sailmall_user_friend` (
+-- 导出  表 SailPlat.tbl_user_friend 结构
+CREATE TABLE IF NOT EXISTS `tbl_user_friend` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -10087,30 +10087,30 @@ CREATE TABLE IF NOT EXISTS `sailmall_user_friend` (
   UNIQUE KEY `id` (`id`),
   KEY `FK880111E18D202D76` (`toUser_id`),
   KEY `FK880111E1F3DB4167` (`fromUser_id`),
-  CONSTRAINT `FK880111E18D202D76` FOREIGN KEY (`toUser_id`) REFERENCES `sailmall_user` (`id`),
-  CONSTRAINT `FK880111E1F3DB4167` FOREIGN KEY (`fromUser_id`) REFERENCES `sailmall_user` (`id`)
+  CONSTRAINT `FK880111E18D202D76` FOREIGN KEY (`toUser_id`) REFERENCES `tbl_user` (`id`),
+  CONSTRAINT `FK880111E1F3DB4167` FOREIGN KEY (`fromUser_id`) REFERENCES `tbl_user` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_user_friend 的数据：~0 rows (大约)
-/*!40000 ALTER TABLE `sailmall_user_friend` DISABLE KEYS */;
-REPLACE INTO `sailmall_user_friend` (`id`, `addTime`, `deleteStatus`, `fromUser_id`, `toUser_id`) VALUES
+-- 正在导出表  SailPlat.tbl_user_friend 的数据：~0 rows (大约)
+/*!40000 ALTER TABLE `tbl_user_friend` DISABLE KEYS */;
+REPLACE INTO `tbl_user_friend` (`id`, `addTime`, `deleteStatus`, `fromUser_id`, `toUser_id`) VALUES
 	(1, '2014-09-03 16:33:50', b'0', 1, 32768);
-/*!40000 ALTER TABLE `sailmall_user_friend` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_user_friend` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_user_role 结构
-CREATE TABLE IF NOT EXISTS `sailmall_user_role` (
+-- 导出  表 SailPlat.tbl_user_role 结构
+CREATE TABLE IF NOT EXISTS `tbl_user_role` (
   `user_id` bigint(20) NOT NULL,
   `role_id` bigint(20) NOT NULL,
   PRIMARY KEY (`user_id`,`role_id`),
   KEY `FK2E3F7C79AE50A871` (`role_id`),
   KEY `FK2E3F7C79537B6C51` (`user_id`),
-  CONSTRAINT `FK2E3F7C79537B6C51` FOREIGN KEY (`user_id`) REFERENCES `sailmall_user` (`id`),
-  CONSTRAINT `FK2E3F7C79AE50A871` FOREIGN KEY (`role_id`) REFERENCES `sailmall_role` (`id`)
+  CONSTRAINT `FK2E3F7C79537B6C51` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`id`),
+  CONSTRAINT `FK2E3F7C79AE50A871` FOREIGN KEY (`role_id`) REFERENCES `tbl_role` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_user_role 的数据：~223 rows (大约)
-/*!40000 ALTER TABLE `sailmall_user_role` DISABLE KEYS */;
-REPLACE INTO `sailmall_user_role` (`user_id`, `role_id`) VALUES
+-- 正在导出表  SailPlat.tbl_user_role 的数据：~223 rows (大约)
+/*!40000 ALTER TABLE `tbl_user_role` DISABLE KEYS */;
+REPLACE INTO `tbl_user_role` (`user_id`, `role_id`) VALUES
 	(1, 1),
 	(1, 2),
 	(1, 3),
@@ -10334,10 +10334,10 @@ REPLACE INTO `sailmall_user_role` (`user_id`, `role_id`) VALUES
 	(32795, 102),
 	(32795, 103),
 	(32795, 104);
-/*!40000 ALTER TABLE `sailmall_user_role` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_user_role` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_visit 结构
-CREATE TABLE IF NOT EXISTS `sailmall_visit` (
+-- 导出  表 SailPlat.tbl_visit 结构
+CREATE TABLE IF NOT EXISTS `tbl_visit` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -10348,23 +10348,23 @@ CREATE TABLE IF NOT EXISTS `sailmall_visit` (
   UNIQUE KEY `id` (`id`),
   KEY `FK2F5D44BA78563611` (`homepage_id`),
   KEY `FK2F5D44BA537B6C51` (`user_id`),
-  CONSTRAINT `FK2F5D44BA537B6C51` FOREIGN KEY (`user_id`) REFERENCES `sailmall_user` (`id`),
-  CONSTRAINT `FK2F5D44BA78563611` FOREIGN KEY (`homepage_id`) REFERENCES `sailmall_homepage` (`id`)
+  CONSTRAINT `FK2F5D44BA537B6C51` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`id`),
+  CONSTRAINT `FK2F5D44BA78563611` FOREIGN KEY (`homepage_id`) REFERENCES `tbl_homepage` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_visit 的数据：~6 rows (大约)
-/*!40000 ALTER TABLE `sailmall_visit` DISABLE KEYS */;
-REPLACE INTO `sailmall_visit` (`id`, `addTime`, `deleteStatus`, `visitTime`, `homepage_id`, `user_id`) VALUES
+-- 正在导出表  SailPlat.tbl_visit 的数据：~6 rows (大约)
+/*!40000 ALTER TABLE `tbl_visit` DISABLE KEYS */;
+REPLACE INTO `tbl_visit` (`id`, `addTime`, `deleteStatus`, `visitTime`, `homepage_id`, `user_id`) VALUES
 	(2, '2014-08-27 09:56:34', b'0', NULL, 4, 1),
 	(3, '2014-08-27 09:58:15', b'0', NULL, 5, 1),
 	(5, '2014-08-27 09:59:12', b'0', NULL, 6, 1),
 	(6, '2014-09-07 10:23:48', b'0', NULL, 7, 32768),
 	(7, '2014-10-28 18:02:38', b'0', NULL, 7, 1),
 	(8, '2014-10-29 14:54:16', b'0', NULL, 1, 32768);
-/*!40000 ALTER TABLE `sailmall_visit` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_visit` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_vlog 结构
-CREATE TABLE IF NOT EXISTS `sailmall_vlog` (
+-- 导出  表 SailPlat.tbl_vlog 结构
+CREATE TABLE IF NOT EXISTS `tbl_vlog` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -10375,20 +10375,20 @@ CREATE TABLE IF NOT EXISTS `sailmall_vlog` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`),
   KEY `FK7D74B19F920D7683` (`store_id`),
-  CONSTRAINT `FK7D74B19F920D7683` FOREIGN KEY (`store_id`) REFERENCES `sailmall_store` (`id`)
+  CONSTRAINT `FK7D74B19F920D7683` FOREIGN KEY (`store_id`) REFERENCES `tbl_store` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_vlog 的数据：~4 rows (大约)
-/*!40000 ALTER TABLE `sailmall_vlog` DISABLE KEYS */;
-REPLACE INTO `sailmall_vlog` (`id`, `addTime`, `deleteStatus`, `begin_time`, `end_time`, `gold`, `store_id`) VALUES
+-- 正在导出表  SailPlat.tbl_vlog 的数据：~4 rows (大约)
+/*!40000 ALTER TABLE `tbl_vlog` DISABLE KEYS */;
+REPLACE INTO `tbl_vlog` (`id`, `addTime`, `deleteStatus`, `begin_time`, `end_time`, `gold`, `store_id`) VALUES
 	(1, '2014-11-12 15:51:53', b'0', '2014-11-12 15:51:53', '2014-12-12 10:51:35', 50, 1),
 	(2, '2014-11-12 16:19:45', b'0', '2014-11-12 16:19:45', '2015-01-12 00:00:00', 50, 1),
 	(3, '2015-02-28 19:28:15', b'0', '2015-02-28 19:28:15', '2015-02-12 00:00:00', 50, 1),
 	(4, '2015-03-01 12:36:02', b'0', '2015-03-01 12:36:02', '2015-07-12 00:00:00', 250, 1);
-/*!40000 ALTER TABLE `sailmall_vlog` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_vlog` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_vmenu 结构
-CREATE TABLE IF NOT EXISTS `sailmall_vmenu` (
+-- 导出  表 SailPlat.tbl_vmenu 结构
+CREATE TABLE IF NOT EXISTS `tbl_vmenu` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -10405,25 +10405,25 @@ CREATE TABLE IF NOT EXISTS `sailmall_vmenu` (
   UNIQUE KEY `id` (`id`),
   KEY `FK3121D264AA91F874` (`parent_id`),
   KEY `FK3121D264920D7683` (`store_id`),
-  CONSTRAINT `FK3121D264920D7683` FOREIGN KEY (`store_id`) REFERENCES `sailmall_store` (`id`),
-  CONSTRAINT `FK3121D264AA91F874` FOREIGN KEY (`parent_id`) REFERENCES `sailmall_vmenu` (`id`)
+  CONSTRAINT `FK3121D264920D7683` FOREIGN KEY (`store_id`) REFERENCES `tbl_store` (`id`),
+  CONSTRAINT `FK3121D264AA91F874` FOREIGN KEY (`parent_id`) REFERENCES `tbl_vmenu` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_vmenu 的数据：~8 rows (大约)
-/*!40000 ALTER TABLE `sailmall_vmenu` DISABLE KEYS */;
-REPLACE INTO `sailmall_vmenu` (`id`, `addTime`, `deleteStatus`, `menu_key`, `menu_name`, `menu_type`, `menu_url`, `parent_id`, `store_id`, `menu_sequence`, `menu_key_content`, `menu_cat`) VALUES
+-- 正在导出表  SailPlat.tbl_vmenu 的数据：~8 rows (大约)
+/*!40000 ALTER TABLE `tbl_vmenu` DISABLE KEYS */;
+REPLACE INTO `tbl_vmenu` (`id`, `addTime`, `deleteStatus`, `menu_key`, `menu_name`, `menu_type`, `menu_url`, `parent_id`, `store_id`, `menu_sequence`, `menu_key_content`, `menu_cat`) VALUES
 	(2, NULL, b'0', '', '推荐精品', 'view', '#', NULL, 1, 1, NULL, 'user'),
 	(7, NULL, b'0', '', '双十一推荐', 'view', '#', 2, 1, 0, NULL, 'user'),
 	(8, NULL, b'0', '', '羽绒系列', 'view', '#', 2, 1, 0, NULL, 'user'),
-	(10, NULL, b'0', '', '商城首页', 'view', 'http://demo.sailmall.com/weixin/index.htm?store_id=1', NULL, 1, 0, '', 'user'),
+	(10, NULL, b'0', '', '商城首页', 'view', 'http://demo.SailPlat.com/weixin/index.htm?store_id=1', NULL, 1, 0, '', 'user'),
 	(11, NULL, b'0', '', '商城首页', 'view', 'http://localhost/weixin/platform/index.htm', NULL, NULL, 0, '', 'admin'),
 	(12, NULL, b'0', '', '推荐新品', 'view', 'http://localhost/weixin/platform/index.htm', NULL, NULL, 1, '', 'admin'),
 	(13, NULL, b'0', '', '热卖商品', 'view', 'http://localhost/weixin/platform/index.htm', NULL, NULL, 3, '', 'admin'),
-	(14, NULL, b'0', 'ABOUT', '关于我们', 'click', '', NULL, 1, 3, '欢迎来到sailmall微信商城，sailmall多用户商城系统是沈阳网之商公司旗下的一款Java C2C商城系统，内置多用户微信商城，公司官方网站：#,咨询电话：024-25872040', NULL);
-/*!40000 ALTER TABLE `sailmall_vmenu` ENABLE KEYS */;
+	(14, NULL, b'0', 'ABOUT', '关于我们', 'click', '', NULL, 1, 3, '欢迎来到SailPlat微信商城，SailPlat多用户商城系统是沈阳网之商公司旗下的一款Java C2C商城系统，内置多用户微信商城，公司官方网站：#,咨询电话：024-25872040', NULL);
+/*!40000 ALTER TABLE `tbl_vmenu` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_vmessage 结构
-CREATE TABLE IF NOT EXISTS `sailmall_vmessage` (
+-- 导出  表 SailPlat.tbl_vmessage 结构
+CREATE TABLE IF NOT EXISTS `tbl_vmessage` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -10437,21 +10437,21 @@ CREATE TABLE IF NOT EXISTS `sailmall_vmessage` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`),
   KEY `FK8F2968E2920D7683` (`store_id`),
-  CONSTRAINT `FK8F2968E2920D7683` FOREIGN KEY (`store_id`) REFERENCES `sailmall_store` (`id`)
+  CONSTRAINT `FK8F2968E2920D7683` FOREIGN KEY (`store_id`) REFERENCES `tbl_store` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_vmessage 的数据：~5 rows (大约)
-/*!40000 ALTER TABLE `sailmall_vmessage` DISABLE KEYS */;
-REPLACE INTO `sailmall_vmessage` (`id`, `addTime`, `deleteStatus`, `content`, `store_id`, `FromUserName`, `MsgType`, `json_map`, `reply`, `status`) VALUES
+-- 正在导出表  SailPlat.tbl_vmessage 的数据：~5 rows (大约)
+/*!40000 ALTER TABLE `tbl_vmessage` DISABLE KEYS */;
+REPLACE INTO `tbl_vmessage` (`id`, `addTime`, `deleteStatus`, `content`, `store_id`, `FromUserName`, `MsgType`, `json_map`, `reply`, `status`) VALUES
 	(1, '2015-02-28 15:28:32', b'0', '商城', 1, 'oUpcuuAujM9urqOwXtq-bfllu8TM', NULL, '{"MsgId":"5985348363844656969","FromUserName":"oUpcuuAujM9urqOwXtq-bfllu8TM","EventKey":"","Event":"","CreateTime":"1393572512","Content":"商城","ToUserName":"gh_bdc2187cfd3d","MsgType":"text"}', NULL, 0),
 	(2, '2015-03-01 12:35:38', b'0', '', 1, NULL, NULL, '{}', NULL, 0),
 	(3, '2015-03-01 18:34:37', b'0', '0', 1, 'oUpcuuHHm9bd4IXXPypzCKcAVKOg', NULL, '{"MsgId":"5985767398033927371","FromUserName":"oUpcuuHHm9bd4IXXPypzCKcAVKOg","EventKey":"","Event":"","CreateTime":"1393670076","Content":"0","ToUserName":"gh_bdc2187cfd3d","MsgType":"text"}', NULL, 0),
 	(4, '2015-03-01 18:34:51', b'0', '1', 1, 'oUpcuuHHm9bd4IXXPypzCKcAVKOg', NULL, '{"MsgId":"5985767458163469517","FromUserName":"oUpcuuHHm9bd4IXXPypzCKcAVKOg","EventKey":"","Event":"","CreateTime":"1393670090","Content":"1","ToUserName":"gh_bdc2187cfd3d","MsgType":"text"}', NULL, 0),
 	(5, '2015-03-02 21:36:13', b'0', '', 1, NULL, NULL, '{}', NULL, 0);
-/*!40000 ALTER TABLE `sailmall_vmessage` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_vmessage` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_watermark 结构
-CREATE TABLE IF NOT EXISTS `sailmall_watermark` (
+-- 导出  表 SailPlat.tbl_watermark 结构
+CREATE TABLE IF NOT EXISTS `tbl_watermark` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -10469,16 +10469,16 @@ CREATE TABLE IF NOT EXISTS `sailmall_watermark` (
   PRIMARY KEY (`id`),
   KEY `FKD4AF0733DDEA8C3` (`wm_image_id`),
   KEY `FKD4AF073920D7683` (`store_id`),
-  CONSTRAINT `FKD4AF0733DDEA8C3` FOREIGN KEY (`wm_image_id`) REFERENCES `sailmall_accessory` (`id`),
-  CONSTRAINT `FKD4AF073920D7683` FOREIGN KEY (`store_id`) REFERENCES `sailmall_store` (`id`)
+  CONSTRAINT `FKD4AF0733DDEA8C3` FOREIGN KEY (`wm_image_id`) REFERENCES `tbl_accessory` (`id`),
+  CONSTRAINT `FKD4AF073920D7683` FOREIGN KEY (`store_id`) REFERENCES `tbl_store` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_watermark 的数据：~0 rows (大约)
-/*!40000 ALTER TABLE `sailmall_watermark` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sailmall_watermark` ENABLE KEYS */;
+-- 正在导出表  SailPlat.tbl_watermark 的数据：~0 rows (大约)
+/*!40000 ALTER TABLE `tbl_watermark` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_watermark` ENABLE KEYS */;
 
--- 导出  表 sailmall.sailmall_ztc_gold_log 结构
-CREATE TABLE IF NOT EXISTS `sailmall_ztc_gold_log` (
+-- 导出  表 SailPlat.tbl_ztc_gold_log 结构
+CREATE TABLE IF NOT EXISTS `tbl_ztc_gold_log` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `addTime` datetime DEFAULT NULL,
   `deleteStatus` bit(1) NOT NULL,
@@ -10488,12 +10488,12 @@ CREATE TABLE IF NOT EXISTS `sailmall_ztc_gold_log` (
   `zgl_goods_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK5A722B8C50A38BC3` (`zgl_goods_id`),
-  CONSTRAINT `FK5A722B8C50A38BC3` FOREIGN KEY (`zgl_goods_id`) REFERENCES `sailmall_goods` (`id`)
+  CONSTRAINT `FK5A722B8C50A38BC3` FOREIGN KEY (`zgl_goods_id`) REFERENCES `tbl_goods` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 正在导出表  sailmall.sailmall_ztc_gold_log 的数据：~0 rows (大约)
-/*!40000 ALTER TABLE `sailmall_ztc_gold_log` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sailmall_ztc_gold_log` ENABLE KEYS */;
+-- 正在导出表  SailPlat.tbl_ztc_gold_log 的数据：~0 rows (大约)
+/*!40000 ALTER TABLE `tbl_ztc_gold_log` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_ztc_gold_log` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;

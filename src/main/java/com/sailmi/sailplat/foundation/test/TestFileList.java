@@ -7,7 +7,7 @@
  {
    public static void main(String[] args)
    {
-     String strPath = "F:\\JAVA_PRO\\sailmall\\data\\20120829_1";
+     String strPath = "F:\\JAVA_PRO\\SailPlat\\data\\20120829_1";
      File dir = new File(strPath);
      File[] files = dir.listFiles();
      for (File f : files)

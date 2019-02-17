@@ -15,10 +15,10 @@ import javax.persistence.TemporalType;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
-import com.sailmi.sailplat.core.domain.IdEntity;
+import com.sailmi.database.domain.IdEntity;
 /**
  * 活动
- * @author sailmall
+ * @author SailPlat
  *
  */
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)

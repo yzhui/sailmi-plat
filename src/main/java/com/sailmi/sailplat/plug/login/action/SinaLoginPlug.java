@@ -1,9 +1,6 @@
  package com.sailmi.sailplat.plug.login.action;
  
- import com.sailmi.sailplat.core.security.support.SecurityUserHolder;
-import com.sailmi.sailplat.core.tools.CommUtil;
-import com.sailmi.sailplat.core.tools.Md5Encrypt;
-import com.sailmi.sailplat.foundation.domain.Album;
+ import com.sailmi.sailplat.foundation.domain.Album;
 import com.sailmi.sailplat.foundation.domain.IntegralLog;
 import com.sailmi.sailplat.foundation.domain.SysConfig;
 import com.sailmi.sailplat.foundation.domain.User;
@@ -13,6 +10,9 @@ import com.sailmi.sailplat.foundation.service.IRoleService;
 import com.sailmi.sailplat.foundation.service.ISysConfigService;
 import com.sailmi.sailplat.foundation.service.IUserConfigService;
 import com.sailmi.sailplat.foundation.service.IUserService;
+import com.sailmi.sailplat.security.support.SecurityUserHolder;
+import com.sailmi.tools.CommUtil;
+import com.sailmi.tools.Md5Encrypt;
 
 import java.io.IOException;
  import java.io.PrintStream;
@@ -170,7 +170,7 @@ import java.io.IOException;
        return "redirect:" + CommUtil.getURL(request) + 
          "/login.htm?username=" + 
          CommUtil.encode(user.getUsername()) + "&password=" + 
-         "sailmall_thid_login_" + user.getPassword();
+         "tbl_thid_login_" + user.getPassword();
      }
  
      User user = this.userService.getObjById(
@@ -247,7 +247,7 @@ import java.io.IOException;
      config.setSina_login_id("3863193702");
      config.setSina_login_key("16b62bbfc99c0d9028c199566429c798");
      String redirect_uri = 
-       CommUtil.encode("http://sailmall.eicp.net/sina_login_bind.htm");
+       CommUtil.encode("http://SailPlat.eicp.net/sina_login_bind.htm");
      String auth_url = "https://api.weibo.com/oauth2/authorize?client_id=" + 
        config.getSina_login_id() + 
        "&response_type=code&redirect_uri=" + redirect_uri;

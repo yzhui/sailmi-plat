@@ -1,7 +1,7 @@
 package com.sailmi.sailplat.foundation.service;
 
-import com.sailmi.sailplat.core.security.SecurityAuthType;
 import com.sailmi.sailplat.foundation.domain.SysConfig;
+import com.sailmi.sailplat.security.SecurityAuthType;
 
 public abstract interface ISysConfigService
 {

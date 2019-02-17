@@ -1,10 +1,10 @@
 package com.sailmi.sailplat.foundation.service.impl;
 
-import com.sailmi.sailplat.core.dao.IGenericDAO;
-import com.sailmi.sailplat.core.security.SecurityAuthType;
+import com.sailmi.database.dao.IGenericDAO;
 import com.sailmi.sailplat.foundation.domain.Accessory;
 import com.sailmi.sailplat.foundation.domain.SysConfig;
 import com.sailmi.sailplat.foundation.service.ISysConfigService;
+import com.sailmi.sailplat.security.SecurityAuthType;
 
 import java.util.List;
 import javax.annotation.Resource;
@@ -46,13 +46,13 @@ public class SysConfigService implements ISysConfigService {
 				sc.setSysLanguage("zh_cn");
 			}
 			if ((sc.getWebsiteName() == null) || (sc.getWebsiteName().equals(""))) {
-				sc.setWebsiteName("sailmall");
+				sc.setWebsiteName("SailPlat");
 			}
 			if ((sc.getCloseReason() == null) || (sc.getCloseReason().equals(""))) {
 				sc.setCloseReason("系统维护中...");
 			}
 			if ((sc.getTitle() == null) || (sc.getTitle().equals(""))) {
-				sc.setTitle("SailMall多用户商城系统V2.0版");
+				sc.setTitle("SailPlat多用户商城系统V2.0版");
 			}
 			if ((sc.getImageSaveType() == null) || (sc.getImageSaveType().equals(""))) {
 				sc.setImageSaveType("sidImg");
@@ -109,9 +109,9 @@ public class SysConfigService implements ISysConfigService {
 		}
 		SysConfig sc = new SysConfig();
 		sc.setUploadFilePath("upload");
-		sc.setWebsiteName("sailmall");
+		sc.setWebsiteName("SailPlat");
 		sc.setSysLanguage("zh_cn");
-		sc.setTitle("SailMall多用户商城系统V2.0版");
+		sc.setTitle("SailPlat多用户商城系统V2.0版");
 		sc.setSecurityCodeType("normal");
 		sc.setEmailEnable(true);
 		sc.setCloseReason("系统维护中...");

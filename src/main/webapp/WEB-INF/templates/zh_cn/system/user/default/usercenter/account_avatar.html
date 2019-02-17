@@ -121,7 +121,7 @@ $!httpInclude.include("/top.htm")
 			}
 			
 			function getCopyRightName_1() {				
-				return "SailMall多用户商城系统V1.3版";
+				return "SailPlat多用户商城系统V1.3版";
 			}
 			
 			function getCopyRightName_2() {				
@@ -145,7 +145,7 @@ $!httpInclude.include("/top.htm")
 			var _curImage = "$!webPath/resources/style/common/images/avatar/bg_image.png";
 			function setSourceImage(s) {
 				_curImage = s;
-				jQuert('#sailmall_avatar').setSourceImage();
+				jQuert('#tbl_avatar').setSourceImage();
 			}
 			function getSourceImage() {
 				return _curImage;
@@ -163,11 +163,11 @@ $!httpInclude.include("/top.htm")
             //初始化图片
             flashvars.init_image_url="$!webPath/resources/style/common/images/avatar/init_image.jpg";
             //大头像名称
-            flashvars.big_avatar_name="sailmall_big_avatar";
+            flashvars.big_avatar_name="tbl_big_avatar";
             //中头像名称
-            flashvars.middle_avatar_name="sailmall_middle_avatar";
+            flashvars.middle_avatar_name="tbl_middle_avatar";
             //小头像名称
-            flashvars.little_avatar_name="sailmall_little_avatar";
+            flashvars.little_avatar_name="tbl_little_avatar";
             flashvars.url_params = getParamsFromUrl();
             var params = {};
             params.quality = "high";
@@ -175,11 +175,11 @@ $!httpInclude.include("/top.htm")
             params.allowscriptaccess = "sameDomain";
             params.allowfullscreen = "true";
             var attributes = {};
-            attributes.id = "c_avatar_sailmall";
-            attributes.name = "c_avatar_sailmall";
+            attributes.id = "c_avatar_SailPlat";
+            attributes.name = "c_avatar_SailPlat";
             attributes.align = "middle";
             swfobject.embedSWF(
-                "$!webPath/resources/flash/sailmall_avatar.swf", "flashContent", 
+                "$!webPath/resources/flash/tbl_avatar.swf", "flashContent", 
                 "600", "400", 
                 swfVersionStr, xiSwfUrlStr, 
                 flashvars, params, attributes);

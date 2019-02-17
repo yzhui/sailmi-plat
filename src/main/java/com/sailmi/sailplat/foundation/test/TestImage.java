@@ -2,13 +2,13 @@
  
  import java.io.File;
 
-import com.sailmi.sailplat.core.tools.CommUtil;
+import com.sailmi.tools.CommUtil;
  
  public class TestImage
  {
    public static void main(String[] args)
    {
-     File f = new File("F://JAVA_PRO//sailmall//upload//store//163840");
+     File f = new File("F://JAVA_PRO//SailPlat//upload//store//163840");
      File[] files = f.listFiles();
      for (int i = 0; i < files.length; i++) {
        File temp = files[i];

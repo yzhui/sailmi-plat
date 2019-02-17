@@ -2,7 +2,7 @@
  
  import org.springframework.web.servlet.ModelAndView;
 
-import com.sailmi.sailplat.core.query.QueryObject;
+import com.sailmi.database.query.QueryObject;
  
  public class StoreQueryObject extends QueryObject
  {

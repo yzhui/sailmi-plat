@@ -1,7 +1,7 @@
  package com.sailmi.sailplat.foundation.test;
  
- import com.sailmi.sailplat.core.tools.CommUtil;
-import com.sailmi.sailplat.plug.login.action.MySecureProtocolSocketFactory;
+ import com.sailmi.sailplat.plug.login.action.MySecureProtocolSocketFactory;
+import com.sailmi.tools.CommUtil;
 
 import java.io.IOException;
  import java.io.PrintStream;
@@ -37,7 +37,7 @@ import java.io.IOException;
      params.setParameter("grant_type", "authorization_code");
      params.setParameter("code", "9cc3989375e8205df543dfebf17268b9");
      params.setParameter("redirect_uri", 
-       "http://sailmall.eicp.net/sina_login_bind.htm");
+       "http://SailPlat.eicp.net/sina_login_bind.htm");
      method.setParams(params);
      int status = client.executeMethod(method);
      System.out.println("状态值：" + status);

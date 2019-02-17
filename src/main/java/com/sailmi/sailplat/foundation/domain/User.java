@@ -30,8 +30,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.sailmi.sailplat.core.annotation.Lock;
-import com.sailmi.sailplat.core.domain.IdEntity;
+import com.sailmi.annotation.Lock;
+import com.sailmi.database.domain.IdEntity;
  
  @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
  @Entity
@@ -82,7 +82,7 @@ import com.sailmi.sailplat.core.domain.IdEntity;
  
    //角色
    @ManyToMany(cascade=CascadeType.REMOVE,targetEntity=Role.class)
-   @JoinTable(name="sailmall_user_role", joinColumns={@javax.persistence.JoinColumn(name="user_id")}, inverseJoinColumns={@javax.persistence.JoinColumn(name="role_id")})
+   @JoinTable(name="tbl_user_role", joinColumns={@javax.persistence.JoinColumn(name="user_id")}, inverseJoinColumns={@javax.persistence.JoinColumn(name="role_id")})
    private Set<Role> roles = new TreeSet();
  
    //角色资源

@@ -13,11 +13,11 @@
     <global-method-security secured-annotations="enabled"></global-method-security>
 
 	<beans:bean id="securityManager"
-		class="com.sailmi.mall.core.security.support.SecurityManagerSupport" />
+		class="com.sailmi.sailplat.core.security.support.SecurityManagerSupport" />
 	<beans:bean id="sessionRegistry"
 		class="org.springframework.security.core.session.SessionRegistryImpl" />
 	<beans:bean id="securityAuthType"
-		class="com.sailmi.mall.core.security.SecurityAuthType">
+		class="com.sailmi.sailplat.core.security.SecurityAuthType">
 		<beans:property name="authType" value="database" />
 		<beans:property name="loginUrl"
 			value="https://sso.yudorm.com:8443/cas/v1/tickets" /> <!--oauth 验证失败时的处理器 -->
@@ -31,11 +31,11 @@
 		<authentication-provider ref="shopAuthenticationProvider" />
 	</authentication-manager>
 	<beans:bean id="shopAuthenticationProvider"
-		class="com.sailmi.mall.core.security.support.ShopAuthenticationProvider">
+		class="com.sailmi.sailplat.core.security.support.ShopAuthenticationProvider">
 		<beans:property name="userDetailsService" ref="userDetailsService" />
 	</beans:bean>
 	<beans:bean id="userDetailsService"
-		class="com.sailmi.mall.core.security.DbUserDetailService">
+		class="com.sailmi.sailplat.core.security.DbUserDetailService">
 		<beans:property name="dataSource" ref="dataSource" />
 		<beans:property name="enableAuthorities" value="true" />
 		<beans:property name="userInfoUrl"
@@ -46,8 +46,8 @@
 		<beans:property name="authoritiesByUsernameQuery">
 			<beans:value>
                 <![CDATA[
-                	select sailmall_user.userName,sailmall_role.roleCode from sailmall_role,sailmall_user  where 
-                	(position(sailmall_role.type in sailmall_user.userRole)>0) and sailmall_user.userName=?
+                	select tbl_user.userName,tbl_role.roleCode from tbl_role,tbl_user  where 
+                	(position(tbl_role.type in tbl_user.userRole)>0) and tbl_user.userName=?
                 ]]>
 			</beans:value>
 		</beans:property>
@@ -55,7 +55,7 @@
 		<beans:property name="usersByUsernameQuery">
 			<beans:value>
                 <![CDATA[SELECT id,userName,userCode, password, 1 AS enabled
-                           FROM sailmall_user
+                           FROM tbl_user
                           WHERE userName = ?]]>
 			</beans:value>
 		</beans:property>
@@ -112,12 +112,12 @@
 	</beans:bean>
 
 	<beans:bean id="securityMetadataSource"
-		class="com.sailmi.mall.core.security.interceptor.SecureResourceFilterInvocationDefinitionSource" />
+		class="com.sailmi.sailplat.core.security.interceptor.SecureResourceFilterInvocationDefinitionSource" />
 	<beans:bean id="accessDeniedHandler"
-		class="com.sailmi.mall.core.security.support.ShopAccessDeniedHandler" />
+		class="com.sailmi.sailplat.core.security.support.ShopAccessDeniedHandler" />
 	<!-- 自定义登录过滤器 -->
 	<beans:bean id="loginAuthenticationFilter"
-		class="com.sailmi.mall.core.security.support.LoginAuthenticationFilter">
+		class="com.sailmi.sailplat.core.security.support.LoginAuthenticationFilter">
 		<beans:property name="authenticationManager" ref="authenticationManager" />
 		<beans:property name="authenticationFailureHandler"
 			ref="authenticationFailureHandler" /> <!-- 验证失败时的处理器 -->
@@ -141,11 +141,11 @@
 	</beans:bean>
 	<!-- 自定义异常过滤器 -->
 	<beans:bean id="exceptionFilter"
-		class="com.sailmi.mall.core.security.support.ShopSecurityExceptionFilter">
+		class="com.sailmi.sailplat.core.security.support.ShopSecurityExceptionFilter">
 		<beans:property name="authenticationEntryPoint" ref="loginUrlEntryPoint" />
 	</beans:bean>
 	<!-- 重写用户退出过滤器 -->
-	<beans:bean id="_logoutProcessingFilter" class="com.sailmi.mall.core.filter.NorLogoutFilter">
+	<beans:bean id="_logoutProcessingFilter" class="com.sailmi.sailplat.core.filter.NorLogoutFilter">
 		<beans:property name="filterProcessesUrl" value="/logout.htm" />
 		<beans:constructor-arg value="/logout_success.htm" />
 		<beans:constructor-arg>

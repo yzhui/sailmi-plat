@@ -1,9 +1,6 @@
  package com.sailmi.sailplat.plug.login.action;
  
- import com.sailmi.sailplat.core.security.support.SecurityUserHolder;
-import com.sailmi.sailplat.core.tools.CommUtil;
-import com.sailmi.sailplat.core.tools.Md5Encrypt;
-import com.sailmi.sailplat.foundation.domain.Album;
+ import com.sailmi.sailplat.foundation.domain.Album;
 import com.sailmi.sailplat.foundation.domain.IntegralLog;
 import com.sailmi.sailplat.foundation.domain.SysConfig;
 import com.sailmi.sailplat.foundation.domain.User;
@@ -13,6 +10,9 @@ import com.sailmi.sailplat.foundation.service.IRoleService;
 import com.sailmi.sailplat.foundation.service.ISysConfigService;
 import com.sailmi.sailplat.foundation.service.IUserConfigService;
 import com.sailmi.sailplat.foundation.service.IUserService;
+import com.sailmi.sailplat.security.support.SecurityUserHolder;
+import com.sailmi.tools.CommUtil;
+import com.sailmi.tools.Md5Encrypt;
 
 import java.io.BufferedReader;
  import java.io.IOException;
@@ -69,7 +69,7 @@ import java.io.BufferedReader;
        this.configService.getSysConfig().getQq_login_id() + 
        "&redirect_uri=" + 
        redirect_uri + 
-       "&state=sailmall&scope=get_user_info";
+       "&state=SailPlat&scope=get_user_info";
      response.sendRedirect(auth_url);
    }
  
@@ -157,7 +157,7 @@ import java.io.BufferedReader;
        return "redirect:" + CommUtil.getURL(request) + 
          "/login.htm?username=" + 
          CommUtil.encode(user.getUsername()) + "&password=" + 
-         "sailmall_thid_login_" + user.getPassword();
+         "tbl_thid_login_" + user.getPassword();
      }
  
      User user = this.userService.getObjById(
@@ -188,7 +188,7 @@ import java.io.BufferedReader;
          this.userService.delete(SecurityUserHolder.getCurrentUser()
            .getId());
          url = "redirect:" + CommUtil.getURL(request) + 
-           "/sailmall_login.htm?username=" + 
+           "/tbl_login.htm?username=" + 
            CommUtil.encode(user.getUsername()) + 
            "&password=" + password;
        } else {
@@ -272,12 +272,12 @@ import java.io.BufferedReader;
      config.setQq_login_id("100359491");
      config.setQq_login_key("a34bcaef0487e650238983abc0fbae7c");
      String redirect_uri = 
-       CommUtil.encode("http://sailmall.eicp.net/qq_login_bind.htm");
+       CommUtil.encode("http://SailPlat.eicp.net/qq_login_bind.htm");
      String auth_url = "https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=" + 
        config.getQq_login_id() + 
        "&redirect_uri=" + 
        redirect_uri + 
-       "&state=sailmall&scope=get_user_info";
+       "&state=SailPlat&scope=get_user_info";
      System.out.println(auth_url);
  
      String token_url = "https://graph.qq.com/oauth2.0/token?grant_type=authorization_code&client_id=" + 

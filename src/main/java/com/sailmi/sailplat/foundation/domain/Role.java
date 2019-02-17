@@ -12,7 +12,7 @@
  import org.hibernate.annotations.Cache;
  import org.hibernate.annotations.CacheConcurrencyStrategy;
 
-import com.sailmi.sailplat.core.domain.IdEntity;
+import com.sailmi.database.domain.IdEntity;
  
  @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
  @Entity
@@ -40,7 +40,7 @@ import com.sailmi.sailplat.core.domain.IdEntity;
    private RoleGroup rg;
  
    @ManyToMany(targetEntity=Res.class)
-   @JoinTable(name="sailmall_role_res", joinColumns={@javax.persistence.JoinColumn(name="role_id")}, inverseJoinColumns={@javax.persistence.JoinColumn(name="res_id")})
+   @JoinTable(name="tbl_role_res", joinColumns={@javax.persistence.JoinColumn(name="role_id")}, inverseJoinColumns={@javax.persistence.JoinColumn(name="res_id")})
    private List<Res> reses = new ArrayList();
  
    public String getRoleName() {

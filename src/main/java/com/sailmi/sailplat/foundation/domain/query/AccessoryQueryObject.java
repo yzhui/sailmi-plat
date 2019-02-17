@@ -2,7 +2,7 @@ package com.sailmi.sailplat.foundation.domain.query;
 
 import org.springframework.web.servlet.ModelAndView;
 
-import com.sailmi.sailplat.core.query.QueryObject;
+import com.sailmi.database.query.QueryObject;
 
 public class AccessoryQueryObject extends QueryObject {
 	public AccessoryQueryObject(String currentPage, ModelAndView mv, String orderBy, String orderType) {
