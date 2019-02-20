@@ -9,7 +9,10 @@
 	<name>sailplat</name>
 	<properties>
 	  	<argLine>-Dfile.encoding=UTF-8</argLine>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>  
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>  
+        <!-- 编译时的编码 -->  
+        <maven.compiler.encoding>UTF-8</maven.compiler.encoding>  
 		<jdk.version>1.8</jdk.version>
 		<maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
 		<spring.version>4.3.18.RELEASE</spring.version>
@@ -390,7 +393,14 @@
 	                <warName>${project.artifactId}</warName>  
 	            </configuration>    
 	        </plugin>  
-		 
+		 <plugin>  
+                <groupId>org.apache.maven.plugins</groupId>  
+                <artifactId>maven-resources-plugin</artifactId>  
+                <version>2.6</version>  
+                <configuration>  
+                    <encoding>UTF-8</encoding><!-- 指定编码格式，否则在DOS下运行mvn命令时当发生文件资源copy时将使用系统默认使用GBK编码 -->  
+                </configuration>  
+            </plugin>  
 		</plugins>
 	</build>
 	<description>sailmi knowledge and service platform</description>

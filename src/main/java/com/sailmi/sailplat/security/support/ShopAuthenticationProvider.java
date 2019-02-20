@@ -134,7 +134,8 @@ import com.sailmi.tools.SSLClientUtil;
 	 System.out.println("Authen Credentials:"+authentication.getCredentials());
 	 System.out.println("Authen Details:"+authentication.getDetails());
      String userAccount=username.substring(0,username.indexOf(','));
-	   String userPassEncrypted=Md5Encrypt.md5((String)authentication.getCredentials());
+	 String userPassEncrypted=null;
+	 if(authentication.getCredentials()!=null) userPassEncrypted=Md5Encrypt.md5((String)authentication.getCredentials());
 	 if(this.configService.getSecurityAuthType().getAuthType().equals("rest")){
        System.out.println("#@4111111111111111111111111111111111111111111"+authentication.getDetails().getClass().getName());
 		 

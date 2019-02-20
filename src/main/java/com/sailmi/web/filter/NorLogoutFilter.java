@@ -53,11 +53,13 @@ public class NorLogoutFilter extends LogoutFilter
 
   public NorLogoutFilter(String logoutSuccessUrl, LogoutHandler[] handlers) {
     super(logoutSuccessUrl, handlers);
+    System.out.println("NorLogoutFilter:............................");
   }
 
   public void doFilterHttp(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
     throws IOException, ServletException
   {
+	    System.out.println("NorLogoutFilter:............................");
     if (requiresLogout(request, response)) {
       HttpSession session = request.getSession(false);
       if (session != null) {

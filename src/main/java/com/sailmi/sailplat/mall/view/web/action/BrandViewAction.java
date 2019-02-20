@@ -28,7 +28,7 @@ import com.sailmi.sailplat.foundation.service.IGoodsClassService;
 import com.sailmi.sailplat.foundation.service.IGoodsService;
 import com.sailmi.sailplat.foundation.service.ISysConfigService;
 import com.sailmi.sailplat.foundation.service.IUserConfigService;
-import com.sailmi.sailplat.mall.view.web.tools.StoreViewTools;
+import com.sailmi.sailplat.view.web.tools.StoreViewTools;
 import com.sailmi.tools.CommUtil;
 import com.sailmi.tools.mv.JModelAndView;
  

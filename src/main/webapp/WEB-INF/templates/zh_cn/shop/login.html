@@ -8,37 +8,37 @@
 <meta name="description" content="$!config.description" />
 <meta name="generator" content="Sailmi Service Mall 2.0" />
 <meta name="author" content="www.sailmi.com" />
-	<meta name="copyright" content="Sailmi Inc. All Rights Reserved">
-		<link
-			href="$!webPath/resources/style/system/front/default/css/public.css"
-			type="text/css" rel="stylesheet" />
-		<link
-			href="$!webPath/resources/style/system/front/default/css/goods.css"
-			type="text/css" rel="stylesheet" />
-		<script src="$!webPath/resources/js/jquery-1.6.2.js"></script>
-		<script src="$!webPath/resources/js/jquery.validate.min.js"></script>
-		<script>
-jQuery(document).ready(function(){
-  jQuery("#theForm").validate({
-     errorPlacement:function(error,element) {
-      error.appendTo(element.parent().find(".login_error_sp"));  
-	  element.parent().find(".login_error_sp").show('normal');
-    },
-	success:function(label){
-	    label.parent().hide();
-	},
-	rules: {
-			username: "required",
-			password: "required"#if($!config.securityCodeLogin),
-			code:"required"#end},
-		messages: {
-			username: "用户名不能为空",
-			password: "密码不能为空"#if($!config.securityCodeLogin),
-			code:"验证码不能为空"#end
-					}
-  });
-});
-</script>
+<meta name="copyright" content="Sailmi Inc. All Rights Reserved"></meta>
+<link
+	href="$!webPath/resources/style/system/front/default/css/public.css"
+	type="text/css" rel="stylesheet" />
+<link
+	href="$!webPath/resources/style/system/front/default/css/goods.css"
+	type="text/css" rel="stylesheet" />
+<script src="$!webPath/resources/js/jquery-1.6.2.js"></script>
+<script src="$!webPath/resources/js/jquery.validate.min.js"></script>
+<script>
+			jQuery(document).ready(function(){
+			  jQuery("#theForm").validate({
+			     errorPlacement:function(error,element) {
+			      error.appendTo(element.parent().find(".login_error_sp"));  
+				  element.parent().find(".login_error_sp").show('normal');
+			    },
+				success:function(label){
+				    label.parent().hide();
+				},
+				rules: {
+						username: "required",
+						password: "required"#if($!config.securityCodeLogin),
+						code:"required"#end},
+					messages: {
+						username: "用户名不能为空",
+						password: "密码不能为空"#if($!config.securityCodeLogin),
+						code:"验证码不能为空"#end
+								}
+			  });
+			});
+		</script>
 </head>
 <body>
 	<div class="main">
@@ -57,8 +57,8 @@ jQuery(document).ready(function(){
 					<div class="login_usetbox">
 						<div class="login_usrin">
 							<ul>
-								<form action="$!webPath/login.htm" method="post"
-									name="theForm" id="theForm">
+								<form action="$!webPath/login.htm" method="post" name="theForm"
+									id="theForm">
 									<li class="login_usertxt"><b>登录名：</b> <input
 										name="username" type="text" id="username" class="login_utxt"
 										autocomplete="off" /> <span class="login_error_sp"
@@ -73,13 +73,12 @@ jQuery(document).ready(function(){
 	                 jQuery("#code_img").attr("src","$!webPath/verify.htm?d"+new Date().getTime());
                  }
                 </script>
-									<li class="login_usercode"><b>验证码：</b> <input name="code"
-										type="text" id="code" autocomplete="off"
-										style="text-transform: uppercase;" class="usecode" /> <span
-										class="login_codeimg" #if($!config.securityCodeType==
-										'voice')style="display:none;" #end> <img
-											style="cursor: pointer;" src="$!webPath/verify.htm"
-											id="code_img" onclick="refreshCode();" width="59" height="27" /></span>
+									<li class="login_usercode"><b>验证码：</b> 
+										<input name="code" type="text" id="code" autocomplete="off"
+										style="text-transform: uppercase;" class="usecode" /> 
+										<span class="login_codeimg" #if($!config.securityCodeType=='voice') style="display:none;" #end>
+										 <img style="cursor: pointer;" src="$!webPath/verify.htm" id="code_img" onclick="refreshCode();" width="59" height="27" />
+										</span>
 										<a #if($!config.securityCodeType==
 										'voice')style="display:none;" #end href="javascript:void(0);"
 										onclick="refreshCode();" class="usenosee">看不清换一张</a>

@@ -83,7 +83,7 @@ public class DbUserDetailService extends JdbcDaoImpl {
 		
     	//获取此用户在报表系统中的信息，如果没有信息，则新建用户
 		System.out.println("Get User Info From DB:"+username);
-		if(username==null) return null;
+		if(username==null||username.equals("null")) return null;
 		User tempUser =  userService.getObjByProperty("userName",username);
 		tempUser.setAuthorities(this.loadUserAuthorities(username));
 		return tempUser;

@@ -14,8 +14,8 @@ import com.sailmi.sailplat.foundation.service.ISpareGoodsFloorService;
 import com.sailmi.sailplat.foundation.service.ISpareGoodsService;
 import com.sailmi.sailplat.foundation.service.ISysConfigService;
 import com.sailmi.sailplat.foundation.service.IUserConfigService;
-import com.sailmi.sailplat.mall.view.web.tools.SpareGoodsViewTools;
 import com.sailmi.sailplat.security.support.SecurityUserHolder;
+import com.sailmi.sailplat.view.web.tools.SpareGoodsViewTools;
 import com.sailmi.tools.CommUtil;
 import com.sailmi.tools.mv.JModelAndView;
 

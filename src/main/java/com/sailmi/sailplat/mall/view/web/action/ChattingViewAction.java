@@ -15,7 +15,7 @@ import com.sailmi.sailplat.foundation.service.ISnsFriendService;
 import com.sailmi.sailplat.foundation.service.ISysConfigService;
 import com.sailmi.sailplat.foundation.service.IUserConfigService;
 import com.sailmi.sailplat.foundation.service.IUserService;
-import com.sailmi.sailplat.mall.manage.admin.tools.UserTools;
+import com.sailmi.sailplat.manage.admin.tools.UserTools;
 import com.sailmi.sailplat.security.support.SecurityUserHolder;
 import com.sailmi.tools.CommUtil;
 import com.sailmi.tools.mv.JModelAndView;

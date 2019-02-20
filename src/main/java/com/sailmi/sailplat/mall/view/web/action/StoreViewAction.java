@@ -30,9 +30,9 @@ import com.sailmi.sailplat.foundation.service.IStoreService;
 import com.sailmi.sailplat.foundation.service.ISysConfigService;
 import com.sailmi.sailplat.foundation.service.IUserConfigService;
 import com.sailmi.sailplat.foundation.service.IUserGoodsClassService;
-import com.sailmi.sailplat.mall.view.web.tools.AreaViewTools;
-import com.sailmi.sailplat.mall.view.web.tools.GoodsViewTools;
-import com.sailmi.sailplat.mall.view.web.tools.StoreViewTools;
+import com.sailmi.sailplat.view.web.tools.AreaViewTools;
+import com.sailmi.sailplat.view.web.tools.GoodsViewTools;
+import com.sailmi.sailplat.view.web.tools.StoreViewTools;
 import com.sailmi.tools.CommUtil;
 import com.sailmi.tools.mv.JModelAndView;
 

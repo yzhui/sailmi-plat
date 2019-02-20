@@ -13,11 +13,11 @@
     <global-method-security secured-annotations="enabled"></global-method-security>
 
 	<beans:bean id="securityManager"
-		class="com.sailmi.sailplat.core.security.support.SecurityManagerSupport" />
+		class="com.sailmi.sailplat.security.support.SecurityManagerSupport" />
 	<beans:bean id="sessionRegistry"
 		class="org.springframework.security.core.session.SessionRegistryImpl" />
 	<beans:bean id="securityAuthType"
-		class="com.sailmi.sailplat.core.security.SecurityAuthType">
+		class="com.sailmi.sailplat.security.SecurityAuthType">
 		<beans:property name="authType" value="database" />
 		<beans:property name="loginUrl"
 			value="https://sso.yudorm.com:8443/cas/v1/tickets" /> <!--oauth 验证失败时的处理器 -->
@@ -31,11 +31,11 @@
 		<authentication-provider ref="shopAuthenticationProvider" />
 	</authentication-manager>
 	<beans:bean id="shopAuthenticationProvider"
-		class="com.sailmi.sailplat.core.security.support.ShopAuthenticationProvider">
+		class="com.sailmi.sailplat.security.support.ShopAuthenticationProvider">
 		<beans:property name="userDetailsService" ref="userDetailsService" />
 	</beans:bean>
 	<beans:bean id="userDetailsService"
-		class="com.sailmi.sailplat.core.security.DbUserDetailService">
+		class="com.sailmi.sailplat.security.DbUserDetailService">
 		<beans:property name="dataSource" ref="dataSource" />
 		<beans:property name="enableAuthorities" value="true" />
 		<beans:property name="userInfoUrl"
@@ -62,14 +62,11 @@
 	</beans:bean>
 
 	<http use-expressions="true" entry-point-ref="loginUrlEntryPoint">
-		<intercept-url pattern="/login*" access="permitAll" />  	
-		<intercept-url pattern="/login.htm" access="permitAll" />  	
-		<intercept-url pattern="/verify.htm" access="permitAll" />  	
-		<intercept-url pattern="/user/login.htm" access="permitAll" />  	
-		<intercept-url pattern="/admin/login.htm" access="permitAll" />  	
-		<intercept-url pattern="/error.htm*" access="permitAll" />  	
-		<intercept-url pattern="/resources/*" access="permitAll" />  	
-		<intercept-url pattern="/upload/*" access="permitAll" />  	
+		<intercept-url pattern="/admin/**" access="isAuthenticated()" />
+		<intercept-url pattern="/user/**" access="isAuthenticated()" />
+		<intercept-url pattern="/buyer/**" access="isAuthenticated()" />
+		<intercept-url pattern="/seller/**" access="isAuthenticated()" />
+		<intercept-url pattern="/**" access="permitAll" />
 		<custom-filter position="FORM_LOGIN_FILTER" ref="loginAuthenticationFilter" />
 		<custom-filter before="LOGOUT_FILTER" ref="_logoutProcessingFilter" />
 		<custom-filter after="EXCEPTION_TRANSLATION_FILTER" ref="exceptionFilter" />
@@ -112,12 +109,12 @@
 	</beans:bean>
 
 	<beans:bean id="securityMetadataSource"
-		class="com.sailmi.sailplat.core.security.interceptor.SecureResourceFilterInvocationDefinitionSource" />
+		class="com.sailmi.sailplat.security.interceptor.SecureResourceFilterInvocationDefinitionSource" />
 	<beans:bean id="accessDeniedHandler"
-		class="com.sailmi.sailplat.core.security.support.ShopAccessDeniedHandler" />
+		class="com.sailmi.sailplat.security.support.ShopAccessDeniedHandler" />
 	<!-- 自定义登录过滤器 -->
 	<beans:bean id="loginAuthenticationFilter"
-		class="com.sailmi.sailplat.core.security.support.LoginAuthenticationFilter">
+		class="com.sailmi.sailplat.security.support.LoginAuthenticationFilter">
 		<beans:property name="authenticationManager" ref="authenticationManager" />
 		<beans:property name="authenticationFailureHandler"
 			ref="authenticationFailureHandler" /> <!-- 验证失败时的处理器 -->
@@ -141,11 +138,11 @@
 	</beans:bean>
 	<!-- 自定义异常过滤器 -->
 	<beans:bean id="exceptionFilter"
-		class="com.sailmi.sailplat.core.security.support.ShopSecurityExceptionFilter">
+		class="com.sailmi.sailplat.security.support.ShopSecurityExceptionFilter">
 		<beans:property name="authenticationEntryPoint" ref="loginUrlEntryPoint" />
 	</beans:bean>
 	<!-- 重写用户退出过滤器 -->
-	<beans:bean id="_logoutProcessingFilter" class="com.sailmi.sailplat.core.filter.NorLogoutFilter">
+	<beans:bean id="_logoutProcessingFilter" class="com.sailmi.web.filter.NorLogoutFilter">
 		<beans:property name="filterProcessesUrl" value="/logout.htm" />
 		<beans:constructor-arg value="/logout_success.htm" />
 		<beans:constructor-arg>

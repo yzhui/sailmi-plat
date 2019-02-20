@@ -112,14 +112,14 @@
 
 
 	<!-- 定义了与实体相关的dao -->
-	<bean id="genericEntityDao" class="com.sailmi.sailplat.core.base.GenericEntityDao"
+	<bean id="genericEntityDao" class="com.sailmi.database.base.GenericEntityDao"
 		scope="singleton" lazy-init="true">
 		<property name="hibernateTemplate" ref="hibernateTemplate" />
 	</bean>
 	
 	
 	<!--使用泛型DAO作为抽象基类 abstract="true" -->
-	<bean id="genericDAO" class="com.sailmi.sailplat.core.base.GenericDAO"
+	<bean id="genericDAO" class="com.sailmi.database.base.GenericDAO"
 		abstract="true" depends-on="genericEntityDao">
 		<property name="geDao">
 			<ref bean="genericEntityDao" />
@@ -139,7 +139,7 @@
 	<!--配置velocity engine默认路径 -->
 	<bean id="velocityEngine"
 		class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
-		<property name="resourceLoaderPath" value="/WEB-INF/templates"></property>
+		<property name="resourceLoaderPath" value="/"></property>
 	</bean>
 	<!-- 对模型视图名称的解析，即在模型视图名称添加前后缀 -->
 	<bean id="velocityCongfig"

@@ -32,7 +32,7 @@ public class DeviceAccessFilter implements Filter {
 	}
 
 	public void doFilter( ServletRequest req, ServletResponse res, FilterChain chain ) throws IOException, ServletException {
-		System.out.println("0.......................................................................");
+		System.out.println("DeviceAccessFilter:0.......................................................................");
 		SysConfig config = this.configService.getSysConfig();
 		HttpServletResponse response = (HttpServletResponse)res;
 		HttpServletRequest request = (HttpServletRequest)req;
@@ -44,110 +44,12 @@ public class DeviceAccessFilter implements Filter {
 		String url = request.getRequestURI();
 		boolean redirect = false;
 		String redirect_url = "";
-		String path = request.getSession().getServletContext().getRealPath( "/" ) + "install.lock";
-		File file = new File( path );
-		if( file.exists() ) {
-			if( !config.isWebsiteState() ) {
-				System.out.println("1----------------------------------------------------------------------------------");
-				if( init_url( url ) ) {
-					System.out.println("2----------------------------------------------------------------------------------");
-					if( (url.indexOf( "/admin" ) < 0) && (url.indexOf( "/install.htm" ) <= 0) ) {
-						System.out.println("3----------------------------------------------------------------------------------");
-						redirect = true;
-						redirect_url = CommUtil.getURL( request ) + "/close.htm";
-					}
-					if( url.indexOf( "/login.htm" ) >= 0 ) {
-						System.out.println("4----------------------------------------------------------------------------------");
-						redirect = false;
-						if(isMobile){
-							System.out.println("5----------------------------------------------------------------------------------");
-							redirect = true;
-							redirect_url = CommUtil.getURL( request ) + "/mobile/login.htm";
-						}
-					}
-					if( url.indexOf( "close.htm" ) >= 0 ) {
-						redirect = false;
-					}
-					if( url.indexOf( "/resources/" ) >= 0 ) {
-						redirect = false;
-					}
-					if( url.indexOf( "js.htm" ) >= 0 ) {
-						redirect = false;
-					}
-					if( url.indexOf( "/logout_success.htm" ) >= 0 ) {
-						redirect = false;
-					}
-					if( url.indexOf( "/verify.htm" ) >= 0 ) {
-						redirect = false;
-					}
-					if( url.indexOf( "/login_success.htm" ) >= 0 ) {
-						redirect = false;
-					}
-					if( url.indexOf( "/install.htm" ) >= 0 ) {
-						redirect = true;
-						redirect_url = CommUtil.getURL( request ) + "/install_over.htm";
-					}
-					if( url.indexOf( "/install_over.htm" ) >= 0 )
-						redirect = false;
-					System.out.println("6----------------------------------------------------------------------------------");
-
-				}
-			}
-			else {
-				System.out.println("7----------------------------------------------------------------------------------"+url);
-
-				User user = SecurityUserHolder.getCurrentUser();
-				System.out.println("8----------------------------------------------------------------------------------"+user);
-				if( user != null ) {
-					if( url.indexOf( "/login.htm" ) >= 0 ) {
-						redirect = true;
-						redirect_url = CommUtil.getURL( request ) + "/index.htm";
-						if(isMobile){
-							redirect_url = CommUtil.getURL( request ) + "/mobile/index.htm";
-						}
-					}
-					if( url.indexOf( "/register.htm" ) >= 0 ) {
-						redirect = true;
-						redirect_url = CommUtil.getURL( request ) + "/index.htm";
-						if(isMobile){
-							redirect_url = CommUtil.getURL( request ) + "/mobile/index.htm";
-						}
-					}
-				}
-				else {
-					System.out.println("188--------------------------------------------------------------------------"+request.getContextPath());
-					if(url.indexOf("/login")>=0){
-						redirect = false;
-					}else if(url.indexOf(request.getContextPath()+"/verify.htm")>=0){
-						System.out.println("19----------------------------------------------------------------------------------"+redirect_url);
-						redirect = false;
-					}else if(url.indexOf(request.getContextPath()+"/index.htm")>=0){
-						System.out.println("19----------------------------------------------------------------------------------"+redirect_url);
-						redirect = false;
-					}else{
-						System.out.println("29----------------------------------------------------------------------------------"+redirect_url);
-						redirect_url = CommUtil.getURL( request ) + "/user/login.htm";
-						if(isMobile){
-							redirect_url = CommUtil.getURL( request ) + "/mobile/login.htm";
-						}
-						redirect = true;
-						
-					}
-				}
-				
-
-			}
-
-		}
-		else if( init_url( url ) ) {
-			redirect_url = CommUtil.getURL( request ) + "/install.htm";
-			redirect = true;
-			if( url.indexOf( "/install" ) >= 0 ) {
-				redirect = false;
-			}
-		}
+		//如果检测为移动端，那么跳转到移动端页面
 		System.out.println("10----------------------------------------------------------------------------------"+redirect_url);
-
+		if(isMobile&&url.indexOf("/m/")>0) {
+			String hostRoot=url.substring(0,url.lastIndexOf("/",8));//截取第一个"/"号之前的字符串
+			redirect_url = url.replaceAll(hostRoot,hostRoot+ "m/");
+		}
 		if( redirect )
 			response.sendRedirect( redirect_url );
 		else

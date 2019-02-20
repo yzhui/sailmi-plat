@@ -7,7 +7,7 @@
 		overflowToDisk="true" clearOnFlush="true"
 		memoryStoreEvictionPolicy="LFU">
 	</defaultCache>
-	    <cache name="SimplePageFragmentCachingFilter"  
+    <cache name="SimplePageFragmentCachingFilter"  
         maxElementsInMemory="10"  
         eternal="false"  
         timeToIdleSeconds="10000"  

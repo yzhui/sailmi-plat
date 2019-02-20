@@ -39,6 +39,8 @@ public class SecondDomainFilter
   public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
     throws IOException, ServletException
   {
+	    System.out.println("SecondDomainFilter:............................");
+
     HttpServletRequest request = (HttpServletRequest)req;
     HttpServletResponse response = (HttpServletResponse)res;
     if (this.configService.getSysConfig().isSecond_domain_open())

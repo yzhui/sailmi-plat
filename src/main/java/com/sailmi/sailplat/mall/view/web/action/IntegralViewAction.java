@@ -41,7 +41,7 @@ import com.sailmi.sailplat.foundation.service.IPaymentService;
 import com.sailmi.sailplat.foundation.service.ISysConfigService;
 import com.sailmi.sailplat.foundation.service.IUserConfigService;
 import com.sailmi.sailplat.foundation.service.IUserService;
-import com.sailmi.sailplat.mall.manage.admin.tools.PaymentTools;
+import com.sailmi.sailplat.manage.admin.tools.PaymentTools;
 import com.sailmi.sailplat.pay.tools.PayTools;
 import com.sailmi.sailplat.security.support.SecurityUserHolder;
 import com.sailmi.tools.CommUtil;
