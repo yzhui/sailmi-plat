@@ -5,20 +5,16 @@
 			<ul class="quick-menu">
 				<li class="mytaobao menu-item menupx">
 					<div class="menu">
-						<a class="menu-hd" href="$!webPath/buyer/index.htm" rel="nofollow">我的订单<b></b></a>
+						<a class="menu-hd" href="$!webPath/user/homepage.htm" rel="nofollow">个人中心<b></b></a>
 						<div class="menu-bd">
 							<div class="menu-bd-panel">
-
 								<div>
-									<!-- <a href="$!webPath/buyer/order.htm" rel="nofollow">已买到的宝贝</a>
-	                <a href="$!webPath/buyer/index.htm?type=4"  rel="nofollow">店铺动态</a>
-	                <a href="$!webPath/buyer/index.htm?type=2"  rel="nofollow">好友动态</a> -->
-									<a href="$!webPath/buyer/order.htm?order_status=order_submit"
-										rel="nofollow">待支付</a> <a
+									<a href="$!webPath/buyer/index.htm"
+										rel="nofollow">订单中心</a> <a
 										href="$!webPath/buyer/order.htm?order_status=order_shipping"
-										rel="nofollow">待收货</a> <a
-										href="$!webPath/buyer/order.htm?order_status=order_receive"
-										rel="nofollow">待评价</a>
+										rel="nofollow">任务中心</a> <a
+										href="$!webPath/buyer/order.htm?order_status=order_shipping"
+										rel="nofollow">名片中心</a>
 								</div>
 							</div>
 						</div>
@@ -27,12 +23,11 @@
 				<li class="mytaobao menu-item menupx">
 					<div class="menu">
 						<a class="menu-hd" href="$!webPath/seller/index.htm"
-							rel="nofollow">商家支持<b></b></a>
+							rel="nofollow">商家中心<b></b></a>
 						<div class="menu-bd">
 							<div class="menu-bd-panel">
 								<div>
-									<a href="$!webPath/seller/index.htm" rel="nofollow">商家中心</a> <a
-										href="$!webPath/seller/order.htm" rel="nofollow">商家订单</a> <a
+									 <a	href="$!webPath/seller/order.htm" rel="nofollow">商家订单</a> <a
 										href="$!webPath/seller/goods.htm" rel="nofollow">商家商品</a>
 									#if($!user.store) <a
 										href="$!webPath/store_$!{user.store.id}.htm" rel="nofollow">我的店铺</a>
@@ -94,7 +89,7 @@
 				<li class="search menu-item menupx">
 					<div class="menu" id="cart_menu">
 						<span class="menu-hd" id="cart_goods_top_menu"><s></s>购物车<span
-							id="cart_goods_count_top" class="top_car">$!cart.size()</span>种商品<b></b></span>
+							id="cart_goods_count_top" class="top_car">[$!cart.size()]</span><b></b></span>
 						<div class="menu-bd" id="cart_goods_top_info">
 							<div class="menu-bd-panel">
 								<div style="text-align: center;">
@@ -123,9 +118,7 @@
 							</div>
 						</div>
 					</div>
-				</li> #if($!CommUtil.indexOf("$!user.userRole","ADMIN")>=0)
-				<li class="menupx"><a href="$!webPath/admin/index.htm"
-					target="_blank">管理后台</a></li> #end
+				</li> 
 				#set($navs=$!navTools.queryNav(-1,-1)) #if($!navs.size()>0)
 				<li class="menupx"><a href="$!webPath/articlelist_help.htm">帮助中心</a></li>
 				#else
@@ -151,15 +144,19 @@
 			</ul>
 		</div>
 		<div class="pageleft">
-			#if($!user)<span>$!CommUtil.substring("$!{user.userName}",12)您好,欢迎来到$!CommUtil.substring("$!{config.websiteName}",30)！</span><a
-				href="$!webPath/logout.htm" class="lightblue">[退出]</a> #else<span>亲，欢迎来到$!{config.websiteName}！</span><span
+			#if($!user)<span>$!CommUtil.substring("$!{user.userName}",12)</span>
+				#if($!CommUtil.indexOf("$!user.userRole","ADMIN")>=0)
+				<a href="$!webPath/admin/index.htm"
+					target="_blank">[管理后台]</a> 
+				#end
+			     <a	href="$!webPath/logout.htm" class="lightblue">[退出]</a>
+				 #else
+				 <span>亲，欢迎来到$!{config.websiteName}！</span><span
 				class="pxlr"><a href="$!webPath/user/login.htm"
 				class="lightblue">登录</a></span><span class="pxlr">或</span><span
 				class="pxlr">
-				<!-- 
 				<a href="$!webPath/register.htm"
 				class="lightblue">注册</a>
-				-->
 				</span>#end
 		</div>
 	</div>

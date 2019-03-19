@@ -22,7 +22,7 @@ jQuery(document).ready(function(){
 });
 
 function remove_attention(){
-	jQuery.post("$!webPath/buyer/homepage_remove_attention.htm",
+	jQuery.post("$!webPath/user/homepage_remove_attention.htm",
 				{
 					"id":jQuery("#obj_id").val()
 					},
@@ -41,9 +41,9 @@ function remove_attention(){
 <body>
 $!httpInclude.include("/top.htm")
 #if($!owner.id==$!user.id)
-$!httpInclude.include("/buyer/homepage_head.htm")
+$!httpInclude.include("/user/homepage_head.htm")
 #else
-$!httpInclude.include("/buyer/homepage_head.htm?uid=$!owner.id")
+$!httpInclude.include("/user/homepage_head.htm?uid=$!owner.id")
 #end
 <!--通栏蓝色导航-->
 <div style="width:100%; height:40px; background-color:#ff8800">
@@ -51,24 +51,24 @@ $!httpInclude.include("/buyer/homepage_head.htm?uid=$!owner.id")
     <div class="home_nav">
       <ul class="home_nav_ul">
       #if($!owner.id==$!user.id)
-        <li ><a href="$!webPath/buyer/homepage.htm">我的主页</a></li>
+        <li ><a href="$!webPath/user/homepage.htm">我的主页</a></li>
       #else
-       <li ><a href="$!webPath/buyer/homepage.htm?uid=$!{owner.id.htm}">TA的主页</a></li>
+       <li ><a href="$!webPath/user/homepage.htm?uid=$!{owner.id.htm}">TA的主页</a></li>
       #end 
      #if($!owner.id==$!user.id)
-        <li ><a href="$!webPath/buyer/homepage/myfriends.htm">好友</a></li>
+        <li ><a href="$!webPath/user/homepage/myfriends.htm">好友</a></li>
      #else
-     	<li ><a href="$!webPath/buyer/homepage/myfriends.htm?uid=$!owner.id">好友</a></li>
+     	<li ><a href="$!webPath/user/homepage/myfriends.htm?uid=$!owner.id">好友</a></li>
      #end 
      #if($!owner.id==$!user.id)  
-        <li class="nav_this"><a href="$!webPath/buyer/homepage/myattention.htm">关注</a></li>
+        <li class="nav_this"><a href="$!webPath/user/homepage/myattention.htm">关注</a></li>
      #else
-       <li class="nav_this"><a href="$!webPath/buyer/homepage/myattention.htm?uid=$!owner.id">关注</a></li>
+       <li class="nav_this"><a href="$!webPath/user/homepage/myattention.htm?uid=$!owner.id">关注</a></li>
      #end
      #if($!owner.id==$!user.id)   
-        <li ><a href="$!webPath/buyer/homepage/myfans.htm">粉丝</a></li>
+        <li ><a href="$!webPath/user/homepage/myfans.htm">粉丝</a></li>
 	 #else
-        <li ><a href="$!webPath/buyer/homepage/myfans.htm?uid=$!owner.id">粉丝</a></li>
+        <li ><a href="$!webPath/user/homepage/myfans.htm?uid=$!owner.id">粉丝</a></li>
      #end
       </ul>
       <div class="home_nav_right"> <span>$!CommUtil.substring("$!{user.userName}",12)你好，欢迎来到$!CommUtil.substring("$!{config.websiteName}",8)！</span> </div>
@@ -87,14 +87,14 @@ $!httpInclude.include("/buyer/homepage_head.htm?uid=$!owner.id")
         <div class="per_home_page_frends_list">
             <div class="fans_tab">
                 <ul>
-                #set($friend_Url="$!webPath/buyer/homepage/myfriends.htm")
+                #set($friend_Url="$!webPath/user/homepage/myfriends.htm")
                 #if($!owner.id!=$!user.id)
-                #set($friend_Url="$!webPath/buyer/homepage/myfriends.htm?uid=$!owner.id")
+                #set($friend_Url="$!webPath/user/homepage/myfriends.htm?uid=$!owner.id")
                 #end
                 
-                #set($fans_Url="$!webPath/buyer/homepage/myfans.htm")
+                #set($fans_Url="$!webPath/user/homepage/myfans.htm")
                 #if($!owner.id!=$!user.id)
-                #set($fans_Url="$!webPath/buyer/homepage/myfans.htm?uid=$!owner.id")
+                #set($fans_Url="$!webPath/user/homepage/myfans.htm?uid=$!owner.id")
                 #end
                    <li><a href="$!friend_Url">好友列表</a></li>
                     <li class="fans_tab_one"><a href="javascript:void(0);">关注列表（#if(!$!objs)0#end$!objs.size()）</a></li>
@@ -117,8 +117,8 @@ $!httpInclude.include("/buyer/homepage_head.htm?uid=$!owner.id")
                         #end    
                     	<li id="li_$!obj.id">
                             <span class="head_pic">
-                            <a href="$!webPath/buyer/homepage.htm?uid=$!{obj.toUser.id}" target="_blank"><img src=$!userImg width="80" height="80" /></a></span>
-                            <span class="name"><a href="$!webPath/buyer/homepage.htm?uid=$!{obj.toUser.id}" target="_blank">$!obj.toUser.userName </a></br>性别：
+                            <a href="$!webPath/user/homepage.htm?uid=$!{obj.toUser.id}" target="_blank"><img src=$!userImg width="80" height="80" /></a></span>
+                            <span class="name"><a href="$!webPath/user/homepage.htm?uid=$!{obj.toUser.id}" target="_blank">$!obj.toUser.userName </a></br>性别：
                             #if($!obj.toUser.sex==-1)保密#end
                             #if($!obj.toUser.sex==0)女#end
                             #if($!obj.toUser.sex==1)男#end

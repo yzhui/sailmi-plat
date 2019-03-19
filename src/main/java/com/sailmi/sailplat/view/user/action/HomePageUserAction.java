@@ -1,4 +1,4 @@
- package com.sailmi.sailplat.manage.buyer.action;
+ package com.sailmi.sailplat.view.user.action;
  
  import com.sailmi.annotation.SecurityMapping;
 import com.sailmi.database.domain.virtual.SysMap;
@@ -43,7 +43,7 @@ import java.io.IOException;
  import org.springframework.web.servlet.ModelAndView;
  
  @Controller
- public class HomePageBuyerAction
+ public class HomePageUserAction
  {
  
    @Autowired
@@ -82,8 +82,8 @@ import java.io.IOException;
    @Autowired
    private IHomePageGoodsClassService HomeGoodsClassService;
  
-   @SecurityMapping(display = false, rsequence = 0, title="个人主页头部", value="/buyer/homepage_head.htm*", rtype="buyer", rname="用户中心", rcode="user_center", rgroup="用户中心")
-   @RequestMapping({"/buyer/homepage_head.htm"})
+   @SecurityMapping(display = false, rsequence = 0, title="个人主页头部", value="/user/homepage_head.htm*", rtype="buyer", rname="用户中心", rcode="user_center", rgroup="用户中心")
+   @RequestMapping({"/user/homepage_head.htm"})
    public ModelAndView homepage_head(HttpServletRequest request, HttpServletResponse response)
    {
      ModelAndView mv = new JModelAndView(
@@ -122,7 +122,7 @@ import java.io.IOException;
    }
  
    @SecurityMapping(display = false, rsequence = 0, title="个人主页", value="/buyer/homepage.htm*", rtype="buyer", rname="用户中心", rcode="user_center", rgroup="用户中心")
-   @RequestMapping({"/buyer/homepage.htm"})
+   @RequestMapping({"/user/homepage.htm"})
    public ModelAndView homepage(HttpServletRequest request, HttpServletResponse response, String type, String currentPage, String orderBy, String orderType, String uid, String goodclass_id)
    {
      ModelAndView mv = new JModelAndView(
@@ -261,7 +261,7 @@ import java.io.IOException;
    }
  
    @SecurityMapping(display = false, rsequence = 0, title="个人主页删除动态", value="/buyer/homepage_dynamic_del.htm*", rtype="buyer", rname="用户中心", rcode="user_center", rgroup="用户中心")
-   @RequestMapping({"/buyer/homepage_dynamic_del.htm"})
+   @RequestMapping({"/user/homepage_dynamic_del.htm"})
    public void homepage_dynamic_del(HttpServletRequest request, HttpServletResponse response, String id, String currentPage, String orderBy, String orderType, String type)
    {
      boolean flag = false;
@@ -284,7 +284,7 @@ import java.io.IOException;
    }
  
    @SecurityMapping(display = false, rsequence = 0, title="个人主页新鲜事加密", value="/buyer/homepage_dynamic_lock.htm*", rtype="buyer", rname="用户中心", rcode="user_center", rgroup="用户中心")
-   @RequestMapping({"/buyer/homepage_dynamic_lock.htm"})
+   @RequestMapping({"/user/homepage_dynamic_lock.htm"})
    public void homepage_dynamic_lock(HttpServletRequest request, HttpServletResponse response, String dynamic_id)
    {
      Dynamic dynamic = this.dynamicService.getObjById(
@@ -310,7 +310,7 @@ import java.io.IOException;
    }
  
    @SecurityMapping(display = false, rsequence = 0, title="个人主页添加关注", value="/buyer/homepage_add_attention.htm*", rtype="buyer", rname="用户中心", rcode="user_center", rgroup="用户中心")
-   @RequestMapping({"/buyer/homepage_add_attention.htm"})
+   @RequestMapping({"/user/homepage_add_attention.htm"})
    public void homepage_add_attention(HttpServletRequest request, HttpServletResponse response, String user_id)
    {
      boolean flag = false;
@@ -344,7 +344,7 @@ import java.io.IOException;
    }
  
    @SecurityMapping(display = false, rsequence = 0, title="个人主页添加关注", value="/buyer/homepage_remove_attention.htm*", rtype="buyer", rname="用户中心", rcode="user_center", rgroup="用户中心")
-   @RequestMapping({"/buyer/homepage_remove_attention.htm"})
+   @RequestMapping({"/user/homepage_remove_attention.htm"})
    public void homepage_remove_attention(HttpServletRequest request, HttpServletResponse response, String id)
    {
      boolean flag = false;
@@ -363,7 +363,7 @@ import java.io.IOException;
    }
  
    @SecurityMapping(display = false, rsequence = 0, title="好友列表", value="/buyer/homepage/myfriends.htm*", rtype="buyer", rname="用户中心", rcode="user_center", rgroup="用户中心")
-   @RequestMapping({"/buyer/homepage/myfriends.htm"})
+   @RequestMapping({"/user/homepage/myfriends.htm"})
    public ModelAndView homepage_myfriends(HttpServletRequest request, HttpServletResponse response, String uid, String currentPage, String orderBy, String orderType)
    {
      ModelAndView mv = new JModelAndView(
@@ -387,7 +387,7 @@ import java.io.IOException;
    }
  
    @SecurityMapping(display = false, rsequence = 0, title="关注列表", value="/buyer/homepage/myattention.htm*", rtype="buyer", rname="用户中心", rcode="user_center", rgroup="用户中心")
-   @RequestMapping({"/buyer/homepage/myattention.htm"})
+   @RequestMapping({"/user/homepage/myattention.htm"})
    public ModelAndView homepage_myattention(HttpServletRequest request, HttpServletResponse response, String uid, String currentPage, String orderBy, String orderType)
    {
      ModelAndView mv = new JModelAndView(
@@ -412,7 +412,7 @@ import java.io.IOException;
    }
  
    @SecurityMapping(display = false, rsequence = 0, title="关注列表", value="/buyer/homepage/myfans.htm*", rtype="buyer", rname="用户中心", rcode="user_center", rgroup="用户中心")
-   @RequestMapping({"/buyer/homepage/myfans.htm"})
+   @RequestMapping({"/user/homepage/myfans.htm"})
    public ModelAndView homepage_myfans(HttpServletRequest request, HttpServletResponse response, String uid, String currentPage, String orderBy, String orderType)
    {
      ModelAndView mv = new JModelAndView(
@@ -434,8 +434,8 @@ import java.io.IOException;
      return mv;
    }
  
-   @SecurityMapping(display = false, rsequence = 0, title="最近访客", value="/buyer/homepage_visit.htm*", rtype="buyer", rname="用户中心", rcode="user_center", rgroup="用户中心")
-   @RequestMapping({"/buyer/homepage_visit.htm"})
+   @SecurityMapping(display = false, rsequence = 0, title="最近访客", value="/user/homepage_visit.htm*", rtype="buyer", rname="用户中心", rcode="user_center", rgroup="用户中心")
+   @RequestMapping({"/user/homepage_visit.htm"})
    public ModelAndView homepage_visit(HttpServletRequest request, HttpServletResponse response, String orderBy, String orderType, String currentPage)
    {
      ModelAndView mv = new JModelAndView(
@@ -461,7 +461,7 @@ import java.io.IOException;
    }
  
    @SecurityMapping(display = false, rsequence = 0, title="删除访客ajax", value="/buyer/homepage_visit_dele.htm*", rtype="buyer", rname="用户中心", rcode="user_center", rgroup="用户中心")
-   @RequestMapping({"/buyer/homepage_visit_dele.htm"})
+   @RequestMapping({"/user/homepage_visit_dele.htm"})
    public void homepage_visit_dele(HttpServletRequest request, HttpServletResponse response, String visit_id)
    {
      boolean flag = false;
@@ -489,7 +489,7 @@ import java.io.IOException;
    }
  
    @SecurityMapping(display = false, rsequence = 0, title="查询已经购买宝贝和已经收藏宝贝", value="/buyer/homepage_query_goods.htm*", rtype="buyer", rname="用户中心", rcode="user_center", rgroup="用户中心")
-   @RequestMapping({"/buyer/homepage_query_goods.htm"})
+   @RequestMapping({"/user/homepage_query_goods.htm"})
    public ModelAndView homepage_query_goods(HttpServletRequest request, HttpServletResponse response)
    {
      ModelAndView mv = new JModelAndView(
@@ -536,7 +536,7 @@ import java.io.IOException;
    }
  
    @SecurityMapping(display = false, rsequence = 0, title="查询收藏宝贝ajax分页", value="/buyer/homepage_query_goods_favorite_ajax.htm*", rtype="buyer", rname="用户中心", rcode="user_center", rgroup="用户中心")
-   @RequestMapping({"/buyer/homepage_query_goods_favorite_ajax.htm"})
+   @RequestMapping({"/user/homepage_query_goods_favorite_ajax.htm"})
    public ModelAndView homepage_query_goods_favorite_ajax(HttpServletRequest request, HttpServletResponse response, String fcurrentCount)
    {
      ModelAndView mv = new JModelAndView(
@@ -560,7 +560,7 @@ import java.io.IOException;
    }
  
    @SecurityMapping(display = false, rsequence = 0, title="查询已经购买宝贝ajax分页", value="/buyer/homepage_query_goods_order_ajax.htm*", rtype="buyer", rname="用户中心", rcode="user_center", rgroup="用户中心")
-   @RequestMapping({"/buyer/homepage_query_goods_order_ajax.htm"})
+   @RequestMapping({"/user/homepage_query_goods_order_ajax.htm"})
    public ModelAndView homepage_query_goods_order_ajax(HttpServletRequest request, HttpServletResponse response, String ocurrentCount)
    {
      ModelAndView mv = new JModelAndView(
@@ -584,7 +584,7 @@ import java.io.IOException;
    }
  
    @SecurityMapping(display = false, rsequence = 0, title="查询已经收藏店铺", value="/buyer/homepage_query_stores.htm*", rtype="buyer", rname="用户中心", rcode="user_center", rgroup="用户中心")
-   @RequestMapping({"/buyer/homepage_query_stores.htm"})
+   @RequestMapping({"/user/homepage_query_stores.htm"})
    public ModelAndView homepage_query_stores(HttpServletRequest request, HttpServletResponse response)
    {
      ModelAndView mv = new JModelAndView(
@@ -613,7 +613,7 @@ import java.io.IOException;
    }
  
    @SecurityMapping(display = false, rsequence = 0, title="查询已关注店铺ajax分页", value="/buyer/homepage_query_stores_ajax.htm*", rtype="buyer", rname="用户中心", rcode="user_center", rgroup="用户中心")
-   @RequestMapping({"/buyer/homepage_query_stores_ajax.htm"})
+   @RequestMapping({"/user/homepage_query_stores_ajax.htm"})
    public ModelAndView homepage_query_stores_ajax(HttpServletRequest request, HttpServletResponse response, String currentCount)
    {
      ModelAndView mv = new JModelAndView(
@@ -637,7 +637,7 @@ import java.io.IOException;
    }
  
    @SecurityMapping(display = false, rsequence = 0, title="个人主页添加关注", value="/buyer/homepage_goods_url_add.htm*", rtype="buyer", rname="用户中心", rcode="user_center", rgroup="用户中心")
-   @RequestMapping({"/buyer/homepage_goods_url_add.htm"})
+   @RequestMapping({"/user/homepage_goods_url_add.htm"})
    public void homepage_goods_url_add(HttpServletRequest request, HttpServletResponse response, String url)
    {
      boolean flag = true;

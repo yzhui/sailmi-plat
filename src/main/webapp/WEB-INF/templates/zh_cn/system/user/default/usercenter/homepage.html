@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>$!config.title - Powered by Sailmi</title>
+<title>$!config.title - Powered by Sailmi。COM</title>
 <meta name="keywords" content="$!config.keywords" />
 <meta name="description" content="$!config.description" />
 <meta name="generator" content="Sailmi Service Mall 2.0" />
@@ -184,9 +184,9 @@ jQuery("div[id^=div_content_]").mouseleave(function(){
 <body>
 $!httpInclude.include("/top.htm")
 #if($!owner.id==$!user.id)
-$!httpInclude.include("/buyer/homepage_head.htm")
+$!httpInclude.include("/user/homepage_head.htm")
 #else
-$!httpInclude.include("/buyer/homepage_head.htm?uid=$!owner.id")
+$!httpInclude.include("/user/homepage_head.htm?uid=$!owner.id")
 #end
 <!--通栏蓝色导航-->
 <div style="width:100%; height:40px; background-color:#ff8800">
@@ -194,27 +194,46 @@ $!httpInclude.include("/buyer/homepage_head.htm?uid=$!owner.id")
     <div class="home_nav">
       <ul class="home_nav_ul">
        #if($!owner.id !=$!user.id)
-        <li class="nav_this"><a href="$!webPath/buyer/homepage.htm?uid=$!{owner.id}">TA的主页</a></li>
+        <li class="nav_this"><a href="$!webPath/user/homepage.htm?uid=$!{owner.id}">TA的主页</a></li>
         #else
-        <li class="nav_this"><a href="$!webPath/buyer/homepage.htm">我的主页</a></li>
+        <li class="nav_this"><a href="$!webPath/user/homepage.htm">我的主页</a></li>
         #end
         #if($!owner.id !=$!user.id)
-        <li><a href="$!webPath/buyer/homepage/myfriends.htm?uid=$!owner.id">好友</a></li>
+        <li><a href="$!webPath/user/homepage/myfriends.htm?uid=$!owner.id">好友</a></li>
         #else
-        <li><a href="$!webPath/buyer/homepage/myfriends.htm">好友</a></li>
+        <li><a href="$!webPath/user/homepage/myfriends.htm">好友</a></li>
         #end
         #if($!owner.id !=$!user.id)
-        <li><a href="$!webPath/buyer/homepage/myattention.htm?uid=$!owner.id">关注</a></li>
+        <li><a href="$!webPath/user/homepage/myattention.htm?uid=$!owner.id">关注</a></li>
         #else
-        <li><a href="$!webPath/buyer/homepage/myattention.htm">关注</a></li>
+        <li><a href="$!webPath/user/homepage/myattention.htm">关注</a></li>
         #end
         #if($!owner.id !=$!user.id)
-        <li><a href="$!webPath/buyer/homepage/myfans.htm?uid=$!owner.id">粉丝</a></li>
+        <li><a href="$!webPath/user/homepage/myfans.htm?uid=$!owner.id">粉丝</a></li>
         #else
-        <li><a href="$!webPath/buyer/homepage/myfans.htm">粉丝</a></li>
+        <li><a href="$!webPath/user/homepage/myfans.htm">粉丝</a></li>
+        #end
+        #if($!owner.id !=$!user.id)
+        <li><a href="$!webPath/user/homepage/myfans.htm?uid=$!owner.id">知识</a></li>
+        #else
+        <li><a href="$!webPath/user/homepage/myfans.htm">知识</a></li>
+        #end
+        #if($!owner.id !=$!user.id)
+        <li><a href="$!webPath/user/homepage/myfans.htm?uid=$!owner.id">问答</a></li>
+        #else
+        <li><a href="$!webPath/user/homepage/myfans.htm">问答</a></li>
+        #end
+        #if($!owner.id !=$!user.id)
+        <li><a href="$!webPath/user/homepage/myfans.htm?uid=$!owner.id">任务</a></li>
+        #else
+        <li><a href="$!webPath/user/homepage/myfans.htm">任务</a></li>
+        #end
+        #if($!owner.id !=$!user.id)
+        <li><a href="$!webPath/user/homepage/myfans.htm?uid=$!owner.id">圈 子</a></li>
+        #else
+        <li><a href="$!webPath/user/homepage/myfans.htm">圈子</a></li>
         #end
       </ul>
-      <div class="home_nav_right"> <span>$!CommUtil.substring("$!{user.userName}",12)你好，欢迎来到$!CommUtil.substring("$!{config.websiteName}",8)！</span> </div>
     </div>
   </div>
 </div>
@@ -227,26 +246,26 @@ $!httpInclude.include("/buyer/homepage_head.htm?uid=$!owner.id")
       <li id="li_baby" class="current_b">
         <div class="num_tips" >#if(!$!allNum)0 #else $!allNum #end</div>
         #if($!owner.id!=$!user.id)
-        <a href="$!webPath/buyer/homepage.htm?uid=$!owner.id"><span>宝贝</span></a> 
+        <a href="$!webPath/user/homepage.htm?uid=$!owner.id"><span>宝贝</span></a> 
         #else
-        <a href="$!webPath/buyer/homepage.htm"><span>宝贝</span></a> 
+        <a href="$!webPath/user/homepage.htm"><span>宝贝</span></a> 
         #end
        </li>
         
       <li id="li_store" class="current_dd">
         <div class="num_tips" >#if(!$!allNum)0 #else $!allNum #end</div>
         #if($!owner.id!=$!user.id)
-        <a href="$!webPath/buyer/homepage.htm?type=1&uid=$!owner.id"><span>店铺</span></a> 
+        <a href="$!webPath/user/homepage.htm?type=1&uid=$!owner.id"><span>店铺</span></a> 
         #else
-        <a href="$!webPath/buyer/homepage.htm?type=1"><span>店铺</span></a> 
+        <a href="$!webPath/user/homepage.htm?type=1"><span>店铺</span></a> 
       	#end
         </li>
       <li class="current_ww" id="li_dy">
         <div class="num_tips" >#if(!$!allNum)0 #else $!allNum #end</div>
          #if($!owner.id!=$!user.id)
-          <a href="$!webPath/buyer/homepage.htm?type=2&uid=$!owner.id"><span>新鲜事</span></a>
+          <a href="$!webPath/user/homepage.htm?type=2&uid=$!owner.id"><span>新鲜事</span></a>
          #else
-        <a href="$!webPath/buyer/homepage.htm?type=2"><span>新鲜事</span></a>
+        <a href="$!webPath/user/homepage.htm?type=2"><span>新鲜事</span></a>
         #end
          </li>
         
@@ -257,9 +276,9 @@ $!httpInclude.include("/buyer/homepage_head.htm?uid=$!owner.id")
     <div class="like_tab_box"  style="display:none">
     	<div class="like_tab_list_ul">
           <ul>
-            	<li #if(!$!goodclass_id) class="this" #end><a href="$!webPath/buyer/homepage.htm?uid=$!owner.id">全部</a></li>
+            	<li #if(!$!goodclass_id) class="this" #end><a href="$!webPath/user/homepage.htm?uid=$!owner.id">全部</a></li>
                 #foreach($hgc in $hgcs)
-                <li #if($!hgc.gc.id==$!goodclass_id) class="this" #end><a href="$!webPath/buyer/homepage.htm?goodclass_id=$!hgc.gc.id&uid=$!owner.id">$!hgc.gc.className</a></li>
+                <li #if($!hgc.gc.id==$!goodclass_id) class="this" #end><a href="$!webPath/user/homepage.htm?goodclass_id=$!hgc.gc.id&uid=$!owner.id">$!hgc.gc.className</a></li>
                 #end
             </ul>      
         </div>
@@ -274,7 +293,7 @@ $!httpInclude.include("/buyer/homepage_head.htm?uid=$!owner.id")
     <div class="per_home_page">
       <div class="per_page_right">
         <div class="per_right_box">
-          <form id="ListForm" name="ListForm" method="post"  action="$!webPath/buyer/homepage.htm">
+          <form id="ListForm" name="ListForm" method="post"  action="$!webPath/user/homepage.htm">
           <input id="type" name="type" value="$!type" type="hidden"/>
           #if($!owner.id!=$!user.id)
           <input id="uid" name="uid" value="$!owner.id" type="hidden"/>
@@ -433,9 +452,9 @@ $!httpInclude.include("/buyer/homepage_head.htm?uid=$!owner.id")
         </div>
       </div>
 #if($!owner.id==$!user.id)
-$!httpInclude.include("/buyer/homepage_visit.htm")
+$!httpInclude.include("/user/homepage_visit.htm")
 #else
-$!httpInclude.include("/buyer/homepage_visit.htm?uid=$!owner.id")
+$!httpInclude.include("/user/homepage_visit.htm?uid=$!owner.id")
 #end
     </div>
   </div>

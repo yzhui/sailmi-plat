@@ -106,8 +106,6 @@ import org.springframework.web.servlet.ModelAndView;
      mv.addObject("authenLoginUrl",this.configService.getSecurityAuthType().getLoginUrl());
      System.out.println("44444444444444444444444444444444:"+mv.getViewName()+":"+mv);
      mv.addObject("uc_logout_js", request.getSession(false).getAttribute("uc_logout_js"));
-     
-     
      return mv;
    }
    

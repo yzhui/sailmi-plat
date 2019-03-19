@@ -127,7 +127,7 @@ left:-50%; z-index:0;}
 }
 .logo {
 	background:url(images/logo.png) no-repeat bottom right;
-	width:164px;
+	width:100px;
 	height:42px;
 	padding-top:15px;
 	padding-left:20px;
@@ -136,7 +136,7 @@ left:-50%; z-index:0;}
 .nav {
 	float:left;
 	margin-top:10px;
-	width:70%;
+	width:80%;
 	padding-left:5%;
 }
 .nav ul li {

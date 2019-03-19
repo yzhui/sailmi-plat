@@ -74,7 +74,7 @@ i{ font-style:normal;}
 .quick-menu li {PADDING-RIGHT: 10px; BACKGROUND-POSITION: right 6px; PADDING-LEFT: 10px; FLOAT: left; PADDING-BOTTOM: 0px; MARGIN-LEFT: -1px; PADDING-TOP: 2px}
 .quick-menu li.menu-item {PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; POSITION: relative; z-index:10001; }
 .menu-hd {PADDING-RIGHT: 22px; DISPLAY: block; PADDING-LEFT: 10px; Z-INDEX: 10002; PADDING-BOTTOM: 0px; MARGIN: 1px 1px 0px; CURSOR: pointer; PADDING-TOP: 0px; POSITION: relative; HEIGHT: 20px}
-.mytaobao .menu-hd {WIDTH: 48px; PADDING-TOP: 1px; _padding-top: 1px}
+.mytaobao .menu-hd {WIDTH: 60px; PADDING-TOP: 1px; _padding-top: 1px}
 .search .menu-hd {WIDTH: 90px; PADDING-TOP: 1px; _padding-top: 1px}
 .menu-hd b {FONT-SIZE: 0px; RIGHT: 10px;  WIDTH: 0px; LINE-HEIGHT: 0;  POSITION: absolute; TOP:12px; HEIGHT: 0px; line-height:0px; -webkit-transition: -webkit-transform .2s ease-in; -moz-transition: -webkit-transform .2s ease-in; -o-transition: -webkit-transform .2s ease-in; transition: -webkit-transform .2s ease-in; border:4px solid; border-color:rgb(105,102,102) transparent transparent; _border-color:rgb(102,102,102) tomato tomato;_filter:chroma(color=tomato)}
 .search .menu-hd {PADDING-LEFT: 25px; COLOR: #666}
